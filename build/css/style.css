@@ -1270,6 +1270,11 @@ video {
     background-color: rgb(39 39 42 / var(--tw-bg-opacity));
   }
 
+  .dark\:bg-zinc-950 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(9 9 11 / var(--tw-bg-opacity));
+  }
+
   .dark\:text-amber-600 {
     --tw-text-opacity: 1;
     color: rgb(217 119 6 / var(--tw-text-opacity));
@@ -1369,7 +1374,7 @@ video {
   }
 }
 
-@media (min-aspect-ratio: 13/20) {
+@media (max-aspect-ratio: 13/20) {
   .tallscreen\:section-min-height {
     min-height: calc(100vh - 68px);
   }
