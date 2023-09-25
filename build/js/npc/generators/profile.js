@@ -6,25 +6,25 @@ import {Chin} from "../profile/chin";
 import {Teeth} from "../profile/teeth";
 import {VerbsGenerator} from "./verbs";
 
-const chinInstance = new Chin('someRace', 'someGender');
-console.log(chinInstance.getChin());
-
-// Usage
-const eyesInstance = new Eyes('someRace', 'someGender');
-console.log(eyesInstance.getEyes());
-
-
-// Usage
-const mouthInstance = new Mouth('someRace', 'someGender');
-console.log(mouthInstance.getMouth());
-
-// Usage
-const noseInstance = new Nose('someRace', 'someGender');
-console.log(noseInstance.getNose());
-
-// Usage
-const teethInstance = new Teeth('someRace', 'someGender');
-console.log(teethInstance.getTeeth());
+// const chinInstance = new Chin('someRace', 'someGender');
+// console.log(chinInstance.getChin());
+//
+// // Usage
+// const eyesInstance = new Eyes('someRace', 'someGender');
+// console.log(eyesInstance.getEyes());
+//
+//
+// // Usage
+// const mouthInstance = new Mouth('someRace', 'someGender');
+// console.log(mouthInstance.getMouth());
+//
+// // Usage
+// const noseInstance = new Nose('someRace', 'someGender');
+// console.log(noseInstance.getNose());
+//
+// // Usage
+// const teethInstance = new Teeth('someRace', 'someGender');
+// console.log(teethInstance.getTeeth());
 
 //-----------------------------------------------------------------------------------------------
 

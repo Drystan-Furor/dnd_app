@@ -1,4 +1,4 @@
-class Name {
+export class Name {
     constructor(dndrace, new_npc, array, age, origin) {
         this.firstname = "Ernest";
         this.nickname = "Gary";

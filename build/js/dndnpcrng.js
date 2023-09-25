@@ -1,13 +1,6 @@
 // overwatch
+import {DndNpcRng} from "./npc/generators/character";
 // Automatically loads all files in the './npc/' folder and its subfolders
-import {Race} from "./npc/properties/race";
-import {NpcClass} from "./npc/properties/class";
-import {Gender} from "./npc/properties/gender";
-import {Age} from "./npc/properties/age";
-
-
-
-
 const requireModule = require.context('./npc', true, /\.js$/);
 
 requireModule.keys().forEach(filename => {
@@ -16,27 +9,29 @@ requireModule.keys().forEach(filename => {
     requireModule(filename);
 });
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById("generateNpc");
 
     button.addEventListener("click", function () {
         const characterParagraph = document.getElementById("character");
+        const new_npc = new DndNpcRng();
+        const character = new_npc.getNewNpc();
+        const biography = new_npc.getString();
 
-        // Create instances of NpcClass and Race
-        const npc = new NpcClass();
-        const race = new Race();
-        const gender = new Gender();
-        const age = new Age(race);
+        // Store the current innerHTML before overwriting it
+        const currentBiography = characterParagraph.innerHTML;
 
-        // Concatenate npc class and race ${var.getVar()}
-        const character = `${race.getRace()} ${npc.getNpcClass()} ${gender.getGender()} ${age.getAge()}`;
-        if (!character) {
+        // Set the concatenated string as the innerHTML of the paragraph
+        if(!character){
             return false;
         }
-        // Set the concatenated string as the innerHTML of the paragraph
-        characterParagraph.innerHTML = character;
+        characterParagraph.innerHTML = biography;
+        previousCharacter(currentBiography);
     });
+
+
+
+
 
     // Add event listener for copyButton here
     const copyButton = document.getElementById('copyButton');
@@ -50,5 +45,21 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+    // Add event listener for copyButton here
+    const copyButton2 = document.getElementById('copyButton2');
+    if(copyButton2) { // Check if copyButton exists
+        copyButton2.addEventListener('click', function() {
+            const previousCharacterParagraph = document.getElementById('previous-character');
+            navigator.clipboard.writeText(previousCharacterParagraph.innerText).then(function() {
+                console.log('copied to clipboard!');
+            }).catch(function(err) {
+                console.error('Unable to copy text', err);
+            });
+        });
+    }
 });
 
+function previousCharacter(previousBiography) {
+    const previousCharacterParagraph = document.getElementById("previous-character");
+    previousCharacterParagraph.innerHTML = previousBiography;
+}
