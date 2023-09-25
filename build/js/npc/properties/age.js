@@ -6,7 +6,6 @@ function rand(min, max) {
 export class Age extends Race {
     constructor(dndrace) {
         super(); // Call the constructor of the parent class (Race)
-        // this.age = this._defineAge(dndrace);
         this.age = this._defineAge(dndrace);
     }
 

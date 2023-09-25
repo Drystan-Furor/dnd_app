@@ -33,24 +33,5 @@ export class Gender {
     getHisHer() {
         return this.hisher;
     }
-
-    setHisHer(varValue) {
-        this.hisher = varValue;
-    }
-
-    setHeShe(varValue) {
-        this.heshe = varValue;
-    }
-
-    setManWoman(varValue) {
-        this.manWoman = varValue;
-    }
-
-    setGender(varValue) {
-        this.gender = varValue;
-    }
 }
 
-// Usage
-// const newGender = new Gender();
-// console.log(newGender.getGender(), newGender.getManWoman
