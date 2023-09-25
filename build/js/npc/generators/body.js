@@ -1,25 +1,24 @@
-export class BodyGenerator {
-    constructor(dndrace, new_npc) {
-        this.bodyType = this._bodyType(dndrace, new_npc);
-        this.bodyShape = this._bodyShape(dndrace, new_npc);
-        this.bodySize = this._bodySize(dndrace, new_npc);
-        this.body = this._bodyBuilder(new_npc);
+export class Body {
+    constructor(dndRace, npc) {
+        this.bodyType = this._bodyType(dndRace, npc);
+        this.bodyShape = this._bodyShape(dndRace, npc);
+        this.bodySize = this._bodySize(dndRace, npc);
+        this.body = this._bodyBuilder(npc);
     }
 
     static bodyTypeDefault() {
-        const bodytypes = [
+        const bodyTypes = [
             "long and lean", "fat", "bulky", "muscular", "slender",
             "quite overweight", "with a delicate frame",
             "similar to a marathon runner", "stocky", "muscular, but also a bit fat",
             "obese", "athletic", "well defined muscled", "positivly ripped",
             "as broad as the side of a barn",
         ];
-        const bodytype = bodytypes[Math.floor(Math.random() * bodytypes.length)];
-        return bodytype;
+        return bodyTypes[Math.floor(Math.random() * bodyTypes.length)];
     }
 
     static bodyShapeDefault() {
-        const bodyshapes = [
+        const bodyShapes = [
             "narrow shoulders and a narrow bust",
             "slim arms and a fairly defined waist",
             "hips larger than the bust", "a shelf-like appearance",
@@ -28,12 +27,11 @@ export class BodyGenerator {
             "a little more weight in the upper legs",
             "shoulder and hip measurements that are about the same",
         ];
-        const bodyshape = bodyshapes[Math.floor(Math.random() * bodyshapes.length)];
-        return bodyshape;
+        return bodyShapes[Math.floor(Math.random() * bodyShapes.length)];
     }
 
     static bodySizeDefault() {
-        const bodysizes = [
+        const bodySizes = [
             "small", "quite small", "very small", "really small",
             "slightly smaller", "rather small", "reasonably small",
             "tiny", "medium sized", "middle sized", "sort of typical sized",
@@ -42,8 +40,7 @@ export class BodyGenerator {
             "large", "quite large", "very large", "really large",
             "slightly larger", "reasonably large", "tall",
         ];
-        const bodysize = bodysizes[Math.floor(Math.random() * bodysizes.length)];
-        return bodysize;
+        return bodySizes[Math.floor(Math.random() * bodySizes.length)];
     }
 
     _bodyBuilder(new_npc) {
@@ -73,30 +70,32 @@ export class BodyGenerator {
     }
 
     _bodySize(dndrace, new_npc) {
-        // Here, you might want to handle the method existence check differently
-        if (dndrace.bodySizeReplacer) {
-            this.bodySize = dndrace.bodySizeReplacer(dndrace, new_npc);
-        } else {
-            this.bodySize = BodiesGenerator.bodySizeDefault();
-        }
+        // if (dndrace.bodySizeReplacer) {
+        //     this.bodySize = dndrace.bodySizeReplacer(dndrace, new_npc);
+        // } else {
+        //     this.bodySize = Body.bodySizeDefault();
+        // }
+        this.bodySize = Body.bodySizeDefault();
         return this.bodySize;
     }
 
     _bodyType(dndrace, new_npc) {
-        if (dndrace.bodyTypeReplacer) {
-            this.bodyType = dndrace.bodyTypeReplacer(dndrace, new_npc);
-        } else {
-            this.bodyType = BodiesGenerator.bodyTypeDefault();
-        }
+        // if (dndrace.bodyTypeReplacer) {
+        //     this.bodyType = dndrace.bodyTypeReplacer(dndrace, new_npc);
+        // } else {
+        //     this.bodyType = Body.bodyTypeDefault();
+        // }
+        this.bodyType = Body.bodyTypeDefault();
         return this.bodyType;
     }
 
     _bodyShape(dndrace, new_npc) {
-        if (dndrace.bodyShapeReplacer) {
-            this.bodyShape = dndrace.bodyShapeReplacer(dndrace, new_npc);
-        } else {
-            this.bodyShape = BodiesGenerator.bodyShapeDefault();
-        }
+        // if (dndrace.bodyShapeReplacer) {
+        //     this.bodyShape = dndrace.bodyShapeReplacer(dndrace, new_npc);
+        // } else {
+        //     this.bodyShape = Body.bodyShapeDefault();
+        // }
+        this.bodyShape = Body.bodyShapeDefault();
         return this.bodyShape;
     }
 }

@@ -1,4 +1,4 @@
-export class bourgoisie {
+export class Bourgoisie {
     constructor(heshe, npcClass, dndrace) {
         this.outfit = this.clothes(heshe, npcClass, dndrace);
         this.intro = this.intros();

@@ -1,4 +1,4 @@
-class Jewelry {
+export class Jewelry {
     constructor() {
         this.jewel = this.craftJewel();
     }
