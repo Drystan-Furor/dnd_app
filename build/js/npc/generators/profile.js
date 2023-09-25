@@ -4,6 +4,7 @@ import {Nose} from "../profile/nose";
 import {Eyes} from "../profile/eyes";
 import {Chin} from "../profile/chin";
 import {Teeth} from "../profile/teeth";
+import {VerbsGenerator} from "./verbs";
 
 const chinInstance = new Chin('someRace', 'someGender');
 console.log(chinInstance.getChin());
