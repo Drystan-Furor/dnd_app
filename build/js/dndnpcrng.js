@@ -3,6 +3,7 @@
 import {Race} from "./npc/properties/race";
 import {NpcClass} from "./npc/properties/class";
 import {Gender} from "./npc/properties/gender";
+import {Age} from "./npc/properties/age";
 
 
 
@@ -26,18 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const npc = new NpcClass();
         const race = new Race();
         const gender = new Gender();
+        const age = new Age(race);
 
-        // Concatenate npc class and race
-        const character = `${race.getRace()} ${npc.getNpcClass()} ${gender.getGender()}`;
+        // Concatenate npc class and race ${var.getVar()}
+        const character = `${race.getRace()} ${npc.getNpcClass()} ${gender.getGender()} ${age.getAge()}`;
         if (!character) {
             return false;
         }
         // Set the concatenated string as the innerHTML of the paragraph
         characterParagraph.innerHTML = character;
-
-        // Log the npc class and race to the console
-        console.log(npc.getNpcClass()); // Outputs one of the npcClasses randomly
-        console.log(race.getRace()); // Outputs one of the races randomly
     });
 
     // Add event listener for copyButton here
