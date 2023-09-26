@@ -2,7 +2,7 @@ import {Belts} from "../clothing/accessoiries/belts";
 import {Shoes} from "../clothing/accessoiries/shoes";
 import {Sentence} from "../generators/sentence";
 import {Verbs} from "../generators/verbs";
-import {Rings} from "../clothing/accessoiries/rings";
+import {Rings as Ring, Rings} from "../clothing/accessoiries/rings";
 
 export class Beggar {
     constructor(heShe, npcClass, dndRace) {
@@ -33,8 +33,9 @@ export class Beggar {
     clothes(heShe, npcClass, dndRace) {
         const belt = new Belts().getBelt();
         const shoes = new Shoes(dndRace).getShoes();
+        const ring = new Ring().getRing();
 
-        return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.weathered()} ${this.constructor.outfits()} made of ${this.constructor.textiles()}, ${this.constructor.outfitDetails()} and a ${this.constructor.weathered()} ${belt}. ${Sentence.observing()} ${npcClass} ${Verbs.holding()} ${Rings.constructor().getRing()}. ${shoes}`;
+        return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.weathered()} ${this.constructor.outfits()} made of ${this.constructor.textiles()}, ${this.constructor.outfitDetails()} and a ${this.constructor.weathered()} ${belt}. ${Sentence.observing()} ${npcClass} ${Verbs.holding()} ${ring}. ${shoes}`;
     }
 
     static intro() {

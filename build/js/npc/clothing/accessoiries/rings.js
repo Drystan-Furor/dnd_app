@@ -10,7 +10,7 @@ export class Rings {
     }
 
     static getComplexity() {
-        const ringcomplexities = [
+        const complexity = [
             'a', 'a',
             'a mundane',
             'a plain',
@@ -22,7 +22,7 @@ export class Rings {
             'a baroque',
             'a refined',
         ];
-        return ringcomplexities[Math.floor(Math.random() * ringcomplexities.length)];
+        return complexity[Math.floor(Math.random() * complexity.length)];
     }
 
     static craftRing() {
