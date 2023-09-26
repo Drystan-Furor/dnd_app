@@ -1,6 +1,6 @@
-export  class ScarsGenerator {
-    constructor(dndrace, new_npc) {
-        this.scar = this.scar(dndrace, new_npc);
+export  class Scar {
+    constructor(dndRace, new_npc) {
+        this.scar = this.scar(dndRace, new_npc);
     }
 
     static _dentMarkings() {
@@ -68,7 +68,7 @@ export  class ScarsGenerator {
         let scar = "";
         if (dndrace !== 'Warforged') {
             if (hasScar === 1) {
-                scar = "You " + VerbsGenerator.getObservation() + " " +
+                scar = "You " + Verbs.getObservation() + " " +
                     new_npc.getHeShe() + " has a " +
                     this.scarLines() + ' on the ' +
                     this.scarSides() + ' of ' +
@@ -81,7 +81,7 @@ export  class ScarsGenerator {
                 if (location === 'nose') {
                     location = 'nose area';
                 }
-                scar = "You " + VerbsGenerator.getObservation() + " " +
+                scar = "You " + Verbs.getObservation() + " " +
                     new_npc.getHeShe() + " has a " +
                     this.dentLines() + ' on the ' +
                     this.scarSides() + ' of ' +
@@ -96,7 +96,3 @@ export  class ScarsGenerator {
         return this.scar;
     }
 }
-
-// Usage
-// const scar = new ScarsGenerator(dndrace, new_npc);
-// console.log(scar.getScar());

@@ -1,3 +1,5 @@
+import {Material} from "../../generators/materials";
+
 export class Rings {
     constructor() {
         this.ring = this.constructor.craftRing();
@@ -27,11 +29,11 @@ export class Rings {
         const ringRoll = Math.floor(Math.random() * 20) + 1;
         let ring;
         if (ringRoll > 15) {
-            ring = `${this.getComplexity()} ${MaterialGenerator.getMetalType()} signet`;
+            ring = `${this.getComplexity()} ${Material.getMetalType()} signet`;
         } else {
-            ring = `${this.getComplexity()} ${MaterialGenerator.getMetalType()}`;
+            ring = `${this.getComplexity()} ${Material.getMetalType()}`;
         }
-        ring = `${ring} ring set with a ${MaterialGenerator.getGemstoneType()}`;
+        ring = `${ring} ring set with a ${Material.getGemstoneType()}`;
         return ring;
     }
 }

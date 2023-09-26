@@ -52,17 +52,15 @@ export class Details {
 
     static sleeves() {
         const sleeves = [
-            `${VerbsGenerator.getLength()} sleeves widened toward a bell shape`,
-            `a high collar and ${VerbsGenerator.getLength()} sleeves`,
+            `${Verbs.getLength()} sleeves widened toward a bell shape`,
+            `a high collar and ${Verbs.getLength()} sleeves`,
             "full sleeves tightened at the wrist",
-            `${VerbsGenerator.getLength()} sleeves that end at the elbow`,
+            `${Verbs.getLength()} sleeves that end at the elbow`,
             "no sleeves",
-            `${VerbsGenerator.getLength()} sleeves`,
+            `${Verbs.getLength()} sleeves`,
             "slashings in the sleeves that show the under tunic",
         ];
         return sleeves[Math.floor(Math.random() * sleeves.length)];
     }
 }
 
-// Example usage:
-// console.log(OutfitDetailsGenerator.outfitDetails());

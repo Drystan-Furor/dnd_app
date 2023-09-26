@@ -1,7 +1,7 @@
 export class Shoes {
 
-    constructor(dndrace) {
-        this.shoes = this.theRightShoes(dndrace);
+    constructor(dndRace) {
+        this.shoes = this.theRightShoes(dndRace);
     }
 
     static materials() {
@@ -44,17 +44,14 @@ export class Shoes {
         return this.shoes;
     }
 
-    theRightShoes(dndrace) {
-        let shoes;
-        if (typeof dndrace.shoeReplacer === "function") {
-            shoes = dndrace.shoeReplacer();
-        } else {
-            shoes = this.constructor.shoes();
-        }
-        return shoes;
+    theRightShoes(dndRace) {
+        // let shoes;
+        // if (typeof dndRace.shoeReplacer === "function") {
+        //     shoes = dndRace.shoeReplacer();
+        // } else {
+        //     shoes = this.constructor.shoes();
+        // }
+        // return shoes;
+        return this.constructor.shoes();
     }
 }
-
-// Example usage:
-// const newShoes = new Shoes();
-// console.log(newShoes.getShoes());

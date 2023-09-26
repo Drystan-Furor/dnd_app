@@ -1,7 +1,13 @@
+import {Belts} from "../clothing/accessoiries/belts";
+import {Shoes} from "../clothing/accessoiries/shoes";
+import {Sentence} from "../generators/sentence";
+import {Verbs} from "../generators/verbs";
+import {Rings} from "../clothing/accessoiries/rings";
+
 export class Beggar {
-    constructor(heshe, npcClass, dndrace) {
-        this.outfit = this.clothes(heshe, npcClass, dndrace);
-        this.intro = this.intros();
+    constructor(heShe, npcClass, dndRace) {
+        this.outfit = this.clothes(heShe, npcClass, dndRace);
+        this.intro = Beggar.intro();
     }
 
     static textiles() {
@@ -15,8 +21,8 @@ export class Beggar {
     }
 
     static outfitDetails() {
-        const detailoutfits = ["hanging loose and undefined,", "torn on the edges,", "full of holes and cuts,"];
-        return detailoutfits[Math.floor(Math.random() * detailoutfits.length)];
+        const detail = ["hanging loose and undefined,", "torn on the edges,", "full of holes and cuts,"];
+        return detail[Math.floor(Math.random() * detail.length)];
     }
 
     static weathered() {
@@ -24,21 +30,21 @@ export class Beggar {
         return weathered[Math.floor(Math.random() * weathered.length)];
     }
 
-    clothes(heshe, npcClass, dndrace) {
+    clothes(heShe, npcClass, dndRace) {
         const belt = new Belts().getBelt();
-        const shoes = new Shoes(dndrace).getShoes();
+        const shoes = new Shoes(dndRace).getShoes();
 
-        return `${heshe.charAt(0).toUpperCase() + heshe.slice(1)} wears a ${this.constructor.weathered()} ${this.constructor.outfits()} made of ${this.constructor.textiles()}, ${this.constructor.outfitDetails()} and a ${this.constructor.weathered()} ${belt}. ${SentenceGenerator.observing()} ${npcClass} ${VerbsGenerator.holding()} ${Rings.craftRing()}. ${shoes}`;
+        return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.weathered()} ${this.constructor.outfits()} made of ${this.constructor.textiles()}, ${this.constructor.outfitDetails()} and a ${this.constructor.weathered()} ${belt}. ${Sentence.observing()} ${npcClass} ${Verbs.holding()} ${Rings.constructor().getRing()}. ${shoes}`;
     }
 
-    static intros() {
-        const wealthinessTypes = [
+    static intro() {
+        const string = [
             'who seems to be homeless', 'that looks like a beggar',
             'who looks wretched', 'that looks really squalid',
             'a genuine panhandler', 'a scrounger at best',
             'who is regarded as a deadbeat', 'who looks like a real hobo',
         ];
-        return wealthinessTypes[Math.floor(Math.random() * wealthinessTypes.length)] + ". ";
+        return string[Math.floor(Math.random() * string.length)] + ". ";
     }
 
     getOutfit() {

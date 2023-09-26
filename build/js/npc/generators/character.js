@@ -5,6 +5,9 @@ import {Age} from "../properties/age";
 import {Profile} from "./profile";
 import {Name} from "../properties/name";
 import {Body} from "./body";
+import {Mood} from "./mood";
+import {Scar} from "./scars";
+import {Status} from "./status";
 
 export class DndNpcRng {
     constructor() {
@@ -23,27 +26,52 @@ export class DndNpcRng {
     _dndRngNpc() {
         // Initialize the properties and classes
         // Class
-        const npcClass = new NpcClass().getNpcClass();
+        this.npcClass = new NpcClass().getNpcClass();
         // Nouns
         const genderNouns = new Gender();
-        const manWoman = genderNouns.getManWoman()
-        const heShe = genderNouns.getHeShe()
-        const hisHer = genderNouns.getHisHer()
-        const gender = genderNouns.getGender();
+        this.manWoman = genderNouns.getManWoman()
+        this.heShe = genderNouns.getHeShe()
+        this.hisHer = genderNouns.getHisHer()
+        this.gender = genderNouns.getGender();
         // Race
         const race = new Race();
-        const origin = race.getOrigin();
-        const raceArray = race.getRaceArray(); //passed drow check
-        const dndRace = race.getRace();
+        this.origin = race.getOrigin();
+        this.raceArray = race.getRaceArray(); //passed drow check
+        this.dndRace = race.getRace();
         // Age
-        const age = new Age(dndRace).getAge();
+        this.age = new Age(this.dndRace).getAge();
         // Profile
         const face = new Profile(
-            dndRace,
+            this.dndRace,
             genderNouns,
-            npcClass
+            this.npcClass
         );
         this.face = face.getFace();
+        // Body
+        const body = new Body(this.dndRace, genderNouns);
+        this.bodySize = body.getBodySize();
+        this.bodyType = body.getBodyType();
+        this.bodyShape = body.getBodyShape();
+        this.body = body.getBody();
+        // Mood
+        this.mood = new Mood(this.npcClass).getMood();
+        // Scars
+        let scar = new Scar(this.dndRace, this.npcClass);
+        this.scar1 = scar.getScar();
+        scar = new Scar(this.dndRace, this.npcClass);
+        this.scar2 = scar.getScar();
+        scar = new Scar(this.dndRace, this.npcClass);
+        this.scar3 = scar.getScar();
+        // Clothing
+        //npc_wardrobe-by-wealth +npc_wardrobe
+        const outfit = new Status(this.heShe, this.npcClass, this.dndRace);
+        this.intro = outfit.getIntro();
+        this.outfit = outfit.getOutfit();
+
+
+
+
+
         // Name
         //name [requires a race]
         //$this->name = new Name(); the constructor requires 4 values
@@ -51,49 +79,46 @@ export class DndNpcRng {
         //pass object to class method, allows to pass multiple properties
         // pass race to Name so it can sort what race naming class should be calles
         const name = new Name(
-            dndRace, genderNouns,
-            raceArray, age,
-            origin
+            this.dndRace, genderNouns,
+            this.raceArray, this.age,
+            this.origin
         );
         const firstname = name.getFirstname();
         const lastname = name.getLastname();
         const nickname = name.getNickname();
         const description = name.getDescription();
-        // Body
-        const body = new Body(dndRace, genderNouns);
-        this.bodySize = body.getBodySize();
-        this.bodyType = body.getBodyType();
-        this.bodyShape = body.getBodyShape();
-        this.body = body.getBody();
 
 
         // Construct object with properties of classes
         return {
             // class
-            class: npcClass,
+            class: this.npcClass,
             // nouns
-            gender: gender,
-            manWoman:manWoman,
-            heShe:heShe,
-            hisHer:hisHer,
+            gender: this.gender,
+            manWoman:this.manWoman,
+            heShe:this.heShe,
+            hisHer:this.hisHer,
             // race
-            dndRace: dndRace,
+            dndRace: this.dndRace,
             origin:origin,
-            raceArray:raceArray,
+            raceArray:this.raceArray,
             // age
-            age: age,
+            age: this.age,
             // profile
             face: this.face,
-
-            // Name
-
-            // Body
+            // body
             bodySize:this.bodySize,
             bodyType:this.bodyType,
             bodyShape:this.bodyShape,
             body:this.body,
+            // mood
+            mood:this.mood,
+            // scars
+            scar1:this.scar1,
+            scar2:this.scar2,
+            scar3:this.scar3,
 
-
+            // Name
             // ... other properties ...
         };
     }

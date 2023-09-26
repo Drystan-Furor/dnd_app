@@ -1,9 +1,9 @@
-export class MoodGenerator {
-    constructor(classType) {
-        this.mood = this._generateMood(classType);
+export class Mood {
+    constructor(npcClass) {
+        this.mood = this._generateMood(npcClass);
     }
 
-    static _generateMoods() {
+    static _mood() {
         const moods = [
             'angry', 'happy', 'careless', 'neutral',
             'pissed', 'timid', 'grieving', 'sad', 'laughing',
@@ -27,9 +27,8 @@ export class MoodGenerator {
         return moods[Math.floor(Math.random() * moods.length)];
     }
 
-    static _generateMood(classType) {
-        const mood = "The " + classType + " seems to be in a " + this._generateMoods() + " mood.";
-        return mood;
+     _generateMood(npcClass) {
+         return "The " + npcClass + " seems to be in a " + Mood._mood(npcClass) + " mood.";
     }
 
     getMood() {
@@ -37,7 +36,3 @@ export class MoodGenerator {
     }
 }
 
-// Usage
-const classType = "Warrior"; // replace with the class you want to use
-const moodGenerator = new MoodGenerator(classType);
-console.log(moodGenerator.getMood());
