@@ -2,7 +2,7 @@ import {Material} from "../../generators/materials";
 
 export class Jewelry {
     constructor() {
-        this.jewel = this.craftJewel();
+        this.jewel = Jewelry.craftJewel();
     }
 
     static jewelryType() {
@@ -24,7 +24,7 @@ export class Jewelry {
         return type[Math.floor(Math.random() * type.length)];
     }
 
-    craftJewel() {
+    static craftJewel() {
         return ` a ${Material.getMetalType()} ${this.constructor.jewelryType()} set with a ${Material.getGemstoneType()}`;
     }
 

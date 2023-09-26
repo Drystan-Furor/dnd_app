@@ -44,7 +44,7 @@ export class Beggar {
             'a genuine panhandler', 'a scrounger at best',
             'who is regarded as a deadbeat', 'who looks like a real hobo',
         ];
-        return string[Math.floor(Math.random() * string.length)] + ". ";
+        return string[Math.floor(Math.random() * string.length)];
     }
 
     getOutfit() {

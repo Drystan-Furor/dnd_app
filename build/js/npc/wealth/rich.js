@@ -27,12 +27,12 @@ export class Rich {
 
     static clothing() {
         const clothes = [
-            `${Verbs.getComplexity()} ${this.textiles()} ${this.outfits()}, fit closely to the body, with ${Details.outfitDetails()}. It has ${Details.richDetails()}. The outfit has ${OutfitDetailsGenerator.sleeves()}`,
+            `${Verbs.getComplexity()} ${this.textiles()} ${this.outfits()}, fit closely to the body, with ${Details.outfitDetails()}. It has ${Details.richDetails()}. The outfit has ${Details.sleeves()}`,
             `${Verbs.getComplexity()} ${this.textiles()} hooded cloak, with ${Details.outfitDetails()}. It has ${Details.richDetails()}.`,
             `Burgundian style ${Verbs.getComplexity()} ${this.textiles()} ${this.outfits()}, with ${Details.outfitDetails()}. It has ${Details.richDetails()}.`,
             `clerical ${Verbs.getComplexity()} ${this.textiles()} robes, with ${Details.outfitDetails()}. It has ${Details.richDetails()}.`,
             `elaborately printed ${this.outfits()} in ${Verbs.getComplexity()} ${this.textiles()}, with ${Details.outfitDetails()}. It has ${Details.richDetails()}.`,
-            `${Verbs.getComplexity()} ${this.textiles()} ${this.outfits()}, closely following the lines of the body from the shoulder to below the waist with ${Details.outfitDetails()}. It has ${OutfitDetailsGenerator.richDetails()}.`,
+            `${Verbs.getComplexity()} ${this.textiles()} ${this.outfits()}, closely following the lines of the body from the shoulder to below the waist with ${Details.outfitDetails()}. It has ${Details.richDetails()}.`,
         ];
         return clothes[Math.floor(Math.random() * clothes.length)];
     }
@@ -44,7 +44,7 @@ export class Rich {
             'looking truly halcyon and lucky', 'who looks positively thriving', 'looking aristocratic and dignified',
             'who seems to be a member of a noble family', 'who makes a real aristocratic impression',
         ];
-        return wealthinessTypes[Math.floor(Math.random() * wealthinessTypes.length)] + ". ";
+        return wealthinessTypes[Math.floor(Math.random() * wealthinessTypes.length)];
     }
 
     clothes(heShe, npcClass, dndRace) {

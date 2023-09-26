@@ -2,7 +2,7 @@ import {Material} from "../../generators/materials";
 
 export class Rings {
     constructor() {
-        this.ring = this.constructor.craftRing();
+        this.ring = Rings.craftRing();
     }
 
     getRing() {

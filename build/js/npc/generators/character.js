@@ -8,6 +8,7 @@ import {Body} from "./body";
 import {Mood} from "./mood";
 import {Scar} from "./scars";
 import {Status} from "./status";
+import {Weapon} from "../clothing/accessoiries/weapons";
 
 export class DndNpcRng {
     constructor() {
@@ -56,37 +57,36 @@ export class DndNpcRng {
         // Mood
         this.mood = new Mood(this.npcClass).getMood();
         // Scars
-        let scar = new Scar(this.dndRace, this.npcClass);
+        let scar = new Scar(this.dndRace, genderNouns);
         this.scar1 = scar.getScar();
-        scar = new Scar(this.dndRace, this.npcClass);
+        scar = new Scar(this.dndRace, genderNouns);
         this.scar2 = scar.getScar();
-        scar = new Scar(this.dndRace, this.npcClass);
+        scar = new Scar(this.dndRace, genderNouns);
         this.scar3 = scar.getScar();
-        // Clothing
-        //npc_wardrobe-by-wealth +npc_wardrobe
+        // Status && Clothing
         const outfit = new Status(this.heShe, this.npcClass, this.dndRace);
         this.intro = outfit.getIntro();
         this.outfit = outfit.getOutfit();
-
-
-
+        // Weapon
+        this.weapon = new Weapon(this.dndRace).getArms();
 
 
         // Name
+
         //name [requires a race]
-        //$this->name = new Name(); the constructor requires 4 values
+        //the constructor requires 4 values
         // -> explore to make users enter their own name.
-        //pass object to class method, allows to pass multiple properties
+        // pass object to class method, allows to pass multiple properties
         // pass race to Name so it can sort what race naming class should be calles
         const name = new Name(
             this.dndRace, genderNouns,
             this.raceArray, this.age,
             this.origin
         );
-        const firstname = name.getFirstname();
-        const lastname = name.getLastname();
-        const nickname = name.getNickname();
-        const description = name.getDescription();
+        this.firstname = name.getFirstname();
+        this.lastname = name.getLastname();
+        this.nickname = name.getNickname();
+        this.description = name.getDescription();
 
 
         // Construct object with properties of classes
@@ -95,51 +95,102 @@ export class DndNpcRng {
             class: this.npcClass,
             // nouns
             gender: this.gender,
-            manWoman:this.manWoman,
-            heShe:this.heShe,
-            hisHer:this.hisHer,
+            manWoman: this.manWoman,
+            heShe: this.heShe,
+            hisHer: this.hisHer,
             // race
             dndRace: this.dndRace,
-            origin:origin,
-            raceArray:this.raceArray,
+            origin: this.origin,
+            raceArray: this.raceArray,
             // age
             age: this.age,
             // profile
             face: this.face,
             // body
-            bodySize:this.bodySize,
-            bodyType:this.bodyType,
-            bodyShape:this.bodyShape,
-            body:this.body,
+            bodySize: this.bodySize,
+            bodyType: this.bodyType,
+            bodyShape: this.bodyShape,
+            body: this.body,
             // mood
-            mood:this.mood,
+            mood: this.mood,
             // scars
-            scar1:this.scar1,
-            scar2:this.scar2,
-            scar3:this.scar3,
-
-            // Name
+            scar1: this.scar1,
+            scar2: this.scar2,
+            scar3: this.scar3,
+            // status && clothing
+            intro: this.intro,
+            outfit: this.outfit,
+            // name
+            firstname:this.firstname,
+            lastname:this.lastname,
+            nickname:this.nickname,
+            description:this.description,
             // ... other properties ...
+            // const subject = Sentence.subject()
         };
     }
 
-    // _subjectArray() {
-    //     const randsubject = [
-    //         " the  " + this.dndrace,
-    //         " this " + this.gender,
-    //         this.heshe,
-    //         this.nickname,
-    //     ];
-    //     return randsubject[Math.floor(Math.random() * randsubject.length)];
-    // }
 
-    _writeStory(npc) {
-        let string = "You meet a " + npc.gender + " " + npc.race + " " + npc.class + ". ";
-        string = string + "Who is " + npc.age + " years old.";
+
+    _writeStory(npc) { // + " " +
+        // biography
+        let string = "You meet " + npc.firstname + " " + npc.lastname + ". ";
+        string = string + "A " + npc.bodySize + " " + npc.gender + " " + npc.dndRace + " " + npc.class
+            + " " + "that's about " + npc.age + " years old. " + " " + ucfirst(npc.intro) + ". "
+            + npc.firstname + " " + npc.description;
 
 
         return string;
     }
+
+
 }
 
+function ucfirst(str) {
+    if(!str) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
+/*
+ $string =  "You meet " . $this->firstname . " " . $this->lastname . ". ";
+  $string .= "A " . $this->size . " " . $this->gender . " " . $this->dndrace  . " " . $this->npcClass
+    . " thats about " . $this->age . " years old. " . ucfirst($this->intro) .
+    $this->description . " " .
+ */
+
+/*
+  //BioName
+        $string =  "You meet " . $this->firstname . " " . $this->lastname . ". ";
+        //BioGenderRaceAge
+        //--BODY GENDER AGE WEALTH DIVERGENCE
+        /*
+        A medium sized female Drow Druid thats about 46 years old, who looks priviliged.
+        {bodysize}   {noun}{race}{class}          {age}           {prosperity intro}
+
+    $string .= "A " . $this->size . " " . $this->gender . " " . $this->dndrace  . " " . $this->npcClass
+    . " thats about " . $this->age . " years old. " . ucfirst($this->intro) .
+    $this->description . " " .
+    //-----------------------------facial construction
+    You SEE this MAN has NOSE.
+    The RACE meets your gaze with EYES
+    As you seize up the MAN you SEE HE has CHIN
+    and HIS mouth is set with MOUTH.
+
+    $this->face . ". " .
+
+    //------------------------------see scars
+    $this->scar1 .
+    $this->scar2 .
+    $this->scar3 .
+
+    //------------------------------see body
+    $this->body . ". " .
+    //------------------------------see outfit
+    $this->outfit .
+    //------------------------------see mood
+    $this->mood . " " .
+    //------------------------------see weapon
+    $this->weapon . ". " . PHP_EOL;
+
+return $string;
+ */

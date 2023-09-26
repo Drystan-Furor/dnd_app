@@ -42,7 +42,7 @@ export class Bourgeoisie {
             'that looks "in the money"', 'who recently became flourishing', 'looking halcyon at best',
             'who looks well-off', 'who seems to be on top of the heap',
         ];
-        return intros[Math.floor(Math.random() * intros.length)] + ". ";
+        return intros[Math.floor(Math.random() * intros.length)];
     }
 
     clothes(heShe, npcClass, dndRace) {

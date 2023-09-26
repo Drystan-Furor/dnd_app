@@ -13,4 +13,15 @@ export class Sentence {
 
         return observations[Math.floor(Math.random() * observations.length)];
     }
+
+    static subject(heShe, gender, dndRace) {
+        const subject = [
+            " the  " + dndRace,
+            " this " + gender,
+            heShe,
+            //this.nickname,
+        ];
+        return subject[Math.floor(Math.random() * subject.length)];
+    }
+
 }

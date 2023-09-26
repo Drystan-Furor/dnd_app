@@ -1,3 +1,5 @@
+import {Verbs} from "../../generators/verbs";
+
 export class Details {
 
     static outfitDetails() {
