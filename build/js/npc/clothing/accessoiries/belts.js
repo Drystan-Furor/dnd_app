@@ -1,10 +1,12 @@
+import {Material} from "../../generators/materials";
+
 export class Belts {
     constructor() {
         this.belt = this.belt();
     }
 
-    static beltitem() {
-        const beltitems = [
+    static beltItem() {
+        const item = [
             `${Math.floor(Math.random() * 7) + 3} small bottles`,
             `${Math.floor(Math.random() * 5) + 2} throwing daggers`,
             `${Math.floor(Math.random() * 9) + 4} throwing darts`,
@@ -19,48 +21,48 @@ export class Belts {
             'a spyglass', 'a dangling censer', 'a drinking horn',
             'an iron flask', 'a boomerang', 'ten pouches',
         ];
-        return beltitems[Math.floor(Math.random() * beltitems.length)];
+        return item[Math.floor(Math.random() * item.length)];
     }
 
-    static beltmaterial() {
-        const beltmaterial = [
+    static beltMaterial() {
+        const material = [
             'cloth', 'cowhide leather', 'full-grain calfskin leather',
             'braided leather', 'tooled leather', 'suede', 'rope',
             'studded leather',
         ];
-        return beltmaterial[Math.floor(Math.random() * beltmaterial.length)];
+        return material[Math.floor(Math.random() * material.length)];
     }
 
     static beltFashion() {
-        const beltfashion = [
+        const fashion = [
             'embroidered', 'plain', 'smooth', 'simple',
             'traditional', 'common',
         ];
-        return beltfashion[Math.floor(Math.random() * beltfashion.length)];
+        return fashion[Math.floor(Math.random() * fashion.length)];
     }
 
     static belt() {
-        const item1 = this.beltitem();
-        let item2 = this.beltitem();
-        let item3 = this.beltitem();
+        const item1 = this.beltItem();
+        let item2 = this.beltItem();
+        let item3 = this.beltItem();
 
         while (item1 === item2 || item3 === item2) {
-            item2 = this.beltitem();
+            item2 = this.beltItem();
         }
 
         while (item3 === item1 || item3 === item2) {
-            item3 = this.beltitem();
+            item3 = this.beltItem();
         }
 
         const belts = [
-            `${this.beltFashion()} ${this.beltmaterial()} belt with a ${MaterialGenerator.getMetalType()} buckle`,
-            `${MaterialGenerator.getMetalType()} buckled ${this.beltFashion()} ${this.beltmaterial()} belt`,
-            `${this.beltFashion()} ${this.beltmaterial()} belt with ${this.beltitem()} strapped to it`,
-            `${this.beltFashion()} ${this.beltmaterial()} belt with ${item1} and ${item2} strapped to it`,
-            `${this.beltFashion()} ${this.beltmaterial()} belt used to hold ${item1}, ${item2} and ${item3}`,
-            `${this.beltFashion()} ${this.beltmaterial()} belt with ${this.beltitem()} strapped to it and another ${this.beltFashion()} ${this.beltmaterial()} belt holding ${this.beltitem()}`,
-            `${this.beltFashion()} ${this.beltmaterial()} bandolier with ${item1}, ${item2} and ${item3} attached to it`,
-            `${this.beltFashion()} ${this.beltmaterial()} belt holding ${this.beltitem()} and a ${this.beltFashion()} ${this.beltmaterial()} bandolier with a ${MaterialGenerator.getMetalType()} buckle holding ${item1} and ${item2}`,
+            `${this.beltFashion()} ${this.beltMaterial()} belt with a ${Material.getMetalType()} buckle`,
+            `${Material.getMetalType()} buckled ${this.beltFashion()} ${this.beltMaterial()} belt`,
+            `${this.beltFashion()} ${this.beltMaterial()} belt with ${this.beltItem()} strapped to it`,
+            `${this.beltFashion()} ${this.beltMaterial()} belt with ${item1} and ${item2} strapped to it`,
+            `${this.beltFashion()} ${this.beltMaterial()} belt used to hold ${item1}, ${item2} and ${item3}`,
+            `${this.beltFashion()} ${this.beltMaterial()} belt with ${this.beltItem()} strapped to it and another ${this.beltFashion()} ${this.beltMaterial()} belt holding ${this.beltItem()}`,
+            `${this.beltFashion()} ${this.beltMaterial()} bandolier with ${item1}, ${item2} and ${item3} attached to it`,
+            `${this.beltFashion()} ${this.beltMaterial()} belt holding ${this.beltItem()} and a ${this.beltFashion()} ${this.beltMaterial()} bandolier with a ${Material.getMetalType()} buckle holding ${item1} and ${item2}`,
         ];
 
         return belts[Math.floor(Math.random() * belts.length)];

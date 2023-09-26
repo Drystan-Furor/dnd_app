@@ -1,6 +1,14 @@
+import {Belts} from "../clothing/accessoiries/belts";
+import {Shoes} from "../clothing/accessoiries/shoes";
+import {Sentence} from "../generators/sentence";
+import {Verbs} from "../generators/verbs";
+import {Rings} from "../clothing/accessoiries/rings";
+import {Details} from "../clothing/accessoiries/details";
+import {Hats} from "../clothing/accessoiries/hats";
+import {Jewelry} from "../clothing/accessoiries/jewelry";
 export class Rich {
-    constructor(heshe, npcClass, dndrace) {
-        this.outfit = this.clothes(heshe, npcClass, dndrace);
+    constructor(heShe, npcClass, dndRace) {
+        this.outfit = this.clothes(heShe, npcClass, dndRace);
         this.intro = this.intros();
     }
 
@@ -19,12 +27,12 @@ export class Rich {
 
     static clothing() {
         const clothes = [
-            `${VerbsGenerator.getComplexity()} ${this.textiles()} ${this.outfits()}, fit closely to the body, with ${OutfitDetailsGenerator.outfitDetails()}. It has ${OutfitDetailsGenerator.richDetails()}. The outfit has ${OutfitDetailsGenerator.sleeves()}`,
-            `${VerbsGenerator.getComplexity()} ${this.textiles()} hooded cloak, with ${OutfitDetailsGenerator.outfitDetails()}. It has ${OutfitDetailsGenerator.richDetails()}.`,
-            `Burgundian style ${VerbsGenerator.getComplexity()} ${this.textiles()} ${this.outfits()}, with ${OutfitDetailsGenerator.outfitDetails()}. It has ${OutfitDetailsGenerator.richDetails()}.`,
-            `clerical ${VerbsGenerator.getComplexity()} ${this.textiles()} robes, with ${OutfitDetailsGenerator.outfitDetails()}. It has ${OutfitDetailsGenerator.richDetails()}.`,
-            `elaborately printed ${this.outfits()} in ${VerbsGenerator.getComplexity()} ${this.textiles()}, with ${OutfitDetailsGenerator.outfitDetails()}. It has ${OutfitDetailsGenerator.richDetails()}.`,
-            `${VerbsGenerator.getComplexity()} ${this.textiles()} ${this.outfits()}, closely following the lines of the body from the shoulder to below the waist with ${OutfitDetailsGenerator.outfitDetails()}. It has ${OutfitDetailsGenerator.richDetails()}.`,
+            `${Verbs.getComplexity()} ${this.textiles()} ${this.outfits()}, fit closely to the body, with ${Details.outfitDetails()}. It has ${Details.richDetails()}. The outfit has ${OutfitDetailsGenerator.sleeves()}`,
+            `${Verbs.getComplexity()} ${this.textiles()} hooded cloak, with ${Details.outfitDetails()}. It has ${Details.richDetails()}.`,
+            `Burgundian style ${Verbs.getComplexity()} ${this.textiles()} ${this.outfits()}, with ${Details.outfitDetails()}. It has ${Details.richDetails()}.`,
+            `clerical ${Verbs.getComplexity()} ${this.textiles()} robes, with ${Details.outfitDetails()}. It has ${Details.richDetails()}.`,
+            `elaborately printed ${this.outfits()} in ${Verbs.getComplexity()} ${this.textiles()}, with ${Details.outfitDetails()}. It has ${Details.richDetails()}.`,
+            `${Verbs.getComplexity()} ${this.textiles()} ${this.outfits()}, closely following the lines of the body from the shoulder to below the waist with ${Details.outfitDetails()}. It has ${OutfitDetailsGenerator.richDetails()}.`,
         ];
         return clothes[Math.floor(Math.random() * clothes.length)];
     }
@@ -39,12 +47,12 @@ export class Rich {
         return wealthinessTypes[Math.floor(Math.random() * wealthinessTypes.length)] + ". ";
     }
 
-    clothes(heshe, npcClass, dndrace) {
+    clothes(heShe, npcClass, dndRace) {
         const belt = new Belts().getBelt();
-        const hat = new Hats(heshe).getHat();
-        const shoes = new Shoes(dndrace).getShoes();
+        const hat = new Hats(heShe).getHat();
+        const shoes = new Shoes(dndRace).getShoes();
 
-        return `${heshe.charAt(0).toUpperCase() + heshe.slice(1)} wears a ${this.constructor.clothing()} and a pristine ${belt}. ${SentenceGenerator.observing()} ${npcClass} wears ${Jewelry.craftJewel()} and a matching ${Rings.craftRing()}${hat} ${shoes}`;
+        return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.clothing()} and a pristine ${belt}. ${Sentence.observing()} ${npcClass} wears ${Jewelry.constructor().getJewel()} and a matching ${Rings.craftRing()}${hat} ${shoes}`;
     }
 
     getOutfit() {

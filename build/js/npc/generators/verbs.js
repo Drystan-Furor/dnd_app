@@ -1,4 +1,4 @@
-export class VerbsGenerator {
+export class Verbs {
     static quality() {
         const qualities = ['cheap', 'affordable', 'quality', 'expensive quality'];
         return qualities[Math.floor(Math.random() * qualities.length)];

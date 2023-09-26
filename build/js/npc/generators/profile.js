@@ -3,7 +3,7 @@ import {Nose} from "../profile/nose";
 import {Eyes} from "../profile/eyes";
 import {Chin} from "../profile/chin";
 import {Teeth} from "../profile/teeth";
-import {VerbsGenerator} from "./verbs";
+import {Verbs} from "./verbs";
 
 
 export class Profile {
@@ -56,16 +56,16 @@ export class Profile {
         const chin = new Chin(race, npc);
         this.chin = chin.getChin();
 
-        const face = " You " + VerbsGenerator.getObservation() +
+        const face = " You " + Verbs.getObservation() +
             " this " + manWoman + " has " + this.nose +
             ". The " + npcClass + " meets your gaze with " +
             this.eyes + ". " +
             "As you seize up the " + manWoman + ", you " +
-            VerbsGenerator.getObservation() + " " + heshe + " has " +
+            Verbs.getObservation() + " " + heshe + " has " +
             this.chin + " and " + hisher + " mouth is set with " +
             this.mouth + ". " +
             "When the " + race + " is talking or shouting, you " +
-            VerbsGenerator.getObservation() + " " + heshe + " " + this.teeth;
+            Verbs.getObservation() + " " + heshe + " " + this.teeth;
 
         return face;
     }

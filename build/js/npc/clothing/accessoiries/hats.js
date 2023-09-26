@@ -1,13 +1,13 @@
 export class Hats {
-    constructor(heshe) {
-        this.hat = this.hasHat(heshe);
+    constructor(heShe) {
+        this.hat = this.hasHat(heShe);
     }
 
     static hatMaterials() {
-        const hattextiles = [
+        const textiles = [
             "leather", "felt", "cotton", "wool", "straw", "linen", "knitted", "fur",
         ];
-        return hattextiles[Math.floor(Math.random() * hattextiles.length)];
+        return textiles[Math.floor(Math.random() * textiles.length)];
     }
 
     static hatTypes() {
@@ -31,16 +31,16 @@ export class Hats {
         return hats[Math.floor(Math.random() * hats.length)];
     }
 
-    static craftHat(heshe) {
-        return `${heshe.charAt(0).toUpperCase() + heshe.slice(1)} is wearing ${this.craftHats()}. `;
+    static craftHat(heShe) {
+        return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} is wearing ${this.craftHats()}. `;
     }
 
-    hasHat(heshe) {
+    hasHat(heShe) {
         const hatRoll = Math.floor(Math.random() * 20) + 1;
         if (hatRoll > 15) {
             return "";
         } else {
-            return this.constructor.craftHat(heshe);
+            return this.constructor.craftHat(heShe);
         }
     }
 

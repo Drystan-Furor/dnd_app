@@ -1,4 +1,4 @@
-export class MaterialGenerator {
+export class Material {
     static getMetalType() {
         const metals = [
             'silver', 'gold', 'bronze',
@@ -58,9 +58,9 @@ export class MaterialGenerator {
 }
 
 // Usage
-const newMetal = MaterialGenerator.getMetalType();
-const newPlate = MaterialGenerator.getPlateType();
-const newEnamel = MaterialGenerator.getEnamelType();
-const newWood = MaterialGenerator.getWoodType();
-const newGemstone = MaterialGenerator.getGemstoneType();
-const newJewelTone = MaterialGenerator.getJewelTone();
+const newMetal = Material.getMetalType();
+const newPlate = Material.getPlateType();
+const newEnamel = Material.getEnamelType();
+const newWood = Material.getWoodType();
+const newGemstone = Material.getGemstoneType();
+const newJewelTone = Material.getJewelTone();
