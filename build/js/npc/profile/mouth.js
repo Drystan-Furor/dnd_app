@@ -22,26 +22,23 @@ export class Mouth {
         return mouth;
     }
 
-    /**
-     * Build or choose specific array. Select random value string
-     * @param {string} dndrace - The race
-     * @param {string} newNpc - The gender
-     * @return {string} - The mouth
-     */
-    _mouthShape(dndrace, newNpc) {
-        // Assuming mouthReplacer is a method in some other class named by the value of dndrace
-        const raceClass = window[dndrace.toLowerCase()];
-        if (raceClass && typeof raceClass.mouthReplacer === 'function') {
-            return raceClass.mouthReplacer(dndrace, newNpc);
-        } else {
-            return Mouth.defaultMouths();
-        }
+    static tomia() {
+        const tomia = [
+            "sharp tomia", "rounded tomia", "bow shaped tomia", "heavy lower tomia",
+            "ridged tomia", "heavy upper tomia", "sawtooth serated tomia", "thin tomia",
+            "downward turned tomia", "perfectly proportioned tomia",
+        ];
+        return tomia[Math.floor(Math.random() * tomia.length)];
     }
 
-    /**
-     * Getter
-     * @return {string} - The mouth
-     */
+    _mouthShape(dndRace, genderNouns) {
+        if (dndRace === 'Aarakocra') {
+            return Mouth.tomia();
+        }
+        return Mouth.defaultMouths();
+    }
+
+
     getMouth() {
         return this.mouth;
     }

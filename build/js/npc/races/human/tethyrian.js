@@ -2,13 +2,13 @@ import {Name} from "../../properties/name";
 import {Chondathan} from "./chondathan";
 
 export class Tethyrian extends Name {
-    constructor(dndrace, new_npc) {
-        super();
-        const biography = new Chondathan(dndrace, new_npc);
+    constructor(dndRace, genderNouns) {
+        super(dndRace, genderNouns);
+        const biography = new Chondathan(dndRace, genderNouns);
         this.lastname = biography.getLastname();
         this.firstname = biography.getFirstname();
         this.nickname = this.firstname;
-        this.description = Tethyrian._description(dndrace, new_npc);
+        this.description = Tethyrian._description(dndRace, genderNouns);
     }
 
     static _description(dndrace, new_npc) {

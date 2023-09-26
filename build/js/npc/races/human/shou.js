@@ -1,12 +1,12 @@
 import {Name} from "../../properties/name";
 
 export class Shou extends Name {
-    constructor(dndrace, new_npc) {
-        super();
+    constructor(dndRace, genderNouns) {
+        super(dndRace, genderNouns);
         this.lastname = Shou._lastname();
-        this.firstname = Shou._firstname(new_npc);
+        this.firstname = Shou._firstname(genderNouns);
         this.nickname = this.firstname;
-        this.description = Shou._description(dndrace, new_npc);
+        this.description = Shou._description(dndRace, genderNouns);
     }
 
     static _lastname() {

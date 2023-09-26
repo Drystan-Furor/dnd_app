@@ -1,12 +1,12 @@
 import {Name} from "../../properties/name";
 
 export class Mulan extends Name {
-    constructor(dndrace, new_npc) {
-        super();
+    constructor(dndRace, genderNouns) {
+        super(dndRace, genderNouns);
         this.lastname = Mulan._lastname();
-        this.firstname = Mulan._firstname(new_npc);
+        this.firstname = Mulan._firstname(genderNouns);
         this.nickname = this.firstname;
-        this.description = Mulan._description(dndrace, new_npc);
+        this.description = Mulan._description(dndRace, genderNouns);
     }
 
     static _lastname() {

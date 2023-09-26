@@ -48,6 +48,7 @@ export class DndNpcRng {
             genderNouns,
             this.npcClass
         );
+        // Face
         this.face = face.getFace();
         // Body
         const body = new Body(this.dndRace, genderNouns);

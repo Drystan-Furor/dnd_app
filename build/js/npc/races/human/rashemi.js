@@ -1,12 +1,12 @@
 import {Name} from "../../properties/name";
 
 export class Rashemi extends Name {
-    constructor(dndrace, new_npc) {
-        super();
+    constructor(dndRace, genderNouns) {
+        super(dndRace, genderNouns);
         this.lastname = Rashemi._lastname();
-        this.firstname = Rashemi._firstname(new_npc);
+        this.firstname = Rashemi._firstname(genderNouns);
         this.nickname = this.firstname;
-        this.description = Rashemi._description(dndrace, new_npc);
+        this.description = Rashemi._description(dndRace, genderNouns);
     }
 
     static _lastname() {

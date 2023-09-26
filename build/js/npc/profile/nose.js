@@ -1,33 +1,15 @@
 export class Nose {
-    /**
-     * Constructs and selects a random value string for nose
-     * @param {string} dndrace - The race
-     * @param {string} newNpc - The gender
-     */
     constructor(dndrace, newNpc) {
         this.nose = this._randomNose(dndrace, newNpc);
     }
 
-    /**
-     * Build or choose specific array. Select random value string
-     * @param {string} dndrace - The race
-     * @param {string} newNpc - The gender
-     * @return {string} - The nose
-     */
-    _randomNose(dndrace, newNpc) {
-        // Assuming noseReplacer is a method in some other class named by the value of dndrace
-        const raceClass = window[dndrace.toLowerCase()];
-        if (raceClass && typeof raceClass.noseReplacer === 'function') {
-            return raceClass.noseReplacer(dndrace, newNpc);
-        } else {
-            return Nose.defaultNose();
+    _randomNose(dndRace, genderNouns) {
+        if (dndRace === 'Aarakocra') {
+            return Nose.birdBeak();
         }
+        return Nose.defaultNose();
     }
 
-    /**
-     * Default Nose
-     * @return {string} - The nose
-     */
     static defaultNose() {
         const nose = Math.floor(Math.random() * 100) + 1;
         if (nose >= 1 && nose <= 24) return 'a very fleshy, prominent big nose';
@@ -47,14 +29,37 @@ export class Nose {
         return 'a very fleshy, prominent big nose'; // This will never be reached, but it's here as a fallback.
     }
 
+    static birdBeak() {
+        let nose = Math.floor(Math.random() * 100) + 1; // Generate a random number between 1 and 100
+        if (nose >= 1 && nose <= 24) {
+            nose = 'a very generalist, prominent big beak';
+        } else if (nose >= 25 && nose <= 38) {
+            nose = 'a scything upturned beak, small in width but quite long';
+        } else if (nose >= 39 && nose <= 47) {
+            nose = 'an eagles beak, quite raptorial. With a strong sloping curve that prominently protrudes from the face';
+        } else if (nose >= 48 && nose <= 56) {
+            const outlines = ["insect catching", "grain eating", "Coniferous seed eating"];
+            const outline = outlines[Math.floor(Math.random() * outlines.length)]; // Get a random element from outlines array
+            nose = `a snub beak that is common with ${outline} birds`;
+        } else if (nose >= 57 && nose <= 64) {
+            nose = 'a very long and sharp beak, thin and pointy, small in height but quite flat, common with aerial fishing birds';
+        } else if (nose >= 65 && nose <= 68) {
+            nose = 'a "Hawk" beak that has similarities with the curved beaks of eagles and other predatory birds. It has a dramatic arched shape';
+        } else if (nose >= 69 && nose <= 76) {
+            nose = 'a perfectly straight beak. It gives this birdfolk an aggressive profile since it is usually seen on scavenging birds';
+        } else if (nose >= 77 && nose <= 84) {
+            nose = 'a dip netting beak, rather big, with a very prominent bottom mandible, like pelicans normally have';
+        } else if (nose >= 85 && nose <= 91) {
+            const outlines = ["filter feeding", "pursuit fishing", "chiseling"];
+            const outline = outlines[Math.floor(Math.random() * outlines.length)]; // Get a random element from outlines array
+            nose = `a thin and flat shaped beak with a short tip, typical for ${outline}`;
+        } else if (nose >= 92 && nose <= 100) {
+            nose = "a bulbous beak, it has a swollen, disproportionate nasal tip, almost like it's too big. Imagine something like a fruit eating toucan";
+        }
+        return nose;
+    }
 
-    /**
-     * Getter
-     * @return {string} - The nose
-     */
     getNose() {
         return this.nose;
     }
 }
-
-

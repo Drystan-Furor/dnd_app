@@ -1,18 +1,17 @@
 import {Name} from "../../properties/name";
 
 export class DefaultRace extends Name {
-    constructor(dndrace, new_npc) {
-        super();
+    constructor(dndRace, genderNouns) {
+        super(dndRace, genderNouns);
         this.lastname = this._lastname();
-        this.firstname = this._firstname(new_npc);
+        this.firstname = this._firstname(genderNouns);
         this.nickname = this._nickname();
-        this.description = this._description(dndrace, new_npc);
+        this.description = this._description(dndRace, genderNouns);
     }
 
     _lastname() {
         const surnames = ['Array'];
-        const lastname = surnames[Math.floor(Math.random() * surnames.length)];
-        return lastname;
+        return surnames[Math.floor(Math.random() * surnames.length)];
     }
 
     _firstname(new_npc) {
