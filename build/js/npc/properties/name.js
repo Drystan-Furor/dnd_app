@@ -1,29 +1,42 @@
-export class Name {
-    constructor(dndRace, genderNouns, raceArray, age, origin) {
-        this.firstname = "Ernest";
-        this.nickname = "Gary";
-        this.lastname = "Gygax";
-        this.description = "was an American game designer and author best known for co-creating the pioneering role-playing game Dungeons & Dragons (D&D) with Dave Arneson.";
+import { RaceFactory } from '../races/factory/racefactory';
 
-        //this.biography = this._generateName(dndRace, genderNouns, raceArray, age, origin);
+export class Name {
+    constructor(race, genderNouns, raceArray, age, origin) {
+        this.race = race;
+        this.genderNouns = genderNouns;
+        this.firstname = "Ernest"; // default
+        this.nickname = "Gary";  // default
+        this.lastname = "Gygax";  // default
+        this.description = "was an American game designer and author best known for co-creating the pioneering role-playing game Dungeons & Dragons (D&D) with Dave Arneson.";  // default
+        // this._generateName(race, genderNouns, raceArray, age, origin); // dynamic
     }
 
-    // _generateName(dndrace, new_npc, array, age, origin) {
-    //     let raceName;
-    //     if (Homebrew.isHomebrew(dndrace.getRace(), array)) {
-    //         raceName = Race.setHeritage(); // Assuming Race is another class or object with a method setHeritage
-    //     } else {
-    //         raceName = dndrace.getRace();
+    // _generateName(race, genderNouns, array, age, origin) {
+    //     //  let stringOfDnDRace = Race.lowercase(dndrace.getRace()); // e.g., "dragonborn"
+    //     // if (Homebrew.isHomebrew(dndrace.getRace(), array)) {
+    //     //     raceName = Race.setHeritage();
+    //     // } else {
+    //     //     raceName = dndrace.getRace();
+    //     // }
+    //     try {
+    //         this.firstname = name.getFirstname();
+    //         this.nickname = name.getNickname();
+    //         this.lastname = name.getLastname();
+    //         this.description = name.getDescription();
+    //     } catch (error) {
+    //         console.error(error);
     //     }
-    //
-    //     raceName = Race.lowercase(raceName); // Assuming Race is another class or object with a method lowercase
-    //     const raceInstance = new raceName(dndrace, new_npc, array, age, origin); // Creating an instance of the raceName class
-    //
-    //     this.lastname = raceInstance.getLastname();
-    //     this.firstname = raceInstance.getFirstname();
-    //     this.nickname = raceInstance.getNickname();
-    //     this.description = raceInstance.getDescription();
+    //     return {
+    //         firstname: this.firstname,
+    //         lastname: this.lastname,
+    //         nickname: this.nickname,
+    //         description: this.description,
+    //     }
     // }
+
+    static lowercase(string) {
+        return string.toLowerCase().replace(/[-\s]/g, '');
+    }
 
     getFirstname() {
         return this.firstname;
@@ -42,6 +55,18 @@ export class Name {
     }
 }
 
-// Usage
-// const nameInstance = new Name(dndrace, new_npc, array, age, origin);
-// console.log(nameInstance.getFirstname());
+/*
+npc/
+  ├── races/
+  │   ├── factory/
+  │   │   ├── racefactory.js
+  │   ├── human/
+  │   │   ├── human1.js
+  │   │   ├── human2.js
+  │   ├── elf/
+  │   │   ├── elf1.js
+  │   │   ├── elf2.js
+  │   ├── index.js
+  └── properties/
+      └── name.js
+ */

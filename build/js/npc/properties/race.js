@@ -57,9 +57,7 @@ export class Race {
         return Race.raceArray().includes(dndrace);
     }
 
-    static lowercase(dndrace) {
-        return dndrace.toLowerCase().replace(/[-\s]/g, '');
-    }
+
 
     getRace() {
         return this.dndrace;

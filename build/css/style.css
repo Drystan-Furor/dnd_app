@@ -669,6 +669,10 @@ video {
   max-width: 28rem;
 }
 
+.grow {
+  flex-grow: 1;
+}
+
 .origin-top {
   transform-origin: top;
 }

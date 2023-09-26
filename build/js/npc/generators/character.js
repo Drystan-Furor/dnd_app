@@ -1,3 +1,4 @@
+import { RaceFactory } from '../races/factory/racefactory';
 import {NpcClass} from "../properties/class";
 import {Race} from "../properties/race";
 import {Gender} from "../properties/gender";
@@ -72,21 +73,18 @@ export class DndNpcRng {
 
 
         // Name
-
-        //name [requires a race]
-        //the constructor requires 4 values
+        // the constructor requires 4 values
         // -> explore to make users enter their own name.
-        // pass object to class method, allows to pass multiple properties
-        // pass race to Name so it can sort what race naming class should be calles
+        const raceInstance = RaceFactory.createRace(race.getRace(), genderNouns);
         const name = new Name(
-            this.dndRace, genderNouns,
+            raceInstance, genderNouns,
             this.raceArray, this.age,
             this.origin
         );
-        this.firstname = name.getFirstname();
-        this.lastname = name.getLastname();
-        this.nickname = name.getNickname();
-        this.description = name.getDescription();
+        this.firstname = raceInstance.getFirstname();
+        this.lastname = raceInstance.getLastname();
+        this.nickname = raceInstance.getNickname();
+        this.description = raceInstance.getDescription();
 
 
         // Construct object with properties of classes
