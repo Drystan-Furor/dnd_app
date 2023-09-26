@@ -2,7 +2,7 @@ import {Material} from "../../generators/materials";
 
 export class Belts {
     constructor() {
-        this.belt = this.belt();
+        this.belt = Belts.belt();
     }
 
     static beltItem() {

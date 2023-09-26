@@ -1,6 +1,8 @@
+import {Verbs} from "./verbs";
+
 export  class Scar {
-    constructor(dndRace, new_npc) {
-        this.scar = this.scar(dndRace, new_npc);
+    constructor(dndRace, genderNouns) {
+        this.scar = Scar.scar(dndRace, genderNouns);
     }
 
     static _dentMarkings() {

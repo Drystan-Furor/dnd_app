@@ -55,7 +55,7 @@ export class Commoner  {
             'that looks a bit prospering', 'who recently became upper-class', 'looking affluent at best',
             'who looks privileged', 'who seems to be doing well',
         ];
-        return wealthinessTypes[Math.floor(Math.random() * wealthinessTypes.length)] + ". ";
+        return wealthinessTypes[Math.floor(Math.random() * wealthinessTypes.length)];
     }
 
     getOutfit() {

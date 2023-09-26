@@ -45,7 +45,7 @@ export class Poor {
             'who recently became bankrupt', ' looking poverty-stricken at best',
             'who looks underprivileged', 'who makes a down-and-out impression',
         ];
-        return wealthinessTypes[Math.floor(Math.random() * wealthinessTypes.length)] + ". ";
+        return wealthinessTypes[Math.floor(Math.random() * wealthinessTypes.length)];
     }
 
     getOutfit() {
