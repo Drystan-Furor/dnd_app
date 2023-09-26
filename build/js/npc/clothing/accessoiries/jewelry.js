@@ -25,7 +25,7 @@ export class Jewelry {
     }
 
     static craftJewel() {
-        return ` a ${Material.getMetalType()} ${this.constructor.jewelryType()} set with a ${Material.getGemstoneType()}`;
+        return ` a ${Material.getMetalType()} ${Jewelry.jewelryType()} set with a ${Material.getGemstoneType()}`;
     }
 
     getJewel() {

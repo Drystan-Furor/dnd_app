@@ -49,9 +49,10 @@ export class Bourgeoisie {
         const belt = new Belts().getBelt();
         const hat = new Hats(heShe).getHat();
         const shoes = new Shoes(dndRace).getShoes();
+        const jewel = new Jewelry().getJewel();
 
         return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.clothing()} and a ${belt}. 
-        ${Sentence.observing()} ${npcClass} wears ${Jewelry.constructor().getJewel()}. ${hat} ${shoes}`;
+        ${Sentence.observing()} ${npcClass} wears ${jewel}. ${hat} ${shoes}`;
     }
 
     getOutfit() {

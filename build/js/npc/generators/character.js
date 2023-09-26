@@ -121,15 +121,16 @@ export class DndNpcRng {
             intro: this.intro,
             outfit: this.outfit,
             // name
-            firstname:this.firstname,
-            lastname:this.lastname,
-            nickname:this.nickname,
-            description:this.description,
+            firstname: this.firstname,
+            lastname: this.lastname,
+            nickname: this.nickname,
+            description: this.description,
+            // weapon
+            weapon:this.weapon,
             // ... other properties ...
             // const subject = Sentence.subject()
         };
     }
-
 
 
     _writeStory(npc) { // + " " +
@@ -137,7 +138,11 @@ export class DndNpcRng {
         let string = "You meet " + npc.firstname + " " + npc.lastname + ". ";
         string = string + "A " + npc.bodySize + " " + npc.gender + " " + npc.dndRace + " " + npc.class
             + " " + "that's about " + npc.age + " years old. " + " " + ucfirst(npc.intro) + ". "
-            + npc.firstname + " " + npc.description;
+            + npc.nickname + " " + npc.description;
+        // profile
+        string = string + " " + npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3 + npc.body + ". " +
+            npc.outfit + npc.mood + npc.weapon + ". "
+        ;
 
 
         return string;
@@ -147,50 +152,6 @@ export class DndNpcRng {
 }
 
 function ucfirst(str) {
-    if(!str) return str;
+    if (!str) return str;
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-/*
- $string =  "You meet " . $this->firstname . " " . $this->lastname . ". ";
-  $string .= "A " . $this->size . " " . $this->gender . " " . $this->dndrace  . " " . $this->npcClass
-    . " thats about " . $this->age . " years old. " . ucfirst($this->intro) .
-    $this->description . " " .
- */
-
-/*
-  //BioName
-        $string =  "You meet " . $this->firstname . " " . $this->lastname . ". ";
-        //BioGenderRaceAge
-        //--BODY GENDER AGE WEALTH DIVERGENCE
-        /*
-        A medium sized female Drow Druid thats about 46 years old, who looks priviliged.
-        {bodysize}   {noun}{race}{class}          {age}           {prosperity intro}
-
-    $string .= "A " . $this->size . " " . $this->gender . " " . $this->dndrace  . " " . $this->npcClass
-    . " thats about " . $this->age . " years old. " . ucfirst($this->intro) .
-    $this->description . " " .
-    //-----------------------------facial construction
-    You SEE this MAN has NOSE.
-    The RACE meets your gaze with EYES
-    As you seize up the MAN you SEE HE has CHIN
-    and HIS mouth is set with MOUTH.
-
-    $this->face . ". " .
-
-    //------------------------------see scars
-    $this->scar1 .
-    $this->scar2 .
-    $this->scar3 .
-
-    //------------------------------see body
-    $this->body . ". " .
-    //------------------------------see outfit
-    $this->outfit .
-    //------------------------------see mood
-    $this->mood . " " .
-    //------------------------------see weapon
-    $this->weapon . ". " . PHP_EOL;
-
-return $string;
- */

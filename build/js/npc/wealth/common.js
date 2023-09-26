@@ -41,8 +41,8 @@ export class Commoner  {
         const shoes = new Shoes(dndRace).getShoes();
 
         const jewels = [
-            Rings.constructor().getRing(),
-            Jewelry.constructor().getJewel(),
+            Rings.craftRing(),
+            Jewelry.craftJewel(),
         ];
         const jewel = jewels[Math.floor(Math.random() * jewels.length)];
 

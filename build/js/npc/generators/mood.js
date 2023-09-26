@@ -28,7 +28,7 @@ export class Mood {
     }
 
      _generateMood(npcClass) {
-         return "The " + npcClass + " seems to be in a " + Mood._mood(npcClass) + " mood.";
+         return "The " + npcClass + " seems to be in a " + Mood._mood(npcClass) + " mood. ";
     }
 
     getMood() {

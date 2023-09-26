@@ -51,8 +51,11 @@ export class Rich {
         const belt = new Belts().getBelt();
         const hat = new Hats(heShe).getHat();
         const shoes = new Shoes(dndRace).getShoes();
+        const jewel = new Jewelry().getJewel();
+        const ring = new Rings().getRing();
 
-        return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.clothing()} and a pristine ${belt}. ${Sentence.observing()} ${npcClass} wears ${Jewelry.constructor().getJewel()} and a matching ${Rings.craftRing()}${hat} ${shoes}`;
+
+        return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.clothing()} and a pristine ${belt}. ${Sentence.observing()} ${npcClass} wears ${jewel} and a matching ${ring}${hat} ${shoes}`;
     }
 
     getOutfit() {
