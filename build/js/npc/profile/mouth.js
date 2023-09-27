@@ -1,17 +1,11 @@
+import {classMapping} from "../races/factory/classMapping";
+
 export class Mouth {
-    /**
-     * Constructs and selects a random value string for mouth
-     * @param {string} dndrace - The race
-     * @param {string} newNpc - The gender
-     */
+
     constructor(dndrace, newNpc) {
-        this.mouth = this._mouthShape(dndrace, newNpc);
+        this.mouth = this._randomMouth(dndrace, newNpc);
     }
 
-    /**
-     * Array of default values for Mouth
-     * @return {string} - The mouth shape
-     */
     static defaultMouths() {
         const mouthShapes = [
             "full lips", "round lips", "bow shaped lips", "heavy lower lips",
@@ -22,25 +16,15 @@ export class Mouth {
         return mouth;
     }
 
-    static tomia() {
-        const tomia = [
-            "sharp tomia", "rounded tomia", "bow shaped tomia", "heavy lower tomia",
-            "ridged tomia", "heavy upper tomia", "sawtooth serated tomia", "thin tomia",
-            "downward turned tomia", "perfectly proportioned tomia",
-        ];
-        return tomia[Math.floor(Math.random() * tomia.length)];
-    }
-
-    _mouthShape(dndRace, genderNouns) {
-        if (dndRace === 'Aarakocra') {
-            return Mouth.tomia();
+    _randomMouth(dndRace, genderNouns) {
+        const ClassReference = classMapping[dndRace];
+        if (ClassReference && typeof ClassReference.mouthReplacer === 'function') {
+            return ClassReference.mouthReplacer(dndRace, genderNouns);
         }
         return Mouth.defaultMouths();
     }
-
 
     getMouth() {
         return this.mouth;
     }
 }
-

@@ -1,4 +1,4 @@
-import { RaceFactory } from '../races/factory/racefactory';
+import {RaceFactory} from '../races/factory/racefactory';
 import {NpcClass} from "../properties/class";
 import {Race} from "../properties/race";
 import {Gender} from "../properties/gender";
@@ -42,13 +42,13 @@ export class DndNpcRng {
         this.dndRace = race.getRace();
         // Age
         this.age = new Age(this.dndRace).getAge();
-        // Profile
+        // Profile -> Face
         const face = new Profile(
-            this.dndRace,
+            // this.dndRace,
+            "Aarakocra",
             genderNouns,
             this.npcClass
         );
-        // Face
         this.face = face.getFace();
         // Body
         const body = new Body(this.dndRace, genderNouns);
@@ -76,7 +76,7 @@ export class DndNpcRng {
         // Name
         // the constructor requires 4 values
         // -> explore to make users enter their own name.
-        const raceInstance = RaceFactory.createRace(race.getRace(), genderNouns);
+        const raceInstance = RaceFactory.createRace("Aarakocra" , genderNouns);
         const name = new Name(
             raceInstance, genderNouns,
             this.raceArray, this.age,
@@ -125,7 +125,7 @@ export class DndNpcRng {
             nickname: this.nickname,
             description: this.description,
             // weapon
-            weapon:this.weapon,
+            weapon: this.weapon,
             // ... other properties ...
             // const subject = Sentence.subject()
         };
@@ -137,7 +137,7 @@ export class DndNpcRng {
         let string = "You meet " + npc.firstname + " " + npc.lastname + ". ";
         string = string + "A " + npc.bodySize + " " + npc.gender + " " + npc.dndRace + " " + npc.class
             + " " + "that's about " + npc.age + " years old. " + " " + ucfirst(npc.intro) + ". "
-            + npc.nickname + " " + npc.description;
+            + npc.description;
         // profile
         string = string + " " + npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3 + npc.body + ". " +
             npc.outfit + npc.mood + npc.weapon + ". "

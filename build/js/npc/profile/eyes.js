@@ -1,15 +1,17 @@
+import {classMapping} from "../races/factory/classMapping";
+
 export class Eyes {
 
     constructor(dndRace, genderNouns) {
-        this.eyes = this._eyeShape(dndRace, genderNouns);
+        this.eyes = this._randomEyes(dndRace, genderNouns);
     }
 
-    _eyeShape(dndRace, genderNouns) {
-        if (dndRace === 'Testcase') {
-            return Eyes.defaultEyeShape(dndRace, genderNouns);
-        } else {
-            return Eyes.canSee();
+    _randomEyes(dndRace, genderNouns) {
+        const ClassReference = classMapping[dndRace];
+        if (ClassReference && typeof ClassReference.eyesReplacer === 'function') {
+            return ClassReference.eyesReplacer(dndRace, genderNouns);
         }
+        return Eyes.defaultEyeShape();
     }
 
     static defaultEyeShape() {
@@ -23,7 +25,6 @@ export class Eyes {
             "upturned eyes", "deep set eyes", "droopy eyes",
             "monolid eyes",
         ];
-
         return eyes[Math.floor(Math.random() * eyes.length)];
     }
 

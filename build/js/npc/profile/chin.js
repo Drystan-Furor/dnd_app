@@ -1,7 +1,9 @@
+import {classMapping} from "../races/factory/classMapping";
+
 export class Chin {
 
-    constructor(dndRace, newNpc) {
-        this.chin = this._chinShape(dndRace, newNpc);
+    constructor(dndRace, genderNouns) {
+        this.chin = this._randomChin(dndRace, genderNouns);
     }
 
     static defaultChin() {
@@ -19,23 +21,10 @@ export class Chin {
         return `${chinShape} ${chinCurve} chin`;
     }
 
-    static culmen() {
-        const chinCurves = ['pointy', 'round', 'square'];
-        const chinCurve = chinCurves[Math.floor(Math.random() * chinCurves.length)];
-
-        const chinShapes = [
-            'a rather ', 'quite the', 'a very defined', 'a puffed',
-            'a very protruding', 'a bulbous', 'a very small', 'a bit of a',
-        ];
-        const chinShape = chinShapes[Math.floor(Math.random() * chinShapes.length)];
-
-        return chinShape + " " + chinCurve + " culmen";
-    }
-
-
-    _chinShape(dndRace, genderNouns) {
-        if (dndRace === 'Aarakocra') {
-            return Chin.culmen();
+    _randomChin(dndRace, genderNouns) {
+        const ClassReference = classMapping[dndRace];
+        if (ClassReference && typeof ClassReference.chinReplacer === 'function') {
+            return ClassReference.chinReplacer(dndRace, genderNouns);
         }
         return Chin.defaultChin();
     }

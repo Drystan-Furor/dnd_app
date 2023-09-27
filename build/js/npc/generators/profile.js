@@ -7,8 +7,8 @@ import {Verbs} from "./verbs";
 
 
 export class Profile {
-    constructor(race, npc, npcClass) {
-        this.face = this._facialConstruction(race, npc, npcClass);
+    constructor(race, genderNouns, npcClass) {
+        this.face = this._facialConstruction(race, genderNouns, npcClass);
     }
 
     getChin() {
@@ -35,25 +35,25 @@ export class Profile {
         return this.face;
     }
 
-    _facialConstruction(race, npc, npcClass) {
-        const manWoman = npc.getManWoman();
-        const heshe = npc.getHeShe();
-        const hisher = npc.getHisHer();
-        const gender = npc.getGender();
+    _facialConstruction(race, genderNouns, npcClass) {
+        const manWoman = genderNouns.getManWoman();
+        const heshe = genderNouns.getHeShe();
+        const hisher = genderNouns.getHisHer();
+        const gender = genderNouns.getGender();
 
-        const eyes = new Eyes(race, npc);
+        const eyes = new Eyes(race, genderNouns);
         this.eyes = eyes.getEyes();
 
-        const nose = new Nose(race, npc);
+        const nose = new Nose(race, genderNouns);
         this.nose = nose.getNose();
 
-        const mouth = new Mouth(race, npc);
+        const mouth = new Mouth(race, genderNouns);
         this.mouth = mouth.getMouth();
 
-        const teeth = new Teeth(race, npc);
+        const teeth = new Teeth(race, genderNouns);
         this.teeth = teeth.getTeeth();
 
-        const chin = new Chin(race, npc);
+        const chin = new Chin(race, genderNouns);
         this.chin = chin.getChin();
 
         const face = " You " + Verbs.getObservation() +
