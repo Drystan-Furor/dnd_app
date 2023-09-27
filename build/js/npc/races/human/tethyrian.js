@@ -1,5 +1,6 @@
 import {Name} from "../../properties/name";
 import {Chondathan} from "./chondathan";
+import {setClassMapping} from "../factory/classMapping";
 
 export class Tethyrian extends Name {
     constructor(dndRace, genderNouns) {
@@ -19,3 +20,4 @@ export class Tethyrian extends Name {
             "the most common. ";
     }
 }
+setClassMapping('Tethyrian', Tethyrian);

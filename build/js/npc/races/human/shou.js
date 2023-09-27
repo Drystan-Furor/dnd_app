@@ -1,4 +1,5 @@
 import {Name} from "../../properties/name";
+import {setClassMapping} from "../factory/classMapping";
 
 export class Shou extends Name {
     constructor(dndRace, genderNouns) {
@@ -36,3 +37,4 @@ export class Shou extends Name {
             "hue, with black hair and dark eyes. Shou surnames are usually presented before the given name.";
     }
 }
+setClassMapping('Shou', Shou);

@@ -1,4 +1,5 @@
 import {Name} from "../../properties/name";
+import {setClassMapping} from "../factory/classMapping";
 
 export class Mulan extends Name {
     constructor(dndRace, genderNouns) {
@@ -39,3 +40,4 @@ export class Mulan extends Name {
             "other Mulan shave off all their hair.";
     }
 }
+setClassMapping('Mulan', Mulan);

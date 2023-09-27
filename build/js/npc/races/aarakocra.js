@@ -1,6 +1,8 @@
 import {Name} from "../properties/name";
 import {Material} from "../generators/materials";
 import {Verbs} from "../generators/verbs";
+import {setClassMapping} from "./factory/classMapping";
+import {Aasimar} from "./aasimar";
 
 export class Aarakocra extends Name {
     constructor(dndRace, genderNouns) {
@@ -59,7 +61,6 @@ export class Aarakocra extends Name {
     }
 
     static noseReplacer() { // beak
-        console.log('noseReplacer called');
         let nose = Math.floor(Math.random() * 100) + 1; // Generate a random number between 1 and 100
         if (nose >= 1 && nose <= 24) {
             nose = 'a very generalist, prominent big beak';
@@ -112,3 +113,4 @@ export class Aarakocra extends Name {
         return typeBeak[Math.floor(Math.random() * typeBeak.length)];
     }
 }
+setClassMapping('Aarakocra', Aarakocra);

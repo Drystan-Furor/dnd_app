@@ -1,4 +1,5 @@
 import {Name} from "../../properties/name";
+import {setClassMapping} from "../factory/classMapping";
 
 export class Chondathan extends Name {
     constructor(dndRace, genderNouns) {
@@ -37,3 +38,4 @@ export class Chondathan extends Name {
             "Humans of Chondathan descent dominate the central lands of Faerûn, around the Inner Sea."
     }
 }
+setClassMapping('Chondathan', Chondathan);

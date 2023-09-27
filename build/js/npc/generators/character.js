@@ -40,12 +40,14 @@ export class DndNpcRng {
         this.origin = race.getOrigin();
         this.raceArray = race.getRaceArray(); //passed drow check
         this.dndRace = race.getRace();
+        console.warn(this.dndRace);
+
         // Age
         this.age = new Age(this.dndRace).getAge();
         // Profile -> Face
         const face = new Profile(
             // this.dndRace,
-            "Aarakocra",
+            "Aasimar",
             genderNouns,
             this.npcClass
         );
@@ -76,7 +78,7 @@ export class DndNpcRng {
         // Name
         // the constructor requires 4 values
         // -> explore to make users enter their own name.
-        const raceInstance = RaceFactory.createRace("Aarakocra" , genderNouns);
+        const raceInstance = RaceFactory.createRace("Aasimar" , genderNouns);
         const name = new Name(
             raceInstance, genderNouns,
             this.raceArray, this.age,

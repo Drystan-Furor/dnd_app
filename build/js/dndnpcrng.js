@@ -63,3 +63,4 @@ function previousCharacter(previousBiography) {
     const previousCharacterParagraph = document.getElementById("previous-character");
     previousCharacterParagraph.innerHTML = previousBiography;
 }
+

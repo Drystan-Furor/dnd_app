@@ -1,4 +1,6 @@
 import {Name} from "../../properties/name";
+import {setClassMapping} from "../factory/classMapping";
+import {Damaran} from "./damaran";
 
 export class Illuskan extends Name {
     constructor(dndRace, genderNouns) {
@@ -37,3 +39,4 @@ export class Illuskan extends Name {
             "the extreme northwest have blond, red, or light brown hair.";
     }
 }
+setClassMapping('Illuskan', Illuskan);
