@@ -2,8 +2,8 @@ import {Material} from "../generators/materials";
 import {Verbs} from "../generators/verbs";
 
 export class Teeth {
-    constructor(dndrace, newNpc) {
-        this.teeth = Teeth._teethShape(dndrace, newNpc);
+    constructor(dndRace, genderNouns) {
+        this.teeth = Teeth._teethShape(dndRace, genderNouns);
     }
 
     static _teethTypes() {
@@ -34,14 +34,34 @@ export class Teeth {
         ];
         return teeth[Math.floor(Math.random() * teeth.length)];
     }
-    static _teethShape(dndrace, newNpc) {
-        // Assuming teethReplacer is a method in some other class named by the value of dndrace
-        // const raceClass = window[dndrace.toLowerCase()];
-        // if (raceClass && typeof raceClass.teethReplacer === 'function') {
-        //     return raceClass.teethReplacer(dndrace, newNpc);
-        // } else {
-        //     return Teeth.defaultTeeth();
-        // }
+
+    static typeBeak() {
+        const color = [
+            'shiny white', 'yellow', 'quite large',
+            'rather small', 'yellow and grey', 'crooked',
+            'lead', 'tin', 'copper', 'steel', 'cast-iron',
+            'iron', 'metal',
+        ];
+        const colorType = color[Math.floor(Math.random() * color.length)];
+        const metalType = Material.getMetalType();
+        const quality = Verbs.quality();
+
+        const typeBeak = [
+            `has a ${metalType} beak`,
+            "has a hard horny tissue at the tip of the beak",
+            `has a ${colorType} shield-shaped structure on the tip of its beak`,
+            `has a ${colorType} shield-shaped structure on its beak tip, which spans the entire width of the beak`,
+            `has a ${colorType} shield-shaped structure on its beak, which is bent at the tip to form a hook`,
+            `has a ${teethType} shield-shaped structure on its beak tip, which spans the entire width of the beak and bent at the tip to form a hook`,
+            `has a fake colorType, like a prosthetic made of ${quality} ${metalType}`,
+        ];
+        return typeBeak[Math.floor(Math.random() * typeBeak.length)];
+    }
+
+    static _teethShape(dndRace, genderNouns) {
+        if (dndRace === 'Aarakocra') {
+            return Teeth.typeBeak(dndRace, genderNouns);
+        }
         return Teeth.defaultTeeth();
     }
 

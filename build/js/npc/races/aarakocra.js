@@ -14,40 +14,23 @@ export class Aarakocra extends Name {
             'Aera', 'Aial', 'Aur', 'Deekek', 'Errk', 'Heehk', 'Ikki', 'Kleeck',
             'Oorr', 'Ouss', 'Quaf', 'Quierk', 'Salleek', 'Urreek', 'Zeed',
         ];
-        const lastname = surnames[Math.floor(Math.random() * surnames.length)];
-        this.lastname = lastname;
-        return lastname;
+        this.lastname = surnames[Math.floor(Math.random() * surnames.length)];
+        return this.lastname;
     }
 
     _firstname() {
-        const firstname = "";
-        this.firstname = firstname;
-        return firstname;
+        this.firstname = "";
+        return this.firstname;
     }
 
     _nickname() {
-        const nickname = this.lastname;
-        this.nickname = nickname;
-        return nickname;
+        this.nickname = this.lastname;
+        return this.nickname;
     }
 
     _description(dndRace, genderNouns) {
         return `From below, the ${dndRace.getRace()} look much like a large bird. 
         Only when ${this.lastname} descends to roost on a branch or walk across the 
         ground does ${genderNouns.getHisHer()} humanoid appearance reveal itself.`;
-    }
-
-
-
-
-
-    static chinReplacer() {
-        // Similar logic for chinReplacer as in PHP
-        // Implement the logic here using JavaScript syntax
-    }
-
-    static teethReplacer() {
-        // Similar logic for teethReplacer as in PHP
-        // Implement the logic here using JavaScript syntax
     }
 }
