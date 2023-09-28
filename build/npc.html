@@ -145,8 +145,8 @@
         </h2>
         <div class="flex items-center justify-center">
             <button id="generateNpc" class="mx-auto">
-                <img class="mx-auto transform hover:ring-2 hover:ring-offset-3 rounded-3xl hover:bg-amber-600 hover:ring-cyan-700 active:bg-cyan-500 active:scale-110"
-                     src="img/iconbeholder.png" alt="beholder" id="beholder" onmouseover="hoverImage()" onmouseout="unhoverImage()"/>
+                <img class="mx-auto transform hover:scale-125 active:scale-150"
+                     src="img/iconbeholder.png" alt="beholder" id="beholder"/>
             </button>
         </div>
 
@@ -175,7 +175,10 @@
                    class="italic text-xl sm:text-1xl text-left mt-2 text-white dark:text-slate-400"
                 >Attire and mood
                 </p>
-                <img id="dynamicImage" src="img/icon_d20_blue.png" alt="dynamic" class="sm:w-1/2 mx-auto"/>
+                <figure class="sm:w-1/2 mx-auto text-center">
+                    <img id="dynamicImage" src="img/icon_d20_blue.png" alt="dynamic" class="w-1/2 mx-auto"/>
+                    <figcaption id="dynamicCaption" class="text-lg text-gray-500 mt-2"></figcaption>
+                </figure>
             </blockquote>
 
 

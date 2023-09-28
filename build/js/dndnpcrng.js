@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const character = new_npc.getNewNpc();
         const biography = new_npc.getString();
         imageOfCharacter(character.dndRace);
+        document.getElementById('dynamicCaption').textContent = 'Image of a: '+ character.dndRace;
+
 
 
         // Store the current innerHTML before overwriting it
@@ -91,7 +93,7 @@ function previousCharacter(previousBiography) {
 }
 
 function imageOfCharacter(race) {
-    const images = ["img/icon_d20_blue.png", "img/icon_d20_red.png", "img/icon_d20_yellow.png", "img/characters/beholder.png"];
+    const images = ["img/icon_d20_blue.png", "img/icon_d20_red.png", "img/icon_d20_yellow.png", "img/beholder.gif"];
     const imgElement = document.getElementById('dynamicImage');
 
     if (race) {

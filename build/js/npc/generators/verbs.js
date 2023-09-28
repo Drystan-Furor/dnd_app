@@ -15,7 +15,7 @@ export class Verbs {
     }
 
     static getObservation() {
-        const observations = ['see', 'clearly notice', 'cautiously observe', 'simply spot', 'behold', 'distinguish from a distance', 'discern', 'glimpse', 'mark', 'catch a glimpse that', 'catch sight', 'make out', 'take notice', 'survey'];
+        const observations = ['discern', 'see', 'clearly notice', 'cautiously observe','observe', 'simply spot', 'behold', 'distinguish from a distance', 'discern', 'glimpse', 'mark', 'catch a glimpse that', 'catch sight', 'make out', 'take notice', 'survey', 'seize up', 'examine'];
         return observations[Math.floor(Math.random() * observations.length)];
     }
 
@@ -36,6 +36,21 @@ export class Verbs {
 
     static named() {
         const namings = ['named', 'renamed', 'call', 'refer to', 'dubbed', 'labeled', 'titled'];
+        return namings[Math.floor(Math.random() * namings.length)];
+    }
+
+    static getMoment() {
+        const namings = [
+            "when", "whenever", "every time", "in moments when",
+        ];
+        return namings[Math.floor(Math.random() * namings.length)];
+    }
+
+    static getCommunication() {
+        const namings = [
+            "is talking",  "shouting", "speaks",  " yells",
+            "raises his voice",  "articulates", "utters words",  "exclaims",
+        ];
         return namings[Math.floor(Math.random() * namings.length)];
     }
 }

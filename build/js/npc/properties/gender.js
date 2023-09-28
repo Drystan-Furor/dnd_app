@@ -10,11 +10,13 @@ export class Gender {
         this.manWoman = 'woman';
         this.heshe = 'she';
         this.hisher = 'her';
+        this.himher = 'her';
         if (rng === 1) {
             this.gender = 'male';
             this.manWoman = 'man';
             this.heshe = 'he';
             this.hisher = 'his';
+            this.himher = 'him';
         }
     }
 
@@ -32,6 +34,10 @@ export class Gender {
 
     getHisHer() {
         return this.hisher;
+    }
+
+    getHimHer() {
+        return this.himher;
     }
 }
 
