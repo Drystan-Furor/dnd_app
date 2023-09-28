@@ -16,6 +16,7 @@ export const classMapping = {
     Bugbear:null,
     Centaur:null,
     Changeling:null,
+    Dragonborn:null,
     // ... other class mappings
 
 };
