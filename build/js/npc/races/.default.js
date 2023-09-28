@@ -1,4 +1,5 @@
 import {Name} from "../../properties/name";
+import {setClassMapping} from "./factory/classMapping";
 
 export class DefaultRace extends Name {
     constructor(dndRace, genderNouns) {
@@ -74,3 +75,4 @@ export class DefaultRace extends Name {
         return bodysizes[Math.floor(Math.random() * bodysizes.length)];
     }
 }
+setClassMapping('x', X);
