@@ -14,3 +14,4 @@ export * from './centaur';
 export * from './changeling';
 export * from './dragonborn';
 export * from './drow';
+export * from './dwarf';

@@ -18,6 +18,7 @@ export const classMapping = {
     Changeling:null,
     Dragonborn:null,
     Drow:null,
+    Dwarf:null,
     // ... other class mappings
 
 };
