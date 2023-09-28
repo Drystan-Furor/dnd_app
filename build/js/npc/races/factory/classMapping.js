@@ -1,4 +1,6 @@
 // classMapping.js
+import {Changeling} from "../changeling";
+
 export const classMapping = {
     Calishite: null,
     Chondathan: null,
@@ -14,6 +16,7 @@ export const classMapping = {
     Aasimar:null,
     Bugbear:null,
     Centaur:null,
+    Changeling:null,
     // ... other class mappings
 
 };

@@ -20,9 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const character = new_npc.getNewNpc();
         const biography = new_npc.getString();
         imageOfCharacter(character.dndRace);
-        document.getElementById('dynamicCaption').textContent = 'Image of a: '+ character.dndRace;
-
-
 
         // Store the current innerHTML before overwriting it
         const currentBiography = {
@@ -41,44 +38,35 @@ document.addEventListener("DOMContentLoaded", function () {
         previousCharacter(currentBiography);
     });
 
+    function copyToClipboard(elementId) {
+        const blockquote = document.querySelector(elementId);
+        if (!blockquote) return; // Exit if no blockquote found
 
-    // Add event listener for copyButton here
-    const copyButton = document.getElementById('copyButton');
-    if (copyButton) { // Check if copyButton exists
-        copyButton.addEventListener('click', function () {
-            // Get the blockquote element
-            const blockquote = document.querySelector('blockquote');
+        const paragraphs = blockquote.querySelectorAll('p');
+        let string = '';
 
-            // Get all p elements inside the blockquote
-            const paragraphs = blockquote.querySelectorAll('p');
+        paragraphs.forEach(paragraph => {
+            string += paragraph.textContent + '\n';
+        });
 
-            // Initialize an empty string to hold the text content of all p elements
-            let string = '';
-
-            // Loop through all p elements and concatenate their text content to the string
-            paragraphs.forEach(paragraph => {
-                string += paragraph.textContent + '\n'; // '\n' adds a new line between each paragraph
-            });
-
-            // Copy the concatenated string to the clipboard
-            navigator.clipboard.writeText(string).then(function () {
-                console.log('copied to clipboard!');
-            }).catch(function (err) {
-                console.error('Unable to copy text', err);
-            });
+        navigator.clipboard.writeText(string).then(function () {
+            console.log('copied to clipboard!');
+        }).catch(function (err) {
+            console.error('Unable to copy text', err);
         });
     }
 
-    // Add event listener for copyButton here
+    const copyButton = document.getElementById('copyButton');
+    if (copyButton) {
+        copyButton.addEventListener('click', function () {
+            copyToClipboard('blockquote');
+        });
+    }
+
     const copyButton2 = document.getElementById('copyButton2');
-    if (copyButton2) { // Check if copyButton exists
+    if (copyButton2) {
         copyButton2.addEventListener('click', function () {
-            const previousCharacterParagraph = document.getElementById('previous-character');
-            navigator.clipboard.writeText(previousCharacterParagraph.innerText).then(function () {
-                console.log('copied to clipboard!');
-            }).catch(function (err) {
-                console.error('Unable to copy text', err);
-            });
+            copyToClipboard('blockquote');
         });
     }
 });
@@ -95,30 +83,49 @@ function previousCharacter(previousBiography) {
 function imageOfCharacter(race) {
     const images = ["img/icon_d20_blue.png", "img/icon_d20_red.png", "img/icon_d20_yellow.png", "img/beholder.gif"];
     const imgElement = document.getElementById('dynamicImage');
+    if (!race) {
+        return false;
+    }
+    const raceLowerCase = race.toLowerCase();
+    imgElement.src = "img/characters/" + raceLowerCase + ".png";
 
-    if (race) {
-        const raceLowerCase = race.toLowerCase();
-        imgElement.src = "img/characters/" + raceLowerCase + ".png";
+    imageExists(imgElement.src, function (exists) {
+        document.getElementById('dynamicCaption').textContent = 'Image of a: ' + race;
+        if (!exists) {
+            console.error("It seems the image has stealthily evaded us, perhaps it rolled a natural 20 on its Stealth check!");
+            document.getElementById('dynamicCaption').textContent = 'The image is missing, man, probably out bowling with The Dude.';
 
-        imgElement.onerror = function () {
             const randomIndex = Math.floor(Math.random() * images.length);
-            imgElement.src = images[randomIndex];
+            document.getElementById('dynamicImage').src = images[randomIndex];
         }
-    } else {
+    });
+    imgElement.onerror = function () {
         const randomIndex = Math.floor(Math.random() * images.length);
-        document.getElementById('dynamicImage').src = images[randomIndex];
+        imgElement.src = images[randomIndex];
     }
 }
+
+function imageExists(image_url, callback) {
+    var img = new Image();
+    img.onload = function () {
+        callback(true);
+    };
+    img.onerror = function () {
+        callback(false);
+    };
+    img.src = image_url;
+}
+
 
 document.addEventListener('DOMContentLoaded', (event) => {
     let dynamicImage = document.getElementById('beholder');
 
-    if(dynamicImage) { // Check if element exists
-        dynamicImage.addEventListener('mouseover', function() {
+    if (dynamicImage) { // Check if element exists
+        dynamicImage.addEventListener('mouseover', function () {
             dynamicImage.src = 'img/art_beholder.png'; // Path to the hover image
         });
 
-        dynamicImage.addEventListener('mouseout', function() {
+        dynamicImage.addEventListener('mouseout', function () {
             dynamicImage.src = 'img/iconbeholder.png'; // Path to the default image
         });
     }

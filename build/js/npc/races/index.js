@@ -11,3 +11,4 @@ export * from './aarakocra';
 export * from './aasimar';
 export * from './bugbear';
 export * from './centaur';
+export * from './changeling';
