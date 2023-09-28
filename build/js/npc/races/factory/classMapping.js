@@ -1,5 +1,4 @@
 // classMapping.js
-import {Changeling} from "../changeling";
 
 export const classMapping = {
     Calishite: null,

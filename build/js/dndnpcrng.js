@@ -117,7 +117,7 @@ function imageExists(image_url, callback) {
 }
 
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     let dynamicImage = document.getElementById('beholder');
 
     if (dynamicImage) { // Check if element exists
