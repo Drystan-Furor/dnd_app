@@ -27,7 +27,7 @@ export class Dwarf extends Name {
                 'Adrik', 'Alberich', 'Baern', 'Barendd', 'Brottor', 'Bruenor', 'Dain', 'Darrak',
                 'Eberk', 'Einkill', 'Fargrim', 'Flint', 'Gardain', 'Harbek', 'Kildrak',
                 'Oskar', 'Rangrim', 'Rurik', 'Taklinn', 'Thoradin', 'Thorin', 'Tordek',
-                'Travok', 'Ulfgar', 'Veit', 'Vondal', 'Orsik','Delg','Morgran','Traubon',
+                'Travok', 'Ulfgar', 'Veit', 'Vondal', 'Orsik', 'Delg', 'Morgran', 'Traubon',
             ];
             firstname = malenames[Math.floor(Math.random() * malenames.length)];
         }
@@ -55,20 +55,20 @@ export class Dwarf extends Name {
             "a stone worker",
             "a worker of metal",
         ];
-        const string  = getRandomElement(knownAs);
+        const string = getRandomElement(knownAs);
         return `Bold and hardy, ${this.nickname} is known as ${string}.`;
     }
 
-     static bodySizeReplacer()
-    {
-        const bodysizes = [
+    static bodySizeReplacer() {
+        const bodySizes = [
             "very small", "quite small", "small", "small sized",
             "rather tiny", "below middle sized", "really small",
             "slightly smaller", "rather small", "reasonably small",
             "tiny", "characteristically tiny sized", "naturally small sized",
         ];
-        return getRandomElement(bodysizes);
+        return getRandomElement(bodySizes);
     }
 
 }
+
 setClassMapping('Dwarf', Dwarf);

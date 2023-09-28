@@ -46,8 +46,7 @@ export class DndNpcRng {
         this.age = new Age(this.dndRace).getAge();
         // Profile -> Face
         const face = new Profile(
-            // this.dndRace,
-            "Aasimar",
+            this.dndRace,
             genderNouns,
             this.npcClass
         );
@@ -78,7 +77,7 @@ export class DndNpcRng {
         // Name
         // the constructor requires 4 values
         // -> explore to make users enter their own name.
-        const raceInstance = RaceFactory.createRace("Aasimar" , genderNouns);
+        const raceInstance = RaceFactory.createRace(this.dndRace , genderNouns);
         const name = new Name(
             raceInstance, genderNouns,
             this.raceArray, this.age,
