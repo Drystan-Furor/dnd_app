@@ -1,3 +1,5 @@
+import {classMapping} from "./classMapping";
+
 export function getRandomElement(array) {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
@@ -27,4 +29,5 @@ export function ucFirst(inputString) {
     }
     return inputString.charAt(0).toUpperCase() + inputString.slice(1);
 }
+
 

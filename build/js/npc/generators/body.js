@@ -1,3 +1,5 @@
+import {classMapping, setClassMapping} from "../races/factory/classMapping";
+
 export class Body {
     constructor(dndRace, npc) {
         this.bodyType = this._bodyType(dndRace, npc);
@@ -69,33 +71,28 @@ export class Body {
         return this.body;
     }
 
-    _bodySize(dndrace, new_npc) {
-        // if (dndrace.bodySizeReplacer) {
-        //     this.bodySize = dndrace.bodySizeReplacer(dndrace, new_npc);
-        // } else {
-        //     this.bodySize = Body.bodySizeDefault();
-        // }
-        this.bodySize = Body.bodySizeDefault();
-        return this.bodySize;
+    _bodySize(dndRace, genderNouns) {
+        const ClassReference = classMapping[dndRace];
+        if (ClassReference && typeof ClassReference.bodySizeReplacer === 'function') {
+            return ClassReference.bodySizeReplacer(dndRace, genderNouns);
+        }
+        return Body.bodySizeDefault();
     }
 
-    _bodyType(dndrace, new_npc) {
-        // if (dndrace.bodyTypeReplacer) {
-        //     this.bodyType = dndrace.bodyTypeReplacer(dndrace, new_npc);
-        // } else {
-        //     this.bodyType = Body.bodyTypeDefault();
-        // }
-        this.bodyType = Body.bodyTypeDefault();
-        return this.bodyType;
+    _bodyType(dndRace, genderNouns) {
+        const ClassReference = classMapping[dndRace];
+        if (ClassReference && typeof ClassReference.bodyTypeReplacer === 'function') {
+            return ClassReference.bodyTypeReplacer(dndRace, genderNouns);
+        }
+        return Body.bodyTypeDefault();
     }
 
-    _bodyShape(dndrace, new_npc) {
-        // if (dndrace.bodyShapeReplacer) {
-        //     this.bodyShape = dndrace.bodyShapeReplacer(dndrace, new_npc);
-        // } else {
-        //     this.bodyShape = Body.bodyShapeDefault();
-        // }
-        this.bodyShape = Body.bodyShapeDefault();
-        return this.bodyShape;
+    _bodyShape(dndRace, genderNouns) {
+        const ClassReference = classMapping[dndRace];
+        if (ClassReference && typeof ClassReference.bodyShapeReplacer === 'function') {
+            return ClassReference.bodyShapeReplacer(dndRace, genderNouns);
+        }
+        return Body.bodyShapeDefault();
     }
+
 }

@@ -10,3 +10,4 @@ export * from './human/turami';
 export * from './aarakocra';
 export * from './aasimar';
 export * from './bugbear';
+export * from './centaur';

@@ -2,7 +2,6 @@ import {Name} from "../properties/name";
 import {Material} from "../generators/materials";
 import {Verbs} from "../generators/verbs";
 import {setClassMapping} from "./factory/classMapping";
-import {Aasimar} from "./aasimar";
 
 export class Aarakocra extends Name {
     constructor(dndRace, genderNouns) {

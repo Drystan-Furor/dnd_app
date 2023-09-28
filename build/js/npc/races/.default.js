@@ -1,5 +1,5 @@
-import {Name} from "../../properties/name";
 import {setClassMapping} from "./factory/classMapping";
+import {Name} from "../properties/name";
 
 export class DefaultRace extends Name {
     constructor(dndRace, genderNouns) {
@@ -67,12 +67,33 @@ export class DefaultRace extends Name {
 
     static bodySizeReplacer() {
         const bodysizes = [
-            "very small", "quite small", "small", "small sized",
-            "rather tiny", "below middle sized", "really small",
-            "slightly smaller", "rather small", "reasonably small",
-            "tiny", "characteristically tiny sized", "naturally small sized",
+            "very small",
         ];
         return bodysizes[Math.floor(Math.random() * bodysizes.length)];
     }
+
+    static bodyTypeReplacer() {
+        const bodysizes = [
+            "very small",
+        ];
+        return bodysizes[Math.floor(Math.random() * bodysizes.length)];
+    }
+
+    static bodyShapeReplacer() {
+        const bodysizes = [
+            "very small",
+        ];
+        return bodysizes[Math.floor(Math.random() * bodysizes.length)];
+    }
+
+    static shoesReplacer() {
+        const shoes = [
+            'one-toed',
+        ];
+        const feet = feet[Math.floor(Math.random() * feet.length)];
+        return `string  ${feet} feet.`;
+    }
+
+
 }
 setClassMapping('x', X);

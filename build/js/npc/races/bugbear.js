@@ -46,5 +46,4 @@ export class Bugbear extends Name {
             'and fleeing when outmatched.';
     }
 }
-
 setClassMapping('Bugbear', Bugbear);

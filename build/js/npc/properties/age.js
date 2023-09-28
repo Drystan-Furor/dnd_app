@@ -1,4 +1,5 @@
 import {Race} from "./race";
+import {classMapping} from "../races/factory/classMapping";
 
 function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -87,12 +88,12 @@ export class Age extends Race {
         return age;
     }
 
-    _defineAge(dndrace) {
-        // Assuming ageReplacer is a static method in the corresponding class
-        // if (typeof window[dndrace.toLowerCase()]?.ageReplacer === 'function') {
-        //     return window[dndrace.toLowerCase()].ageReplacer(dndrace);
-        // }
-        return Age.defineDefaultAge(dndrace);
+    _defineAge(dndRace, genderNouns) {
+        const ClassReference = classMapping[dndRace];
+        if (ClassReference && typeof ClassReference.ageReplacer === 'function') {
+            return ClassReference.ageReplacer(dndRace, genderNouns);
+        }
+        return Age.defineDefaultAge(dndRace);
     }
 }
 

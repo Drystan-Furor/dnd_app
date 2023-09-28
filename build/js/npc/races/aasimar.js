@@ -32,8 +32,6 @@ export class Aasimar extends Name {
     _randomLastname(dndRace, genderNouns) {
         const humanRaces = ['Calishite', 'Chondathan', 'Damaran', 'Illuskan', 'Mulan', 'Rashemi', 'Tethyrian', 'Turami'];
         const randomRace = getRandomElement(humanRaces);
-        console.log(randomRace); // This will log one of the races randomly
-
         const requiredClasses = ['Calishite', 'Chondathan', 'Damaran', 'Illuskan', 'Mulan', 'Rashemi', 'Tethyrian', 'Turami'];
         const filteredMapping = filterClassMapping(classMapping, requiredClasses);
         const ClassReference = filteredMapping[randomRace];

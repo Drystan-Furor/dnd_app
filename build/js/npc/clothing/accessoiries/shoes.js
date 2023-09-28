@@ -1,3 +1,5 @@
+import {classMapping} from "../../races/factory/classMapping";
+
 export class Shoes {
 
     constructor(dndRace) {
@@ -44,14 +46,11 @@ export class Shoes {
         return this.shoes;
     }
 
-    theRightShoes(dndRace) {
-        // let shoes;
-        // if (typeof dndRace.shoeReplacer === "function") {
-        //     shoes = dndRace.shoeReplacer();
-        // } else {
-        //     shoes = this.constructor.shoes();
-        // }
-        // return shoes;
+    theRightShoes(dndRace, genderNouns) {
+        const ClassReference = classMapping[dndRace];
+        if (ClassReference && typeof ClassReference.shoesReplacer() === 'function') {
+            return ClassReference.shoesReplacer(dndRace, genderNouns);
+        }
         return this.constructor.shoes();
     }
 }

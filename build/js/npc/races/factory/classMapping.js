@@ -13,7 +13,9 @@ export const classMapping = {
     Aarakocra: null,
     Aasimar:null,
     Bugbear:null,
+    Centaur:null,
     // ... other class mappings
+
 };
 
 export function setClassMapping(key, value) {
