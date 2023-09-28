@@ -56,10 +56,11 @@ export class Profile {
         const chin = new Chin(race, genderNouns);
         this.chin = chin.getChin();
 
-        const face = " You " + Verbs.getObservation() +
-            " this " + manWoman + " has " + this.nose +
-            ". The " + npcClass + " meets your gaze with " +
+        const face =
+            "The " + npcClass + " meets your gaze with " +
             this.eyes + ". " +
+            "You " + Verbs.getObservation() +
+            " this " + manWoman + " has " + this.nose +
             "As you seize up the " + manWoman + ", you " +
             Verbs.getObservation() + " " + heshe + " has " +
             this.chin + " and " + hisher + " mouth is set with " +

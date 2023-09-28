@@ -81,7 +81,7 @@ export class Aasimar extends Name {
         return `The ${dndRace} ${nickname} bears the mark of ${genderNouns.getHisHer()} 
         fall through many different physical features, like ${genderNouns.getHisHer()} 
         hair has a ${metalType} shine but withered to ${hairShine} 
-        and a very gaunt, almost corpse-like appearance.`;
+        and a very gaunt, almost corpse-like appearance`;
     }
 
     static descriptionDefault(genderNouns, nickname) {
@@ -89,7 +89,7 @@ export class Aasimar extends Name {
         return `${nickname} bears the mark of ${genderNouns.getHisHer()} 
         celestial touch through many different physical 
         features, like ${genderNouns.getHisHer()} hair has a ${metalType} 
-        shine to it with accents of ${Material.getMetalType()}.`;
+        shine to it with accents of ${Material.getMetalType()}`;
     }
 
     static eyesReplacer(dndRace, genderNouns) {

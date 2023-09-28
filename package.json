@@ -5,14 +5,21 @@
   "main": "tailwind.config.js",
   "scripts": {
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch",
-    "prettier": "npx prettier --write **/*.html"
+    "prettier": "npx prettier --write **/*.html",
+    "build": "npx webpack --config webpack.config.js --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "husky": "^8.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npx webpack --config webpack.config.js"
+    }
   }
 }

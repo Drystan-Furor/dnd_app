@@ -135,21 +135,20 @@ export class DndNpcRng {
 
 
     _writeStory(npc) { // + " " +
-        // biography
-        let string = "You meet " + npc.firstname + " " + npc.lastname + ". ";
-        string = string + "A " + npc.bodySize + " " + npc.gender + " " + npc.dndRace + " " + npc.class
+        // description
+        let string1 = "You meet " + npc.firstname + " " + npc.lastname + ". ";
+        string1 = string1 + "A " + npc.bodySize + " " + npc.gender + " " + npc.dndRace + " " + npc.class
             + " " + "that's about " + npc.age + " years old. " + " " + ucfirst(npc.intro) + ". "
-            + npc.description;
-        // profile
-        string = string + " " + npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3 + npc.body + ". " +
-            npc.outfit + npc.mood + npc.weapon + ". "
-        ;
+            + npc.description+ ". ";
+        // appearance
+        let string2 = npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3 + npc.body + ". ";
+        // attire
+        let string3 = npc.outfit + npc.weapon + npc.mood + ". ";
 
-
-        return string;
+        return  {
+            string1,string2,string3
+        };
     }
-
-
 }
 
 function ucfirst(str) {
