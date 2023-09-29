@@ -88,7 +88,6 @@ export class DndNpcRng {
         this.nickname = raceInstance.getNickname();
         this.description = raceInstance.getDescription();
 
-
         // Construct object with properties of classes
         return {
             // class
@@ -142,7 +141,7 @@ export class DndNpcRng {
         // appearance
         let string2 = npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3 + npc.body + ". ";
         // attire
-        let string3 = npc.outfit + npc.weapon + npc.mood + ". ";
+        let string3 = npc.outfit + npc.weapon + ". " + npc.mood + ". ";
 
         return  {
             string1,string2,string3

@@ -92,8 +92,8 @@ function imageOfCharacter(race) {
     imageExists(imgElement.src, function (exists) {
         document.getElementById('dynamicCaption').textContent = 'Image of a: ' + race;
         if (!exists) {
-            console.error("It seems the image has stealthily evaded us, perhaps it rolled a natural 20 on its Stealth check!");
-            document.getElementById('dynamicCaption').textContent = 'The image is missing, man, probably out bowling with The Dude.';
+            console.error("The image is missing, man, probably out bowling with The Dude. Stealth check!");
+            document.getElementById('dynamicCaption').textContent = 'It seems the image has stealthily evaded us, perhaps it rolled a natural 20 on its Stealth check!';
 
             const randomIndex = Math.floor(Math.random() * images.length);
             document.getElementById('dynamicImage').src = images[randomIndex];

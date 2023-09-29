@@ -1,5 +1,8 @@
 // classMapping.js
 
+
+import {Feraltiefling} from "../feraltiefling";
+
 export const classMapping = {
     Calishite: null,
     Chondathan: null,
@@ -19,6 +22,8 @@ export const classMapping = {
     Dragonborn:null,
     Drow:null,
     Dwarf:null,
+    Elf:null,
+    Feraltiefling:null,
     // ... other class mappings
 
 };

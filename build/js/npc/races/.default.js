@@ -34,9 +34,14 @@ export class DefaultRace extends Name {
         }
         return firstname;
     }
-
+    
     _nickname() {
-        return this.lastname;
+        const nickname = [
+             'Array',
+        ];
+        return nickname[Math.floor(Math.random() * nickname.length)];
+       // return this.lastname;
+
     }
 
     _description(dndrace, new_npc) {
