@@ -14,7 +14,8 @@ export class RaceFactory {
     }
 }
 
-function convertRaceName(raceName) {
+export function convertRaceName(raceName) {
+    raceName = raceName.toLowerCase();
     // Remove special characters and replace spaces with an empty string
     let convertedName = raceName.replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s+/g, '');
     // Make the first character uppercase

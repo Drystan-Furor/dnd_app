@@ -1,5 +1,6 @@
 import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
+import {Tiefling} from "./tiefling";
 
 export class Feraltiefling extends Name {
     constructor(dndRace, genderNouns) {

@@ -76,7 +76,7 @@ export class Aasimar extends Name {
         const hairShines = ['black', 'white'];
         const hairShine = hairShines[Math.floor(Math.random() * hairShines.length)];
         const metalType = Material.getMetalType();
-        return `The ${dndRace} ${nickname} bears the mark of ${genderNouns.getHisHer()} 
+        return `The ${dndRace} is typically named in accordance with human traditions. ${nickname} bears the mark of ${genderNouns.getHisHer()} 
         fall through many different physical features, like ${genderNouns.getHisHer()} 
         hair has a ${metalType} shine but withered to ${hairShine} 
         and a very gaunt, almost corpse-like appearance`;
@@ -84,7 +84,7 @@ export class Aasimar extends Name {
 
     static descriptionDefault(genderNouns, nickname) {
         const metalType = Material.getMetalType();
-        return `${nickname} bears the mark of ${genderNouns.getHisHer()} 
+        return `Typically named in accordance with human traditions, ${nickname} bears the mark of ${genderNouns.getHisHer()} 
         celestial touch through many different physical 
         features, like ${genderNouns.getHisHer()} hair has a ${metalType} 
         shine to it with accents of ${Material.getMetalType()}`;

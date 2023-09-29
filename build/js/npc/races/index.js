@@ -17,4 +17,6 @@ export * from './drow';
 export * from './dwarf';
 export * from './elf';
 export * from './feraltiefling';
+
 export * from './tiefling';
+export * from './firbolg';

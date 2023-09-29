@@ -1,5 +1,6 @@
 // overwatch
 import {DndNpcRng} from "./npc/generators/character";
+import {convertRaceName} from "./npc/races/factory/racefactory";
 // Automatically loads all files in the './npc/' folder and its subfolders
 const requireModule = require.context('./npc', true, /\.js$/);
 
@@ -86,8 +87,8 @@ function imageOfCharacter(race) {
     if (!race) {
         return false;
     }
-    const raceLowerCase = race.toLowerCase();
-    imgElement.src = "img/characters/" + raceLowerCase + ".png";
+    const raceLowerCase = convertRaceName(race);
+    imgElement.src = "img/characters/" + raceLowerCase.toLowerCase() + ".png";
 
     imageExists(imgElement.src, function (exists) {
         document.getElementById('dynamicCaption').textContent = 'Image of a: ' + race;
