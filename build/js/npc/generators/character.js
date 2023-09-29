@@ -40,7 +40,7 @@ export class DndNpcRng {
         this.origin = race.getOrigin();
         this.raceArray = race.getRaceArray(); //passed drow check
         // this.dndRace = race.getRace();
-        this.dndRace = "Firbolg";
+        this.dndRace = "Gith";
         console.warn(this.dndRace);
 
         // Age

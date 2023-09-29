@@ -23,6 +23,7 @@ export const classMapping = {
     Feraltiefling:null,
     Firbolg:null,
     Genasi:null,
+    Gith:null,
 
     Tiefling:null,
     // ... other class mappings

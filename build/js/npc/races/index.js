@@ -21,3 +21,4 @@ export * from './feraltiefling';
 export * from './tiefling';
 export * from './firbolg';
 export * from './genasi';
+export * from './gith';
