@@ -37,15 +37,18 @@ export class DefaultRace extends Name {
 
     _nickname() {
         const nickname = [
-             'Array',
+            'Array',
         ];
         return nickname[Math.floor(Math.random() * nickname.length)];
-       // return this.lastname;
+        // return this.lastname;
 
     }
 
-    _description(dndRace, new_npc) {
-        return `string ${dndRace} string ${this.lastname} string ${new_npc.getHisHer()} string.`;
+    /*
+    string
+     */
+    _description(dndRace, genderNouns) {
+        return `string ${dndRace} string ${this.lastname} string ${genderNouns.getHisHer()} string.`;
     }
 
     static noseReplacer() {
@@ -107,4 +110,5 @@ export class DefaultRace extends Name {
 
 
 }
+
 setClassMapping('x', X);

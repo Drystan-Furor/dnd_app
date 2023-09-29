@@ -4,7 +4,10 @@ import {setClassMapping} from "./factory/classMapping";
 export class Bugbear extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
-        Name.initializeProperties(this, dndRace, genderNouns);
+        this.lastname = this._lastname();
+        this.firstname = this._firstname(genderNouns);
+        this.nickname = this._lastname();
+        this.description = this._description(dndRace, genderNouns);
     }
 
     _lastname() {
