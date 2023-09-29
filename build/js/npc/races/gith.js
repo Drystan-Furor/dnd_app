@@ -11,12 +11,12 @@ export class Gith extends Name {
      */
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
-        dndRace = this._subClass();
-        this.firstname = this._firstname(dndRace, genderNouns);
+        dndRace.setRace(this._subClass());
+        this.firstname = this._firstname(dndRace.getRace(), genderNouns);
         this.nickname = this.firstname;
-        this.lastname = this._lastname(dndRace);
+        this.lastname = this._lastname(dndRace.getRace());
 
-        this.description = this._description(dndRace, genderNouns);
+        this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
     _subClass() {

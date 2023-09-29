@@ -9,7 +9,7 @@ export class Aarakocra extends Name {
         this.lastname = this._lastname();
         this.firstname = this._firstname();
         this.nickname = this.lastname;
-        this.description = this._description(dndRace, genderNouns);
+        this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
     _lastname() {

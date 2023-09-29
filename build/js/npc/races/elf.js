@@ -5,12 +5,12 @@ import {filterClassMapping, getRandomElement} from "./factory/utility";
 export class Elf extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
-        dndRace = Elf._subclass();
+        dndRace.setRace(Elf._subclass());
         this.lastname = this._lastname();
         this.firstname = this._firstname(genderNouns);
         this.nickname = this._nickname();
-        this.description = this._description(dndRace, genderNouns);
-        if (dndRace === "Drow") {
+        this.description = this._description(dndRace.getRace(), genderNouns);
+        if (dndRace.getRace() === "Drow") {
             this._drow(dndRace, genderNouns);
         }
     }
@@ -76,13 +76,13 @@ export class Elf extends Name {
     }
 
     _drow(dndRace, genderNouns) {
-        const drow = 'Drow'
-        const filteredMapping = filterClassMapping(classMapping, drow);
-        const ClassReference = filteredMapping[drow];
+        dndRace.setRace('Drow');
+        const filteredMapping = filterClassMapping(classMapping, dndRace.getRace());
+        const ClassReference = filteredMapping[dndRace.getRace()];
         if (!ClassReference && typeof ClassReference.constructor === 'function') {
             return false;
         }
-        return new ClassReference(drow, genderNouns).getLastname();
+        return new ClassReference(dndRace, genderNouns).getLastname();
     }
 }
 setClassMapping('Elf', Elf);

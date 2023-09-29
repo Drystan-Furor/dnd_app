@@ -2,6 +2,7 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 import {Firbolg} from "./firbolg";
 import {Race} from "../properties/race";
+import {getRandomElement} from "./factory/utility";
 
 export class Genasi extends Name {
     constructor(dndRace, genderNouns) {
@@ -12,11 +13,12 @@ export class Genasi extends Name {
         this.lastname = biography.getLastname();
         this.firstname = this._firstname(genderNouns);
         this.nickname = this._nickname(subRace);
-        this.description = this._description(dndRace, genderNouns);
+        this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
     _heritage() {
         let heritage = Race.raceArray();
+        heritage = getRandomElement(heritage)
         if (heritage === 'Genasi') {
             heritage = Race.raceArray();
         }

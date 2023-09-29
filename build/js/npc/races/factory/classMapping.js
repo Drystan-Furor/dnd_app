@@ -24,6 +24,7 @@ export const classMapping = {
     Firbolg:null,
     Genasi:null,
     Gith:null,
+    Gnome:null,
 
     Tiefling:null,
     // ... other class mappings

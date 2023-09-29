@@ -5,9 +5,9 @@ function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 export class Age extends Race {
-    constructor(dndrace) {
+    constructor(race) {
         super(); // Call the constructor of the parent class (Race)
-        this.age = this._defineAge(dndrace);
+        this.age = this._defineAge(race);
     }
 
     setAge(age) {
@@ -88,13 +88,11 @@ export class Age extends Race {
         return age;
     }
 
-    _defineAge(dndRace, genderNouns) {
-        const ClassReference = classMapping[dndRace];
+    _defineAge(race, genderNouns) {
+        const ClassReference = classMapping[race];
         if (ClassReference && typeof ClassReference.ageReplacer === 'function') {
-            return ClassReference.ageReplacer(dndRace, genderNouns);
+            return ClassReference.ageReplacer(race, genderNouns);
         }
-        return Age.defineDefaultAge(dndRace);
+        return Age.defineDefaultAge(race);
     }
 }
-
-

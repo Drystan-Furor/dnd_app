@@ -2,12 +2,12 @@ import * as Races from '../';
 // This will now import all exported members from npc/races/index.js
 
 export class RaceFactory {
-    static createRace(dndRace, genderNouns) {
-        let race = convertRaceName(dndRace);
-        let className = race.charAt(0).toUpperCase() + race.slice(1);
+    static createRace(race, genderNouns) {
+        let dndRace = convertRaceName(race.getRace());
+        let className = dndRace.charAt(0).toUpperCase() + dndRace.slice(1);
         if (!Races[className]) {
-            console.warn(`Race ${race} does not exist. Using a default race.`);
-            return new Races.Elf(race, genderNouns); // Return an instance of a default race
+            console.warn(`Race ${dndRace} does not exist. Using a default race.`);
+            return new Races.Gnome(race, genderNouns); // Return an instance of a default race
             // throw new Error(`Race ${race} does not exist`);
         }
         return new Races[className](race, genderNouns);

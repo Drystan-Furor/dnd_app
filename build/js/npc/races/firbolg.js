@@ -9,7 +9,7 @@ export class Firbolg extends Name {
         this.lastname = biography.getLastname();
         this.firstname = biography.getFirstname();
         this.nickname = this._nickname();
-        this.description = this._description(dndRace, genderNouns);
+        this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
     _nickname() {

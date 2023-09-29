@@ -8,7 +8,7 @@ export class Centaur extends Name {
         this.lastname = this._lastname();
         this.firstname = this._firstname(genderNouns);
         this.nickname = this.firstname;
-        this.description = this._description(dndRace, genderNouns);
+        this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
     _lastname() {
