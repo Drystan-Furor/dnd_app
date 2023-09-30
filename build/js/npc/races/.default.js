@@ -107,8 +107,5 @@ export class DefaultRace extends Name {
         const feet = feet[Math.floor(Math.random() * feet.length)];
         return `string  ${feet} feet.`;
     }
-
-
 }
-
 setClassMapping('x', X);

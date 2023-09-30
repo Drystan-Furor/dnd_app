@@ -32,7 +32,7 @@ export class DndNpcRng {
         this.genderNouns = new Gender();
         // Race
         const race = new Race();
-        race.setRace("Goblin");
+        race.setRace("Goliath");
         console.warn(race.getRace());
         // Age
         this.age = new Age(race);
@@ -105,9 +105,9 @@ export class DndNpcRng {
             + " " + "that's about " + npc.age + " years old. " + " " + ucfirst(npc.intro) + ". "
             + npc.description + ". " + npc.weapon + ". ";
         // appearance
-        let string2 = npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3 + ". ";
+        let string2 = npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3;
         // attire
-        let string3 = npc.body + ". " + npc.outfit +  npc.mood + ". ";
+        let string3 = npc.body + ". " + npc.outfit + npc.mood + ". ";
 
         return {
             string1, string2, string3

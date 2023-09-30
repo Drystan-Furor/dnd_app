@@ -1,6 +1,6 @@
 import {Verbs} from "./verbs";
 
-export  class Scar {
+export class Scar {
     constructor(dndRace, genderNouns) {
         this.scar = Scar.scar(dndRace, genderNouns);
     }
