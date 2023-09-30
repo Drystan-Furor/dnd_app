@@ -1,12 +1,9 @@
 export class Race {
     constructor() {
-        //this.dndrace = Homebrew.setHomebrew(); // Assuming Homebrew is another class or object
         this.racesArray = Race.raceArray();
-
-        this.dndrace = Race.randomRace(this.racesArray);
+        this.dndRace = Race.randomRace(this.racesArray);
         this.heritage = Race.setHeritage(this.racesArray);
         this.variant = this.dndRace;
-        // this.racesArray = Race._updateRaceArray(this.dndrace, this.racesBaseArray);
     }
 
     static raceArray() {
@@ -19,17 +16,9 @@ export class Race {
             "Tortle", "Khalastar", "Changeling", "Orc of Eberron", "Shifter",
             "Warforged", "Gith", "Centaur", "Loxodon", "Minotaur",
             "Simic Hybrid", "Vedalkan", "Verdan", "Locathah", "Owlfolk",
-            "Rabbitfolk",
+            "Rabbitfolk","Drow",
         ];
     }
-
-    // static _updateRaceArray(dndrace, array) {
-    //     if (dndrace.toLowerCase() === "drow") {
-    //         array.push("Drow");
-    //         return array;
-    //     }
-    //     return array;
-    // }
 
     static randomFromArray(array) {
         const randomIndex = Math.floor(Math.random() * array.length);
@@ -41,22 +30,21 @@ export class Race {
     }
 
     static setHeritage(array) {
-        let heritage = Race.randomFromArray(array);
+        let heritage = Race.randomRace(array);
         const exceptions = ["Genasi", "Yuan-Ti Pureblood", "Simic Hybrid"];
         while (exceptions.includes(heritage)) {
-            heritage = Race.randomFromArray(array);
+            heritage = Race.randomRace(array);
         }
         return heritage;
     }
 
-    static isRaceInRaceArray(dndrace) {
-        return Race.raceArray().includes(dndrace);
+    static isRaceInRaceArray(dndRace) {
+        return Race.raceArray().includes(dndRace);
     }
 
 
-
     getRace() {
-        return this.dndrace;
+        return this.dndRace;
     }
 
     getHeritage() {

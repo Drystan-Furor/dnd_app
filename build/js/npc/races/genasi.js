@@ -12,7 +12,7 @@ export class Genasi extends Name {
         this.lastname = biography.getLastname();
         this.firstname = this._firstname(dndRace.getVariant());
         this.nickname = this._nickname(dndRace.getVariant());
-        this.description = this._description(dndRace.getRace(), genderNouns);
+        this.description = this._description(dndRace, genderNouns);
     }
 
     _variation(dndRace) {
@@ -66,7 +66,7 @@ export class Genasi extends Name {
 
     _description(dndRace, genderNouns) {
         return `However ${genderNouns.getHeShe()} assumed the distinctive name ${this.nickname} to capture 
-        ${genderNouns.getHisHer()} ${dndRace.getHeritage()} heritage as ${this.nickname} is born and raised 
+        ${genderNouns.getHisHer()} ${dndRace.getRace()} heritage as ${this.nickname} is born and raised 
         in a ${this.heritage} society`;
     }
 }

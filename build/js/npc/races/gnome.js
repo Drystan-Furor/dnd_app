@@ -3,13 +3,14 @@ import {Name} from "../properties/name";
 import {getRandomElement} from "./factory/utility";
 
 export class Gnome extends Name {
-    constructor(dndRace, genderNouns) {
-        super(dndRace, genderNouns);
+    constructor(dndRace, genderNouns, age) {
+        super(dndRace, genderNouns, age);
         this._variation(dndRace);
+        this._ageReplacer(dndRace, age)
         this.nickname = this._nickname();
         this.lastname = this._lastname(genderNouns);
         this.firstname = this._firstname(genderNouns);
-        this.description = this._description(dndRace.getRace(), genderNouns);
+        this.description = this._description(dndRace, genderNouns);
     }
 
     _variation(dndRace) {
@@ -79,18 +80,14 @@ export class Gnome extends Name {
     }
 
     _description(dndRace, genderNouns) {
-        return `The ${dndRace} ’s energy and 
+        return `The ${dndRace.getVariant()} ’s energy and 
             enthusiasm for living shines 
             through every inch of ${genderNouns.getHisHer()} tiny body`;
     }
 
-    static ageReplacer(dndRace) {
-        console.log('ageReplacer');
-        console.log(dndRace.getVariant());
+    _ageReplacer(dndRace, age) {
         if (dndRace.getVariant() === "Deep Gnome") {
-            return Math.floor(Math.random() * (250 - 14 + 1)) + 14;
-        } else {
-            return Math.floor(Math.random() * (425 - 14 + 1)) + 14;
+            age.setAge(Math.floor(Math.random() * (250 - 14 + 1)) + 14);
         }
     }
 

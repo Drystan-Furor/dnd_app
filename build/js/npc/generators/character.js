@@ -4,7 +4,6 @@ import {Race} from "../properties/race";
 import {Gender} from "../properties/gender";
 import {Age} from "../properties/age";
 import {Profile} from "./profile";
-import {Name} from "../properties/name";
 import {Body} from "./body";
 import {Mood} from "./mood";
 import {Scar} from "./scars";
@@ -33,9 +32,10 @@ export class DndNpcRng {
         this.genderNouns = new Gender();
         // Race
         const race = new Race();
+        race.setRace("Gnome");
         console.warn(race.getRace());
         // Age
-        this.age = new Age(race).getAge();
+        this.age = new Age(race);
         // Profile -> Face
         this.profile = new Profile(race.getRace(),this.genderNouns,this.npcClass);
         // Body
@@ -51,7 +51,7 @@ export class DndNpcRng {
         // Weapon
         this.weapon = new Weapon(race.getRace());
         // Name
-        const raceInstance = RaceFactory.createRace(race, this.genderNouns, this.age);
+        const biography = RaceFactory.createRace(race, this.genderNouns, this.age);
 
         // Construct object with properties of classes
         return {
@@ -68,7 +68,7 @@ export class DndNpcRng {
             variant: race.getVariant(),
             raceArray: race.getRaceArray(),
             // age
-            age: this.age,
+            age: this.age.getAge(),
             // profile
             face: this.profile.getFace(),
             // body
@@ -86,10 +86,10 @@ export class DndNpcRng {
             intro: status.getIntro(),
             outfit: status.getOutfit(),
             // name
-            firstname: raceInstance.getFirstname(),
-            lastname: raceInstance.getLastname(),
-            nickname: raceInstance.getNickname(),
-            description: raceInstance.getDescription(),
+            firstname: biography.getFirstname(),
+            lastname: biography.getLastname(),
+            nickname: biography.getNickname(),
+            description: biography.getDescription(),
             // weapon
             weapon: this.weapon.getArms(),
             // ... other properties ...
@@ -101,7 +101,7 @@ export class DndNpcRng {
     _writeStory(npc) { // + " " +
         // description
         let string1 = "You meet " + npc.firstname + " " + npc.lastname + ". ";
-        string1 = string1 + "A " + npc.bodySize + " " + npc.gender + " " + npc.dndRace + " " + npc.class
+        string1 += "A " + npc.bodySize + " " + npc.gender + " " + npc.dndRace + " " + npc.class
             + " " + "that's about " + npc.age + " years old. " + " " + ucfirst(npc.intro) + ". "
             + npc.description+ ". ";
         // appearance

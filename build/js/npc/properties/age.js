@@ -1,13 +1,6 @@
-import {Race} from "./race";
-import {classMapping} from "../races/factory/classMapping";
-
-function rand(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-export class Age extends Race {
+export class Age {
     constructor(race) {
-        super(); // Call the constructor of the parent class (Race)
-        this.age = this._defineAge(race);
+        this.age = Age.defaultAge(race);
     }
 
     setAge(age) {
@@ -17,14 +10,7 @@ export class Age extends Race {
     getAge() {
         return this.age;
     }
-
-     static defaultAge(race) {
-        return this.defineDefaultAge(race);
-    }
-
-
-
-    static defineDefaultAge(race) {
+    static defaultAge(race) {
         let age;
         switch (race.getRace()) {
             case "Elf":
@@ -87,12 +73,7 @@ export class Age extends Race {
         }
         return age;
     }
-
-    _defineAge(race, genderNouns) {
-        const ClassReference = classMapping[race];
-        if (ClassReference && typeof ClassReference.ageReplacer === 'function') {
-            return ClassReference.ageReplacer(race, genderNouns);
-        }
-        return Age.defaultAge(race);
-    }
+}
+function rand(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
