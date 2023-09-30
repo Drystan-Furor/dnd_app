@@ -23,3 +23,4 @@ export * from './firbolg';
 export * from './genasi';
 export * from './gith';
 export * from './gnome';
+export * from './goblin';

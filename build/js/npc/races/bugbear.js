@@ -1,11 +1,12 @@
 import {Name} from "../properties/name";
 import {setClassMapping} from "./factory/classMapping";
+import {Goblin} from "./goblin";
 
 export class Bugbear extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
         this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
+        this.firstname = new Goblin(dndRace, genderNouns).getFirstname();
         this.nickname = this._lastname();
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
@@ -17,23 +18,6 @@ export class Bugbear extends Name {
             'Ghurdolk', 'Stun', 'Hrodoth', 'Zirk', 'Stath', 'Bromkk', 'Rizzon',
         ];
         return surnames[Math.floor(Math.random() * surnames.length)];
-    }
-
-    _firstname(new_npc) {
-        let firstname;
-        if (new_npc.getGender() === 'male') {
-            const malenames = ['Driekol', 'Greerkilx', 'Brabtygz', 'Glevzaagz', 'Lognerk', 'Xasb',
-                'Jykeegs', 'Craang', 'Krart', 'Xat', 'Oz', 'Creld', 'Sriogz', 'Fiolx',];
-            firstname = malenames[Math.floor(Math.random() * malenames.length)];
-        }
-
-        if (new_npc.getGender() === 'female') {
-            const femalenames = ['Kuqi', 'Enxa', 'Flihisz', 'Depolm', 'Nunoilee', 'Noxea', 'Frez',
-                'Qeassa', 'Olk', 'Eagansa', 'Srokkaax', 'Gralbianq', 'Hoq',
-                'Gnaalsia', 'Pryhxa',];
-            firstname = femalenames[Math.floor(Math.random() * femalenames.length)];
-        }
-        return firstname;
     }
 
     _nickname() {
