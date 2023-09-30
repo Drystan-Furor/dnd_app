@@ -32,12 +32,12 @@ export class DndNpcRng {
         this.genderNouns = new Gender();
         // Race
         const race = new Race();
-        race.setRace("Gnome");
+        race.setRace("Goblin");
         console.warn(race.getRace());
         // Age
         this.age = new Age(race);
         // Profile -> Face
-        this.profile = new Profile(race.getRace(),this.genderNouns,this.npcClass);
+        this.profile = new Profile(race.getRace(), this.genderNouns, this.npcClass);
         // Body
         const body = new Body(race.getRace(), this.genderNouns);
         // Mood
@@ -103,14 +103,14 @@ export class DndNpcRng {
         let string1 = "You meet " + npc.firstname + " " + npc.lastname + ". ";
         string1 += "A " + npc.bodySize + " " + npc.gender + " " + npc.dndRace + " " + npc.class
             + " " + "that's about " + npc.age + " years old. " + " " + ucfirst(npc.intro) + ". "
-            + npc.description+ ". ";
+            + npc.description + ". " + npc.weapon + ". ";
         // appearance
-        let string2 = npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3 + npc.body + ". ";
+        let string2 = npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3 + ". ";
         // attire
-        let string3 = npc.outfit + npc.weapon + ". " + npc.mood + ". ";
+        let string3 = npc.body + ". " + npc.outfit +  npc.mood + ". ";
 
-        return  {
-            string1,string2,string3
+        return {
+            string1, string2, string3
         };
     }
 }
