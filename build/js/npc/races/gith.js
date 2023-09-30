@@ -1,5 +1,6 @@
 import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
+import {getRandomElement} from "./factory/utility";
 
 export class Gith extends Name {
     /**
@@ -11,42 +12,41 @@ export class Gith extends Name {
      */
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
-        dndRace.setRace(this._subClass());
-        this.firstname = this._firstname(dndRace.getRace(), genderNouns);
+        this._variation(dndRace);
+        this.firstname = this._firstname(dndRace.getVariant(), genderNouns);
         this.nickname = this.firstname;
-        this.lastname = this._lastname(dndRace.getRace());
-
-        this.description = this._description(dndRace.getRace(), genderNouns);
+        this.lastname = this._lastname(dndRace.getVariant());
+        this.description = this._description(dndRace.getVariant(), genderNouns);
     }
 
-    _subClass() {
-        const githRaces = [
+    _variation(dndRace) {
+        const variant = [
             'Githyanki', 'Githzerai', 'Githvyrik'
         ];
-        return githRaces[Math.floor(Math.random() * githRaces.length)];
+        dndRace.setVariant(getRandomElement(variant));
     }
 
-    _lastname(dndRace) {
+    _lastname(variant) {
         let description;
-        switch (dndRace) {
+        switch (variant) {
             case 'Githyanki':
-                description = ` the ${dndRace}, they use history and metaphors pertaining to war as well as battle and are named after grand warriors, in this case: ${this.nickname}`;
+                description = ` the ${variant}, they use history and metaphors pertaining to war as well as battle and are named after grand warriors, in this case: ${this.nickname}`;
                 break;
             case 'Githzerai':
-                description = ` the ${dndRace}, they use history and metaphors pertaining to lore as well as learning and are named after spiritual leaders and philosophers, in this case: ${this.nickname}`;
+                description = ` the ${variant}, they use history and metaphors pertaining to lore as well as learning and are named after spiritual leaders and philosophers, in this case: ${this.nickname}`;
                 break;
             default:
-                description = ` the ${dndRace}, they do not identify as either Githyanki or Githzerai but are named based on mathematics and chaos just like the arcane and psionic powers from Vhostym, also known as Sojourner, in this case: ${this.nickname}`;
+                description = ` the ${variant}, they do not identify as either Githyanki or Githzerai but are named based on mathematics and chaos just like the arcane and psionic powers from Vhostym, also known as Sojourner, in this case: ${this.nickname}`;
         }
         return description;
     }
 
-    _firstname(dndRace, genderNouns) {
+    _firstname(variant, genderNouns) {
         const rand = Math.floor(Math.random() * 2) + 1;
         let firstname;
         const gender = genderNouns.getGender();
-        const isGithyankiOrGithvyrik = (dndRace === 'Githyanki' || (dndRace === 'Githvyrik' && rand === 1));
-        const isGithzeraiOrGithvyrik = (dndRace === 'Githzerai' || (dndRace === 'Githvyrik' && rand === 2));
+        const isGithyankiOrGithvyrik = (variant === 'Githyanki' || (variant === 'Githvyrik' && rand === 1));
+        const isGithzeraiOrGithvyrik = (variant === 'Githzerai' || (variant === 'Githvyrik' && rand === 2));
         const getSurname = (surnames) => surnames[Math.floor(Math.random() * surnames.length)];
 
         if (isGithyankiOrGithvyrik) {
@@ -108,7 +108,7 @@ export class Gith extends Name {
         const skinTones = ['greenish', 'brownish'];
         const skinTone = skinTones[Math.floor(Math.random() * skinTones.length)];
 
-        description += ` ${this.nickname} looks emaciated, has a pale yellow skin with ${skinTone} tones, and a long, angular skull with pointed ears.`;
+        description += ` ${this.nickname} looks emaciated, has a pale yellow skin with ${skinTone} tones, and a long, angular skull with pointed ears`;
 
         return description;
     }

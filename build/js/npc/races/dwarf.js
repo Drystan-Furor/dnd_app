@@ -56,7 +56,7 @@ export class Dwarf extends Name {
             "a worker of metal",
         ];
         const string = getRandomElement(knownAs);
-        return `Bold, hardy and shorter then average humans, ${this.nickname} is known as ${string}.`;
+        return `Bold, hardy and shorter then average humans, ${this.nickname} is known as ${string}`;
     }
 
     static bodySizeReplacer() {

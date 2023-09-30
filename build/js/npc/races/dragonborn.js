@@ -46,7 +46,7 @@ export class Dragonborn extends Name {
     _description(dndRace, new_npc) {
         return `${dndRace} look very much like dragons standing erect
     in humanoid form, though ${this.firstname} lack wings or a tail. The clans ancestry
-    gives ${this.lastname} a.` + Dragonborn.generateAncestry();
+    gives ${this.lastname} a ` + Dragonborn.generateAncestry();
     }
 
     static generateAncestry() {

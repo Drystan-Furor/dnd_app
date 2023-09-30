@@ -53,7 +53,7 @@ export class Drow extends Name {
 
     _description(dndrace, new_npc) {
         return `${this.nickname} hails from a dark-skinned sub-race of
-    elves that predominantly live in the Underdark.`;
+    elves that predominantly live in the Underdark`;
     }
 }
 setClassMapping('Drow', Drow);

@@ -43,7 +43,7 @@ export class Bugbear extends Name {
     _description(dndrace, new_npc) {
         return dndrace + 's are hairy goblinoids born for battle and mayhem.' +
             'They survive by raiding and hunting, but are fond of setting ambushes' +
-            'and fleeing when outmatched.';
+            'and fleeing when outmatched';
     }
 }
 setClassMapping('Bugbear', Bugbear);

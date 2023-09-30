@@ -26,7 +26,7 @@ export class Firbolg extends Name {
         return `${dndRace} don't really use names, the concept of it is peculiar to them. 
         They will take elven names when dealing with outsiders however, 
         and they'll also use nicknames they might be given by others. 
-        Everything else in their lives is usually referred to by their actions. The ${dndRace} is nicknamed ${this.nickname}.`;
+        Everything else in their lives is usually referred to by their actions. The ${dndRace} is nicknamed ${this.nickname}`;
     }
 
 

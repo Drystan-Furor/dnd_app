@@ -6,8 +6,8 @@ import {Rings} from "../clothing/accessoiries/rings";
 import {Jewelry} from "../clothing/accessoiries/jewelry";
 import {Hats} from "../clothing/accessoiries/hats";
 export class Commoner  {
-    constructor(heShe, npcClass, dndRace) {
-        this.outfit = this.clothes(heShe, npcClass, dndRace);
+    constructor(genderNouns, npcClass, dndRace) {
+        this.outfit = this.clothes(genderNouns, npcClass, dndRace);
         this.intro = this.intros();
     }
 
@@ -35,7 +35,8 @@ export class Commoner  {
         return clothes[Math.floor(Math.random() * clothes.length)];
     }
 
-    clothes(heShe, npcClass, dndRace) {
+    clothes(genderNouns, npcClass, dndRace) {
+        const heShe = genderNouns.getHeShe();
         const belt = new Belts().getBelt();
         const hat = new Hats(heShe).getHat();
         const shoes = new Shoes(dndRace).getShoes();

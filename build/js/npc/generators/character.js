@@ -30,104 +30,68 @@ export class DndNpcRng {
         // Class
         this.npcClass = new NpcClass().getNpcClass();
         // Nouns
-        const genderNouns = new Gender();
-        this.manWoman = genderNouns.getManWoman()
-        this.heShe = genderNouns.getHeShe()
-        this.hisHer = genderNouns.getHisHer()
-        this.gender = genderNouns.getGender();
+        this.genderNouns = new Gender();
         // Race
-        // const race = new Race();
         const race = new Race();
-        this.origin = race.getOrigin();
-        this.raceArray = race.getRaceArray(); //passed drow check
-        // this.dndRace = race.getRace();
-        this.dndRace = "Gnome";
-        console.warn(this.dndRace);
-
+        console.warn(race.getRace());
         // Age
         this.age = new Age(race).getAge();
         // Profile -> Face
-        const face = new Profile(
-            this.dndRace,
-            genderNouns,
-            this.npcClass
-        );
-        this.face = face.getFace();
+        this.profile = new Profile(race.getRace(),this.genderNouns,this.npcClass);
         // Body
-        const body = new Body(this.dndRace, genderNouns);
-        this.bodySize = body.getBodySize();
-        this.bodyType = body.getBodyType();
-        this.bodyShape = body.getBodyShape();
-        this.body = body.getBody();
+        const body = new Body(race.getRace(), this.genderNouns);
         // Mood
-        this.mood = new Mood(this.npcClass).getMood();
+        this.mood = new Mood(this.npcClass);
         // Scars
-        let scar = new Scar(this.dndRace, genderNouns);
-        this.scar1 = scar.getScar();
-        scar = new Scar(this.dndRace, genderNouns);
-        this.scar2 = scar.getScar();
-        scar = new Scar(this.dndRace, genderNouns);
-        this.scar3 = scar.getScar();
+        this.scar1 = new Scar(race.getRace(), this.genderNouns).getScar();
+        this.scar2 = new Scar(race.getRace(), this.genderNouns).getScar();
+        this.scar3 = new Scar(race.getRace(), this.genderNouns).getScar();
         // Status && Clothing
-        const outfit = new Status(this.heShe, this.npcClass, this.dndRace);
-        this.intro = outfit.getIntro();
-        this.outfit = outfit.getOutfit();
+        const status = new Status(this.genderNouns, this.npcClass, race.getRace());
         // Weapon
-        this.weapon = new Weapon(this.dndRace).getArms();
-
-
+        this.weapon = new Weapon(race.getRace());
         // Name
-        // the constructor requires 4 values
-        // -> explore to make users enter their own name.
-        const raceInstance = RaceFactory.createRace(race, genderNouns);
-        const name = new Name(
-            raceInstance, genderNouns,
-            this.raceArray, this.age,
-            this.origin
-        );
-        this.firstname = raceInstance.getFirstname();
-        this.lastname = raceInstance.getLastname();
-        this.nickname = raceInstance.getNickname();
-        this.description = raceInstance.getDescription();
+        const raceInstance = RaceFactory.createRace(race, this.genderNouns, this.age);
 
         // Construct object with properties of classes
         return {
             // class
             class: this.npcClass,
             // nouns
-            gender: this.gender,
-            manWoman: this.manWoman,
-            heShe: this.heShe,
-            hisHer: this.hisHer,
+            gender: this.genderNouns.getGender(),
+            manWoman: this.genderNouns.getManWoman(),
+            heShe: this.genderNouns.getHeShe(),
+            hisHer: this.genderNouns.getHisHer(),
             // race
-            dndRace: this.dndRace,
-            origin: this.origin,
-            raceArray: this.raceArray,
+            dndRace: race.getRace(),
+            heritage: race.getHeritage(),
+            variant: race.getVariant(),
+            raceArray: race.getRaceArray(),
             // age
             age: this.age,
             // profile
-            face: this.face,
+            face: this.profile.getFace(),
             // body
-            bodySize: this.bodySize,
-            bodyType: this.bodyType,
-            bodyShape: this.bodyShape,
-            body: this.body,
+            bodySize: body.getBodySize(),
+            bodyType: body.getBodyType(),
+            bodyShape: body.getBodyShape(),
+            body: body.getBody(),
             // mood
-            mood: this.mood,
+            mood: this.mood.getMood(),
             // scars
             scar1: this.scar1,
             scar2: this.scar2,
             scar3: this.scar3,
             // status && clothing
-            intro: this.intro,
-            outfit: this.outfit,
+            intro: status.getIntro(),
+            outfit: status.getOutfit(),
             // name
-            firstname: this.firstname,
-            lastname: this.lastname,
-            nickname: this.nickname,
-            description: this.description,
+            firstname: raceInstance.getFirstname(),
+            lastname: raceInstance.getLastname(),
+            nickname: raceInstance.getNickname(),
+            description: raceInstance.getDescription(),
             // weapon
-            weapon: this.weapon,
+            weapon: this.weapon.getArms(),
             // ... other properties ...
             // const subject = Sentence.subject()
         };

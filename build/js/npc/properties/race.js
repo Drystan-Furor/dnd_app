@@ -4,7 +4,8 @@ export class Race {
         this.racesArray = Race.raceArray();
 
         this.dndrace = Race.randomRace(this.racesArray);
-        this.origin = Race.setHeritage(this.racesArray);
+        this.heritage = Race.setHeritage(this.racesArray);
+        this.variant = this.dndRace;
         // this.racesArray = Race._updateRaceArray(this.dndrace, this.racesBaseArray);
     }
 
@@ -20,11 +21,6 @@ export class Race {
             "Simic Hybrid", "Vedalkan", "Verdan", "Locathah", "Owlfolk",
             "Rabbitfolk",
         ];
-    }
-
-    setRace(dndrace) {
-        this.dndrace = dndrace;
-        return this.dndrace;
     }
 
     // static _updateRaceArray(dndrace, array) {
@@ -63,12 +59,29 @@ export class Race {
         return this.dndrace;
     }
 
-    getOrigin() {
-        return this.origin;
+    getHeritage() {
+        return this.heritage;
+    }
+
+    getVariant() {
+        return this.variant;
     }
 
     getRaceArray() {
         return this.racesArray;
     }
+
+    setRace(dndRace) {
+        this.dndRace = dndRace;
+    }
+
+    setHeritage(heritage) {
+        this.heritage = heritage;
+    }
+
+    setVariant(variant) {
+        this.variant = variant;
+    }
 }
+
 

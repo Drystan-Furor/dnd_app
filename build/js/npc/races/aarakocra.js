@@ -34,7 +34,7 @@ export class Aarakocra extends Name {
     _description(dndRace, genderNouns) {
         return `From below, the ${dndRace} look much like a large bird. 
         Only when ${this.lastname} descends to roost on a branch or walk across the 
-        ground does ${genderNouns.getHisHer()} humanoid appearance reveal itself.`;
+        ground does ${genderNouns.getHisHer()} humanoid appearance reveal itself`;
     }
 
     static mouthReplacer() { // tomia

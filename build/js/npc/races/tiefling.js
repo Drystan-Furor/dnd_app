@@ -7,7 +7,7 @@ export class Tiefling extends Name {
         this.lastname = this._lastname();
         this.firstname = this._firstname(genderNouns);
         this.nickname = this.lastname;
-        this.description = this._description(dndRace, genderNouns);
+        this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
     _lastname() {
@@ -40,11 +40,11 @@ export class Tiefling extends Name {
         return firstname;
     }
 
-    _description(dndrace, new_npc) {
+    _description(dndRace, new_npc) {
         return `To be greeted with stares and whispers, 
     to suffer violence and insult on the street,
     to see mistrust and fear in every eye:
-        this is the lot of the ${dndrace}.`;
+        this is the lot of the ${dndRace}`;
     }
 
 }

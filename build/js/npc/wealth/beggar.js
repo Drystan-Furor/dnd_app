@@ -5,8 +5,8 @@ import {Verbs} from "../generators/verbs";
 import {Rings as Ring, Rings} from "../clothing/accessoiries/rings";
 
 export class Beggar {
-    constructor(heShe, npcClass, dndRace) {
-        this.outfit = this.clothes(heShe, npcClass, dndRace);
+    constructor(genderNouns, npcClass, dndRace) {
+        this.outfit = this.clothes(genderNouns, npcClass, dndRace);
         this.intro = Beggar.intro();
     }
 
@@ -30,10 +30,11 @@ export class Beggar {
         return weathered[Math.floor(Math.random() * weathered.length)];
     }
 
-    clothes(heShe, npcClass, dndRace) {
+    clothes(genderNouns, npcClass, dndRace) {
         const belt = new Belts().getBelt();
         const shoes = new Shoes(dndRace).getShoes();
         const ring = new Ring().getRing();
+        const heShe = genderNouns.getHeShe();
 
         return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.weathered()} ${this.constructor.outfits()} made of ${this.constructor.textiles()}, ${this.constructor.outfitDetails()} and a ${this.constructor.weathered()} ${belt}. ${Sentence.observing()} ${npcClass} ${Verbs.holding()} ${ring}. ${shoes}`;
     }

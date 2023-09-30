@@ -28,16 +28,16 @@ export class Changeling extends Name {
         const strings = [
             "Passer, a changeling who wishes to fit in with conventional society" +
             "and live life in only one form or at least suppress the" +
-            "shape-changing ability to better fit in with the society.",
+            "shape-changing ability to better fit in with the society",
 
             "Becomer, " + genderNouns.getHeShe() + " believes that to be a changeling is to" +
             "possess many different shapes and often different identities and lives altogether." +
             "This becomer takes the concept of a dual life to a whole new degree and successfully " +
-            "lives as several 'different people'.",
+            "lives as several 'different people'",
 
             "Seeker or 'reality seeker', and is convinced that a great truth exists which only the " +
             "changelings can discover; " + genderNouns.getHeShe() + " suppresses " + genderNouns.getHisHer() + "" +
-            " shapechanging abilities and prefers to live or socialize with other changelings.",
+            " shapechanging abilities and prefers to live or socialize with other changelings",
         ];
         const string = getRandomElement(strings);
         return this.lastname + " is a " + string;

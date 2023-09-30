@@ -1,7 +1,7 @@
 import { RaceFactory } from '../races/factory/racefactory';
 
 export class Name {
-    constructor(race, genderNouns, raceArray, age, origin) {
+    constructor(race, genderNouns, age) {
         this.race = race;
         this.genderNouns = genderNouns;
         this.firstname = "Ernest"; // default

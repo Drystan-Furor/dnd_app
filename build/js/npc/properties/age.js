@@ -18,15 +18,15 @@ export class Age extends Race {
         return this.age;
     }
 
-     defaultAge(dndrace) {
-        return this.defineDefaultAge(dndrace);
+     static defaultAge(race) {
+        return this.defineDefaultAge(race);
     }
 
 
 
-    static defineDefaultAge(dndrace) {
+    static defineDefaultAge(race) {
         let age;
-        switch (dndrace) {
+        switch (race.getRace()) {
             case "Elf":
                 age = rand(14, 750);
                 break;
@@ -93,6 +93,6 @@ export class Age extends Race {
         if (ClassReference && typeof ClassReference.ageReplacer === 'function') {
             return ClassReference.ageReplacer(race, genderNouns);
         }
-        return Age.defineDefaultAge(race);
+        return Age.defaultAge(race);
     }
 }

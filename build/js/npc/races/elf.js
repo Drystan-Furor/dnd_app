@@ -63,7 +63,7 @@ export class Elf extends Name {
 
     _description(dndrace, new_npc) {
         return `Any ${dndrace} comes from a magical people of otherworldly grace, 
-        living in the world but not entirely part of it.`;
+        living in the world but not entirely part of it`;
     }
 
 

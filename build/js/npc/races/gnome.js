@@ -1,23 +1,22 @@
 import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
+import {getRandomElement} from "./factory/utility";
 
 export class Gnome extends Name {
-    constructor(race, genderNouns) {
-        super(race, genderNouns);
-        const subClass = this._subClass();
-        race.setRace(subClass);
+    constructor(dndRace, genderNouns) {
+        super(dndRace, genderNouns);
+        this._variation(dndRace);
         this.nickname = this._nickname();
-
         this.lastname = this._lastname(genderNouns);
         this.firstname = this._firstname(genderNouns);
-        this.description = this._description(race.getRace(), genderNouns);
+        this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
-    _subClass() {
-        const gnomeRaces = [
+    _variation(dndRace) {
+        const variant = [
             "Forest Gnome", "Rock Gnome", "Deep Gnome",
         ];
-        return gnomeRaces[Math.floor(Math.random() * gnomeRaces.length)];
+        dndRace.setVariant(getRandomElement(variant));
     }
 
     _lastname(genderNouns) {
@@ -29,7 +28,7 @@ export class Gnome extends Name {
         return `${lastname} but ${genderNouns.getHeShe()} is called ${this.nickname}`;
     }
 
-    _firstname(new_npc) {
+    _firstname(genderNouns) {
         const getFirstName = (names) => {
             let firstnames = [];
             for (let i = 0; i < 6; i++) {
@@ -48,7 +47,7 @@ export class Gnome extends Name {
                 names[firstnames[5]] + " ";
         }
 
-        const gender = new_npc.getGender();
+        const gender = genderNouns.getGender();
         if (gender === 'male') {
             const gnomeMaleNames = [
                 'Alston', 'Alvyn', 'Boddynock', 'Brocc', 'Burgell',
@@ -82,13 +81,13 @@ export class Gnome extends Name {
     _description(dndRace, genderNouns) {
         return `The ${dndRace} ’s energy and 
             enthusiasm for living shines 
-            through every inch of ${genderNouns.getHisHer()} tiny body.`;
+            through every inch of ${genderNouns.getHisHer()} tiny body`;
     }
 
     static ageReplacer(dndRace) {
         console.log('ageReplacer');
-        console.log(dndRace);
-        if (dndRace.getRace() === "Deep Gnome") {
+        console.log(dndRace.getVariant());
+        if (dndRace.getVariant() === "Deep Gnome") {
             return Math.floor(Math.random() * (250 - 14 + 1)) + 14;
         } else {
             return Math.floor(Math.random() * (425 - 14 + 1)) + 14;

@@ -7,39 +7,29 @@ import {getRandomElement} from "./factory/utility";
 export class Genasi extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
-        this.heritage = this._heritage();
-        const subRace = this._subClass();
+        this._variation(dndRace);
         const biography = new Firbolg(dndRace, genderNouns);
         this.lastname = biography.getLastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this._nickname(subRace);
+        this.firstname = this._firstname(dndRace.getVariant());
+        this.nickname = this._nickname(dndRace.getVariant());
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
-    _heritage() {
-        let heritage = Race.raceArray();
-        heritage = getRandomElement(heritage)
-        if (heritage === 'Genasi') {
-            heritage = Race.raceArray();
-        }
-        return heritage
-    }
-    _subClass() {
-        const genasiRaces = [
+    _variation(dndRace) {
+        const variant = [
             "Fire Genasi", "Air Genasi", "Earth Genasi", "Water Genasi",
         ];
-        return genasiRaces[Math.floor(Math.random() * genasiRaces.length)];
+        dndRace.setVariant(getRandomElement(variant));
     }
 
-
-    _firstname(subRace)
+    _firstname(variant)
     {
-        return " the " + subRace + " " + this.nickname;
+        return " the " + variant + " " + this.nickname;
     }
 
-    _nickname(subRace) {
+    _nickname(variant) {
         let nickname;
-        switch (subRace) {
+        switch (variant) {
             case "Fire Genasi":
                 const fireSurnames = [
                     'Flame', 'Ember', 'Blaze', 'Flare', 'Flash', 'Wildfire',
@@ -69,15 +59,15 @@ export class Genasi extends Name {
                 nickname = waterSurnames[Math.floor(Math.random() * waterSurnames.length)];
                 break;
             default:
-                console.warn(`SubRace ${subRace} does not have a nickname list.`);
+                console.warn(`SubRace ${variant} does not have a nickname list.`);
         }
         return nickname;
     }
 
     _description(dndRace, genderNouns) {
         return `However ${genderNouns.getHeShe()} assumed the distinctive name ${this.nickname} to capture 
-        ${genderNouns.getHisHer()} Genasi heritage as ${this.nickname} is born and raised in a ${this.heritage} society.`;
+        ${genderNouns.getHisHer()} ${dndRace.getHeritage()} heritage as ${this.nickname} is born and raised 
+        in a ${this.heritage} society`;
     }
-
 }
 setClassMapping('Genasi', Genasi);

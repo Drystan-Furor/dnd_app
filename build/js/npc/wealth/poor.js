@@ -2,8 +2,8 @@ import {Belts} from "../clothing/accessoiries/belts";
 import {Shoes} from "../clothing/accessoiries/shoes";
 import {Hats} from "../clothing/accessoiries/hats";
 export class Poor {
-    constructor(heShe, npcClass, dndRace) {
-        this.outfit = this.clothes(heShe, npcClass, dndRace);
+    constructor(genderNouns, npcClass, dndRace) {
+        this.outfit = this.clothes(genderNouns, npcClass, dndRace);
         this.intro = this.intros();
     }
 
@@ -31,10 +31,12 @@ export class Poor {
         return clothes[Math.floor(Math.random() * clothes.length)];
     }
 
-    clothes(heShe, npcClass, dndRace) {
+    clothes(genderNouns, npcClass, dndRace) {
+        const heShe = genderNouns.getHeShe();
         const belt = new Belts().getBelt();
         const hat = new Hats(heShe).getHat();
         const shoes = new Shoes(dndRace).getShoes();
+
 
         return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.clothing()} and a ${belt}. ${shoes} ${hat}`;
     }
