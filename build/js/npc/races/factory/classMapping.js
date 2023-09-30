@@ -31,7 +31,6 @@ export const classMapping = {
 
     Tiefling:null,
     // ... other class mappings
-
 };
 
 export function setClassMapping(key, value) {
