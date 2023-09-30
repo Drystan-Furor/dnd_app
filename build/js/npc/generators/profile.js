@@ -93,9 +93,7 @@ export class Profile {
         if (communication2 === communication1) {
             communication2 = Verbs.getCommunication();
         }
-
         const teethString = ucFirst(Verbs.getMoment()) + " the " + race + " " + communication1 + " or " + communication2 + ", you " + Verbs.getObservation() + " " + heshe + " " + this.teeth;
-        ;
 
         function constructRandomFace() {
             const sentences = [
