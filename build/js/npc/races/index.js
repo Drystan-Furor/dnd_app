@@ -29,4 +29,5 @@ export * from './goliath';
 export * from './halfelf';
 export * from './halfling';
 export * from './halforc';
+export * from './hobgoblin';
 
