@@ -74,7 +74,7 @@ export class Profile {
         ];
 
         const mouthChinString = [
-            "As you " + Verbs.getObservation() + " the " + manWoman + ", you " +
+            "As you " + Verbs.getObservation() + ", you " +
             Verbs.getObservation() + " " + heshe + " has " +
             this.chin + " and " + hisher + " mouth is set with " + this.mouth,
 

@@ -6,6 +6,7 @@ export * from './human/rashemi';
 export * from './human/shou';
 export * from './human/tethyrian';
 export * from './human/turami';
+export * from './human/human';
 
 export * from './aarakocra';
 export * from './aasimar';
@@ -24,6 +25,7 @@ export * from './genasi';
 export * from './gith';
 export * from './gnome';
 export * from './goblin';
-
 export * from './goliath';
+export * from './halfelf';
+export * from './halfling';
 

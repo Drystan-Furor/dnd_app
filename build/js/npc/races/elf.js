@@ -5,7 +5,12 @@ import {filterClassMapping, getRandomElement} from "./factory/utility";
 export class Elf extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
-        dndRace.setRace(Elf._subclass());
+        if (dndRace.getRace()  !== 'Half-Elf') {
+            dndRace.setRace(Elf._subclass());
+        } else {
+            dndRace.setVariant(Elf._subclass());
+        }
+
         this.lastname = this._lastname();
         this.firstname = this._firstname(genderNouns);
         this.nickname = this._nickname();

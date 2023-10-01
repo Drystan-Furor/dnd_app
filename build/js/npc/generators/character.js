@@ -32,7 +32,7 @@ export class DndNpcRng {
         this.genderNouns = new Gender();
         // Race
         const race = new Race();
-        race.setRace("Goliath");
+        race.setRace("Halfling");
         console.warn(race.getRace());
         // Age
         this.age = new Age(race);
@@ -96,7 +96,6 @@ export class DndNpcRng {
             // const subject = Sentence.subject()
         };
     }
-
 
     _writeStory(npc) { // + " " +
         // description

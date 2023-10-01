@@ -118,16 +118,16 @@ function imageExists(image_url, callback) {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    let dynamicImage = document.getElementById('beholder');
-
-    if (dynamicImage) { // Check if element exists
-        dynamicImage.addEventListener('mouseover', function () {
-            dynamicImage.src = 'img/art_beholder.png'; // Path to the hover image
-        });
-
-        dynamicImage.addEventListener('mouseout', function () {
-            dynamicImage.src = 'img/iconbeholder.png'; // Path to the default image
-        });
-    }
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     let dynamicImage = document.getElementById('beholder');
+//
+//     if (dynamicImage) { // Check if element exists
+//         dynamicImage.addEventListener('mouseover', function () {
+//             dynamicImage.src = 'img/art_beholder.png'; // Path to the hover image
+//         });
+//
+//         dynamicImage.addEventListener('mouseout', function () {
+//             dynamicImage.src = 'img/iconbeholder.png'; // Path to the default image
+//         });
+//     }
+// });

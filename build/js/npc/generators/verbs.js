@@ -15,7 +15,7 @@ export class Verbs {
     }
 
     static getObservation() {
-        const observations = ['discern', 'see', 'clearly notice', 'cautiously observe','observe', 'simply spot', 'behold', 'distinguish from a distance', 'discern', 'glimpse', 'mark', 'catch a glimpse that', 'catch sight', 'make out', 'take notice', 'survey', 'seize up', 'examine'];
+        const observations = ['discern', 'see', 'clearly notice', 'cautiously observe','observe', 'simply spot', 'behold', 'distinguish from a distance', 'discern', 'glimpse', 'mark', 'catch a glimpse', 'catch sight', 'make out', 'take notice', 'survey', 'seize up', 'examine'];
         return observations[Math.floor(Math.random() * observations.length)];
     }
 
