@@ -31,3 +31,5 @@ export * from './halfling';
 export * from './halforc';
 export * from './hobgoblin';
 
+export * from './kenku';
+
