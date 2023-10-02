@@ -10,6 +10,7 @@ import {Scar} from "./scars";
 import {Status} from "./status";
 import {Weapon} from "../clothing/accessoiries/weapons";
 import {Verbs} from "./verbs";
+import {Satyr} from "../races";
 
 export class DndNpcRng {
     constructor() {
@@ -33,7 +34,7 @@ export class DndNpcRng {
         this.genderNouns = new Gender();
         // Race
         const race = new Race();
-        race.setRace('Rabbitfolk');
+        race.setRace('Shifter');
 
         // Age
         this.age = new Age(race);

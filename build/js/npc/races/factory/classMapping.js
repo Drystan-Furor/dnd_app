@@ -45,6 +45,9 @@ export const classMapping = {
     Owlfolk:null,
     Rabbitfolk:null,
 
+    Satyr:null,
+    Shifter:null,
+
     Tiefling:null,
     // ... other class mappings
 };

@@ -45,3 +45,6 @@ export * from './orc';
 export * from './owlfolk';
 export * from './rabbitfolk';
 
+export * from './satyr';
+export * from './shifter';
+
