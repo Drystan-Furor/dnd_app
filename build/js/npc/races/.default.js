@@ -17,16 +17,16 @@ export class DefaultRace extends Name {
         return surnames[Math.floor(Math.random() * surnames.length)];
     }
 
-    _firstname(new_npc) {
+    _firstname(genderNouns) {
         let firstname;
-        if (new_npc.getGender() === 'male') {
+        if (genderNouns.getGender() === 'male') {
             const malenames = [
                 'Array'
             ];
             firstname = malenames[Math.floor(Math.random() * malenames.length)];
         }
 
-        if (new_npc.getGender() === 'female') {
+        if (genderNouns.getGender() === 'female') {
             const femalenames = [
                 'Array'
             ];

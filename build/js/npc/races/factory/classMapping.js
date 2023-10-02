@@ -40,6 +40,8 @@ export const classMapping = {
     Leonin:null,
     Lizardfolk:null,
     Loxodon:null,
+    Minotaur:null,
+    Orc:null,
 
     Tiefling:null,
     // ... other class mappings
