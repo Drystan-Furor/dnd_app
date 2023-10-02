@@ -21,7 +21,6 @@ export * from './dwarf';
 export * from './elf';
 export * from './feraltiefling';
 
-export * from './tiefling';
 export * from './firbolg';
 export * from './genasi';
 export * from './gith';
@@ -50,4 +49,8 @@ export * from './shifter';
 export * from './simichybrid';
 export * from './vedalkan';
 export * from './tabaxi';
+export * from './tiefling';
+export * from './tortle';
+export * from './triton';
+
 
