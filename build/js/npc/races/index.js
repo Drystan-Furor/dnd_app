@@ -37,4 +37,5 @@ export * from './kenku';
 export * from './khalastar';
 export * from './kobold';
 export * from './leonin';
+export * from './lizardfolk';
 
