@@ -47,7 +47,7 @@ export class Vedalkan extends Name {
     }
 
     _description(dndRace, genderNouns) {
-        return `string ${dndRace.getRace()} s are largely humanoid, besides ${genderNouns.getHisHer()} 
+        return `${dndRace.getRace()}s are largely humanoid, besides ${genderNouns.getHisHer()} 
         blue skin the most notable outward feature of ${this.nickname} is ${genderNouns.getHisHer()} lack of 
         external ears`;
     }
