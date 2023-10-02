@@ -42,4 +42,5 @@ export * from './locathah';
 export * from './loxodon';
 export * from './minotaur';
 export * from './orc';
+export * from './owlfolk';
 
