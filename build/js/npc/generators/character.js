@@ -33,7 +33,7 @@ export class DndNpcRng {
         this.genderNouns = new Gender();
         // Race
         const race = new Race();
-        race.setRace('Triton');
+        race.setRace('Verdan');
 
         // Age
         this.age = new Age(race);

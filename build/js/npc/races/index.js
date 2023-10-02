@@ -52,5 +52,6 @@ export * from './tabaxi';
 export * from './tiefling';
 export * from './tortle';
 export * from './triton';
+export * from './verdan';
 
 
