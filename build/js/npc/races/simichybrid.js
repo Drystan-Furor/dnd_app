@@ -3,15 +3,17 @@ import {Name} from "../properties/name";
 import {getRandomElement} from "./factory/utility";
 import {Human} from "./human/human";
 import {Elf} from "./elf";
+import {Vedalkan} from "./vedalkan";
 
 export class Simichybrid extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
+        dndRace.setRace('Simic-hybrid');
         this._variation(dndRace);
-        this._biography(dndRace.getVariant(), dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this._nickname();
+        this.biography = this._biography(dndRace.getVariant(), dndRace, genderNouns);
+        this.lastname = this.biography.getLastname()
+        this.firstname = this.biography.getFirstname()
+        this.nickname = this.biography.getNickname()
         this.description = this._description(dndRace, genderNouns);
     }
 
@@ -31,7 +33,7 @@ export class Simichybrid extends Name {
             biography = new Elf(dndRace, genderNouns);
         }
         if (variant === 'Vedalkan') {
-       //     biography = new Vedalkan(dndRace, genderNouns);
+            biography = new Vedalkan(dndRace, genderNouns);
         }
         return biography;
 
@@ -42,7 +44,7 @@ export class Simichybrid extends Name {
         Project to serve a specific purpose that involves protecting the Simic Combine in some way as a “guardian”`;
     }
 
-    static ageReplacer(dndrace) {
+    static ageReplacer() {
         let age = Math.floor(Math.random() * (80 - 14 + 1)) + 14;
         if (age > 30) {
             age /= 2;
@@ -54,4 +56,5 @@ export class Simichybrid extends Name {
     }
 
 }
+
 setClassMapping('Simichybrid', Simichybrid);

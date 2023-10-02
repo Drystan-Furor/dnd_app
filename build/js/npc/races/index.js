@@ -48,4 +48,5 @@ export * from './rabbitfolk';
 export * from './satyr';
 export * from './shifter';
 export * from './simichybrid';
+export * from './vedalkan';
 

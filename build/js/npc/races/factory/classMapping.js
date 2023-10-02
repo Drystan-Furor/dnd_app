@@ -48,6 +48,7 @@ export const classMapping = {
     Satyr:null,
     Shifter:null,
     Simichybrid:null,
+    Vedalkan:null,
 
     Tiefling:null,
     // ... other class mappings
