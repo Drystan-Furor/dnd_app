@@ -1,13 +1,23 @@
 import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
+import {getRandomElement} from "./factory/utility";
 
 export class Orc extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
+        this._variation(dndRace);
+        dndRace.setRace(dndRace.getVariant());
         this.lastname = this._lastname();
         this.firstname = this._firstname(genderNouns);
         this.nickname = this._nickname();
         this.description = this._description(dndRace, genderNouns);
+    }
+
+    _variation(dndRace) {
+        const variant = [
+            "Orc", "Orc of Exandria", "Orc of Eberron",
+        ];
+        dndRace.setVariant(getRandomElement(variant));
     }
 
     _lastname() {

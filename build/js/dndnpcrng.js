@@ -90,6 +90,7 @@ function imageOfCharacter(race) {
     }
     const raceLowerCase = convertRaceName(race);
     imgElement.src = "img/characters/" + raceLowerCase.toLowerCase() + ".png";
+    console.warn(imgElement.src);
 
     imageExists(imgElement.src, function (exists) {
         document.getElementById('dynamicCaption').textContent = 'Image of a: ' + race;
