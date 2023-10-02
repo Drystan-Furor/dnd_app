@@ -2,13 +2,14 @@ import {RaceFactory} from '../races/factory/racefactory';
 import {NpcClass} from "../properties/class";
 import {Race} from "../properties/race";
 import {Gender} from "../properties/gender";
-import {Age} from "../properties/age";
+import {Age, rand} from "../properties/age";
 import {Profile} from "./profile";
 import {Body} from "./body";
 import {Mood} from "./mood";
 import {Scar} from "./scars";
 import {Status} from "./status";
 import {Weapon} from "../clothing/accessoiries/weapons";
+import {Verbs} from "./verbs";
 
 export class DndNpcRng {
     constructor() {
@@ -32,6 +33,7 @@ export class DndNpcRng {
         this.genderNouns = new Gender();
         // Race
         const race = new Race();
+        race.setRace('Khalastar');
 
         // Age
         this.age = new Age(race);
@@ -54,6 +56,8 @@ export class DndNpcRng {
 
         // Construct object with properties of classes
         return {
+            // iD
+            id: rand(1000,9999),
             // class
             class: this.npcClass,
             // nouns
@@ -97,16 +101,17 @@ export class DndNpcRng {
     }
 
 
-    _writeStory(npc) { // + " " +
+    _writeStory(npc) { // ${} || `string`;
+
         // description
-        let string1 = "You meet " + npc.firstname + " " + npc.lastname + ". ";
-        string1 += "A " + npc.bodySize + " " + npc.gender + " " + npc.dndRace + " " + npc.class
-            + " " + "that's about " + npc.age + " years old. " + " " + ucfirst(npc.intro) + ". "
-            + npc.description + ". " + npc.weapon + ". ";
+        let string1 = `You ${Verbs.getMeeting()} ${npc.firstname} ${npc.lastname}. 
+        A ${npc.bodySize} ${npc.gender} ${npc.dndRace} ${npc.class}, 
+        that's ${Verbs.getEstimation()} ${npc.age} years old. ${ucfirst(npc.intro)}. ${npc.description}. ${npc.weapon}. `;
         // appearance
-        let string2 = npc.face + ". " + npc.scar1 + npc.scar2 + npc.scar3;
+        let string2 = `${npc.face}, ${npc.scar1} ${npc.scar2} ${npc.scar3}`;
         // attire
-        let string3 = npc.body + ". " + npc.outfit + npc.mood + ". ";
+        let string3 = `${npc.body}. ${npc.outfit} ${npc.mood}`;
+
 
         return {
             string1, string2, string3

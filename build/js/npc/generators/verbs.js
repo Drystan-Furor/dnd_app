@@ -40,10 +40,10 @@ export class Verbs {
     }
 
     static getMoment() {
-        const namings = [
+        const moment = [
             "when", "whenever", "every time", "in moments when",
         ];
-        return namings[Math.floor(Math.random() * namings.length)];
+        return moment[Math.floor(Math.random() * moment.length)];
     }
 
     static getCommunication() {
@@ -52,6 +52,25 @@ export class Verbs {
             "raises his voice",  "articulates", "utters words",  "exclaims",
         ];
         return namings[Math.floor(Math.random() * namings.length)];
+    }
+
+    static getMeeting() {
+        const synonym = [
+            'meet', 'encounter', 'run into', 'come across', 'bump into', 'stumble upon',
+            'cross paths with', 'make the acquaintance of', 'get to know', 'introduce oneself to',
+            'make contact with', 'meet up with', 'face', 'find', 'greet',
+            'interact with', 'mingle with', 'rub elbows with', 'see'
+        ];
+        return synonym[Math.floor(Math.random() * synonym.length)];
+    }
+
+    static getEstimation() {
+        const synonym = [
+            'approximately', 'roughly', 'around', 'close to', 'nearly', 'almost', 'about', 'circa', 'somewhere around',
+            'in the neighborhood of', 'in the vicinity of', 'in the region of', 'something like',
+            'more or less', 'practically', 'virtually', 'essentially', 'effectively', 'near to', 'bordering on'
+        ];
+        return synonym[Math.floor(Math.random() * synonym.length)];
     }
 }
 

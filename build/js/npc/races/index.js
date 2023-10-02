@@ -32,4 +32,5 @@ export * from './halforc';
 export * from './hobgoblin';
 
 export * from './kenku';
+export * from './khalastar';
 

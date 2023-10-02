@@ -5,7 +5,8 @@ import {filterClassMapping, getRandomElement} from "./factory/utility";
 export class Elf extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
-        if (dndRace.getRace()  !== 'Half-Elf') {
+        console.log('Elf Class:: ', dndRace.getRace());
+        if (dndRace.getRace()  === 'Elf') {
             dndRace.setRace(Elf._subclass());
         } else {
             dndRace.setVariant(Elf._subclass());
@@ -87,7 +88,7 @@ export class Elf extends Name {
         if (!ClassReference && typeof ClassReference.constructor === 'function') {
             return false;
         }
-        return new ClassReference(dndRace, genderNouns).getLastname();
+        return new ClassReference(dndRace, genderNouns);
     }
 }
 setClassMapping('Elf', Elf);

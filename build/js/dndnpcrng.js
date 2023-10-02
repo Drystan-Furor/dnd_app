@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const character = new_npc.getNewNpc();
         const biography = new_npc.getString();
         imageOfCharacter(character.dndRace);
+        commitToMemory(character, biography);
 
         // Store the current innerHTML before overwriting it
         const currentBiography = {
@@ -115,6 +116,18 @@ function imageExists(image_url, callback) {
         callback(false);
     };
     img.src = image_url;
+}
+
+let memory = {};
+let strMem = {};
+function commitToMemory(character, biography) {
+    const characterId = character.id;
+    memory[0] = character;
+    strMem[character.id] = biography;
+
+    console.warn(memory);
+    console.warn(memory[0]);
+    console.log(strMem[characterId]);
 }
 
 

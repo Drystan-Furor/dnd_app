@@ -1,17 +1,19 @@
 import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
-import {Firbolg} from "./firbolg";
-import {Race} from "../properties/race";
 import {getRandomElement} from "./factory/utility";
+import {Elf} from "./elf";
 
 export class Genasi extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
+        const origin = dndRace;
+        const biography = new Elf(dndRace, genderNouns);
         this._variation(dndRace);
-        const biography = new Firbolg(dndRace, genderNouns);
         this.lastname = biography.getLastname();
-        this.firstname = this._firstname(dndRace.getVariant());
-        this.nickname = this._nickname(dndRace.getVariant());
+        this.nickname = this._nickname(origin.getVariant());
+        this.firstname = this._firstname(origin.getVariant());
+        dndRace.setRace(origin.getRace());
+        this._variation(dndRace);
         this.description = this._description(dndRace, genderNouns);
     }
 
@@ -67,7 +69,7 @@ export class Genasi extends Name {
     _description(dndRace, genderNouns) {
         return `However ${genderNouns.getHeShe()} assumed the distinctive name ${this.nickname} to capture 
         ${genderNouns.getHisHer()} ${dndRace.getRace()} heritage as ${this.nickname} is born and raised 
-        in a ${this.heritage} society`;
+        in a ${dndRace.getHeritage()} society`;
     }
 }
 setClassMapping('Genasi', Genasi);
