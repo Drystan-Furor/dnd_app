@@ -1,3 +1,5 @@
+import {Kobold} from "./kobold";
+
 export * from './human/calishite';
 export * from './human/chondathan';
 export * from './human/damaran';
@@ -33,4 +35,5 @@ export * from './hobgoblin';
 
 export * from './kenku';
 export * from './khalastar';
+export * from './kobold';
 
