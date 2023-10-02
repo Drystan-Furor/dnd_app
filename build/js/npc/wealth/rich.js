@@ -57,7 +57,7 @@ export class Rich {
         const ring = new Rings().getRing();
 
 
-        return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.clothing()} and a pristine ${belt}. ${Sentence.observing()} ${npcClass} wears ${jewel} and a matching ${ring}${hat} ${shoes}`;
+        return `${heShe.charAt(0).toUpperCase() + heShe.slice(1)} wears a ${this.constructor.clothing()} and a pristine ${belt}. ${Sentence.observing()} ${npcClass} wears ${jewel} and a matching ${ring}. ${hat} ${shoes}`;
     }
 
     getOutfit() {

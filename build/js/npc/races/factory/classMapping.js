@@ -1,6 +1,5 @@
 // classMapping.js
 
-
 export const classMapping = {
     Calishite: null,
     Chondathan: null,
@@ -40,6 +39,7 @@ export const classMapping = {
     Kobold:null,
     Leonin:null,
     Lizardfolk:null,
+    Loxodon:null,
 
     Tiefling:null,
     // ... other class mappings
