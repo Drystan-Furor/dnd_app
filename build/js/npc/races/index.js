@@ -38,4 +38,5 @@ export * from './khalastar';
 export * from './kobold';
 export * from './leonin';
 export * from './lizardfolk';
+export * from './locathah';
 
