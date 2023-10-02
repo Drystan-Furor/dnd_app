@@ -36,4 +36,5 @@ export * from './hobgoblin';
 export * from './kenku';
 export * from './khalastar';
 export * from './kobold';
+export * from './leonin';
 

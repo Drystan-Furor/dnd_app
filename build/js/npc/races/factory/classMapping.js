@@ -37,6 +37,7 @@ export const classMapping = {
     Kenku:null,
     Khalastar:null,
     Kobold:null,
+    Leonin:null,
 
     Tiefling:null,
     // ... other class mappings
