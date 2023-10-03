@@ -8,10 +8,8 @@ export class Name {
         this.nickname = "Gary";  // default
         this.lastname = "Gygax";  // default
         this.description = "was an American game designer and author best known for co-creating the pioneering role-playing game Dungeons & Dragons (D&D) with Dave Arneson.";  // default
-    }
-
-    static lowercase(string) {
-        return string.toLowerCase().replace(/[-\s]/g, '');
+        this.intro = "Ernest Gary Gygax was a legendary figure in the world of tabletop role-playing games. ";
+        this.outfit = "Gary Gygax's contributions to the world of gaming are immeasurable, and his legacy continues to influence game designers and enthusiasts around the world. ";
     }
 
     getFirstname() {
@@ -29,6 +27,10 @@ export class Name {
     getDescription() {
         return this.description;
     }
+
+
+
+
 }
 
 /*

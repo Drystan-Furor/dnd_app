@@ -49,7 +49,7 @@ export class Verbs {
     static getCommunication() {
         const namings = [
             "is talking",  "shouting", "speaks",  " yells",
-            "raises his voice",  "articulates", "utters words",  "exclaims",
+            "voice raises ",  "articulates", "utters words",  "exclaims",
         ];
         return namings[Math.floor(Math.random() * namings.length)];
     }

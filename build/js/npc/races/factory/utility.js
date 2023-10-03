@@ -28,3 +28,6 @@ export function ucFirst(inputString) {
     return inputString.charAt(0).toUpperCase() + inputString.slice(1);
 }
 
+export function lowercase(string) {
+    return string.toLowerCase().replace(/[-\s]/g, '');
+}

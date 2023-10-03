@@ -10,7 +10,6 @@ import {Belts} from "../clothing/accessoiries/belts";
 export class Warforged extends Name {
     constructor(dndRace, genderNouns) {
         super(dndRace, genderNouns);
-        genderNouns.setGender('constructed');
         genderNouns.setManWoman('automaton');
         genderNouns.setHeShe('it');
         genderNouns.setHisHer("it's");
@@ -18,8 +17,12 @@ export class Warforged extends Name {
 
         this.lastname = this._lastname();
         this.firstname = "Soldier";
-        this.nickname = this._nickname();
-        this.description = this._description(dndRace, genderNouns);
+        this.nickname = this._nickname(genderNouns);
+        const strings = this._description(dndRace, genderNouns);
+        this.description = strings.description;
+
+        dndRace.setIntro(strings.intro);
+        dndRace.setOutfit(strings.outfit);
     }
 
     _lastname() {
@@ -88,6 +91,7 @@ export class Warforged extends Name {
     _nickname(genderNouns) {
         let nickname;
         if (genderNouns.getGender() === 'male') {
+            genderNouns.setGender("masculine construct");
             const malenames = [
                 'Ash', 'Atlas', 'Chroma', 'Excalibur', 'Frost', 'Hydroid', 'Inaros',
                 'Limbo', 'Loki', 'Nekros', 'Nezha', 'Revenant', 'Sevagoth', 'Xaku',
@@ -98,6 +102,8 @@ export class Warforged extends Name {
         }
 
         if (genderNouns.getGender() === 'female') {
+            genderNouns.setGender("feminine construct");
+
             const femalenames = [
                 'Banshee', 'Ember', 'Equinox', 'Ivara', 'Mag', 'Mesa', 'Mirage', 'Nova',
                 'Nyx', 'Saryn', 'Trinity', 'Titania', 'Wisp', 'Xaku', 'Yareli', 'Protea',
@@ -174,12 +180,12 @@ export class Warforged extends Name {
         }
 
         const bodyPart = {};
-        while (Object.keys(sparePart).length < 5) {
-            sparePart[Object.keys(sparePart).length] = Body.bodypart();
-            for (let key1 in sparePart) {
-                for (let key2 in sparePart) {
-                    if (key1 !== key2 && sparePart[key1] === sparePart[key2]) {
-                        delete sparePart[key2];
+        while (Object.keys(bodyPart).length < 5) {
+            bodyPart[Object.keys(bodyPart).length] = Body.bodypart();
+            for (let key1 in bodyPart) {
+                for (let key2 in bodyPart) {
+                    if (key1 !== key2 && bodyPart[key1] === bodyPart[key2]) {
+                        delete bodyPart[key2];
                         break;
                     }
                 }
@@ -194,37 +200,43 @@ export class Warforged extends Name {
 
         // intro ----------------------------------------------------- string
         let construct = getRandomElement(livingConstruct);
-        string = `${ucFirst(people)} of ${this.lastname} ${Verbs.named()} the ${construct} as ${this.nickname}`;
+        this.description = `${people} of ${this.lastname} ${Verbs.named()} the ${construct} as ${this.nickname}`;
+
         const d20 = rand(1, 20);
         if (d20 === 1) { // kept original name
-            string = `The ${construct} has retained ${genderNouns.getHisHer} original designation ${this.lastname}`;
+            this.description = `The ${construct} has retained ${genderNouns.getHisHer()} original designation ${this.lastname}`;
+            this.nickname = this.lastname;
         }
         if (d20 >= 2 && d20 <= 9) { // it picked itself a nickname
-            string = `The ${construct} has named itself ${this.nickname}`;
+            this.description = `The ${construct} has named itself ${this.nickname}`;
         }
 
         // visible details ----------------------------------------------------- string
-        string += `The ${construct} ${this.nickname} has a skeletal frame made of ${Material.getWoodType()} wood. 
+        this.outfit = `The ${genderNouns.getManWoman()} has a skeletal frame made of ${Material.getWoodType()} wood. 
         It's parts and joints are all connected and held together with 
         ${connection[0]} and ${connection[1]}. Both ${genderNouns.getHisHer()} ${bodyPart[0]} and ${bodyPart[1]}
         have visible innards, showing either ${maintenance1} or ${maintenance2} ${sparePart[0]}, ${sparePart[1]} 
-        and ${sparePart[2]}.`;
+        and ${sparePart[2]}. `;
 
         // global observation ----------------------------------------------------- string
         construct = getRandomElement(livingConstruct);
-        string += `The ${construct} has ${Verbs.maintenance()} ${Material.getPlateType()} plating on 
+        this.outfit += `The ${construct} has ${Verbs.maintenance()} ${Material.getPlateType()} plating on 
         ${genderNouns.getHisHer()} ${bodyPart[2]} and ${bodyPart[3]}, while the armor ${this.nickname}
         wears on ${genderNouns.getHisHer()} ${bodyPart[0]} looks pretty ${Verbs.maintenance()}.
         ${this.nickname} even has ${Material.getPlateType()} plating on ${genderNouns.getHisHer()} ${bodyPart[4]}
         , however that armor plate is enameled with a durable vitreous ${Material.getEnamelType()} coating. 
-        ${ucFirst(genderNouns.getHeShe())} wears a ${Belts.belt()}`;
+        ${ucFirst(genderNouns.getHeShe())} wears a ${Belts.belt()}. `;
 
         // ghulra  ----------------------------------------------------- string
         construct = getRandomElement(livingConstruct);
-        string += `There is a ghulra ${Warforged.engrave()} ${this.lastname}'s forehead that
+        this.intro = `There is a ghulra ${Warforged.engrave()} ${this.lastname}'s forehead that
         ${Verbs.getIndicator()} that the ${construct} served as a ${Warforged.combatRole()} in the Last War`;
 
-        return string;
+        return {
+            description: this.description,
+            intro: this.intro,
+            outfit: this.outfit
+        }
     }
 
     static engrave() {
@@ -310,7 +322,7 @@ export class Warforged extends Name {
         ];
         detail = getRandomElement(detail);
 
-        return `${shape} ${detail} ${Material.getMetalType()} chin. `;
+        return `${detail} ${shape} ${Material.getMetalType()} chin`;
     }
 
     static teethReplacer() {
@@ -382,6 +394,8 @@ export class Warforged extends Name {
         return `${sparePart[0]} together with ${sparePart[1]} in it's ${bodyPart1} while his 
         ${bodyPart2} has ${sparePart[2]} along with ${sparePart[3]}`;
     }
+
+
 }
 
 setClassMapping('Warforged', Warforged);

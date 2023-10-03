@@ -47,7 +47,7 @@ export class Shoes {
     }
 
     theRightShoes(dndRace, genderNouns) {
-        const ClassReference = classMapping[dndRace];
+        const ClassReference = classMapping[dndRace.getRace()];
         if (ClassReference && typeof ClassReference.shoesReplacer === 'function') {
             return ClassReference.shoesReplacer(dndRace, genderNouns);
         }

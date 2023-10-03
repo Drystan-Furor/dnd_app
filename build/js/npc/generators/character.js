@@ -33,10 +33,11 @@ export class DndNpcRng {
         this.genderNouns = new Gender();
         // Race
         const race = new Race();
-        race.setRace('Yuantipureblood');
-
+        race.setRace('Warforged');
         // Age
         this.age = new Age(race);
+        // Name
+        const biography = RaceFactory.createRace(race, this.genderNouns, this.age);
         // Profile -> Face
         this.profile = new Profile(race.getRace(), this.genderNouns, this.npcClass);
         // Body
@@ -48,11 +49,10 @@ export class DndNpcRng {
         this.scar2 = new Scar(race.getRace(), this.genderNouns).getScar();
         this.scar3 = new Scar(race.getRace(), this.genderNouns).getScar();
         // Status && Clothing
-        const status = new Status(this.genderNouns, this.npcClass, race.getRace());
+        const status = new Status(this.genderNouns, this.npcClass, race);
         // Weapon
-        this.weapon = new Weapon(race.getRace());
-        // Name
-        const biography = RaceFactory.createRace(race, this.genderNouns, this.age);
+        this.weapon = new Weapon(this.genderNouns, this.npcClass, race);
+
 
         // Construct object with properties of classes
         return {
@@ -95,24 +95,20 @@ export class DndNpcRng {
             description: biography.getDescription(),
             // weapon
             weapon: this.weapon.getArms(),
-            // ... other properties ...
-            // const subject = Sentence.subject()
         };
     }
 
 
     _writeStory(npc) { // ${} || `string`;
-
         // description
         let string1 = `You ${Verbs.getMeeting()} ${npc.firstname} ${npc.lastname}. 
         A ${npc.bodySize} ${npc.gender} ${npc.dndRace} ${npc.class}, 
-        that's ${Verbs.getEstimation()} ${npc.age} years old. ${ucfirst(npc.intro)}. ${npc.description}. ${npc.weapon}. `;
+        that's ${Verbs.getEstimation()} ${npc.age} years old. 
+        ${ucfirst(npc.intro)}. ${npc.description}. ${npc.weapon}. `;
         // appearance
         let string2 = `${npc.face}, ${npc.scar1} ${npc.scar2} ${npc.scar3}`;
         // attire
-        let string3 = `${npc.body}. ${npc.outfit} ${npc.mood}`;
-
-
+        let string3 = `${npc.body}. ${npc.outfit} ${npc.mood}.`;
         return {
             string1, string2, string3
         };

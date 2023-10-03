@@ -4,6 +4,8 @@ export class Race {
         this.dndRace = Race.randomRace(this.racesArray);
         this.heritage = Race.setHeritage(this.racesArray);
         this.variant = this.dndRace;
+        this.intro = '';
+        this.outfit = '';
     }
 
     static raceArray() {
@@ -70,6 +72,21 @@ export class Race {
     setVariant(variant) {
         this.variant = variant;
     }
+
+    getOutfit() {
+        return this.outfit;
+    }
+
+    getIntro() {
+        return this.intro;
+    }
+
+    setOutfit(custom) {
+        this.outfit = custom;
+    }
+
+    setIntro(custom) {
+        this.intro = custom;
+    }
+
 }
-
-

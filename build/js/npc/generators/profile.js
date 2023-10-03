@@ -73,10 +73,10 @@ export class Profile {
             "You " + Verbs.getObservation() + " that this " + manWoman + " possesses " + this.nose,
         ];
 
-        const mouthChinString = [
-            "As you " + Verbs.getObservation() + ", you " +
-            Verbs.getObservation() + " " + heshe + " has " +
-            this.chin + " and " + hisher + " mouth is set with " + this.mouth,
+        const mouthChinString = [ // `string`,
+
+            `As you ${Verbs.getObservation()} the ${race}, you ${Verbs.getObservation()} ${heshe} has
+            ${this.chin} and ${hisher} mouth is set with ${this.mouth}`,
 
             "While examining the " + manWoman + ", you " + Verbs.getObservation() + " that " + heshe + " has " +
             this.chin + " and " + hisher + " lips are " + this.mouth,

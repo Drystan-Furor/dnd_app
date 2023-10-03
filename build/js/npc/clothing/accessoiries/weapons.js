@@ -1,8 +1,9 @@
 import {Sentence} from "../../generators/sentence";
+import {getRandomElement} from "../../races/factory/utility";
 
 export class Weapon {
-    constructor(dndRace) {
-        this.weapon = Weapon._armed(dndRace);
+    constructor(genderNouns, npcClass, race) {
+        this.weapon = Weapon._armed(genderNouns, npcClass, race);
     }
 
     getArms() {
@@ -33,8 +34,14 @@ export class Weapon {
         return weapons[Math.floor(Math.random() * weapons.length)];
     }
 
-    static _armed(dndRace) {
+    static _armed(genderNouns, npcClass, race) {
+        let subject = [
+            `${race.getRace()} `,
+            `${npcClass} `,
+            `${genderNouns.getGender()} `,
+        ];
+        subject = getRandomElement(subject);
         const observing = Sentence.observing();
-        return `${observing} ${dndRace} ${this.holding()} a ${this.weapon()}`;
+        return `${observing} ${subject} ${this.holding()} a ${this.weapon()}`;
     }
 }
