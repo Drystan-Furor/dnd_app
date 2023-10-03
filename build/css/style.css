@@ -1347,6 +1347,11 @@ video {
   background-color: rgb(180 83 9 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-cyan-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 116 144 / var(--tw-bg-opacity));
+}
+
 .hover\:text-lg:hover {
   font-size: 1.125rem;
   line-height: 1.75rem;
