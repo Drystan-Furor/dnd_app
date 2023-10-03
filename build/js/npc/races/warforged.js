@@ -16,7 +16,6 @@ export class Warforged extends Name {
         genderNouns.setHisHer("it's");
         genderNouns.setHimHer("it's");
 
-
         this.lastname = this._lastname();
         this.firstname = "Soldier";
         this.nickname = this._nickname();
@@ -383,7 +382,6 @@ export class Warforged extends Name {
         return `${sparePart[0]} together with ${sparePart[1]} in it's ${bodyPart1} while his 
         ${bodyPart2} has ${sparePart[2]} along with ${sparePart[3]}`;
     }
-
-
 }
+
 setClassMapping('Warforged', Warforged);
