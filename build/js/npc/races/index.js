@@ -53,7 +53,5 @@ export * from './tiefling';
 export * from './tortle';
 export * from './triton';
 export * from './verdan';
-
+export * from './warforged';
 export * from './yuantipureblood';
-
-

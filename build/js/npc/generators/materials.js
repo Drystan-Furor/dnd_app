@@ -1,3 +1,5 @@
+import {getRandomElement} from "../races/factory/utility";
+
 export class Material {
     static getMetalType() {
         const metals = [
@@ -55,6 +57,33 @@ export class Material {
         ];
         return jewelTones[Math.floor(Math.random() * jewelTones.length)];
     }
+
+    static sparepart() {
+        const sparepart = [
+            'cylinders', 'pistons', 'clockwork parts', 'cogs', 'gears',
+            'pinions', 'pneumatics', 'rotary valves', 'telemetrical instruments',
+            'shafts', 'valves', 'bearings', 'springs', 'cogwheels',
+            'connecting rods', 'poppet valves', 'sleeve valves',
+            'axles', 'manifolds', 'servosystems', 'actuators', 'ultrasonic actuators',
+            'tactile sensors', 'locomotion systems', 'animatronics', 'cybernetics',
+            'orthotics', 'prosthetics', 'proprioceptive sensors',
+            'pneumatic actuators', 'bolts', 'screws', 'nails', 'metal wires',
+        ];
+        return getRandomElement(sparepart);
+    }
+
+    static connection() {
+        const connection = [
+            'interwoven thorny vines', 'roots of flowering plants', 'tendrills',
+            'copper pipes', 'leather belts', 'metal pipes', 'woven rope', 'chains',
+            'nails', 'tangling roots', 'tubes', 'roots', 'leather straps',
+            'braided roots', 'braided vines', 'braided thorny vines', 'rags',
+            'cloth wraps',
+        ];
+        return getRandomElement(connection);
+    }
+
+
 }
 
 // Usage

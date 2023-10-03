@@ -39,5 +39,25 @@ export class Gender {
     getHimHer() {
         return this.himher;
     }
+
+    setGender(string) {
+        this.gender = string
+    }
+
+    setManWoman(string) {
+        this.manWoman = string
+    }
+
+    setHeShe(string) {
+        this.heshe = string
+    }
+
+    setHisHer(string) {
+        this.hisher = string
+    }
+
+    setHimHer(string) {
+        this.himher = string
+    }
 }
 

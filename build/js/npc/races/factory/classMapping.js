@@ -53,7 +53,7 @@ export const classMapping = {
     Tiefling:null,
     Tortle:null,
     Triton:null,
-
+    Warforged:null,
     Yuantipureblood:null,
 
 

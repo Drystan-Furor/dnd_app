@@ -1,5 +1,5 @@
 import {classMapping, setClassMapping} from "../races/factory/classMapping";
-import {ucFirst} from "../races/factory/utility";
+import {getRandomElement, ucFirst} from "../races/factory/utility";
 
 export class Body {
     constructor(dndRace, npc) {
@@ -81,8 +81,6 @@ export class Body {
         return string[Math.floor(Math.random() * string.length)];
     }
 
-
-
     getBodyType() {
         return this.bodyType;
     }
@@ -121,6 +119,15 @@ export class Body {
             return ClassReference.bodyShapeReplacer(dndRace, genderNouns);
         }
         return Body.bodyShapeDefault();
+    }
+
+    static bodypart() {
+        const bodypart = [
+            'arms', 'legs', 'back', 'neck', 'shoulders', 'belly', 'hands', 'feet',
+            'upper arms', 'upper legs', 'chest', 'torso', 'throat', 'head', 'face',
+            'wrists', 'knees', 'elbows', 'ribcage',
+        ];
+        return getRandomElement(bodypart);
     }
 
 }
