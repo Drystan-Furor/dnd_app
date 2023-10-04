@@ -12,6 +12,20 @@ requireModule.keys().forEach(filename => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("generateNpc");
+    const buttonPosition = button.getBoundingClientRect().top + window.scrollY;
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > buttonPosition) {
+            button.classList.add("sticky-button");
+        } else {
+            button.classList.remove("sticky-button");
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
     listOfOptions();
     const button = document.getElementById("generateNpc");
 
@@ -131,7 +145,6 @@ function commitToMemory(character, biography) {
     strMem[character.id] = biography;
 
     console.warn(memory);
-    console.warn(memory[0]);
     console.log(strMem[characterId]);
 }
 
@@ -198,13 +211,13 @@ function nickname() {
 
 function selectedRaces() {
     const selectElement = document.getElementById('races');
-    const selectedOptions = [];
+    const selectedOptions = Array.from(selectElement.selectedOptions).map(option => option.value);
 
-    for (let i = 0; i < selectElement.selectedOptions.length; i++) {
-        selectedOptions.push(selectElement.selectedOptions[i].value);
+    if (selectedOptions.length > 0) {
+        parameters.races = selectedOptions;
     }
-    parameters.races = selectedOptions;
 }
+
 
 
 

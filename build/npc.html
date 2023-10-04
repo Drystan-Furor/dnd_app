@@ -21,7 +21,7 @@
             >🎲
                 <span class="text-red-700 dark:text-red-700">DnD</span>
                 <span class="text-amber-600 dark:text-amber-600">RnG</span>
-                DM App
+                HOME
             </a>
         </h1>
         <div>
@@ -36,8 +36,8 @@
             </button>
             <nav class="hidden md:block space-x-8 text-xl" aria-label="main">
                 <a href="#manual" class="hover:opacity-90">How to use</a>
-                <a href="#generator" class="hover:opacity-90">NPC Generator</a>
-                <a href="#memory" class="hover:opacity-90"> Remembered Character </a>
+                <a href="#generator" class="hover:opacity-90">NPC RnG</a>
+                <a href="#memory" class="hover:opacity-90"> Remembered Characters </a>
             </nav>
         </div>
     </section>
@@ -98,7 +98,7 @@
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
-                You can click on the NPC Generator
+                You can click on the NPC Generator Image
                 <a href="#generator" class="hover:opacity-90 hover:pointer">
                     <img src="img/icon-small-beholder.png" alt="icon of a beholder"
                          class="inline-block align-middle mx-1"/></a>
@@ -114,6 +114,15 @@
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
+                There is a limited memory function. While on this page a couple of rng characters can be remembered. If
+                you refresh or leave this page the memory is cleaned. This makes it possible to quickly generate a
+                couple of characters, but it is up to the user to save the text.</p>
+
+        </article>
+        <article class="sm:w-1/2">
+            <p
+                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
+            >
                 There is a <a href="#generator" class="hover:opacity-90 hover:pointer">
                 <button id="example-copyButton"
                         class=" top-2 mt-3 mr-3 right-2 bg-cyan-700 dark:bg-cyan-700 text-amber-600 px-2 py-1 rounded hover:bg-cyan-500 hover:text-white active:bg-amber-500">
@@ -126,13 +135,16 @@
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
-                If available, you will see a stock artwork img of the DnD race that was randomized selected.
+                If available, you will see a stock image of the DnD race that was randomized selected.
             </p>
 
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
-            > In the section "Customize <span class="text-red-700 dark:text-red-700">generated</span> character" you
-                have the option to set a few parameters for the generator.
+            ><a href="#variables" class="hover:opacity-90 hover:pointer">
+                In the section "<span class="text-black dark:text-white">Customize</span>
+                <span class="text-red-700 dark:text-red-700">generated</span>
+                <span class="text-black dark:text-white">character</span>" you
+                have the option to set a few parameters for the generator.</a>
             </p>
         </article>
     </section>
@@ -155,23 +167,15 @@
                 <a href="#generator" class="hover:opacity-90 hover:pointer">
                     <img src="img/icon-small-beholder.png" alt="icon of a beholder"
                          class="inline-block align-middle mx-1"/></a>
-                to have it dream up a character with the chosen properties,
+                to have it dream up a character with the chosen properties. Or leave them empty and the generator will
+                apply these things based on lore.
             </p>
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
-                Set a firstname to see that back in most descriptions.
+                Set a firstname, lastname or nickname if you wish to see that back in most descriptions.
             </p>
-            <p
-                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
-            >
-                Set a lastname to see it back in all descriptions.
-            </p>
-            <p
-                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
-            >
-                Set a nickname to see it back in some descriptions.
-            </p>
+
             <p
                     class="max-w-md p-3 text-1xl mt-4 italic text-center sm:text-left text-slate-700 dark:text-slate-400 rounded-lg border border-amber-600 dark:border-amber-600 bg-gray-100 dark:bg-black"
             >
@@ -196,13 +200,13 @@
             </p>
         </article>
 
-        <div class="w-1/2 border border-solid border-amber-600 dark:border-amber-600 rounded-lg p-4">
+        <div class="w-1/2 dark:bg-black bg-white border border-solid border-amber-600 dark:border-amber-600 rounded-lg p-4">
             <h2
-                    class="max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:text-white"
+                    class="max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:bg-black dark:text-white"
             >
                 <span class="text-red-700 dark:text-red-700">Generator</span> options.
             </h2>
-            <label for="firstname">Firstname</label>
+            <label for="firstname" class="block text-1xl font-medium text-amber-700">Firstname</label>
             <input
                     type="text"
                     id="firstname"
@@ -213,7 +217,7 @@
                     placeholder="Optional: firstname"
                     class="w-full mb-3 text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
             />
-            <label for="lastname">Lastname</label>
+            <label for="lastname" class="block text-1xl font-medium text-amber-700">Lastname</label>
             <input
                     type="text"
                     id="lastname"
@@ -224,7 +228,7 @@
                     placeholder="Optional: lastname"
                     class="w-full mb-3 text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
             />
-            <label for="nickname">Nickname</label>
+            <label for="nickname" class="block text-1xl font-medium text-amber-700">Nickname</label>
             <input
                     type="text"
                     id="nickname"
@@ -236,12 +240,22 @@
                     class="w-full mb-3 text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
             />
             <div class="w-full p-4 border border-solid border-cyan-500 dark:border-cyan-500 rounded-lg">
-                <label for="races">Races</label>
-                <label for="races" class="block text-sm font-medium text-amber-700 mb-2">Select Races:</label>
+                <label for="races" class="block text-2xl font-medium text-amber-700 mb-2">Select Races:</label>
                 <select id="races" name="races" multiple
                         class="w-full h-48 text-black text-md sm:text-1xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none shadow-md">
-<!--             options come from js       <option value=""></option>-->
                 </select>
+            </div>
+            <div
+                    class="text-sm sm:text-1xl text-right mt-2 text-slate-500 dark:text-slate-400"
+            >
+                <a href="#generator" class="hover:opacity-90 hover:pointer">
+                    <button class="bg-cyan-700 text-center hover:bg-cyan-500 active:bg-amber-500 text-white p-1 rounded-xl w-48 border border-solid border-slate-900 dark:border-none">
+                        To Generator
+
+                        <img src="img/icon-small-beholder.png" alt="icon of a beholder"
+                             class="inline-block align-middle mx-1"/>
+                    </button>
+                </a>
             </div>
         </div>
     </section>
@@ -260,7 +274,7 @@
         </h2>
         <div class="flex items-center justify-center">
             <button id="generateNpc" class="mx-auto">
-                <img class="mx-auto transform rounded-full active:bg-cyan-500 hover:bg-amber-700 hover:border hover:border-cyan-500"
+                <img class="mx-auto transition transform rounded-full active:bg-cyan-500 hover:bg-amber-700 hover:border hover:border-cyan-500"
                      src="img/iconbeholder.png" alt="beholder" id="beholder"/>
             </button>
         </div>
@@ -290,20 +304,80 @@
                    class="italic text-xl sm:text-1xl text-left mt-2 text-white dark:text-slate-400"
                 >Attire and mood
                 </p>
-                <figure class="sm:w-1/2 mx-auto text-center">
+                <figure class="w-1/2 mx-auto text-center">
                     <img id="dynamicImage" src="img/icon_d20_blue.png" alt="dynamic" class="w-full mx-auto"/>
                     <figcaption id="dynamicCaption" class="text-lg text-gray-500 mt-2"></figcaption>
                 </figure>
+                <div
+                        class="text-sm sm:text-1xl text-right mt-2 text-slate-500 dark:text-slate-400"
+                >
+                    <a href="#generator" class="hover:opacity-90 hover:pointer">
+                        <button class="bg-cyan-700 text-center hover:bg-cyan-500 active:bg-amber-500 text-white p-1 rounded-xl w-40 border border-solid border-slate-900 dark:border-none">
+                            <img src="img/icon-small-beholder.png" alt="icon of a beholder"
+                                 class="inline-block align-middle mx-1 w-5/1"/>Generator
+                        </button>
+                    </a>
+                </div>
+                <div
+                        class="text-sm sm:text-1xl text-right mt-2 text-slate-500 dark:text-slate-400"
+                >
+                    <a href="#variables" class="hover:opacity-90 hover:pointer">
+                        <button class="bg-cyan-700 text-center hover:bg-cyan-500 active:bg-amber-500 text-white p-1 rounded-xl w-40 border border-solid border-slate-900 dark:border-none">
+                            <span class="text-3xl">&#9776</span> Customizer
+                        </button>
+                    </a>
+                </div>
             </blockquote>
-
-
             <figcaption
                     class="text-xl sm:text-2xl text-right mt-2 text-slate-500 dark:text-slate-400"
             >
                 &#8212; 👁️💭 Drystan Furor, Dungeon Master
             </figcaption>
         </figure>
-
+        <div class="w-full mx-auto">
+            <div class="max-w-full rounded overflow-hidden shadow-lg bg-amber-700 dark:bg-amber-700">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-center text-xl mb-2 bg-black p-2 rounded-lg">
+                        <span class="text-red-700 dark:text-red-700">Character</span> Summary
+                        <span class="text-amber-600 dark:text-amber-600">Memory</span>
+                    </div>
+                    <table class="min-w-full">
+                        <thead>
+                        <tr class="bg-amber-600">
+                            <th class="px-4 py-2">Race</th>
+                            <th class="px-4 py-2">Class</th>
+                            <th class="px-4 py-2">Firstname</th>
+                            <th class="px-4 py-2">Lastname</th>
+                            <th class="px-4 py-2">Nickname</th>
+                            <th class="px-4 py-2">Age</th>
+                            <th class="px-4 py-2">Gender</th>
+                            <th class="px-4 py-2">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Repeat this row 10 times -->
+                        <tr class="border-b-2 dark:border-cyan-500 border-cyan-500">
+                            <td class="px-4 py-2" id="race-value-1">Value</td>
+                            <td class="px-4 py-2" id="class-value-1">Value</td>
+                            <td class="px-4 py-2" id="firstname-value-1">Value</td>
+                            <td class="px-4 py-2" id="lastname-value-1">Value</td>
+                            <td class="px-4 py-2" id="nickname-value-1">Value</td>
+                            <td class="px-4 py-2" id="age-value-1">Value</td>
+                            <td class="px-4 py-2" id="gender-value-1">Value</td>
+                            <td class="px-4 py-2" id="status-value-1">Value</td>
+                            <td class="px-4 py-2" id="table-copy-button-1">
+                                <button
+                                        class="bg-cyan-700 dark:bg-cyan-700 text-amber-500 px-2 py-1 rounded hover:bg-cyan-500 hover:text-white active:bg-amber-500 active:text-cyan-500">
+                                    Copy
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- ... -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </section>
     <hr class="mx-auto bg-black dark:bg-white w-1/2"/>
     <section

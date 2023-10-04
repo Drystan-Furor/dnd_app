@@ -15,7 +15,7 @@ export class Race {
             "Aarakocra", "Aasimar", "Bugbear", "Centaur", "Changeling", "Dragonborn", "Drow", "Dwarf", "Elf",
             "Feral Tiefling", "Firbolg", "Genasi", "Gith", "Gnome", "Goblin", "Goliath", "Half-Elf", "Half Orc",
             "Halfling", "Hobgoblin", "Human", "Khalastar", "Kenku", "Kobold", "Leonin", "Lizardfolk", "Locathah",
-            "Loxodon", "Minotaur", "Orc", "Orc of Eberron", "Orc of Exandria", "Owlfolk", "Rabbitfolk", "Satyr",
+            "Loxodon", "Minotaur", "Orc", "Owlfolk", "Rabbitfolk", "Satyr",
             "Shifter", "Simic Hybrid", "Tabaxi", "Tiefling", "Tortle", "Triton", "Vedalkan", "Verdan", "Warforged",
             "Yuan-Ti Pureblood"
         ];
