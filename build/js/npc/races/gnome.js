@@ -3,13 +3,13 @@ import {Name} from "../properties/name";
 import {getRandomElement} from "./factory/utility";
 
 export class Gnome extends Name {
-    constructor(dndRace, genderNouns, age) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns, age);
         this._variation(dndRace);
         this._ageReplacer(dndRace, age)
-        this.nickname = this._nickname();
-        this.lastname = this._lastname(genderNouns);
-        this.firstname = this._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : this._nickname();
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname(genderNouns);
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
         this.description = this._description(dndRace, genderNouns);
     }
 
@@ -101,4 +101,5 @@ export class Gnome extends Name {
         return bodySizes[Math.floor(Math.random() * bodySizes.length)];
     }
 }
+
 setClassMapping('Gnome', Gnome);

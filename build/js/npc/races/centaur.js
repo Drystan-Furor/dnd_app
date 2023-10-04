@@ -3,13 +3,15 @@ import {Name} from "../properties/name";
 import {setClassMapping} from "./factory/classMapping";
 
 export class Centaur extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this.firstname;
+        this.lastname = parameters.lastname ? parameters.lastname :this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.nickname = null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
+
+
 
     _lastname() {
         let part1 = [
@@ -46,10 +48,6 @@ export class Centaur extends Name {
             firstname = femalenames[Math.floor(Math.random() * femalenames.length)];
         }
         return firstname;
-    }
-
-    _nickname() {
-        return this.lastname;
     }
 
     _description(dndrace, new_npc) {

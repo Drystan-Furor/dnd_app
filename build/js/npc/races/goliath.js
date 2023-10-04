@@ -2,11 +2,11 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
 export class Goliath extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.nickname = this._firstname();
-        this.firstname = this._nickname();
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname();
+        this.nickname = parameters.nickname ? parameters.nickname : this._nickname();
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
@@ -20,16 +20,12 @@ export class Goliath extends Name {
     }
 
     _firstname() {
-        let firstname;
-
-        const birthnames = [
+        let firstname = [
             'Aukan', 'Eglath', 'Gae-Al', 'Gauthak', 'Ilikan', 'Keothi',
             'Kuori', 'Lo-Kag', 'Manneo', 'Maveith', 'Nalla', 'Orilo',
             'Paavu', 'Pethani', 'Thalai', 'Thotham', 'Uthal', 'Vaunea', 'Vimak',
         ];
-        firstname = birthnames[Math.floor(Math.random() * birthnames.length)];
-
-        return firstname;
+        return firstname[Math.floor(Math.random() * firstname.length)];
     }
 
     _nickname() {
@@ -40,8 +36,8 @@ export class Goliath extends Name {
             'Wordpainter',
         ];
         return nickname[Math.floor(Math.random() * nickname.length)];
-
     }
+
     _description(dndRace, genderNouns) {
         return `Every ${dndRace} has a birth name assigned by the newborn’s mother and father: ${this.nickname}.
         A nickname assigned by the tribal chief: ${this.firstname}, and a family or clan name: ${this.lastname}.
@@ -65,4 +61,5 @@ export class Goliath extends Name {
         return bodysizes[Math.floor(Math.random() * bodysizes.length)];
     }
 }
+
 setClassMapping('Goliath', Goliath);

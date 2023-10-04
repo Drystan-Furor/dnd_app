@@ -3,11 +3,11 @@ import {setClassMapping} from "./factory/classMapping";
 import {Goblin} from "./goblin";
 
 export class Bugbear extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = new Goblin(dndRace, genderNouns).getFirstname();
-        this.nickname = this._lastname();
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = new Goblin(dndRace, genderNouns, age, parameters).getFirstname();
+        this.nickname = null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
@@ -20,9 +20,6 @@ export class Bugbear extends Name {
         return surnames[Math.floor(Math.random() * surnames.length)];
     }
 
-    _nickname() {
-        return this.lastname;
-    }
 
     _description(dndrace, new_npc) {
         return dndrace + 's are hairy goblinoids born for battle and mayhem.' +

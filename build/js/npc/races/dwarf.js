@@ -3,13 +3,15 @@ import {Name} from "../properties/name";
 import {getRandomElement} from "./factory/utility";
 
 export class Dwarf extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this._nickname();
-        this.description = this._description(dndRace.getRace(), genderNouns);
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname :  this._firstname(genderNouns);
+        this.nickname = null;
+        this.description = this._description();
     }
+
+
 
     _lastname() {
         const surnames = [
@@ -44,11 +46,7 @@ export class Dwarf extends Name {
         return firstname;
     }
 
-    _nickname() {
-        return this.lastname;
-    }
-
-    _description(dndrace, new_npc) {
+    _description(d) {
         const knownAs = [
             "a skilled warrior",
             "a miner",
@@ -56,7 +54,7 @@ export class Dwarf extends Name {
             "a worker of metal",
         ];
         const string = getRandomElement(knownAs);
-        return `Bold, hardy and shorter then average humans, ${this.nickname} is known as ${string}`;
+        return `Bold, hardy and shorter then average humans, ${this.firstname} is known as ${string}`;
     }
 
     static bodySizeReplacer() {

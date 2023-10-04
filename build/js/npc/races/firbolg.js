@@ -3,12 +3,12 @@ import {Name} from "../properties/name";
 import {Elf} from "./elf";
 
 export class Firbolg extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        const biography = new Elf(dndRace, genderNouns);
-        this.lastname = biography.getLastname();
-        this.firstname = biography.getFirstname();
-        this.nickname = this._nickname();
+        const biography = new Elf(dndRace, genderNouns, age, parameters);
+        this.lastname = parameters.lastname ? parameters.lastname : biography.getLastname();
+        this.firstname = parameters.firstname ? parameters.firstname : biography.getFirstname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._nickname();
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 

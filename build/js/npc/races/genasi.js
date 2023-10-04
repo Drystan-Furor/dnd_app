@@ -4,18 +4,19 @@ import {getRandomElement} from "./factory/utility";
 import {Elf} from "./elf";
 
 export class Genasi extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         const origin = dndRace;
-        const biography = new Elf(dndRace, genderNouns);
+        const biography = new Elf(dndRace, genderNouns, age, parameters);
         this._variation(dndRace);
-        this.lastname = biography.getLastname();
-        this.nickname = this._nickname(origin.getVariant());
+        this.lastname = parameters.lastname ? parameters.lastname : biography.getLastname();
+        this.nickname = parameters.nickname ? parameters.nickname : this._nickname(origin.getVariant());
         this.firstname = this._firstname(origin.getVariant());
         dndRace.setRace(origin.getRace());
         this._variation(dndRace);
         this.description = this._description(dndRace, genderNouns);
     }
+
 
     _variation(dndRace) {
         const variant = [
@@ -24,8 +25,7 @@ export class Genasi extends Name {
         dndRace.setVariant(getRandomElement(variant));
     }
 
-    _firstname(variant)
-    {
+    _firstname(variant) {
         return " the " + variant + " " + this.nickname;
     }
 
@@ -72,4 +72,5 @@ export class Genasi extends Name {
         in a ${dndRace.getHeritage()} society`;
     }
 }
+
 setClassMapping('Genasi', Genasi);

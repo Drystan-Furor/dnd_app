@@ -3,11 +3,11 @@ import {Name} from "../properties/name";
 import {getRandomElement} from "./factory/utility";
 
 export class Changeling extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = "";
-        this.nickname = this.lastname;
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : "";
+        this.nickname = null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 

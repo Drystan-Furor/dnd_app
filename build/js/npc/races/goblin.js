@@ -2,13 +2,15 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
 export class Goblin extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this._nickname();
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname :this._nickname();
         this.description = this._description(dndRace, genderNouns);
     }
+
+
 
     _lastname() {
         const surnames = [
@@ -56,6 +58,7 @@ export class Goblin extends Name {
         const name = altFixes[Math.floor(Math.random() * altFixes.length)];
         return nick + name;
     }
+
     _description(dndRace, genderNouns) {
         return `The fat faced ${this.firstname} is known as ${this.nickname}.
         Pointy ears, a broad nose, a sloped back forehead and small sharp fangs,
@@ -73,4 +76,5 @@ export class Goblin extends Name {
         return bodysizes[Math.floor(Math.random() * bodysizes.length)];
     }
 }
+
 setClassMapping('Goblin', Goblin);
