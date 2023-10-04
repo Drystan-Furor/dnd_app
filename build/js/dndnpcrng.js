@@ -136,18 +136,6 @@ function imageExists(image_url, callback) {
     img.src = image_url;
 }
 
-let memory = {};
-let strMem = {};
-
-function commitToMemory(character, biography) {
-    const characterId = character.id;
-    memory[0] = character;
-    strMem[character.id] = biography;
-
-    console.warn(memory);
-    console.log(strMem[characterId]);
-}
-
 function listOfOptions() {
     const optionsArray = Race.raceArray();
     const selectElement = document.getElementById('races');
@@ -174,6 +162,7 @@ function firstname() {
     const firstnameInput = document.getElementById('firstname');
     const firstname = firstnameInput.value.trim();
     if (!firstname) {
+        parameters.firstname = null;
         return false;
     }
 
@@ -187,6 +176,7 @@ function lastname() {
     const lastnameInput = document.getElementById('lastname');
     const lastname = lastnameInput.value.trim();
     if (!lastname) {
+        parameters.lastname = null;
         return false;
     }
 
@@ -200,6 +190,7 @@ function nickname() {
     const nicknameInput = document.getElementById('nickname');
     const nickname = nicknameInput.value.trim();
     if (!nickname) {
+        parameters.nickname = null;
         return false;
     }
 
@@ -219,7 +210,83 @@ function selectedRaces() {
 }
 
 
+let memory = [];
 
+function commitToMemory(character, biography) {
+    let stored = false;
+
+    for (let i = 0; i < 10; i++) {
+        if (!memory[i]) {
+            memory[i] = {
+                character: character,
+                biography: biography
+            };
+            stored = true;
+            break;
+        }
+    }
+
+    if (!stored) {
+        // Shift the array to remove the first element and make space at the end
+        memory.shift();
+        memory[9] = {
+            character: character,
+            biography: biography
+        };
+    }
+    if (memory) {
+        readMemoryToTable();
+    } else {
+        console.log("No data at index 0");
+        console.warn(memory);
+    }
+
+}
+
+function readMemoryToTable() {
+    const tableBody = document.getElementById("tableBody");
+
+    memory.forEach((item, index) => {
+        if (item.printed) {
+            return;
+        }
+
+        const row = document.createElement("tr");
+        row.className = "border-b-2 dark:border-cyan-500 border-cyan-500";
+
+        const properties = ["dndRace", "class", "firstname", "lastname", "nickname", "age", "gender"];
+        properties.forEach(prop => {
+            const cell = document.createElement("td");
+            cell.className = `px-4 py-2`;
+            cell.id = `${prop}-value-${item.character.id}`;
+            cell.textContent = item.character[prop] || "N/A";
+            row.appendChild(cell);
+        });
+
+        const copyButtonCell = document.createElement("td");
+        copyButtonCell.className = "px-4 py-2";
+        copyButtonCell.id = `table-copy-button-${item.character.id}`;
+        copyButtonCell.innerHTML = `<button class="bg-cyan-700 dark:bg-cyan-700 text-amber-500 px-2 py-1 rounded hover:bg-cyan-500 hover:text-white active:bg-amber-500 active:text-cyan-500">Copy</button>`;
+
+        // Add event listener to copy biography when clicked
+        copyButtonCell.addEventListener("click", () => {
+            const biography = item.biography;
+            const cleanedBiography = `${biography.string1.trim()} ${biography.string2.trim()} ${biography.string3.trim()}`;
+            navigator.clipboard.writeText(cleanedBiography).then(() => {
+                console.log("Biography copied to clipboard");
+            }).catch(err => {
+                console.error("Could not copy text: ", err);
+            });
+        });
+
+
+        row.appendChild(copyButtonCell);
+
+        tableBody.appendChild(row);
+
+        item.printed = true;
+    });
+}
 
 
 // document.addEventListener('DOMContentLoaded', () => {
