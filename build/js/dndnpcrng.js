@@ -1,6 +1,7 @@
 // overwatch
 import {DndNpcRng} from "./npc/generators/character";
 import {convertRaceName} from "./npc/races/factory/racefactory";
+import {Race} from "./npc/properties/race";
 // Automatically loads all files in the './npc/' folder and its subfolders
 const requireModule = require.context('./npc', true, /\.js$/);
 
@@ -11,13 +12,15 @@ requireModule.keys().forEach(filename => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+    listOfOptions();
     const button = document.getElementById("generateNpc");
 
     button.addEventListener("click", function () {
         const characterParagraph1 = document.getElementById("character-paragraph-1");
         const characterParagraph2 = document.getElementById("character-paragraph-2");
         const characterParagraph3 = document.getElementById("character-paragraph-3");
-        const new_npc = new DndNpcRng();
+        collectInput();
+        const new_npc = new DndNpcRng(parameters);
         const character = new_npc.getNewNpc();
         const biography = new_npc.getString();
         imageOfCharacter(character.dndRace);
@@ -121,6 +124,7 @@ function imageExists(image_url, callback) {
 
 let memory = {};
 let strMem = {};
+
 function commitToMemory(character, biography) {
     const characterId = character.id;
     memory[0] = character;
@@ -130,6 +134,79 @@ function commitToMemory(character, biography) {
     console.warn(memory[0]);
     console.log(strMem[characterId]);
 }
+
+function listOfOptions() {
+    const optionsArray = Race.raceArray();
+    const selectElement = document.getElementById('races');
+
+    optionsArray.forEach(optionValue => {
+        const optionElement = document.createElement('option');
+        optionElement.value = optionValue;
+        optionElement.textContent = optionValue;
+        selectElement.appendChild(optionElement);
+    });
+}
+
+let parameters = {}
+const regex = /^[a-zA-Z0-9]+$/;
+
+function collectInput() {
+    firstname();
+    lastname();
+    nickname();
+    selectedRaces();
+}
+
+function firstname() {
+    const firstnameInput = document.getElementById('firstname');
+    const firstname = firstnameInput.value.trim();
+    if (!firstname) {
+        return false;
+    }
+
+    if (!regex.test(firstname)) {
+        return false;
+    }
+    parameters.firstname = firstname;
+}
+
+function lastname() {
+    const lastnameInput = document.getElementById('lastname');
+    const lastname = lastnameInput.value.trim();
+    if (!lastname) {
+        return false;
+    }
+
+    if (!regex.test(lastname)) {
+        return false;
+    }
+    parameters.lastname = lastname;
+}
+
+function nickname() {
+    const nicknameInput = document.getElementById('nickname');
+    const nickname = nicknameInput.value.trim();
+    if (!nickname) {
+        return false;
+    }
+
+    if (!regex.test(nickname)) {
+        return false;
+    }
+    parameters.nickname = nickname;
+}
+
+function selectedRaces() {
+    const selectElement = document.getElementById('races');
+    const selectedOptions = [];
+
+    for (let i = 0; i < selectElement.selectedOptions.length; i++) {
+        selectedOptions.push(selectElement.selectedOptions[i].value);
+    }
+    parameters.races = selectedOptions;
+}
+
+
 
 
 // document.addEventListener('DOMContentLoaded', () => {

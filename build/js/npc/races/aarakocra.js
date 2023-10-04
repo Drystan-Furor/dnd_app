@@ -4,11 +4,12 @@ import {Verbs} from "../generators/verbs";
 import {setClassMapping} from "./factory/classMapping";
 
 export class Aarakocra extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
+        console.log(parameters);
         super(dndRace, genderNouns);
         this.lastname = this._lastname();
-        this.firstname = this._firstname();
-        this.nickname = this.lastname;
+        this.firstname = parameters.firstname ? parameters.firstname : this.lastname;
+        this.nickname = parameters.nickname ? parameters.nickname : this.lastname;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
@@ -21,19 +22,9 @@ export class Aarakocra extends Name {
         return this.lastname;
     }
 
-    _firstname() {
-        this.firstname = "";
-        return this.firstname;
-    }
-
-    _nickname() {
-        this.nickname = this.lastname;
-        return this.nickname;
-    }
-
     _description(dndRace, genderNouns) {
         return `From below, the ${dndRace} look much like a large bird. 
-        Only when ${this.lastname} descends to roost on a branch or walk across the 
+        Only when ${this.nickname} ${this.firstname} ${this.lastname} descends to roost on a branch or walk across the 
         ground does ${genderNouns.getHisHer()} humanoid appearance reveal itself`;
     }
 

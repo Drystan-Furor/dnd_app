@@ -12,8 +12,22 @@ export class Centaur extends Name {
     }
 
     _lastname() {
-        const surnames = ['Array'];
-        return surnames[Math.floor(Math.random() * surnames.length)];
+        let part1 = [
+            'Autumn', 'Pine', 'Timber', 'Crater', 'Hazel', 'Aspen', 'Drift', 'Bright',
+            'Forest', 'Rock', 'Oaken', 'Creek', 'River',
+            'Willow', 'Earthen', 'Flood', 'Fall', 'Snow', 'Green', 'Ridge', 'Winter',
+            'Hill', 'Storm', 'Brown', 'Red', 'Moss',
+        ];
+        let part2 = [
+            'sleep', 'chaser', 'watcher', 'shifter', 'scorn', 'fighter', 'chanter',
+            'braider',
+            'binder', 'seeker', 'bringer', 'rusher', 'strength',
+            'tree', 'hoof', 'blade', 'darter', 'twister', 'hold', 'smirk', 'watch',
+            'petals', 'charger', 'borne', 'prowler', 'reign',
+        ];
+        part1 = part1[Math.floor(Math.random() * part1.length)];
+        part2 = part2[Math.floor(Math.random() * part2.length)];
+        return part1 + part2;
     }
 
     _firstname(new_npc) {

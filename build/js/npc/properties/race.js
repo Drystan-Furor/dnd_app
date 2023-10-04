@@ -1,7 +1,9 @@
+import {getRandomElement} from "../races/factory/utility";
+
 export class Race {
-    constructor() {
+    constructor(parameters) {
         this.racesArray = Race.raceArray();
-        this.dndRace = Race.randomRace(this.racesArray);
+        this.dndRace = parameters.races ? getRandomElement(parameters.races) : Race.randomRace(this.racesArray);
         this.heritage = Race.setHeritage(this.racesArray);
         this.variant = this.dndRace;
         this.intro = '';
@@ -10,15 +12,12 @@ export class Race {
 
     static raceArray() {
         return [
-            "Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling",
-            "Half Orc", "Human", "Tiefling", "Orc of Exandria", "Leonin",
-            "Satyr", "Aarakocra", "Genasi", "Goliath", "Aasimar", "Bugbear",
-            "Firbolg", "Goblin", "Hobgoblin", "Kenku", "Kobold", "Lizardfolk",
-            "Orc", "Tabaxi", "Triton", "Yuan-Ti Pureblood", "Feral Tiefling",
-            "Tortle", "Khalastar", "Changeling", "Orc of Eberron", "Shifter",
-            "Warforged", "Gith", "Centaur", "Loxodon", "Minotaur",
-            "Simic Hybrid", "Vedalkan", "Verdan", "Locathah", "Owlfolk",
-            "Rabbitfolk","Drow",
+            "Aarakocra", "Aasimar", "Bugbear", "Centaur", "Changeling", "Dragonborn", "Drow", "Dwarf", "Elf",
+            "Feral Tiefling", "Firbolg", "Genasi", "Gith", "Gnome", "Goblin", "Goliath", "Half-Elf", "Half Orc",
+            "Halfling", "Hobgoblin", "Human", "Khalastar", "Kenku", "Kobold", "Leonin", "Lizardfolk", "Locathah",
+            "Loxodon", "Minotaur", "Orc", "Orc of Eberron", "Orc of Exandria", "Owlfolk", "Rabbitfolk", "Satyr",
+            "Shifter", "Simic Hybrid", "Tabaxi", "Tiefling", "Tortle", "Triton", "Vedalkan", "Verdan", "Warforged",
+            "Yuan-Ti Pureblood"
         ];
     }
 

@@ -158,7 +158,7 @@
         <h2
                 class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white"
         ><span class="text-red-700 dark:text-red-700">DnD</span>
-          Random Generators
+            Random Generators
         </h2>
         <img class="mx-auto" src="img/iconbeholder.png" alt="icon of a beholder"/>
 
@@ -316,40 +316,16 @@
     >
         <h2
                 class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-white"
+
         >
-            Contact Us (disabled for now)
+            Contact Us
         </h2>
-        <form
-                action=""
-                class="max-w-4xl mx-auto text-2xl sm:text-2xl flex flex-col items-left gap-4"
-        >
-            <label for="subject">Subject</label>
-            <input disabled
-                   type="text"
-                   id="subject"
-                   name="subject"
-                   required
-                   minlength="3"
-                   maxlength="60"
-                   placeholder="Your subject"
-                   class="w-full text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
-            />
-            <label for="message">Message:</label>
-            <textarea disabled
-                      name="message"
-                      id="message"
-                      cols="30"
-                      rows="10"
-                      placeholder="Your message"
-                      required
-                      class="w-full text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
-            ></textarea>
-            <button disabled
-                    class="bg-red-700 hover:bg-red-600 active:bg-red-500 text-white p-3 rounded-xl w-48 border border-solid border-slate-900 dark:border-none"
-            >
-                Submit
-            </button>
-        </form>
+        <p
+                class="mx-auto max-w-md text-2xl mt-4 text-center text-slate-700 dark:text-slate-400"
+        > Click the button to
+        <a href="mailto:artstristan@gmail.com"
+           class="bg-red-700 text-center hover:bg-red-600 active:bg-red-500 text-white p-3 rounded-xl w-48 border border-solid border-slate-900 dark:border-none">Contact Us</a>
+        </p>
     </section>
 </main>
 <hr
@@ -367,6 +343,7 @@
             Phone: <a href="tel:+331624770098">(+31) 6 24770098</a>
         </address>
         <nav class="hidden md:flex flex-col gap-2" aria-label="footer">
+            <a href="#intro" class="hover:opacity-80">Home</a>
             <a href="#generators" class="hover:opacity-80">Random Generators</a>
             <a href="#testimonials" class="hover:opacity-80">Testimonials</a>
             <a href="#contact" class="hover:opacity-80">Contact</a>

@@ -114,21 +114,136 @@
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
-            There is a <a href="#generator" class="hover:opacity-90 hover:pointer">
-            <button id="example-copyButton"
-                    class=" top-2 mt-3 mr-3 right-2 bg-cyan-700 dark:bg-cyan-700 text-amber-600 px-2 py-1 rounded hover:bg-cyan-500 hover:text-white active:bg-amber-500">
-                Copy
-            </button>
-        </a>
-            button. After clicking it, you can paste the text anywhere you want, for example a note-taking app or
-            notepad.
+                There is a <a href="#generator" class="hover:opacity-90 hover:pointer">
+                <button id="example-copyButton"
+                        class=" top-2 mt-3 mr-3 right-2 bg-cyan-700 dark:bg-cyan-700 text-amber-600 px-2 py-1 rounded hover:bg-cyan-500 hover:text-white active:bg-amber-500">
+                    Copy
+                </button>
+            </a>
+                button. After clicking it, you can paste the text anywhere you want, for example a note-taking app or
+                notepad.
             </p>
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
                 If available, you will see a stock artwork img of the DnD race that was randomized selected.
             </p>
+
+            <p
+                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
+            > In the section "Customize <span class="text-red-700 dark:text-red-700">generated</span> character" you
+                have the option to set a few parameters for the generator.
+            </p>
         </article>
+    </section>
+    <hr class="mx-auto bg-black dark:bg-white w-1/2"/>
+    <section
+            id="variables"
+            class="flex flex-col-reverse justify-center sm:flex-row p-6 items-center gap-8 mb-12 scroll-mt-40 widescreen:section-min-height tallscreen:section-min-height"
+    >
+        <article class="sm:w-1/2">
+            <h2
+                    class="max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:text-white"
+            >
+                Customize <span class="text-red-700 dark:text-red-700">generated</span> character.
+            </h2>
+
+            <p
+                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
+            >
+                After setting these you can click on the NPC Generator
+                <a href="#generator" class="hover:opacity-90 hover:pointer">
+                    <img src="img/icon-small-beholder.png" alt="icon of a beholder"
+                         class="inline-block align-middle mx-1"/></a>
+                to have it dream up a character with the chosen properties,
+            </p>
+            <p
+                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
+            >
+                Set a firstname to see that back in most descriptions.
+            </p>
+            <p
+                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
+            >
+                Set a lastname to see it back in all descriptions.
+            </p>
+            <p
+                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
+            >
+                Set a nickname to see it back in some descriptions.
+            </p>
+            <p
+                    class="max-w-md p-3 text-1xl mt-4 italic text-center sm:text-left text-slate-700 dark:text-slate-400 rounded-lg border border-amber-600 dark:border-amber-600 bg-gray-100 dark:bg-black"
+            >
+                Certain generated results don't include a nickname or firstname or both, it depends on the race that is
+                generated, if available information provided that a certain race does not use one of the above, then it
+                is omitted in the generated result.
+            </p>
+            <p
+                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
+            >
+                Chose any or more race(s) in the list to narrow down generated results,
+                if left blank the result can be any race, if selected it will be the selected race and when multiple
+                are selected the generator will randomly chose one out of your selection. Your selection here limits
+                result possibilities of the generator.
+            </p>
+            <p
+                    class="max-w-md p-3 text-1xl mt-4 italic text-center sm:text-left text-slate-700 dark:text-slate-400 rounded-lg border border-amber-600 dark:border-amber-600 bg-gray-100 dark:bg-black"
+            >
+                This is usefull for when you want to narrow down encounters if your setting focusses heavier on certain
+                races, for example a Human/Dwarf occupied city. Select both Human and Dwarf and
+                you will get randomly one of these two.
+            </p>
+        </article>
+
+        <div class="w-1/2 border border-solid border-amber-600 dark:border-amber-600 rounded-lg p-4">
+            <h2
+                    class="max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:text-white"
+            >
+                <span class="text-red-700 dark:text-red-700">Generator</span> options.
+            </h2>
+            <label for="firstname">Firstname</label>
+            <input
+                    type="text"
+                    id="firstname"
+                    name="firstname"
+                    required
+                    minlength="3"
+                    maxlength="60"
+                    placeholder="Optional: firstname"
+                    class="w-full mb-3 text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
+            />
+            <label for="lastname">Lastname</label>
+            <input
+                    type="text"
+                    id="lastname"
+                    name="lastname"
+                    required
+                    minlength="3"
+                    maxlength="60"
+                    placeholder="Optional: lastname"
+                    class="w-full mb-3 text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
+            />
+            <label for="nickname">Nickname</label>
+            <input
+                    type="text"
+                    id="nickname"
+                    name="nickname"
+                    required
+                    minlength="3"
+                    maxlength="60"
+                    placeholder="Optional: nickname"
+                    class="w-full mb-3 text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
+            />
+            <div class="w-full p-4 border border-solid border-cyan-500 dark:border-cyan-500 rounded-lg">
+                <label for="races">Races</label>
+                <label for="races" class="block text-sm font-medium text-amber-700 mb-2">Select Races:</label>
+                <select id="races" name="races" multiple
+                        class="w-full h-48 text-black text-md sm:text-1xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none shadow-md">
+<!--             options come from js       <option value=""></option>-->
+                </select>
+            </div>
+        </div>
     </section>
     <hr class="mx-auto bg-black dark:bg-white w-1/2"/>
     <section

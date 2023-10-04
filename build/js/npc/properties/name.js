@@ -28,9 +28,21 @@ export class Name {
         return this.description;
     }
 
+    setFirstname(firstname) {
+        this.firstname = firstname;
+    }
 
+    setLastname(lastname) {
+        this.lastname = lastname;
+    }
 
+    setNickname(nickname) {
+        this.nickname = nickname;
+    }
 
+    setDescription(description) {
+        this.description = description;
+    }
 }
 
 /*

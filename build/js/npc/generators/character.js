@@ -12,8 +12,9 @@ import {Weapon} from "../clothing/accessoiries/weapons";
 import {Verbs} from "./verbs";
 
 export class DndNpcRng {
-    constructor() {
-        this.new_npc = this._dndRngNpc();
+    constructor(parameters) {
+        console.log(parameters);
+        this.new_npc = this._dndRngNpc(parameters);
         this.string = this._writeStory(this.new_npc);
     }
 
@@ -25,18 +26,21 @@ export class DndNpcRng {
         return this.string;
     }
 
-    _dndRngNpc() {
+    _dndRngNpc(parameters) {
         // Initialize the properties and classes
         // Class
         this.npcClass = new NpcClass().getNpcClass();
         // Nouns
         this.genderNouns = new Gender();
         // Race
-        const race = new Race();
+        const race = new Race(parameters);
+        //race.setRace('Aarakocra');
         // Age
         this.age = new Age(race);
         // Name
-        const biography = RaceFactory.createRace(race, this.genderNouns, this.age);
+
+        const biography = RaceFactory.createRace(race, this.genderNouns, this.age, parameters);
+        _parameters(parameters, biography);
         // Profile -> Face
         this.profile = new Profile(race.getRace(), this.genderNouns, this.npcClass);
         // Body
@@ -117,4 +121,19 @@ export class DndNpcRng {
 function ucfirst(str) {
     if (!str) return str;
     return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function _parameters(parameters, biography) {
+    if (!parameters){
+        return false;
+    }
+    if (parameters.firstname) {
+        biography.setFirstname(parameters.firstname);
+    }
+    if (parameters.lastname) {
+        biography.setLastname(parameters.lastname);
+    }
+    if (parameters.nickname) {
+        biography.setNickname(parameters.nickname);
+    }
 }
