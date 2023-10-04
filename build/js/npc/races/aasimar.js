@@ -5,14 +5,20 @@ import {filterClassMapping, getRandomElement} from "./factory/utility";
 import {classMapping, setClassMapping} from "./factory/classMapping";
 
 export class Aasimar extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         dndRace = this.isFallen(dndRace);
         this.lastname = this._lastname(dndRace, genderNouns);
         this.firstname = this._firstname(genderNouns);
-        this.nickname = this._nickname();
+        this.nickname = parameters.nickname ? parameters.nickname : this.firstname;
         this.description = this._description(dndRace, genderNouns, this.nickname);
     }
+    /*
+     constructor(dndRace, genderNouns, age, parameters) {
+        this.lastname = parameters.lastname ? parameters.lastname :this._lastname(dndRace, genderNouns);
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : '';
+     */
 
     isFallen(dndRace) {
         const isFallen = Math.floor(Math.random() * 20) + 1;
@@ -55,11 +61,6 @@ export class Aasimar extends Name {
         }
         this.firstname = firstname;
         return firstname;
-    }
-
-    _nickname() {
-        this.nickname = this.firstname;
-        return this.nickname;
     }
 
     _description(dndRace, genderNouns, nickname) {

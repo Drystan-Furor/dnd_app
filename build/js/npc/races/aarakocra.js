@@ -7,7 +7,7 @@ export class Aarakocra extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         console.log(parameters);
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
+        this.lastname = parameters.lastname ? parameters.lastname :this._lastname();
         this.firstname = parameters.firstname ? parameters.firstname : '';
         this.nickname = parameters.nickname ? parameters.nickname : '';
         this.description = this._description(dndRace.getRace(), genderNouns);
