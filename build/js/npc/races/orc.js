@@ -3,13 +3,13 @@ import {Name} from "../properties/name";
 import {getRandomElement} from "./factory/utility";
 
 export class Orc extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         this._variation(dndRace);
         dndRace.setRace(dndRace.getVariant());
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this._nickname();
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : this._nickname();
         this.description = this._description(dndRace, genderNouns);
     }
 
@@ -83,8 +83,8 @@ export class Orc extends Name {
             ' Prince', ' Executioner', ' Slaughterer',
         ];
 
-         prefix = prefix[Math.floor(Math.random() * prefix.length)];
-         altfix = altfix[Math.floor(Math.random() * altfix.length)];
+        prefix = prefix[Math.floor(Math.random() * prefix.length)];
+        altfix = altfix[Math.floor(Math.random() * altfix.length)];
 
         const isTheNickname = Math.floor(Math.random() * 20) + 1;
         let nickname;
@@ -137,11 +137,11 @@ export class Orc extends Name {
             'in a battle of the bands', 'during a moment of truth', 'in a test of faith',
             'after a resolution', 'in a duel of fates', 'through a paradox',
         ];
-        reason =  reason[Math.floor(Math.random() * reason.length)];
+        reason = reason[Math.floor(Math.random() * reason.length)];
 
         return `${this.firstname} ${this.lastname} uses the epithet ${this.nickname}.
         A name ${genderNouns.getHeShe()} earned ${reason}`;
     }
-
 }
+
 setClassMapping('Orc', Orc);

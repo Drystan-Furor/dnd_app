@@ -2,11 +2,11 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
 export class Hobgoblin extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname();
-        this.nickname = this._nickname();
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname();
+        this.nickname = parameters.nickname ? parameters.nickname : this._nickname();
         this.description = this._description();
     }
 

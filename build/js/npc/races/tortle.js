@@ -2,13 +2,13 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
 export class Tortle extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this._lastname();
+        this._lastname(parameters);
         this.description = this._description(dndRace, genderNouns);
     }
 
-    _lastname() {
+    _lastname(parameters) {
         const surnames = [
             'Lim', 'Ini', 'Gar', 'Damu', 'Quott', 'Xelbuk', 'Ploqwat', 'Kinlek',
             'Orly', 'El', 'Em', 'Elad', 'Irtig', 'Wolka', 'Lurtill', 'Nurtlen',
@@ -25,9 +25,9 @@ export class Tortle extends Name {
         while(surnameIndices[0] === surnameIndices[1]) {
             surnameIndices[1] = Math.floor(Math.random() * surnames.length);
         }
-        this.nickname = surnames[surnameIndices[0]];
-        this.lastname = surnames[surnameIndices[1]];
-        this.firstname = "";
+        this.nickname = parameters.nickname ? parameters.nickname : surnames[surnameIndices[0]];
+        this.lastname = parameters.lastname ? parameters.lastname : surnames[surnameIndices[1]];
+        this.firstname = parameters.firstname ? parameters.firstname : "";
     }
 
     _description(dndRace, genderNouns) {

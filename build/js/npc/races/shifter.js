@@ -2,11 +2,11 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
 export class Shifter extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this.firstname;
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.nickname = null;
         this.description = this._description(dndRace, genderNouns);
     }
 
@@ -77,15 +77,13 @@ export class Shifter extends Name {
         ];
         const altfix = altfixes[Math.floor(Math.random() * altfixes.length)];
 
-        const description = `${dndRace.getRace()}s are the weretouched of Eberron, in some ways. ` +
+        return `${dndRace.getRace()}s are the weretouched of Eberron, in some ways. ` +
             `As a child, the ${dndRace.getRace()} formed a close bond with the beast within. ` +
             `These totemic forces are explosive forces in ${firstname}’s personality, ` +
             `and all ${dndRace.getRace()}s have a unique inner beast that guides them in some way. ` +
             `${firstname} is a shifter due to ${prefix}, ${genderNouns.getHeShe()} developed as a ` +
             `${lastname} Shifter and joined the ${altfix}. ${definition}`;
-
-        return description;
     }
-
 }
+
 setClassMapping('Shifter', Shifter);

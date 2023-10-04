@@ -6,11 +6,11 @@ Khalashtar names are three to five syllables long
 and feature hard and hissing consonants.
  */
 export class Khalastar extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._firstname(genderNouns);
+        this.lastname = parameters.lastname ? parameters.lastname :this._firstname(genderNouns);
         this.firstname = '';
-        this.nickname = this.lastname;
+        this.nickname = null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
@@ -52,7 +52,7 @@ export class Khalastar extends Name {
         The ${dndRace} are a compound race created from the union of humanity and renegade spirits from the plane of 
         dreams – spirits called quori. The ${dndRace} are often seen as wise, 
         spiritual people with great compassion for others. But there is an unmistakable alien quality to 
-        ${this.nickname} as ${genderNouns.getHeShe()} is haunted by the conflicts of ${genderNouns.getHisHer()} 
+        ${this.lastname} as ${genderNouns.getHeShe()} is haunted by the conflicts of ${genderNouns.getHisHer()} 
         otherworldly spirits`;
     }
 }

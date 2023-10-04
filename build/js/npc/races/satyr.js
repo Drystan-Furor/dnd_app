@@ -3,11 +3,11 @@ import {Name} from "../properties/name";
 import {getRandomElement} from "./factory/utility";
 
 export class Satyr extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.firstname = this._firstname(genderNouns);
-        this.lastname = this.firstname;
-        this.nickname = this.firstname;
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.lastname = parameters.lastname ? parameters.lastname : '';
+        this.nickname = null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
@@ -35,11 +35,9 @@ export class Satyr extends Name {
 
     _description(dndRace, genderNouns) {
         return `${dndRace}'s resemble stout men and woman with fur covered lower bodies
-        and hooves similar to that of a goat. Horns grow from ${this.nickname}'s head,
+        and hooves similar to that of a goat. Horns grow from ${this.firstname}'s head,
         akin to a ram`;
     }
-
-
 
     static shoesReplacer(dndRace, genderNouns) {
         const hooves = [
@@ -66,4 +64,5 @@ export class Satyr extends Name {
         return `This ${dndRace} has ${hiLow}, ${shape} ${hoof} hooves.`;
     }
 }
+
 setClassMapping('Satyr', Satyr);

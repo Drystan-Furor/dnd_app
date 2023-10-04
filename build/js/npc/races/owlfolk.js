@@ -4,11 +4,11 @@ import {Material} from "../generators/materials";
 import {Verbs} from "../generators/verbs";
 
 export class Owlfolk extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname(genderNouns);
-        this.firstname = '';
-        this.nickname = this.lastname;
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname(genderNouns);
+        this.firstname = parameters.firstname ? parameters.firstname : '';
+        this.nickname = null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 

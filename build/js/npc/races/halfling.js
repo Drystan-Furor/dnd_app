@@ -3,12 +3,12 @@ import {Name} from "../properties/name";
 import {getRandomElement} from "./factory/utility";
 
 export class Halfling extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         this._variation(dndRace);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this.lastname;
+        this.lastname = parameters.lastname ? parameters.lastname :this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.nickname = null;
         this.description = this._description(dndRace, genderNouns);
     }
 

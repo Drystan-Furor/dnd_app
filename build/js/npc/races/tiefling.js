@@ -2,11 +2,11 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
 export class Tiefling extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this.lastname;
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.nickname = null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
@@ -48,4 +48,5 @@ export class Tiefling extends Name {
     }
 
 }
+
 setClassMapping('Tiefling', Tiefling);

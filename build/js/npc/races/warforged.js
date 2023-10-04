@@ -8,16 +8,16 @@ import {rand} from "../properties/age";
 import {Belts} from "../clothing/accessoiries/belts";
 
 export class Warforged extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         genderNouns.setManWoman('automaton');
         genderNouns.setHeShe('it');
         genderNouns.setHisHer("it's");
         genderNouns.setHimHer("it's");
 
-        this.lastname = this._lastname();
-        this.firstname = "Soldier";
-        this.nickname = this._nickname(genderNouns);
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : "Soldier";
+        this.nickname = parameters.nickname ? parameters.nickname : this._nickname(genderNouns);
         const strings = this._description(dndRace, genderNouns);
         this.description = strings.description;
 
@@ -115,11 +115,7 @@ export class Warforged extends Name {
         return nickname;
     }
 
-
-    /*
-    string
-     */
-    _description(dndRace, genderNouns) { // `string`,
+    _description(dndRace, genderNouns) {
         let string;
         let people = [
             `the ${dndRace.getHeritage()} creators`,
@@ -394,8 +390,6 @@ export class Warforged extends Name {
         return `${sparePart[0]} together with ${sparePart[1]} in it's ${bodyPart1} while his 
         ${bodyPart2} has ${sparePart[2]} along with ${sparePart[3]}`;
     }
-
-
 }
 
 setClassMapping('Warforged', Warforged);

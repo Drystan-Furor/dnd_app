@@ -5,15 +5,15 @@ import {Human} from "./human/human";
 import {Elf} from "./elf";
 
 export class Halfelf extends Name {
-    constructor(dndRace, genderNouns, age) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns, age);
         this._variation(dndRace);
         const variant = dndRace.getVariant();
         this._ageReplacer(dndRace, age)
         const biography = this._biography(variant, dndRace, genderNouns);
-        this.lastname = biography.getLastname();
-        this.firstname = biography.getFirstname(genderNouns);
-        this.nickname = biography.getNickname();
+        this.lastname = parameters.lastname ? parameters.lastname :biography.getLastname();
+        this.firstname = parameters.firstname ? parameters.firstname : biography.getFirstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : biography.getNickname();
         this.description = this._description(dndRace, genderNouns);
     }
 
@@ -26,7 +26,6 @@ export class Halfelf extends Name {
             biography = new Elf(dndRace, genderNouns);
         }
         return biography;
-
     }
 
     _variation(dndRace) {

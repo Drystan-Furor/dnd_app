@@ -2,14 +2,13 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
 export class Vedalkan extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname(genderNouns);
-        this.firstname = '';
-        this.nickname = this.lastname;
+        this.lastname = parameters.lastname ? parameters.lastname :this._lastname(genderNouns);
+        this.firstname = parameters.firstname ? parameters.firstname : '';
+        this.nickname = null;
         this.description = this._description(dndRace, genderNouns);
     }
-
 
     _lastname(genderNouns) {
         let firstname, firstname1, firstname2;

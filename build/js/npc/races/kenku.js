@@ -4,10 +4,10 @@ import {Material} from "../generators/materials";
 import {Verbs} from "../generators/verbs";
 
 export class Kenku extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         this.lastname = this._lastname();
-        this.nickname = this._nickname();
+        this.nickname = parameters.nickname ? parameters.nickname : this._nickname();
         this.firstname = this._firstname(dndRace.getRace(), genderNouns);
         this.description = this._description(dndRace, genderNouns);
     }
@@ -83,7 +83,6 @@ export class Kenku extends Name {
             'Clicker', 'Puffer', 'Roaster', 'Lugger', 'Burner',
             'Buzzer', 'Clogger', 'Howler', 'Sizzler', 'Mimicry',
         ];
-        this.nickname = nickname[Math.floor(Math.random() * nickname.length)];
         return nickname[Math.floor(Math.random() * nickname.length)];
     }
 

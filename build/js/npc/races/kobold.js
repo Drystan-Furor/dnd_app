@@ -3,11 +3,11 @@ import {Name} from "../properties/name";
 import {Dragonborn} from "./dragonborn";
 
 export class Kobold extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = '';
-        this.nickname = this.lastname;
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : '';
+        this.nickname = null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
@@ -26,7 +26,6 @@ export class Kobold extends Name {
         return `It's ancestry gives this ${dndRace} a ${Dragonborn.generateAncestry()} scale color`;
     }
 
-
     static bodySizeReplacer() {
         const bodysizes = [
             "very small", "quite small", "small", "small sized",
@@ -38,4 +37,5 @@ export class Kobold extends Name {
     }
 
 }
+
 setClassMapping('Kobold', Kobold);

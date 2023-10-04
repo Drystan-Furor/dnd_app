@@ -2,11 +2,11 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
 export class Verdan extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
         this.firstname = " the traveller ";
-        this.nickname = this.lastname;
+        this.nickname = null;
         this.description = this._description(dndRace, genderNouns);
     }
 

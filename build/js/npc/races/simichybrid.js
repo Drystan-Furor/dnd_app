@@ -6,14 +6,14 @@ import {Elf} from "./elf";
 import {Vedalkan} from "./vedalkan";
 
 export class Simichybrid extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         dndRace.setRace('Simic-hybrid');
         this._variation(dndRace);
         this.biography = this._biography(dndRace.getVariant(), dndRace, genderNouns);
-        this.lastname = this.biography.getLastname()
-        this.firstname = this.biography.getFirstname()
-        this.nickname = this.biography.getNickname()
+        this.lastname = parameters.lastname ? parameters.lastname : this.biography.getLastname()
+        this.firstname = parameters.firstname ? parameters.firstname : this.biography.getFirstname()
+        this.nickname = parameters.nickname ? parameters.nickname :this.biography.getNickname()
         this.description = this._description(dndRace, genderNouns);
     }
 

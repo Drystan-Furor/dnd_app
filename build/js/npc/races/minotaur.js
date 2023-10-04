@@ -3,11 +3,11 @@ import {Name} from "../properties/name";
 import {getRandomElement} from "./factory/utility";
 
 export class Minotaur extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this.firstname;
+        this.lastname = parameters.lastname ? parameters.lastname :this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.nickname = null;
         this.description = this._description(dndRace, genderNouns);
     }
 
