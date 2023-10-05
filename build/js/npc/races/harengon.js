@@ -1,7 +1,7 @@
 import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
-export class Rabbitfolk extends Name {
+export class Harengon extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
@@ -78,4 +78,4 @@ export class Rabbitfolk extends Name {
 
 }
 
-setClassMapping('Rabbitfolk', Rabbitfolk);
+setClassMapping('Harengon', Harengon);

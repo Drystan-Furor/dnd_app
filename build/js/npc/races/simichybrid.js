@@ -9,7 +9,7 @@ export class Simichybrid extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         if (!parameters.homebrew){
-            dndRace.setRace('Simic-hybrid');
+            dndRace.setRace('Simic Hybrid');
         }
         this._variation(dndRace);
         this.biography = this._biography(dndRace.getVariant(), dndRace, genderNouns, parameters);

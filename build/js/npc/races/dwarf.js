@@ -6,11 +6,13 @@ export class Dwarf extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
-        this.firstname = parameters.firstname ? parameters.firstname :  this._firstname(genderNouns);
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
         this.nickname = null;
         this.description = this._description();
+        if (dndRace.getRace() === 'Druergar') {
+            this.description = this._druergarDescription(dndRace);
+        }
     }
-
 
 
     _lastname() {
@@ -46,7 +48,7 @@ export class Dwarf extends Name {
         return firstname;
     }
 
-    _description(d) {
+    _description() {
         const knownAs = [
             "a skilled warrior",
             "a miner",
@@ -55,6 +57,12 @@ export class Dwarf extends Name {
         ];
         const string = getRandomElement(knownAs);
         return `Bold, hardy and shorter then average humans, ${this.firstname} is known as ${string}`;
+    }
+
+    _druergarDescription(dndRace) {
+        return `${this.firstname} is a ${dndRace.getRace()}
+        also known as one of the gray dwarves, or underdwarves and belongs to a subterranean subrace of dwarves. 
+        They carved out an existence in the Underdark, often near volcanoes`;
     }
 
     static bodySizeReplacer() {

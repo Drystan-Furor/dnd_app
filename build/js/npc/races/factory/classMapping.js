@@ -19,6 +19,7 @@ export const classMapping = {
     Changeling:null,
     Dragonborn:null,
     Drow:null,
+    Druergar:null,
     Dwarf:null,
     Elf:null,
     Feraltiefling:null,
@@ -56,6 +57,7 @@ export const classMapping = {
     Warforged:null,
     Yuantipureblood:null,
 
+    Seaelf:null,
 
     // ... other class mappings
 };

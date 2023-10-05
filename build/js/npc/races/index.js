@@ -17,6 +17,7 @@ export * from './centaur';
 export * from './changeling';
 export * from './dragonborn';
 export * from './drow';
+export * from './druergar';
 export * from './dwarf';
 export * from './elf';
 export * from './feraltiefling';
@@ -42,7 +43,7 @@ export * from './loxodon';
 export * from './minotaur';
 export * from './orc';
 export * from './owlfolk';
-export * from './rabbitfolk';
+export * from './harengon';
 
 export * from './satyr';
 export * from './shifter';
@@ -55,3 +56,5 @@ export * from './triton';
 export * from './verdan';
 export * from './warforged';
 export * from './yuantipureblood';
+
+export * from './seaelf';
