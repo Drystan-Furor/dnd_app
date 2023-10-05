@@ -12,7 +12,9 @@ export class Genasi extends Name {
         this.lastname = parameters.lastname ? parameters.lastname : biography.getLastname();
         this.nickname = parameters.nickname ? parameters.nickname : this._nickname(origin.getVariant());
         this.firstname = this._firstname(origin.getVariant());
-        dndRace.setRace(origin.getRace());
+        if (!parameters.homebrew) {
+            dndRace.setRace(origin.getRace());
+        }
         this._variation(dndRace);
         this.description = this._description(dndRace, genderNouns);
     }

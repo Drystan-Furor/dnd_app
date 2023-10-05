@@ -6,7 +6,9 @@ export class Orc extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         this._variation(dndRace);
-        dndRace.setRace(dndRace.getVariant());
+        if (!parameters.homebrew) {
+            dndRace.setRace(dndRace.getVariant());
+        }
         this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
         this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : this._nickname();

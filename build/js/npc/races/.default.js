@@ -2,12 +2,12 @@ import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
 
 export class DefaultRace extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = this._lastname();
-        this.firstname = this._firstname(genderNouns);
-        this.nickname = this._nickname();
-        this.description = this._description(dndRace, genderNouns);
+        this.lastname = parameters.lastname ? parameters.lastname :this._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : this._nickname();
+        this.description = this._description(dndRace.getRace(), genderNouns);
     }
 
     _lastname() {

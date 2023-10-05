@@ -7,9 +7,10 @@ export class Yuantipureblood extends Name {
         this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
         this.firstname = ` a very serpent looking ${dndRace.getHeritage()} named `;
         this.nickname = null;
-        dndRace.setRace('Yuan-ti Pureblood');
+        if (!parameters.homebrew){
+            dndRace.setRace('Yuan-ti Pureblood');
+        }
         this.description = this._description(dndRace, genderNouns);
-
     }
 
     _lastname() {

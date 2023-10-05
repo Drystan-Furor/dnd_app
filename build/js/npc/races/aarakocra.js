@@ -5,7 +5,6 @@ import {setClassMapping} from "./factory/classMapping";
 
 export class Aarakocra extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
-        console.log(parameters);
         super(dndRace, genderNouns);
         this.lastname = parameters.lastname ? parameters.lastname :this._lastname();
         this.firstname = parameters.firstname ? parameters.firstname : '';

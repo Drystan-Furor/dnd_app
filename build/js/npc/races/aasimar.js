@@ -7,7 +7,9 @@ import {classMapping, setClassMapping} from "./factory/classMapping";
 export class Aasimar extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        dndRace = this.isFallen(dndRace);
+        if (!parameters.homebrew) {
+            dndRace.setRace(this.isFallen(dndRace));
+        }
         this.lastname = this._lastname(dndRace, genderNouns);
         this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : this.firstname;
@@ -97,4 +99,5 @@ export class Aasimar extends Name {
         return eyes;
     }
 }
+
 setClassMapping('Aasimar', Aasimar);

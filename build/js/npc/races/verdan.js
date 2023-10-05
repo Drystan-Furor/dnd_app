@@ -5,7 +5,7 @@ export class Verdan extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
-        this.firstname = " the traveller ";
+        this.firstname = parameters.firstname ? parameters.firstname : " the traveller ";
         this.nickname = null;
         this.description = this._description(dndRace, genderNouns);
     }

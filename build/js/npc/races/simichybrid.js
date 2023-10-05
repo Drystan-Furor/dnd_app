@@ -8,9 +8,11 @@ import {Vedalkan} from "./vedalkan";
 export class Simichybrid extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        dndRace.setRace('Simic-hybrid');
+        if (!parameters.homebrew){
+            dndRace.setRace('Simic-hybrid');
+        }
         this._variation(dndRace);
-        this.biography = this._biography(dndRace.getVariant(), dndRace, genderNouns);
+        this.biography = this._biography(dndRace.getVariant(), dndRace, genderNouns, parameters);
         this.lastname = parameters.lastname ? parameters.lastname : this.biography.getLastname()
         this.firstname = parameters.firstname ? parameters.firstname : this.biography.getFirstname()
         this.nickname = parameters.nickname ? parameters.nickname :this.biography.getNickname()
@@ -27,16 +29,15 @@ export class Simichybrid extends Name {
     _biography(variant, dndRace, genderNouns) {
         let biography;
         if (variant === 'Human') {
-            biography = new Human(dndRace, genderNouns);
+            biography = new Human(dndRace, genderNouns, parameters);
         }
         if (variant === 'Elf') {
-            biography = new Elf(dndRace, genderNouns);
+            biography = new Elf(dndRace, genderNouns, parameters);
         }
         if (variant === 'Vedalkan') {
-            biography = new Vedalkan(dndRace, genderNouns);
+            biography = new Vedalkan(dndRace, genderNouns, parameters);
         }
         return biography;
-
     }
 
     _description(dndRace, genderNouns) {
