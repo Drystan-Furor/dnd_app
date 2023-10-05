@@ -1,14 +1,17 @@
 import * as Races from '../';
+import {Race} from "../../properties/race";
+
 // This will now import all exported members from npc/races/index.js
 
 export class RaceFactory {
     static createRace(race, genderNouns, age, parameters) {
-        let dndRace = convertRaceName(race.getRace());
-        let className = dndRace.charAt(0).toUpperCase() + dndRace.slice(1);
+        let className = convertRaceName(race.getRace());
         if (!Races[className]) {
-            console.warn(`Race ${dndRace} does not exist. Using a default race.`);
-            return new Races.Dwarf(race, genderNouns, age, parameters); // Return an instance of a default race
-            // throw new Error(`Race ${race} does not exist`);
+            let random = selectRandomRace();
+            random = convertRaceName(random);
+            console.warn(`Race ${className} does not exist. Using a default race.`);
+            race.setRace(parameters.homebrew);
+            return new Races[random](race, genderNouns, age, parameters); // Return instance of a default race
         }
         return new Races[className](race, genderNouns, age, parameters);
     }
@@ -20,4 +23,11 @@ export function convertRaceName(raceName) {
     let convertedName = raceName.replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s+/g, '');
     // Make the first character uppercase
     return convertedName.charAt(0).toUpperCase() + convertedName.slice(1);
+}
+
+export function selectRandomRace() {
+    let dndRace = Race.raceArray();
+    dndRace = Race.randomFromArray(dndRace);
+    return dndRace;
+
 }

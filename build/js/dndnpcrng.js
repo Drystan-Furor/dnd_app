@@ -1,20 +1,29 @@
 // overwatch
+'use strict';
+let dndNext = window;
+dndNext = {
+    dndRngNpc : {},
+    generator : {},
+};
+dndNext.dndRngNpc.memory = [];
+dndNext.parameters = {}
+dndNext.regex = /^[a-zA-Z0-9]+$/;
+
+
 import {DndNpcRng} from "./npc/generators/character";
 import {convertRaceName} from "./npc/races/factory/racefactory";
 import {Race} from "./npc/properties/race";
 // Automatically loads all files in the './npc/' folder and its subfolders
 const requireModule = require.context('./npc', true, /\.js$/);
-
 requireModule.keys().forEach(filename => {
     // Removes the "./" from the filename
     const moduleName = filename.replace('./', '');
     requireModule(filename);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+dndNext.dndRngNpc.stickyButton = function () {
     const button = document.getElementById("generateNpc");
     const buttonPosition = button.getBoundingClientRect().top + window.scrollY;
-
     window.addEventListener("scroll", function () {
         if (window.scrollY > buttonPosition) {
             button.classList.add("sticky-button");
@@ -22,75 +31,66 @@ document.addEventListener("DOMContentLoaded", function () {
             button.classList.remove("sticky-button");
         }
     });
-});
+}
 
-
-document.addEventListener("DOMContentLoaded", function () {
-    listOfOptions();
+dndNext.dndRngNpc.coreFunctionality = function () {
     const button = document.getElementById("generateNpc");
-
     button.addEventListener("click", function () {
         const characterParagraph1 = document.getElementById("character-paragraph-1");
         const characterParagraph2 = document.getElementById("character-paragraph-2");
         const characterParagraph3 = document.getElementById("character-paragraph-3");
-        collectInput();
+        dndNext.dndRngNpc.collectInput();
+        const parameters = dndNext.parameters;
         const new_npc = new DndNpcRng(parameters);
         const character = new_npc.getNewNpc();
         const biography = new_npc.getString();
-        imageOfCharacter(character.dndRace);
-        commitToMemory(character, biography);
+        dndNext.dndRngNpc.imageOfCharacter(character.dndRace);
+        dndNext.dndRngNpc.commitToMemory(character, biography);
 
-        // Store the current innerHTML before overwriting it
         const currentBiography = {
             string1: characterParagraph1.innerHTML,
             string2: characterParagraph2.innerHTML,
             string3: characterParagraph3.innerHTML,
         };
-
-        // Set the concatenated string as the innerHTML of the paragraph
         if (!character) {
             return false;
         }
         characterParagraph1.innerHTML = biography.string1;
         characterParagraph2.innerHTML = biography.string2;
         characterParagraph3.innerHTML = biography.string3;
-        previousCharacter(currentBiography);
+        dndNext.dndRngNpc.previousCharacter (currentBiography);
     });
 
-    function copyToClipboard(elementId) {
-        const blockquote = document.querySelector(elementId);
-        if (!blockquote) return; // Exit if no blockquote found
-
-        const paragraphs = blockquote.querySelectorAll('p');
-        let string = '';
-
-        paragraphs.forEach(paragraph => {
-            string += paragraph.textContent + '\n';
-        });
-
-        navigator.clipboard.writeText(string).then(function () {
-            console.log('copied to clipboard!');
-        }).catch(function (err) {
-            console.error('Unable to copy text', err);
-        });
-    }
-
     const copyButton = document.getElementById('copyButton');
-    if (copyButton) {
-        copyButton.addEventListener('click', function () {
-            copyToClipboard('blockquote');
-        });
-    }
-
     const copyButton2 = document.getElementById('copyButton2');
-    if (copyButton2) {
-        copyButton2.addEventListener('click', function () {
-            copyToClipboard('blockquote');
-        });
-    }
-});
+    dndNext.dndRngNpc.copyButton(copyButton);
+    dndNext.dndRngNpc.copyButton(copyButton2);
+}
 
-function previousCharacter(previousBiography) {
+dndNext.dndRngNpc.copyButton = function (copyButton) {
+    copyButton.addEventListener('click', function () {
+        dndNext.dndRngNpc.copyToClipboard();
+    });
+}
+
+dndNext.dndRngNpc.copyToClipboard = function () {
+    const blockquote = document.querySelector('blockquote');
+    if (!blockquote) return;
+    const paragraphs = blockquote.querySelectorAll('p');
+    let string = '';
+
+    paragraphs.forEach(paragraph => {
+        string += paragraph.textContent + '\n';
+    });
+
+    navigator.clipboard.writeText(string).then(function () {
+        console.log('copied to clipboard!');
+    }).catch(function (err) {
+        console.error('Unable to copy text', err);
+    });
+}
+
+dndNext.dndRngNpc.previousCharacter = function (previousBiography) {
     const previousCharacterParagraph1 = document.getElementById("previous-character-1");
     const previousCharacterParagraph2 = document.getElementById("previous-character-2");
     const previousCharacterParagraph3 = document.getElementById("previous-character-3");
@@ -99,7 +99,7 @@ function previousCharacter(previousBiography) {
     previousCharacterParagraph3.innerHTML = previousBiography.string3;
 }
 
-function imageOfCharacter(race) {
+dndNext.dndRngNpc.imageOfCharacter = function (race) {
     const images = ["img/icon_d20_blue.png", "img/icon_d20_red.png", "img/icon_d20_yellow.png", "img/beholder.gif"];
     const imgElement = document.getElementById('dynamicImage');
     if (!race) {
@@ -107,14 +107,11 @@ function imageOfCharacter(race) {
     }
     const raceLowerCase = convertRaceName(race);
     imgElement.src = "img/characters/" + raceLowerCase.toLowerCase() + ".png";
-    console.warn(imgElement.src);
-
-    imageExists(imgElement.src, function (exists) {
+    dndNext.dndRngNpc.imageExists(imgElement.src, function (exists) {
         document.getElementById('dynamicCaption').textContent = 'Image of a ' + race;
         if (!exists) {
             console.error("The image is missing, man, probably out bowling with The Dude. Stealth check!");
             document.getElementById('dynamicCaption').textContent = 'It seems the image has stealthily evaded us, perhaps it rolled a natural 20 on its Stealth check!';
-
             const randomIndex = Math.floor(Math.random() * images.length);
             document.getElementById('dynamicImage').src = images[randomIndex];
         }
@@ -125,8 +122,8 @@ function imageOfCharacter(race) {
     }
 }
 
-function imageExists(image_url, callback) {
-    var img = new Image();
+dndNext.dndRngNpc.imageExists = function (image_url, callback) {
+    const img = new Image();
     img.onload = function () {
         callback(true);
     };
@@ -136,7 +133,7 @@ function imageExists(image_url, callback) {
     img.src = image_url;
 }
 
-function listOfOptions() {
+dndNext.dndRngNpc.listOfOptions = function () {
     const optionsArray = Race.raceArray();
     const selectElement = document.getElementById('races');
 
@@ -148,76 +145,90 @@ function listOfOptions() {
     });
 }
 
-let parameters = {}
-const regex = /^[a-zA-Z0-9]+$/;
 
-function collectInput() {
-    firstname();
-    lastname();
-    nickname();
-    selectedRaces();
+
+dndNext.dndRngNpc.collectInput = function() {
+    dndNext.dndRngNpc.firstname();
+    dndNext.dndRngNpc.lastname();
+    dndNext.dndRngNpc.nickname();
+    dndNext.dndRngNpc.selectedRaces();
+    dndNext.dndRngNpc.homebrew();
 }
 
-function firstname() {
+dndNext.dndRngNpc.firstname = function () {
     const firstnameInput = document.getElementById('firstname');
     const firstname = firstnameInput.value.trim();
     if (!firstname) {
-        parameters.firstname = null;
+        dndNext.parameters.firstname = null;
         return false;
     }
 
-    if (!regex.test(firstname)) {
+    if (!dndNext.regex.test(firstname)) {
         return false;
     }
-    parameters.firstname = firstname;
+    dndNext.parameters.firstname = firstname;
 }
 
-function lastname() {
+dndNext.dndRngNpc.lastname = function() {
     const lastnameInput = document.getElementById('lastname');
     const lastname = lastnameInput.value.trim();
     if (!lastname) {
-        parameters.lastname = null;
+        dndNext.parameters.lastname = null;
         return false;
     }
 
-    if (!regex.test(lastname)) {
+    if (!dndNext.regex.test(lastname)) {
         return false;
     }
-    parameters.lastname = lastname;
+    dndNext.parameters.lastname = lastname;
 }
 
-function nickname() {
+dndNext.dndRngNpc.nickname = function () {
     const nicknameInput = document.getElementById('nickname');
     const nickname = nicknameInput.value.trim();
     if (!nickname) {
-        parameters.nickname = null;
+        dndNext.parameters.nickname = null;
         return false;
     }
 
-    if (!regex.test(nickname)) {
+    if (!dndNext.regex.test(nickname)) {
         return false;
     }
-    parameters.nickname = nickname;
+    dndNext.parameters.nickname = nickname;
 }
 
-function selectedRaces() {
+dndNext.dndRngNpc.homebrew = function () {
+    const homebrewInput = document.getElementById('homebrew-race');
+    const homebrew = homebrewInput.value.trim();
+    if (!homebrew) {
+        dndNext.parameters.homebrew = null;
+        return false;
+    }
+
+    if (!dndNext.regex.test(homebrew)) {
+        return false;
+    }
+    dndNext.parameters.homebrew = homebrew;
+}
+
+
+dndNext.dndRngNpc.selectedRaces = function () {
     const selectElement = document.getElementById('races');
     const selectedOptions = Array.from(selectElement.selectedOptions).map(option => option.value);
 
     if (selectedOptions.length > 0) {
-        parameters.races = selectedOptions;
+        dndNext.parameters.races = selectedOptions;
     }
 }
 
 
-let memory = [];
 
-function commitToMemory(character, biography) {
+dndNext.dndRngNpc.commitToMemory = function (character, biography) {
     let stored = false;
 
     for (let i = 0; i < 10; i++) {
-        if (!memory[i]) {
-            memory[i] = {
+        if (!dndNext.dndRngNpc.memory[i]) {
+            dndNext.dndRngNpc.memory[i] = {
                 character: character,
                 biography: biography
             };
@@ -228,25 +239,25 @@ function commitToMemory(character, biography) {
 
     if (!stored) {
         // Shift the array to remove the first element and make space at the end
-        memory.shift();
-        memory[9] = {
+        dndNext.dndRngNpc.memory.shift();
+        dndNext.dndRngNpc.memory[9] = {
             character: character,
             biography: biography
         };
     }
-    if (memory) {
-        readMemoryToTable();
+    if (dndNext.dndRngNpc.memory) {
+        dndNext.dndRngNpc.readMemoryToTable();
     } else {
         console.log("No data at index 0");
-        console.warn(memory);
+        console.warn(dndNext.dndRngNpc.memory);
     }
 
 }
 
-function readMemoryToTable() {
+dndNext.dndRngNpc.readMemoryToTable = function () {
     const tableBody = document.getElementById("tableBody");
 
-    memory.forEach((item, index) => {
+    dndNext.dndRngNpc.memory.forEach((item, index) => {
         if (item.printed) {
             return;
         }
@@ -288,17 +299,9 @@ function readMemoryToTable() {
     });
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    dndNext.dndRngNpc.listOfOptions();
+    dndNext.dndRngNpc.stickyButton();
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     let dynamicImage = document.getElementById('beholder');
-//
-//     if (dynamicImage) { // Check if element exists
-//         dynamicImage.addEventListener('mouseover', function () {
-//             dynamicImage.src = 'img/art_beholder.png'; // Path to the hover image
-//         });
-//
-//         dynamicImage.addEventListener('mouseout', function () {
-//             dynamicImage.src = 'img/iconbeholder.png'; // Path to the default image
-//         });
-//     }
-// });
+    dndNext.dndRngNpc.coreFunctionality();
+});

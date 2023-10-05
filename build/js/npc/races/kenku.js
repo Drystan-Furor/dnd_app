@@ -69,9 +69,8 @@ export class Kenku extends Name {
     }
 
 
-    _firstname(dndRace, genderNouns) {
-        return `a ${dndRace}. When asked for it's name the ${dndRace} makes a *${this.sounding}* sound, 
-        hence ${genderNouns.getHeShe()} is known as `;
+    _firstname() {
+        return `*${this.sounding}*`;
     }
 
     _nickname() {
@@ -87,7 +86,8 @@ export class Kenku extends Name {
     }
 
     _description(dndRace, genderNouns) {
-        return `${this.lastname} is called ${this.nickname} around here, because of the sounds 
+        return `When asked for it's name the ${dndRace.getRace()} makes a *${this.sounding}* sound, 
+        hence ${genderNouns.getHeShe()} is known as ${this.lastname}. is called ${this.nickname} around here, because of the sounds 
         ${genderNouns.getHeShe()} mimics`;
     }
 

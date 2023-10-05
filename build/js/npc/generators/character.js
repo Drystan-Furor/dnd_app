@@ -1,3 +1,4 @@
+
 import {RaceFactory} from '../races/factory/racefactory';
 import {NpcClass} from "../properties/class";
 import {Race} from "../properties/race";
@@ -13,7 +14,6 @@ import {Verbs} from "./verbs";
 
 export class DndNpcRng {
     constructor(parameters) {
-        console.log(parameters);
         this.new_npc = this._dndRngNpc(parameters);
         this.string = this._writeStory(this.new_npc);
     }

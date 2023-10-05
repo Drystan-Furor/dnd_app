@@ -1,4 +1,11 @@
-const initApp = () => {
+'use strict';
+window.dndnext = window.dndnext || {};
+dndnext = {
+    main: {}
+}
+
+
+dndnext.main.initApp = () => {
     const hamburgerBtn = document.getElementById('hamburger-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -12,4 +19,4 @@ const initApp = () => {
     mobileMenu.addEventListener('click', toggleMenu);
 }
 
-document.addEventListener('DOMContentLoaded', initApp);
+document.addEventListener('DOMContentLoaded', dndnext.main.initApp);

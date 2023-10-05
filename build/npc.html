@@ -79,7 +79,7 @@
     <h2
             class=" text-2xl font-bold text-center text-slate-900 dark:text-white dark:bg-amber-600 border-b-4 border-red-700"
     >
-        How to use this
+        A
         <span class="text-red-700 dark:text-red-700"
         >DM tool</span
         >
@@ -95,7 +95,7 @@
             <h2
                     class="max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:text-white"
             >
-                A <span class="text-red-700 dark:text-red-700">DM tool</span> to
+                How to use this <span class="text-red-700 dark:text-red-700">DM tool</span> to
                 create an NPC.
             </h2>
 
@@ -121,9 +121,6 @@
                 There is a limited memory function. While on this page a couple of rng characters can be remembered. If
                 you refresh or leave this page the memory is cleaned. This makes it possible to quickly generate a
                 couple of characters, but it is up to the user to save the text.</p>
-
-        </article>
-        <article class="sm:w-1/2">
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
@@ -151,17 +148,12 @@
                 have the option to set a few parameters for the generator.</a>
             </p>
         </article>
-    </section>
-    <hr class="mx-auto bg-black dark:bg-white w-1/2"/>
-    <section
-            id="variables"
-            class="flex flex-col-reverse justify-center sm:flex-row p-6 items-center gap-8 mb-12 scroll-mt-40 widescreen:section-min-height tallscreen:section-min-height"
-    >
+
         <article class="sm:w-1/2">
-            <h2
-                    class="max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:text-white"
+            <h2 id="howToVariables"
+                class="max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:text-white"
             >
-                Customize <span class="text-red-700 dark:text-red-700">generated</span> character.
+                How to: Customize <span class="text-red-700 dark:text-red-700">generated</span> character.
             </h2>
 
             <p
@@ -177,7 +169,11 @@
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
-                Set a firstname, lastname or nickname if you wish to see that back in most descriptions.
+                Set a firstname, lastname or nickname if you wish to see that back in most descriptions. Homebrew Race
+                will overwrite all existing races and generate a totally random outcome named after this value, however
+                you can either choose no race, one race or many races OR homebew a race-name. You cant have both.
+                If the Homebrew Race field holds a value it will be used, leave it empty if you want to choose out of
+                the list of existing ans supported races.
             </p>
 
             <p
@@ -198,17 +194,33 @@
             <p
                     class="max-w-md p-3 text-1xl mt-4 italic text-center sm:text-left text-slate-700 dark:text-slate-400 rounded-lg border border-amber-600 dark:border-amber-600 bg-gray-100 dark:bg-black"
             >
-                This is usefull for when you want to narrow down encounters if your setting focusses heavier on certain
+                This is useful for when you want to narrow down encounters if your setting focusses heavier on certain
                 races, for example a Human/Dwarf occupied city. Select both Human and Dwarf and
                 you will get randomly one of these two.
             </p>
         </article>
+    </section>
 
-        <div class="w-1/2 dark:bg-black bg-white border border-solid border-amber-600 dark:border-amber-600 rounded-lg p-4">
+    <hr class="mx-auto bg-black dark:bg-white w-1/2"/>
+    <section
+            class="flex flex-col-reverse justify-center sm:flex-row p-6 items-center gap-8 mb-12 scroll-mt-40 widescreen:section-min-height tallscreen:section-min-height"
+    >
+
+        <div id="variables"
+             class="w-full sm:w-1/2 dark:bg-black bg-white border border-solid border-amber-600 dark:border-amber-600 rounded-lg p-4">
             <h2
-                    class="max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:bg-black dark:text-white"
+                    class="p-t-68 max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:bg-black dark:text-white"
             >
-                <span class="text-red-700 dark:text-red-700">Generator</span> options.
+                <span class="text-red-700 dark:text-red-700">Generator</span> options
+                <div
+                        class="text-sm sm:text-1xl text-right mt-2 text-slate-500 dark:text-slate-400"
+                >
+                    <a href="#howToVariables" title="How to use these options?" class="hover:opacity-90 hover:pointer">
+                        <button class="bg-cyan-700 text-center hover:bg-cyan-500 active:bg-amber-500 text-white p-1 rounded-xl w-12 border border-solid border-slate-900 dark:border-none">
+                            ?
+                        </button>
+                    </a>
+                </div>
             </h2>
             <label for="firstname" class="block text-1xl font-medium text-amber-700">Firstname</label>
             <input
@@ -244,16 +256,30 @@
                     class="w-full mb-3 text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
             />
             <div class="w-full p-4 border border-solid border-cyan-500 dark:border-cyan-500 rounded-lg">
+                <label for="homebrew-race" class="block text-1xl font-medium text-amber-700">Homebrew Race</label>
+                <input
+                        type="text"
+                        id="homebrew-race"
+                        name="homebrew-race"
+                        required
+                        minlength="3"
+                        maxlength="60"
+                        placeholder="Optional: homebrew race"
+                        class="w-full mb-3 text-black text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none"
+                />
+                OR
                 <label for="races" class="block text-2xl font-medium text-amber-700 mb-2">Select Races:</label>
                 <select id="races" name="races" multiple
                         class="w-full h-48 text-black text-md sm:text-1xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none shadow-md">
                 </select>
             </div>
+
             <div
                     class="text-sm sm:text-1xl text-right mt-2 text-slate-500 dark:text-slate-400"
             >
                 <a href="#generator" class="hover:opacity-90 hover:pointer">
-                    <button class="bg-cyan-700 text-center hover:bg-cyan-500 active:bg-amber-500 text-white p-1 rounded-xl w-48 border border-solid border-slate-900 dark:border-none">
+                    <button title="To Generator"
+                            class="bg-cyan-700 text-center hover:bg-cyan-500 active:bg-amber-500 text-white p-1 rounded-xl w-48 border border-solid border-slate-900 dark:border-none">
                         To Generator
 
                         <img src="img/icon-small-beholder.png" alt="icon of a beholder"
@@ -277,9 +303,10 @@
             Generator
         </h2>
         <div class="flex items-center justify-center">
-            <button id="generateNpc" class="mx-auto">
+            <button id="generateNpc" class="mx-auto" title="DnD NPC RnG">
                 <img class="mx-auto transition transform rounded-full active:bg-cyan-500 hover:bg-amber-700 hover:border hover:border-cyan-500"
                      src="img/iconbeholder.png" alt="beholder" id="beholder"/>
+                Click Beholder to Generate
             </button>
         </div>
 
@@ -347,22 +374,24 @@
                         <span class="text-red-700 dark:text-red-700">Character</span> Summary
                         <span class="text-amber-600 dark:text-amber-600">Memory</span>
                     </div>
-                    <table class="min-w-full">
-                        <thead>
-                        <tr class="bg-amber-600">
-                            <th class="px-4 py-2">Race</th>
-                            <th class="px-4 py-2">Class</th>
-                            <th class="px-4 py-2">Firstname</th>
-                            <th class="px-4 py-2">Lastname</th>
-                            <th class="px-4 py-2">Nickname</th>
-                            <th class="px-4 py-2">Age</th>
-                            <th class="px-4 py-2">Gender</th>
-                            <th class="px-4 py-2">Description</th>
-                        </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                        </tbody>
-                    </table>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                            <tr class="bg-amber-600">
+                                <th class="px-4 py-2">Race</th>
+                                <th class="px-4 py-2">Class</th>
+                                <th class="px-4 py-2">Firstname</th>
+                                <th class="px-4 py-2">Lastname</th>
+                                <th class="px-4 py-2">Nickname</th>
+                                <th class="px-4 py-2">Age</th>
+                                <th class="px-4 py-2">Gender</th>
+                                <th class="px-4 py-2">Description</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

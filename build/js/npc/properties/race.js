@@ -3,7 +3,7 @@ import {getRandomElement} from "../races/factory/utility";
 export class Race {
     constructor(parameters) {
         this.racesArray = Race.raceArray();
-        this.dndRace = parameters.races ? getRandomElement(parameters.races) : Race.randomRace(this.racesArray);
+        this.dndRace = parameters.homebrew ? parameters.homebrew : parameters.races ? getRandomElement(parameters.races) : Race.randomRace(this.racesArray);
         this.heritage = Race.setHeritage(this.racesArray);
         this.variant = this.dndRace;
         this.intro = '';

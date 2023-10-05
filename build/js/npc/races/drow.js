@@ -46,14 +46,11 @@ export class Drow extends Name {
         return firstname;
     }
 
-    _nickname() {
-        return '<a href="https://forgottenrealms.fandom.com/wiki/Drow_dictionary">'
-            + this.firstname + '</a>';
-    }
 
     _description(dndrace, new_npc) {
-        return `${this.nickname} hails from a dark-skinned sub-race of
-    elves that predominantly live in the Underdark`;
+        return `<a href="https://forgottenrealms.fandom.com/wiki/Drow_dictionary">${this.firstname}</a> 
+        hails from a dark-skinned sub-race of elves that predominantly live in the Underdark`;
     }
 }
+
 setClassMapping('Drow', Drow);
