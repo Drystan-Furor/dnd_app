@@ -8,7 +8,7 @@ export class Damaran extends Name {
         this.firstname = parameters.firstname ? parameters.firstname : Damaran._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Damaran._description(dndRace, genderNouns);
-        if (!parameters.homebrew) {
+        if (!parameters.homebrew && dndRace.getRace() !== 'Half-Elf') {
             dndRace.setRace('Damaran');
         }
     }

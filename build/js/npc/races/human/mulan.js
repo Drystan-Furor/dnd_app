@@ -8,7 +8,7 @@ export class Mulan extends Name {
         this.firstname = parameters.firstname ? parameters.firstname : Mulan._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Mulan._description(dndRace, genderNouns);
-        if (!parameters.homebrew) {
+        if (!parameters.homebrew && dndRace.getRace() !== 'Half-Elf') {
             dndRace.setRace('Mulan');
         }
     }

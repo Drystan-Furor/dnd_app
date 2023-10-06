@@ -20,8 +20,6 @@ export class Elf extends Name {
         }
     }
 
-
-
     _lastname() {
         const surnames = [
             'Amakiir', 'Gemflower', 'Amastacia', 'Starflower', 'Galanodel',

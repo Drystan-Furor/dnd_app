@@ -10,7 +10,7 @@ export class Tethyrian extends Name {
         this.firstname = parameters.firstname ? parameters.firstname : biography.getFirstname();
         this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Tethyrian._description(dndRace, genderNouns);
-        if (!parameters.homebrew) {
+        if (!parameters.homebrew && dndRace.getRace() !== 'Half-Elf') {
             dndRace.setRace('Tethyrian');
         }
     }

@@ -11,12 +11,12 @@ export class Genasi extends Name {
         this._variation(dndRace);
         this.lastname = parameters.lastname ? parameters.lastname : biography.getLastname();
         this.nickname = parameters.nickname ? parameters.nickname : this._nickname(origin.getVariant());
-        this.firstname = this._firstname(origin.getVariant());
+        this.firstname = parameters.firstname ? parameters.firstname : biography.getFirstname();
         if (!parameters.homebrew) {
             dndRace.setRace(origin.getRace());
         }
         this._variation(dndRace);
-        this.description = this._description(dndRace, genderNouns);
+        this.description = this._description(dndRace, genderNouns, origin);
     }
 
 
@@ -25,10 +25,6 @@ export class Genasi extends Name {
             "Fire Genasi", "Air Genasi", "Earth Genasi", "Water Genasi",
         ];
         dndRace.setVariant(getRandomElement(variant));
-    }
-
-    _firstname(variant) {
-        return " the " + variant + " " + this.nickname;
     }
 
     _nickname(variant) {
@@ -68,9 +64,9 @@ export class Genasi extends Name {
         return nickname;
     }
 
-    _description(dndRace, genderNouns) {
+    _description(dndRace, genderNouns, origin) { // origin.getVariant()
         return `However ${genderNouns.getHeShe()} assumed the distinctive name ${this.nickname} to capture 
-        ${genderNouns.getHisHer()} ${dndRace.getRace()} heritage as ${this.nickname} is born and raised 
+        ${genderNouns.getHisHer()} ${origin.getVariant()} heritage as ${this.nickname} is born and raised 
         in a ${dndRace.getHeritage()} society`;
     }
 }

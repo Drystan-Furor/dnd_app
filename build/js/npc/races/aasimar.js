@@ -10,7 +10,7 @@ export class Aasimar extends Name {
         if (!parameters.homebrew) {
             dndRace.setRace(this.isFallen(dndRace));
         }
-        this.lastname = this._lastname(dndRace, genderNouns);
+        this.lastname = this._lastname(dndRace, genderNouns, age, parameters);
         this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : this.firstname;
         this.description = this._description(dndRace, genderNouns, this.nickname);
@@ -27,12 +27,12 @@ export class Aasimar extends Name {
         }
     }
 
-    _lastname(dndRace, genderNouns) {
-        this.lastname = this._randomLastname(dndRace, genderNouns);
+    _lastname(dndRace, genderNouns, age, parameters) {
+        this.lastname = this._randomLastname(dndRace, genderNouns, age, parameters);
         return this.lastname;
     }
 
-    _randomLastname(dndRace, genderNouns) {
+    _randomLastname(dndRace, genderNouns, age, parameters) {
         const humanRaces = ['Calishite', 'Chondathan', 'Damaran', 'Illuskan', 'Mulan', 'Rashemi', 'Tethyrian', 'Turami'];
         const randomRace = getRandomElement(humanRaces);
         const requiredClasses = ['Calishite', 'Chondathan', 'Damaran', 'Illuskan', 'Mulan', 'Rashemi', 'Tethyrian', 'Turami'];
@@ -41,7 +41,7 @@ export class Aasimar extends Name {
         if (!ClassReference && typeof ClassReference.constructor === 'function') {
             return false;
         }
-        return new ClassReference(randomRace, genderNouns).getLastname();
+        return new ClassReference(dndRace, genderNouns, age, parameters).getLastname();
     }
 
 

@@ -10,20 +10,20 @@ export class Halfelf extends Name {
         this._variation(dndRace);
         const variant = dndRace.getVariant();
         this._ageReplacer(dndRace, age)
-        const biography = this._biography(variant, dndRace, genderNouns);
+        const biography = this._biography(variant, dndRace, genderNouns, age, parameters);
         this.lastname = parameters.lastname ? parameters.lastname :biography.getLastname();
         this.firstname = parameters.firstname ? parameters.firstname : biography.getFirstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : biography.getNickname();
         this.description = this._description(dndRace, genderNouns);
     }
 
-    _biography(variant, dndRace, genderNouns) {
+    _biography(variant, dndRace, genderNouns, age, parameters) {
         let biography;
         if (variant === 'Human') {
-            biography = new Human(dndRace, genderNouns);
+            biography = new Human(dndRace, genderNouns, age, parameters);
         }
         if (variant === 'Elf') {
-            biography = new Elf(dndRace, genderNouns);
+            biography = new Elf(dndRace, genderNouns, age, parameters);
         }
         return biography;
     }

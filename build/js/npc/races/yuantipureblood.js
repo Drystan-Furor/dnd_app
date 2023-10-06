@@ -5,7 +5,7 @@ export class Yuantipureblood extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
-        this.firstname = ` a very serpent looking ${dndRace.getHeritage()} named `;
+        this.firstname = parameters.firstname ? parameters.firstname : this._lastname();
         this.nickname = null;
         if (!parameters.homebrew){
             dndRace.setRace('Yuan-ti Pureblood');
@@ -61,7 +61,8 @@ export class Yuantipureblood extends Name {
     }
 
     _description(dndRace, genderNouns) {
-        return `Blessed with the resistance to magical and poisonous effects by the rituals that created them, 
+        return `This ${dndRace.getRace()} is a very serpent looking ${dndRace.getHeritage()} named ${this.lastname}. 
+        Blessed with the resistance to magical and poisonous effects by the rituals that created them, 
         each ${dndRace.getRace()} manifests their serpentine heritage in a variety of ways. 
         The serpentine ${dndRace.getHeritage()} ${dndRace.getRace()} talks with many hissing sounds`;
     }

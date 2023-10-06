@@ -8,7 +8,7 @@ export class Shou extends Name {
         this.firstname = parameters.firstname ? parameters.firstname : Shou._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Shou._description(dndRace, genderNouns);
-        if (!parameters.homebrew) {
+        if (!parameters.homebrew && dndRace.getRace() !== 'Half-Elf') {
             dndRace.setRace('Shou');
         }
     }

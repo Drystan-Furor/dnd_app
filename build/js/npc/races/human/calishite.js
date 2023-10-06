@@ -8,7 +8,9 @@ export class Calishite extends Name {
         this.firstname = parameters.firstname ? parameters.firstname : Calishite._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Calishite._description(dndRace, genderNouns);
-
+        if (!parameters.homebrew && dndRace.getRace() !== 'Half-Elf') {
+            dndRace.setRace('Calishite');
+        }
     }
 
     static _lastname() {

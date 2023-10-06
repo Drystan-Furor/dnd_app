@@ -12,7 +12,7 @@ export class Simichybrid extends Name {
             dndRace.setRace('Simic Hybrid');
         }
         this._variation(dndRace);
-        this.biography = this._biography(dndRace.getVariant(), dndRace, genderNouns, parameters);
+        this.biography = this._biography(dndRace.getVariant(), dndRace, genderNouns, age, parameters);
         this.lastname = parameters.lastname ? parameters.lastname : this.biography.getLastname()
         this.firstname = parameters.firstname ? parameters.firstname : this.biography.getFirstname()
         this.nickname = parameters.nickname ? parameters.nickname :this.biography.getNickname()
@@ -26,16 +26,16 @@ export class Simichybrid extends Name {
         dndRace.setVariant(getRandomElement(variant));
     }
 
-    _biography(variant, dndRace, genderNouns, parameters) {
+    _biography(variant, dndRace, genderNouns, age, parameters) {
         let biography;
         if (variant === 'Human') {
-            biography = new Human(dndRace, genderNouns, parameters);
+            biography = new Human(dndRace, genderNouns, age, parameters);
         }
         if (variant === 'Elf') {
-            biography = new Elf(dndRace, genderNouns, parameters);
+            biography = new Elf(dndRace, genderNouns, age, parameters);
         }
         if (variant === 'Vedalkan') {
-            biography = new Vedalkan(dndRace, genderNouns, parameters);
+            biography = new Vedalkan(dndRace, genderNouns, age, parameters);
         }
         return biography;
     }

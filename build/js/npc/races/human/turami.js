@@ -9,7 +9,7 @@ export class Turami extends Name {
         this.firstname = parameters.firstname ? parameters.firstname : Turami._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Turami._description(dndRace, genderNouns);
-        if (!parameters.homebrew) {
+        if (!parameters.homebrew && dndRace.getRace() !== 'Half-Elf') {
             dndRace.setRace('Turami');
         }
     }

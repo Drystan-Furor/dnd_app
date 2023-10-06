@@ -9,7 +9,7 @@ export class Illuskan extends Name {
         this.firstname = parameters.firstname ? parameters.firstname : Illuskan._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Illuskan._description(dndRace, genderNouns);
-        if (!parameters.homebrew) {
+        if (!parameters.homebrew && dndRace.getRace() !== 'Half-Elf') {
             dndRace.setRace('Illuskan');
         }
     }

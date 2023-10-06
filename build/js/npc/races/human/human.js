@@ -6,8 +6,8 @@ export class Human extends Name {
         super(dndRace, genderNouns);
         dndRace.setVariant(Human.randomHumanType());
         let variant = dndRace.getVariant();
-        variant = classMapping[variant];
         dndRace.setRace(variant);
+        variant = classMapping[variant];
         const biography = new variant(dndRace, genderNouns, age, parameters);
         this.lastname = biography.getLastname();
         this.firstname = biography.getFirstname(genderNouns);

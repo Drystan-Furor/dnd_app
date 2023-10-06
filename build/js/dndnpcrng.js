@@ -4,8 +4,8 @@ import {ucFirst} from "./npc/races/factory/utility";
 
 let dndNext = window;
 dndNext = {
-    dndRngNpc : {},
-    generator : {},
+    dndRngNpc: {},
+    generator: {},
 };
 dndNext.dndRngNpc.memory = [];
 dndNext.parameters = {}
@@ -48,7 +48,6 @@ dndNext.dndRngNpc.coreFunctionality = function () {
         const biography = new_npc.getString();
         dndNext.dndRngNpc.imageOfCharacter(character.dndRace);
         dndNext.dndRngNpc.commitToMemory(character, biography);
-
         const currentBiography = {
             string1: characterParagraph1.innerHTML,
             string2: characterParagraph2.innerHTML,
@@ -60,13 +59,14 @@ dndNext.dndRngNpc.coreFunctionality = function () {
         characterParagraph1.innerHTML = biography.string1;
         characterParagraph2.innerHTML = biography.string2;
         characterParagraph3.innerHTML = biography.string3;
-        dndNext.dndRngNpc.previousCharacter (currentBiography);
+        dndNext.dndRngNpc.previousCharacter(currentBiography);
     });
 
     const copyButton = document.getElementById('copyButton');
     const copyButton2 = document.getElementById('copyButton2');
     dndNext.dndRngNpc.copyButton(copyButton);
     dndNext.dndRngNpc.copyButton(copyButton2);
+
 }
 
 dndNext.dndRngNpc.copyButton = function (copyButton) {
@@ -109,8 +109,8 @@ dndNext.dndRngNpc.imageOfCharacter = function (race) {
     }
     const raceLowerCase = convertRaceName(race);
     imgElement.src = "img/characters/" + raceLowerCase.toLowerCase() + ".png";
+    document.getElementById('dynamicCaption').textContent = 'Image of a ' + race;
     dndNext.dndRngNpc.imageExists(imgElement.src, function (exists) {
-        document.getElementById('dynamicCaption').textContent = 'Image of a ' + race;
         if (!exists) {
             console.error("The image is missing, man, probably out bowling with The Dude. Stealth check!");
             document.getElementById('dynamicCaption').textContent = 'It seems the image has stealthily evaded us, perhaps it rolled a natural 20 on its Stealth check!';
@@ -147,7 +147,7 @@ dndNext.dndRngNpc.listOfOptions = function () {
     });
 }
 
-dndNext.dndRngNpc.collectInput = function() {
+dndNext.dndRngNpc.collectInput = function () {
     dndNext.dndRngNpc.firstname();
     dndNext.dndRngNpc.lastname();
     dndNext.dndRngNpc.nickname();
@@ -169,7 +169,7 @@ dndNext.dndRngNpc.firstname = function () {
     dndNext.parameters.firstname = firstname;
 }
 
-dndNext.dndRngNpc.lastname = function() {
+dndNext.dndRngNpc.lastname = function () {
     const lastnameInput = document.getElementById('lastname');
     const lastname = lastnameInput.value.trim();
     if (!lastname) {
