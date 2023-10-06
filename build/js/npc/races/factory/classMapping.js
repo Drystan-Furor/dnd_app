@@ -62,6 +62,7 @@ export const classMapping = {
     Kender:null,
     Fairy:null,
     Autognome:null,
+    Giff:null,
 
     // ... other class mappings
 };

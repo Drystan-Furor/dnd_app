@@ -14,7 +14,7 @@ export class Race {
         return [
             "Aarakocra", "Aasimar", "Autognome", "Bugbear", "Centaur", "Changeling", "Dragonborn", "Drow", "Druergar","Dwarf", "Elf",
             "Fairy",
-            "Feral Tiefling", "Firbolg", "Genasi", "Gith", "Gnome", "Goblin", "Goliath", "Half-Elf", "Half Orc",
+            "Feral Tiefling", "Firbolg", "Genasi","Giff", "Gith", "Gnome", "Goblin", "Goliath", "Half-Elf", "Half Orc",
             "Halfling", "Harengon", "Hobgoblin", "Human", "Kender", "Khalastar", "Kenku", "Kobold", "Leonin", "Lizardfolk",
             "Locathah", "Loxodon", "Minotaur", "Orc", "Owlfolk",  "Satyr",
             "Shifter", "Simic Hybrid", "Tabaxi", "Tiefling", "Tortle", "Triton", "Vedalkan", "Verdan", "Warforged",

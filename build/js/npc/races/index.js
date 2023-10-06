@@ -61,3 +61,4 @@ export * from './seaelf';
 export * from './kender';
 export * from './fairy';
 export * from './autognome';
+export * from './giff';
