@@ -60,3 +60,4 @@ export * from './yuantipureblood';
 export * from './seaelf';
 export * from './kender';
 export * from './fairy';
+export * from './autognome';

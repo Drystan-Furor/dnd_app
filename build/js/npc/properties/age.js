@@ -65,6 +65,7 @@ export class Age {
                 age = rand(14, 425);
                 break;
             case "Vedalkan":
+            case "Autognome":
                 age = rand(14, 500);
                 break;
             default:

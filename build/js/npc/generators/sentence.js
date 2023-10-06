@@ -1,4 +1,5 @@
 import {Verbs} from "./verbs";
+import {getRandomElement} from "../races/factory/utility";
 
 export class Sentence {
     static observing() {
@@ -22,6 +23,16 @@ export class Sentence {
             //this.nickname,
         ];
         return subject[Math.floor(Math.random() * subject.length)];
+    }
+
+    // You know, sometimes there's a fairy, well, she's the fairy for her time and place. Far out!
+    static _BigLebowskiQuote(race, genderNouns) {
+        let quote = [
+            `string  ${race}`,
+            `You know, sometimes there's a ${race}, well, ${genderNouns.getHeShe()}'s the ${race} for ${genderNouns.getHisHer()}
+             time and place`,
+            ]
+        return getRandomElement(quote);
     }
 
 }

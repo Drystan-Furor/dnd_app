@@ -12,7 +12,7 @@ export class Race {
 
     static raceArray() {
         return [
-            "Aarakocra", "Aasimar", "Bugbear", "Centaur", "Changeling", "Dragonborn", "Drow", "Druergar","Dwarf", "Elf",
+            "Aarakocra", "Aasimar", "Autognome", "Bugbear", "Centaur", "Changeling", "Dragonborn", "Drow", "Druergar","Dwarf", "Elf",
             "Fairy",
             "Feral Tiefling", "Firbolg", "Genasi", "Gith", "Gnome", "Goblin", "Goliath", "Half-Elf", "Half Orc",
             "Halfling", "Harengon", "Hobgoblin", "Human", "Kender", "Khalastar", "Kenku", "Kobold", "Leonin", "Lizardfolk",
