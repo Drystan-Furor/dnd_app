@@ -1,3 +1,5 @@
+import {getRandomElement} from "../races/factory/utility";
+
 export class Verbs {
     static quality() {
         const qualities = ['cheap', 'affordable', 'quality', 'expensive quality'];
@@ -71,6 +73,14 @@ export class Verbs {
             'more or less', 'practically', 'virtually', 'essentially', 'effectively', 'near to', 'bordering on'
         ];
         return synonym[Math.floor(Math.random() * synonym.length)];
+    }
+
+    static color(){
+        const color = [
+            'green','red','blue','purple','grey','black','white','yellow','pink','amber','cyan','gold','silver','iron',
+            'copper','teal','stone','lime','emerald','indigo','violet','fuchsia','rose','brown',
+        ];
+        return getRandomElement(color);
     }
 }
 

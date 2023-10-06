@@ -1,6 +1,5 @@
 // classMapping.js
 
-
 export const classMapping = {
     Calishite: null,
     Chondathan: null,
@@ -63,6 +62,9 @@ export const classMapping = {
     Fairy:null,
     Autognome:null,
     Giff:null,
+    Hadozee:null,
+    Plasmoid:null,
+    Thrikreen:null,
 
     // ... other class mappings
 };

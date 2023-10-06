@@ -62,3 +62,6 @@ export * from './kender';
 export * from './fairy';
 export * from './autognome';
 export * from './giff';
+export * from './hadozee';
+export * from './plasmoid';
+export * from './thrikreen';
