@@ -58,6 +58,8 @@ export const classMapping = {
     Yuantipureblood:null,
 
     Seaelf:null,
+    Kender:null,
+    Fairy:null,
 
     // ... other class mappings
 };

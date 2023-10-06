@@ -58,3 +58,5 @@ export * from './warforged';
 export * from './yuantipureblood';
 
 export * from './seaelf';
+export * from './kender';
+export * from './fairy';

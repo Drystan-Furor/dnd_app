@@ -13,8 +13,9 @@ export class Race {
     static raceArray() {
         return [
             "Aarakocra", "Aasimar", "Bugbear", "Centaur", "Changeling", "Dragonborn", "Drow", "Druergar","Dwarf", "Elf",
+            "Fairy",
             "Feral Tiefling", "Firbolg", "Genasi", "Gith", "Gnome", "Goblin", "Goliath", "Half-Elf", "Half Orc",
-            "Halfling", "Harengon", "Hobgoblin", "Human", "Khalastar", "Kenku", "Kobold", "Leonin", "Lizardfolk",
+            "Halfling", "Harengon", "Hobgoblin", "Human", "Kender", "Khalastar", "Kenku", "Kobold", "Leonin", "Lizardfolk",
             "Locathah", "Loxodon", "Minotaur", "Orc", "Owlfolk",  "Satyr",
             "Shifter", "Simic Hybrid", "Tabaxi", "Tiefling", "Tortle", "Triton", "Vedalkan", "Verdan", "Warforged",
             "Yuan-Ti Pureblood"

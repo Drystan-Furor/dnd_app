@@ -76,7 +76,7 @@ export class Elf extends Name {
 
     static _subclass(dndRace) {
         const elfRaces = [
-            "High Elf", "Wood Elf", "Eladrin Elf", "Drow",
+            "High Elf", "Wood Elf", "Eladrin Elf", "Drow", "Astral Elf",
         ];
         dndRace = getRandomElement(elfRaces);
         return dndRace
