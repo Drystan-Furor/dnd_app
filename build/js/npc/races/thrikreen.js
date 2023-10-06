@@ -1,5 +1,6 @@
 import {setClassMapping} from "./factory/classMapping";
 import {Name} from "../properties/name";
+import {getRandomElement} from "./factory/utility";
 
 export class Thrikreen extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
@@ -68,7 +69,26 @@ export class Thrikreen extends Name {
         impossible to duplicate. To interact with other folk, ${dndRace} rely on a form of telepathy`;
     }
 
+    static shoesReplacer(dndRace, genderNouns) {
+        const footTypes = [
+            'spiked', 'clawed', 'padded', 'segmented', 'webbed', 'serrated'
+        ];
 
+        const footShapes = [
+            'elongated', 'compact', 'broad', 'narrow', 'curved'
+        ];
+
+        const specialFeatures = [
+            'extra joint for climbing', 'sticky pads for wall-crawling', 'retractable claws',
+            'spurs for digging', 'sensitive hairs for sensing vibrations'
+        ];
+
+        const footType = getRandomElement(footTypes);
+        const footShape = getRandomElement(footShapes);
+        const specialFeature = getRandomElement(specialFeatures);
+
+        return `This ${dndRace} has ${footShape}, ${footType} feet with ${specialFeature}.`;
+    }
 }
 
 setClassMapping('Thrikreen', Thrikreen);

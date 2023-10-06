@@ -73,7 +73,7 @@ export class Body {
             `${ucFirst(heshe)}'s ${gender} form is ${this.bodyType}, distinguished by ${this.bodySize} ${this.bodyShape}`,
             `This ${this.bodySize} ${manWoman} exhibits a ${gender} body, ${this.bodyType} in structure, and is characterized by ${this.bodyShape}`,
             `The ${this.bodySize} ${gender} body of this ${manWoman} is ${this.bodyType} and is marked by ${this.bodyShape}`,
-            `${ucFirst(hisher)} ${this.bodySize} physique is ${this.bodyType}, a representation of ${gender} body, detailed with ${this.bodyShape}`,
+            `${ucFirst(hisher)} ${this.bodySize} physique is ${this.bodyType}, a representation of a ${gender} body, detailed with ${this.bodyShape}`,
             `In ${this.bodyType} form, ${heshe} displays a ${this.bodySize} ${gender} body, accentuated by ${this.bodyShape}`,
             `This ${manWoman} holds a ${gender} body, ${this.bodyType} in build, and is defined by ${this.bodySize} ${this.bodyShape}`,
             `${ucFirst(hisher)} ${gender} structure is ${this.bodySize}, ${this.bodyType} and is adorned with ${this.bodyShape}`,

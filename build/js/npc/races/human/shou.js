@@ -2,12 +2,15 @@ import {Name} from "../../properties/name";
 import {setClassMapping} from "../factory/classMapping";
 
 export class Shou extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = Shou._lastname();
-        this.firstname = Shou._firstname(genderNouns);
-        this.nickname = this.firstname;
+        this.lastname = parameters.lastname ? parameters.lastname : Shou._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : Shou._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Shou._description(dndRace, genderNouns);
+        if (!parameters.homebrew) {
+            dndRace.setRace('Shou');
+        }
     }
 
     static _lastname() {

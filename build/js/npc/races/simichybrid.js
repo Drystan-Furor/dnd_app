@@ -26,7 +26,7 @@ export class Simichybrid extends Name {
         dndRace.setVariant(getRandomElement(variant));
     }
 
-    _biography(variant, dndRace, genderNouns) {
+    _biography(variant, dndRace, genderNouns, parameters) {
         let biography;
         if (variant === 'Human') {
             biography = new Human(dndRace, genderNouns, parameters);

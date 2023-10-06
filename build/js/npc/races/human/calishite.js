@@ -2,12 +2,13 @@ import {Name} from "../../properties/name";
 import {setClassMapping} from "../factory/classMapping";
 
 export class Calishite extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = Calishite._lastname();
-        this.firstname = Calishite._firstname(genderNouns);
-        this.nickname = this.firstname;
+        this.lastname = parameters.lastname ? parameters.lastname : Calishite._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : Calishite._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Calishite._description(dndRace, genderNouns);
+
     }
 
     static _lastname() {

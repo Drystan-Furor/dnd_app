@@ -3,13 +3,16 @@ import {Chondathan} from "./chondathan";
 import {setClassMapping} from "../factory/classMapping";
 
 export class Tethyrian extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        const biography = new Chondathan(dndRace, genderNouns);
-        this.lastname = biography.getLastname();
-        this.firstname = biography.getFirstname();
-        this.nickname = this.firstname;
+        const biography = new Chondathan(dndRace, genderNouns, age, parameters);
+        this.lastname = parameters.lastname ? parameters.lastname : biography.getLastname();
+        this.firstname = parameters.firstname ? parameters.firstname : biography.getFirstname();
+        this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Tethyrian._description(dndRace, genderNouns);
+        if (!parameters.homebrew) {
+            dndRace.setRace('Tethyrian');
+        }
     }
 
     static _description(dndrace, new_npc) {

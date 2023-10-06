@@ -2,12 +2,15 @@ import {Name} from "../../properties/name";
 import {setClassMapping} from "../factory/classMapping";
 
 export class Damaran extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = Damaran._lastname();
-        this.firstname = Damaran._firstname(genderNouns);
-        this.nickname = this.firstname;
+        this.lastname = parameters.lastname ? parameters.lastname : Damaran._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : Damaran._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Damaran._description(dndRace, genderNouns);
+        if (!parameters.homebrew) {
+            dndRace.setRace('Damaran');
+        }
     }
 
     static _lastname() {
@@ -39,4 +42,5 @@ export class Damaran extends Name {
             "varies widely, though brown is most common.";
     }
 }
+
 setClassMapping('Damaran', Damaran);

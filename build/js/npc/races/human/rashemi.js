@@ -2,12 +2,15 @@ import {Name} from "../../properties/name";
 import {setClassMapping} from "../factory/classMapping";
 
 export class Rashemi extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = Rashemi._lastname();
-        this.firstname = Rashemi._firstname(genderNouns);
-        this.nickname = this.firstname;
+        this.lastname = parameters.lastname ? parameters.lastname : Rashemi._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : Rashemi._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Rashemi._description(dndRace, genderNouns);
+        if (!parameters.homebrew) {
+            dndRace.setRace('Rashemi');
+        }
     }
 
     static _lastname() {

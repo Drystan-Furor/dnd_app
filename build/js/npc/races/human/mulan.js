@@ -2,13 +2,18 @@ import {Name} from "../../properties/name";
 import {setClassMapping} from "../factory/classMapping";
 
 export class Mulan extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = Mulan._lastname();
-        this.firstname = Mulan._firstname(genderNouns);
-        this.nickname = this.firstname;
+        this.lastname = parameters.lastname ? parameters.lastname : Mulan._lastname();
+        this.firstname = parameters.firstname ? parameters.firstname : Mulan._firstname(genderNouns);
+        this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = Mulan._description(dndRace, genderNouns);
+        if (!parameters.homebrew) {
+            dndRace.setRace('Mulan');
+        }
     }
+
+
 
     static _lastname() {
         const surnames = ['Ankhalab', 'Anskuld', 'Fezim', 'Hahpet', 'Nathandem',

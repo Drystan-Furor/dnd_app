@@ -6,7 +6,7 @@ export class Drow extends Name {
         super(dndRace, genderNouns);
         this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
         this.firstname = parameters.firstname ? parameters.firstname : this.firstname = this._firstname(genderNouns);
-        this.nickname = parameters.nickname ? parameters.nickname : this._nickname();
+        this.nickname = parameters.nickname ? parameters.nickname : null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }
 

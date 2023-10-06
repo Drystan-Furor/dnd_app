@@ -2,12 +2,13 @@ import {Name} from "../../properties/name";
 import {classMapping, setClassMapping} from "../factory/classMapping";
 
 export class Human extends Name {
-    constructor(dndRace, genderNouns) {
+    constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
         dndRace.setVariant(Human.randomHumanType());
         let variant = dndRace.getVariant();
         variant = classMapping[variant];
-        const biography = new variant(dndRace, genderNouns);
+        dndRace.setRace(variant);
+        const biography = new variant(dndRace, genderNouns, age, parameters);
         this.lastname = biography.getLastname();
         this.firstname = biography.getFirstname(genderNouns);
         this.nickname = biography.getNickname();

@@ -1,5 +1,7 @@
 // overwatch
 'use strict';
+import {ucFirst} from "./npc/races/factory/utility";
+
 let dndNext = window;
 dndNext = {
     dndRngNpc : {},
@@ -145,8 +147,6 @@ dndNext.dndRngNpc.listOfOptions = function () {
     });
 }
 
-
-
 dndNext.dndRngNpc.collectInput = function() {
     dndNext.dndRngNpc.firstname();
     dndNext.dndRngNpc.lastname();
@@ -220,8 +220,6 @@ dndNext.dndRngNpc.selectedRaces = function () {
         dndNext.parameters.races = selectedOptions;
     }
 }
-
-
 
 dndNext.dndRngNpc.commitToMemory = function (character, biography) {
     let stored = false;
