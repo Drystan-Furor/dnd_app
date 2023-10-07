@@ -14,6 +14,12 @@ export class Halfelf extends Name {
         this.lastname = parameters.lastname ? parameters.lastname :biography.getLastname();
         this.firstname = parameters.firstname ? parameters.firstname : biography.getFirstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : biography.getNickname();
+        if (parameters.homebrew) {
+            dndRace.setRace(parameters.homebrew);
+        }
+        if (!parameters.homebrew) {
+            dndRace.setRace('Half-Elf');
+        }
         this.description = this._description(dndRace, genderNouns);
     }
 

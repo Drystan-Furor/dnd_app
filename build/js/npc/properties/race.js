@@ -8,6 +8,9 @@ export class Race {
         this.variant = this.dndRace;
         this.intro = '';
         this.outfit = '';
+        if (parameters.homebrew) {
+            this.homebrew= parameters.homebrew;
+        }
     }
 
     static raceArray() {

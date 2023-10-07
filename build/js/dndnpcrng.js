@@ -9,7 +9,8 @@ dndNext = {
 };
 dndNext.dndRngNpc.memory = [];
 dndNext.parameters = {}
-dndNext.regex = /^[a-zA-Z0-9]+$/;
+dndNext.regex = /^[a-zA-Z0-9-' ]+$/;
+
 
 
 import {DndNpcRng} from "./npc/generators/character";
@@ -59,13 +60,9 @@ dndNext.dndRngNpc.coreFunctionality = function () {
         characterParagraph1.innerHTML = biography.string1;
         characterParagraph2.innerHTML = biography.string2;
         characterParagraph3.innerHTML = biography.string3;
-        dndNext.dndRngNpc.previousCharacter(currentBiography);
     });
-
     const copyButton = document.getElementById('copyButton');
-    const copyButton2 = document.getElementById('copyButton2');
     dndNext.dndRngNpc.copyButton(copyButton);
-    dndNext.dndRngNpc.copyButton(copyButton2);
 
 }
 
@@ -90,15 +87,6 @@ dndNext.dndRngNpc.copyToClipboard = function () {
     }).catch(function (err) {
         console.error('Unable to copy text', err);
     });
-}
-
-dndNext.dndRngNpc.previousCharacter = function (previousBiography) {
-    const previousCharacterParagraph1 = document.getElementById("previous-character-1");
-    const previousCharacterParagraph2 = document.getElementById("previous-character-2");
-    const previousCharacterParagraph3 = document.getElementById("previous-character-3");
-    previousCharacterParagraph1.innerHTML = previousBiography.string1;
-    previousCharacterParagraph2.innerHTML = previousBiography.string2;
-    previousCharacterParagraph3.innerHTML = previousBiography.string3;
 }
 
 dndNext.dndRngNpc.imageOfCharacter = function (race) {
@@ -204,7 +192,6 @@ dndNext.dndRngNpc.homebrew = function () {
         dndNext.parameters.homebrew = null;
         return false;
     }
-
     if (!dndNext.regex.test(homebrew)) {
         return false;
     }

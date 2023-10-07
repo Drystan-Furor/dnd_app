@@ -24,7 +24,6 @@ export class Shoes {
             "botes (boots) held on with straps",
             "clogs with wood soles",
             "rope soled shoes",
-            "covered basts (made of tree bark)"
         ];
         return shoeTypes[Math.floor(Math.random() * shoeTypes.length)];
     }
