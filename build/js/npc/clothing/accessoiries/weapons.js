@@ -23,13 +23,16 @@ export class Weapon {
 
     static weapon() {
         const weapons = [
-            "club", "mace", "scimitar", "dagger", "short sword", "long sword", "bow",
-            "crossbow", "axe", "hatchet", "warhammer", "great sword", "javelin",
-            "spear", "glaive", "quarterstaff", "throwing axe", "knife", "rapier", "whip",
-            "battleaxe", "messer", "halberd", "lance", "heavy crossbow", "hand crossbow",
-            "blowgun", "boomerang", "couple of darts", "flail", "greataxe", "greatclub",
-            "light hammer", "longbow", "maul", "morningstar", "pike", "shortbow", "sickle",
-            "sling", "trident", "war pick",
+            "battleaxe", "bastard sword", "blowgun", "bo staff", "boomerang", "bow", "cestus", "club",
+            "composite longbow", "composite shortbow", "couple of darts", "crossbow", "cutlass", "dagger",
+            "dire flail", "double-bladed scimitar", "Dwarven urgrosh", "Elven lightblade", "Elven thinblade",
+            "falchion", "flail", "glaive", "great sword", "greatclub", "greataxe", "hand crossbow", "handaxe",
+            "hatchet", "heavy crossbow", "hooked hammer", "javelin", "kama", "katana", "khopesh", "knife", "kukri",
+            "lance", "light crossbow", "light hammer", "long sword", "longbow", "maul", "mace", "messer",
+            "morningstar", "net", "nunchaku", "Orc double axe", "parrying dagger", "pike", "quarterstaff", "rapier",
+            "repeating crossbow", "sai", "scimitar", "scythe", "short sword", "shortbow", "sickle", "sling", "spear",
+            "spiked chain", "tonfa", "trident", "two-bladed sword", "throwing axe", "war Scythe", "war pick",
+            "warhammer", "whip", "yklwa"
         ];
         return weapons[Math.floor(Math.random() * weapons.length)];
     }
@@ -38,10 +41,8 @@ export class Weapon {
         let subject = [
             `${race.getRace()} `,
             `${npcClass} `,
-            `${genderNouns.getGender()} `,
+            `${genderNouns.getManWoman()} `,
         ];
-        subject = getRandomElement(subject);
-        const observing = Sentence.observing();
-        return `${observing} ${subject} ${this.holding()} a ${this.weapon()}`;
+        return `${Sentence.observing()} ${getRandomElement(subject)} ${this.holding()} a ${this.weapon()}`;
     }
 }
