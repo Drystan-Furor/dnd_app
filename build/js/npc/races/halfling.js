@@ -14,7 +14,8 @@ export class Halfling extends Name {
 
     _variation(dndRace) {
         const variant = [
-            "Lightfoot Halfling", "Stout Halfling",
+            `Lightfoot ${dndRace.getRace()}`,
+            `Stout ${dndRace.getRace()}`,
         ];
         dndRace.setVariant(getRandomElement(variant));
     }
@@ -51,7 +52,7 @@ export class Halfling extends Name {
     }
 
     _description(dndRace, genderNouns) {
-        return `${dndRace.getVariant()}s are an affable and cheerful people.
+        return `${dndRace.getVariant()} ${dndRace.getRace()}s are an affable and cheerful people.
     They cherish the bonds of family and friendship as well as the
     comforts of hearth and home, harboring few dreams of gold or glory`;
     }

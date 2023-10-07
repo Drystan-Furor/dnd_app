@@ -34,11 +34,11 @@ export class Chondathan extends Name {
         return firstname;
     }
 
-    static _description(dndrace, new_npc) {
-        return "Chondatans are slender, tawny-skinned folk with brown hair that ranges " +
-            "from almost blond to almost black. Most are tall and have green or brown eyes, " +
-            "but these traits are hardly universal. " +
-            "Humans of Chondathan descent dominate the central lands of Faerûn, around the Inner Sea."
+    static _description(dndRace, new_npc) {
+        return `${dndRace.getRace()} are slender, tawny-skinned folk with brown hair that ranges from almost blond to 
+        almost black. Most are tall and have green or brown eyes, but these traits are hardly universal.
+        Humans of ${dndRace.getRace()} descent dominate the central lands of Faerûn, around the Inner Sea`;
+
     }
 }
 setClassMapping('Chondathan', Chondathan);

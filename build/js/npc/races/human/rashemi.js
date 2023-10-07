@@ -35,10 +35,10 @@ export class Rashemi extends Name {
         return firstname;
     }
 
-    static _description(dndrace, new_npc) {
-        return "Most often found east of the Inner Sea and often " +
-            "intermingled with the Mulan, Rashemis tend to be short, stout, and muscular. " +
-            "They usually have dusky skin, dark eyes, and thick black hair.";
+    static _description(dndRace, new_npc) {
+        return `Most often found east of the Inner Sea and often intermingled with the Mulan, ${dndRace.getRace()}
+         tend to be short, stout, and muscular. They usually have dusky skin, dark eyes, and thick black hair.`;
     }
 }
+
 setClassMapping('Rashemi', Rashemi);

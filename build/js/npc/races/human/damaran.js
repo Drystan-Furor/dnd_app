@@ -35,11 +35,10 @@ export class Damaran extends Name {
         return firstname;
     }
 
-    static _description(dndrace, new_npc) {
-        return "Found primarily in the northwest of Faerûn, Damarans" +
-            " are of moderate height and build, with skin hues ranging from tawny " +
-            "to fair. Their hair is usually brown or black, and their eye color " +
-            "varies widely, though brown is most common.";
+    static _description(dndRace, new_npc) {
+        return `Found primarily in the northwest of Faerûn, ${dndRace.getRace()} are of moderate height and build, 
+        with skin hues ranging from tawny to fair. Their hair is usually brown or black, and their eye color varies 
+        widely, though brown is most common`;
     }
 }
 

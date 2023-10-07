@@ -36,10 +36,10 @@ export class Turami extends Name {
         return firstname;
     }
 
-    static _description(dndrace, new_npc) {
-        return "Native to the southern shore of the Inner Sea, " +
-            "the Turami people are generally tall and muscular, " +
-            "with dark mahogany skin, curly black hair, and dark eyes.";
+    static _description(dndRace, new_npc) {
+        return `Native to the southern shore of the Inner Sea, the ${dndRace.getRace()} 
+        people are generally tall and muscular, with dark mahogany skin, curly black hair, and dark eyes`;
     }
 }
+
 setClassMapping('Turami', Turami);

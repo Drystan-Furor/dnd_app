@@ -29,7 +29,7 @@ export class DndNpcRng {
     _dndRngNpc(parameters) {
         // Initialize the properties and classes
         // Class
-        this.npcClass = new NpcClass().getNpcClass();
+        this.npcClass = new NpcClass(parameters).getNpcClass();
         // Nouns
         this.genderNouns = new Gender();
         // Race

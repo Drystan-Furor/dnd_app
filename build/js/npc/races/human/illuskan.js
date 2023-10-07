@@ -39,10 +39,9 @@ export class Illuskan extends Name {
         return firstname;
     }
 
-    static _description(dndrace, new_npc) {
-        return "Illuskans are tall, fair-skinned folk with blue or " +
-            "steely gray eyes. Most have raven-black hair, but those who inhabit " +
-            "the extreme northwest have blond, red, or light brown hair.";
+    static _description(dndRace, new_npc) {
+        return `${dndRace.getRace()} are tall, fair-skinned folk with blue or steely gray eyes. Most have raven-black 
+        hair, but those who inhabit the extreme northwest have blond, red, or light brown hair`;
     }
 }
 setClassMapping('Illuskan', Illuskan);

@@ -15,12 +15,11 @@ export class Tethyrian extends Name {
         }
     }
 
-    static _description(dndrace, new_npc) {
-        return "Widespread along the entire Sword Coast at the " +
-            "western edge of Faerûn, Tethyrians are of medium build and height, " +
-            "with dusky skin that tends to grow fairer the farther north they dwell. " +
-            "Their hair and eye color varies widely, but brown hair and blue eyes are " +
-            "the most common. ";
+    static _description(dndRace, new_npc) {
+        return `Widespread along the entire Sword Coast at the western edge of Faerûn, ${dndRace.getRace()} 
+        are of medium build and height, with dusky skin that tends to grow fairer the farther north they dwell.
+        Their hair and eye color varies widely, but brown hair and blue eyes are the most common`;
     }
 }
+
 setClassMapping('Tethyrian', Tethyrian);

@@ -12,10 +12,10 @@ dndNext.parameters = {}
 dndNext.regex = /^[a-zA-Z0-9-' ]+$/;
 
 
-
 import {DndNpcRng} from "./npc/generators/character";
 import {convertRaceName} from "./npc/races/factory/racefactory";
 import {Race} from "./npc/properties/race";
+import {NpcClass} from "./npc/properties/class";
 // Automatically loads all files in the './npc/' folder and its subfolders
 const requireModule = require.context('./npc', true, /\.js$/);
 requireModule.keys().forEach(filename => {
@@ -39,27 +39,31 @@ dndNext.dndRngNpc.stickyButton = function () {
 dndNext.dndRngNpc.coreFunctionality = function () {
     const button = document.getElementById("generateNpc");
     button.addEventListener("click", function () {
-        const characterParagraph1 = document.getElementById("character-paragraph-1");
-        const characterParagraph2 = document.getElementById("character-paragraph-2");
-        const characterParagraph3 = document.getElementById("character-paragraph-3");
-        dndNext.dndRngNpc.collectInput();
-        const parameters = dndNext.parameters;
-        const new_npc = new DndNpcRng(parameters);
-        const character = new_npc.getNewNpc();
-        const biography = new_npc.getString();
-        dndNext.dndRngNpc.imageOfCharacter(character.dndRace);
-        dndNext.dndRngNpc.commitToMemory(character, biography);
-        const currentBiography = {
-            string1: characterParagraph1.innerHTML,
-            string2: characterParagraph2.innerHTML,
-            string3: characterParagraph3.innerHTML,
-        };
-        if (!character) {
-            return false;
+        for (let i = 0; i < 1; i++) {
+
+
+            const characterParagraph1 = document.getElementById("character-paragraph-1");
+            const characterParagraph2 = document.getElementById("character-paragraph-2");
+            const characterParagraph3 = document.getElementById("character-paragraph-3");
+            dndNext.dndRngNpc.collectInput();
+            const parameters = dndNext.parameters;
+            const new_npc = new DndNpcRng(parameters);
+            const character = new_npc.getNewNpc();
+            const biography = new_npc.getString();
+            dndNext.dndRngNpc.imageOfCharacter(character.dndRace);
+            dndNext.dndRngNpc.commitToMemory(character, biography);
+            const currentBiography = {
+                string1: characterParagraph1.innerHTML,
+                string2: characterParagraph2.innerHTML,
+                string3: characterParagraph3.innerHTML,
+            };
+            if (!character) {
+                return false;
+            }
+            characterParagraph1.innerHTML = biography.string1;
+            characterParagraph2.innerHTML = biography.string2;
+            characterParagraph3.innerHTML = biography.string3;
         }
-        characterParagraph1.innerHTML = biography.string1;
-        characterParagraph2.innerHTML = biography.string2;
-        characterParagraph3.innerHTML = biography.string3;
     });
     const copyButton = document.getElementById('copyButton');
     dndNext.dndRngNpc.copyButton(copyButton);
@@ -135,68 +139,104 @@ dndNext.dndRngNpc.listOfOptions = function () {
     });
 }
 
+dndNext.dndRngNpc.listOfCharacterClasses = function () {
+    const optionsArray = NpcClass.characterClasses();
+    const selectElement = document.getElementById('characterClass');
+
+    optionsArray.forEach(optionValue => {
+        const optionElement = document.createElement('option');
+        optionElement.value = optionValue;
+        optionElement.textContent = optionValue;
+        selectElement.appendChild(optionElement);
+    });
+}
+
 dndNext.dndRngNpc.collectInput = function () {
     dndNext.dndRngNpc.firstname();
     dndNext.dndRngNpc.lastname();
     dndNext.dndRngNpc.nickname();
     dndNext.dndRngNpc.selectedRaces();
+    dndNext.dndRngNpc.selectedCharacterClass();
     dndNext.dndRngNpc.homebrew();
 }
 
 dndNext.dndRngNpc.firstname = function () {
-    const firstnameInput = document.getElementById('firstname');
-    const firstname = firstnameInput.value.trim();
+    const input = document.getElementById('firstname');
+    const error = document.getElementById('firstname-error');
+    const firstname = input.value.trim();
+
     if (!firstname) {
         dndNext.parameters.firstname = null;
+        error.classList.add('hidden');
         return false;
     }
 
-    if (!dndNext.regex.test(firstname)) {
-        return false;
+    if (dndNext.dndRngNpc.regexTest(firstname, input, error)) {
+        dndNext.parameters.firstname = firstname;
     }
-    dndNext.parameters.firstname = firstname;
 }
 
 dndNext.dndRngNpc.lastname = function () {
-    const lastnameInput = document.getElementById('lastname');
-    const lastname = lastnameInput.value.trim();
+    const input = document.getElementById('lastname');
+    const error = document.getElementById('lastname-error');
+    const lastname = input.value.trim();
+
     if (!lastname) {
         dndNext.parameters.lastname = null;
+        error.classList.add('hidden');
         return false;
     }
 
-    if (!dndNext.regex.test(lastname)) {
-        return false;
+    if (dndNext.dndRngNpc.regexTest(lastname, input, error)) {
+        dndNext.parameters.lastname = lastname;
     }
-    dndNext.parameters.lastname = lastname;
 }
 
 dndNext.dndRngNpc.nickname = function () {
-    const nicknameInput = document.getElementById('nickname');
-    const nickname = nicknameInput.value.trim();
+    const input = document.getElementById('nickname');
+    const error = document.getElementById('nickname-error');
+    const nickname = input.value.trim();
+
     if (!nickname) {
         dndNext.parameters.nickname = null;
+        error.classList.add('hidden');
         return false;
     }
 
-    if (!dndNext.regex.test(nickname)) {
-        return false;
+    if (dndNext.dndRngNpc.regexTest(nickname, input, error)) {
+        dndNext.parameters.nickname = nickname;
     }
-    dndNext.parameters.nickname = nickname;
 }
 
 dndNext.dndRngNpc.homebrew = function () {
-    const homebrewInput = document.getElementById('homebrew-race');
-    const homebrew = homebrewInput.value.trim();
+    const input = document.getElementById('homebrew-race');
+    const error = document.getElementById('homebrew-error');
+    const homebrew = input.value.trim();
+
     if (!homebrew) {
         dndNext.parameters.homebrew = null;
+        error.classList.add('hidden');
         return false;
     }
-    if (!dndNext.regex.test(homebrew)) {
-        return false;
+    if (dndNext.dndRngNpc.regexTest(homebrew, input, error)) {
+        dndNext.parameters.homebrew = homebrew;
     }
-    dndNext.parameters.homebrew = homebrew;
 }
+
+dndNext.dndRngNpc.regexTest = function (value, element, errorMessage) {
+    if (!dndNext.regex.test(value)) {
+        element.classList.remove('border-slate-900', 'dark:border-cyan-700'); // Remove existing border classes
+        element.classList.add('border-red-500', 'dark:border-red-500', 'bg-red-200', 'border-8'); // Add new border classes
+        errorMessage.classList.remove('hidden');
+        return false;
+    }
+    element.classList.remove('border-red-500', 'dark:border-red-500', 'bg-red-200', 'border-8'); // Remove red border classes
+    element.classList.add('border-slate-900', 'dark:border-cyan-700'); // Add back the original border classes
+    errorMessage.classList.add('hidden');
+    return true;
+}
+
+
 
 
 dndNext.dndRngNpc.selectedRaces = function () {
@@ -207,6 +247,19 @@ dndNext.dndRngNpc.selectedRaces = function () {
         dndNext.parameters.races = selectedOptions;
     }
 }
+
+dndNext.dndRngNpc.selectedCharacterClass = function () {
+    const selectElement = document.getElementById('characterClass');
+    const selectedOption = Array.from(selectElement.selectedOptions).map(option => option.value);
+    console.log(selectedOption);
+
+    if (selectedOption.length > 0 && selectedOption[0] !== "") {
+        dndNext.parameters.class = selectedOption;
+    } else {
+        dndNext.parameters.class = null;
+    }
+}
+
 
 dndNext.dndRngNpc.commitToMemory = function (character, biography) {
     let stored = false;
@@ -286,6 +339,7 @@ dndNext.dndRngNpc.readMemoryToTable = function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     dndNext.dndRngNpc.listOfOptions();
+    dndNext.dndRngNpc.listOfCharacterClasses();
     dndNext.dndRngNpc.stickyButton();
 
     dndNext.dndRngNpc.coreFunctionality();

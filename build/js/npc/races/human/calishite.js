@@ -33,8 +33,8 @@ export class Calishite extends Name {
     }
 
     static _description(dndRace, genderNouns) {
-        return "Shorter and slighter in build than most other humans, Calishites have dusky brown skin, hair, and eyes. " +
-            "They’re found primarily in southwest Faerûn.";
+        return `Shorter and slighter in build than most other humans, ${dndRace.getRace()} have dusky brown skin, hair, 
+        and eyes. They’re found primarily in southwest Faerûn`;
     }
 }
 setClassMapping('Calishite', Calishite);

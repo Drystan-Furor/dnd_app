@@ -5,8 +5,8 @@ import {getRandomElement} from "./factory/utility";
 export class Satyr extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
-        this.lastname = parameters.lastname ? parameters.lastname : '';
+        this.firstname = parameters.firstname ? parameters.firstname : '';
+        this.lastname = parameters.lastname ? parameters.lastname : this._firstname(genderNouns);
         this.nickname = null;
         this.description = this._description(dndRace.getRace(), genderNouns);
     }

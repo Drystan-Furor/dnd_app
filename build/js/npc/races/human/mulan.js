@@ -14,7 +14,6 @@ export class Mulan extends Name {
     }
 
 
-
     static _lastname() {
         const surnames = ['Ankhalab', 'Anskuld', 'Fezim', 'Hahpet', 'Nathandem',
             'Sepret', 'Uuthrakt',];
@@ -37,12 +36,12 @@ export class Mulan extends Name {
         return firstname;
     }
 
-    static _description(dndrace, new_npc) {
-        return "Dominant in the eastern and southeastern shores of " +
-            "the Inner Sea, the Mulan are generally tall, slim, and amber-skinned, " +
-            "with eyes of hazel or brown. Their hair ranges from black to dark brown, " +
-            "but in the lands where the Mulan are most prominent, nobles and many " +
-            "other Mulan shave off all their hair.";
+    static _description(dndRace, new_npc) {
+        return `Dominant in the eastern and southeastern shores of the Inner Sea, the ${dndRace.getRace()} 
+        are generally tall, slim, and amber-skinned, with eyes of hazel or brown. Their hair ranges from black to dark 
+        brown, but in the lands where the ${dndRace.getRace()}  are most prominent, nobles and many other 
+        ${dndRace.getRace()} shave off all their hair`;
     }
 }
+
 setClassMapping('Mulan', Mulan);

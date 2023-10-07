@@ -1,6 +1,6 @@
-export class NpcClass {
-    constructor() {
-        this.npcClass = this.generateClass();
+export class NpcClass { // dndNext.parameters.class
+    constructor(parameters) {
+        this.npcClass = parameters.class ? parameters.class : this.generateClass();
     }
 
     // Array of Classes
@@ -15,5 +15,12 @@ export class NpcClass {
 
     getNpcClass() {
         return this.npcClass;
+    }
+
+    static characterClasses() {
+       return [
+           'Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Artificer',
+           'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard',
+       ];
     }
 }

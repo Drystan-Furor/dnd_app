@@ -22,22 +22,23 @@ export class Shou extends Name {
     static _firstname(new_npc) {
         let firstname;
         if (new_npc.getGender() === 'male') {
-            const malenames = [   'An', 'Chen', 'Chi', 'Fai', 'Jiang', 'Jun', 'Lian',
+            const malenames = ['An', 'Chen', 'Chi', 'Fai', 'Jiang', 'Jun', 'Lian',
                 'Long', 'Meng', 'On', 'Shan', 'Shui', 'Wen',];
             firstname = malenames[Math.floor(Math.random() * malenames.length)];
         }
 
         if (new_npc.getGender() === 'female') {
-            const femalenames = [ 'Bai', 'Chao', 'Jia', 'Lei', 'Mei', 'Qiao', 'Shui', 'Tai',];
+            const femalenames = ['Bai', 'Chao', 'Jia', 'Lei', 'Mei', 'Qiao', 'Shui', 'Tai',];
             firstname = femalenames[Math.floor(Math.random() * femalenames.length)];
         }
         return firstname;
     }
 
-    static _description(dndrace, new_npc) {
-        return "The Shou are the most numerous and powerful ethnic " +
-            "group in Kara-Tur, far to the east of Faerûn. They are yellowish-bronze in " +
-            "hue, with black hair and dark eyes. Shou surnames are usually presented before the given name.";
+    static _description(dndRace, new_npc) {
+        return `The ${dndRace.getRace()} are the most numerous and powerful ethnic group in Kara-Tur, far to the east 
+        of Faerûn. They are yellowish-bronze in hue, with black hair and dark eyes. 
+        ${dndRace.getRace()} surnames are usually presented before the given name`;
     }
 }
+
 setClassMapping('Shou', Shou);
