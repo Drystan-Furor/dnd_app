@@ -1,5 +1,3 @@
-import {Kobold} from "./kobold";
-
 export * from './human/calishite';
 export * from './human/chondathan';
 export * from './human/damaran';

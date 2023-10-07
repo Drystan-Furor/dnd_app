@@ -4,7 +4,7 @@ import {Name} from "../properties/name";
 export class Kender extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
         super(dndRace, genderNouns);
-        this.lastname = parameters.lastname ? parameters.lastname :this._lastname();
+        this.lastname = parameters.lastname ? parameters.lastname : this._lastname();
         this.firstname = parameters.firstname ? parameters.firstname : this._firstname(genderNouns);
         this.nickname = parameters.nickname ? parameters.nickname : this._nickname();
         this.description = this._description(dndRace.getRace(), genderNouns);
@@ -94,4 +94,5 @@ export class Kender extends Name {
         return bodysizes[Math.floor(Math.random() * bodysizes.length)];
     }
 }
+
 setClassMapping('Kender', Kender);
