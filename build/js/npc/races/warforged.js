@@ -4,8 +4,8 @@ import {Body} from "../generators/body";
 import {Material} from "../generators/materials";
 import {getRandomElement, ucFirst} from "./factory/utility";
 import {Verbs} from "../generators/verbs";
-import {rand} from "../properties/age";
 import {Belts} from "../clothing/accessoiries/belts";
+import {D} from "../../tools/d";
 
 export class Warforged extends Name {
     constructor(dndRace, genderNouns, age, parameters) {
@@ -198,7 +198,7 @@ export class Warforged extends Name {
         let construct = getRandomElement(livingConstruct);
         this.description = `${people} of ${this.lastname} ${Verbs.named()} the ${construct} as ${this.nickname}`;
 
-        const d20 = rand(1, 20);
+        const d20 = D._20();
         if (d20 === 1) { // kept original name
             this.description = `The ${construct} has retained ${genderNouns.getHisHer()} original designation ${this.lastname}`;
             this.nickname = this.lastname;

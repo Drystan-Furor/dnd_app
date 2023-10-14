@@ -1,3 +1,5 @@
+import {rand} from "../../tools/tools";
+
 export class Age {
     constructor(race) {
         this.age = Age.defaultAge(race);
@@ -74,7 +76,4 @@ export class Age {
         }
         return age;
     }
-}
-export function rand(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
 }

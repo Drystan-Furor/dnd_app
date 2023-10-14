@@ -1,27 +1,31 @@
-import {WeatherProperties} from "./weatherproperties";
-import {Temperature} from "./properties";
+import {Clouds, Precipitation, Temperature, Wind} from "./properties";
 
-export class Weather extends WeatherProperties{
+export class Weather{
     constructor() {
-        super();
-        this.weather = this._weatherDescription();
-    }
-
-    setDescription(description) {
-        this.description = description;
+        this._weatherDescription();
     }
 
     _weatherDescription() {
         const temperatureClass = new Temperature();
+        const temperaturesD20 = temperatureClass.getTemperaturesD20();
+        const precipitation = new Precipitation(temperaturesD20);
+        const precipitationD20 = precipitation.getPrecipitationD20();
 
-        const temperature = temperatureClass.getTemperature();
-        const temperatures = temperatureClass.getTemperatures();
-        const clouds = null;
-        const wind =  null;
-        const precipitation =  null;
+        const wind = new Wind();
+        const clouds = new Clouds(precipitationD20);
 
-        const weather = temperature + clouds + wind + precipitation;
-        return weather;
+        return {
+            temperature: temperatureClass.getTemperature(),
+            temperatureDescription: temperatureClass.getTemperatureDescription(),
+            temperatureEffect: temperatureClass.getTemperatureEffect(),
+
+            precipitation: precipitation.getPrecipitation(),
+            precipitationEffect: precipitation.getPrecipitationEffect(),
+
+            wind: wind.getWind(),
+            windEffect: wind.getWindEffect(),
+
+            clouds: clouds.getClouds(),
+        }
     }
-
 }

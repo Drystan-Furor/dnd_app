@@ -1,9 +1,8 @@
-
 import {RaceFactory} from '../races/factory/racefactory';
 import {NpcClass} from "../properties/class";
 import {Race} from "../properties/race";
 import {Gender} from "../properties/gender";
-import {Age, rand} from "../properties/age";
+import {Age} from "../properties/age";
 import {Profile} from "./profile";
 import {Body} from "./body";
 import {Mood} from "./mood";
@@ -11,6 +10,7 @@ import {Scar} from "./scars";
 import {Status} from "./status";
 import {Weapon} from "../clothing/accessoiries/weapons";
 import {Verbs} from "./verbs";
+import {rand} from "../../tools/tools";
 
 export class DndNpcRng {
     constructor(parameters) {

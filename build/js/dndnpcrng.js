@@ -1,6 +1,5 @@
 // overwatch
 'use strict';
-import {ucFirst} from "./npc/races/factory/utility";
 
 let dndNext = window;
 dndNext = {
