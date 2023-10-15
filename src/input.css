@@ -12,5 +12,36 @@
         [&>div::after]:translate-y-0 [&>div::after]:-rotate-45
         [&>div]:bg-transparent [&>div]:rotate-[720deg]
     }
+
+    /* Base Styles */
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .table-responsive th, .table-responsive td {
+        white-space: nowrap;
+    }
+
+    /* Media Query for small screens */
+    @media (max-width: 480px) {
+        .table-responsive th, .table-responsive td {
+            display: block;
+            width: 100%;
+        }
+
+        .table-responsive td[data-label]:before {
+            content: attr(data-label);
+            float: left;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .table-responsive thead {
+            display: none;  /* This hides the table header */
+        }
+    }
+
+
 }
 
