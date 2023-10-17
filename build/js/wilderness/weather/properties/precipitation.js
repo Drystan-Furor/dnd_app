@@ -16,39 +16,51 @@ export class Precipitation {
 
         downfall = getRandomElement(downfall);
         //"None" if ($precipitations <= 12)
-        const precipitation = [
-            "At least it's dry for now",
-            "No rain in sight",
-            "Clear skies above",
-            "Dry weather continues",
-            "No precipitation today",
-            "Rain-free conditions",
-        ];
-        this.precipitation = getRandomElement(precipitation);
-        this.effect = ``;
+        this.precipitation = getRandomElement(this.precipitationString);
+        this.effect = `Clear vision`;
+        this.sight = `+/- 0 Passive Perception when relying on seeing`;
+        this.weather = `dry weather`;
 
         if (d20 >= 13 && d20 <= 17) {
             //"Light rain or light snowfall";
             this.precipitation = `Unfortunately a light ${downfall} has begun to fall`;
-            this.effect = `The ${downfall} makes your sight a bit blurry in the distance. [-2 Passive Perception when relying on seeing] `;
+            this.weather = `light ${downfall}`;
+            this.effect = `The ${downfall} makes your sight a bit blurry in the distance.`;
+            this.sight = `-2 Passive Perception when relying on seeing`;
         }
 
         if (d20 >= 18) {
             //"Heavy rain or heavy snowfall";
             this.precipitation = `Regrettably a heavy ${downfall} is beating down on you`;
-            this.effect = `The weather makes your surroundings lightly obscured.
-            [-5 Passive Perception when relying on seeing] [Disadvantage on Wisdom(Perception)] `;
+            this.weather = `heavy ${downfall}`;
+            this.effect = `The weather makes your surroundings lightly obscured.`;
+            this.sight = `-5 Passive Perception when relying on seeing [Disadvantage on Wisdom(Perception)]`;
         }
-
-
     }
 
-    getPrecipitationD20() {
+    precipitationString = [
+        "At least it's dry for now",
+        "No rain in sight",
+        "Clear skies above",
+        "Dry weather continues",
+        "No precipitation today",
+        "Rain-free conditions",
+    ];
+
+    getD20() {
         return this.d20
     }
 
     getPrecipitation() {
         return this.precipitation;
+    }
+
+    getWeather() {
+        return this.weather;
+    }
+
+    getSight() {
+        return this.sight;
     }
 
     getPrecipitationEffect(){

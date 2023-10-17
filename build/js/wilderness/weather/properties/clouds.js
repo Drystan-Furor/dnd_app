@@ -54,7 +54,7 @@ export class Clouds {
             clouds.push('are abscent in the clear blue sky');
         }
 
-        return `The clouds ${getRandomElement(clouds)}.`;
+        return `The clouds ${getRandomElement(clouds)}`;
     }
 
     getClouds() {

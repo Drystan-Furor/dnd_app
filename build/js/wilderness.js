@@ -27,6 +27,32 @@ dndNext.wilderness.coreFunctionality = function () {
         const travelParagraph1 = document.getElementById("travel-paragraph-1");
         const travelParagraph2 = document.getElementById("travel-paragraph-2");
         const travelParagraph3 = document.getElementById("travel-paragraph-3");
+        const travelParagraph4 = document.getElementById("travel-paragraph-4");
+        const travelTitle = document.getElementById("travelTitle");
+
+        const temperature = document.getElementById("temperature");
+        const temperatureDescription = document.getElementById("temperatureDescription");
+        const temperatureEffect = document.getElementById("temperatureEffect");
+        const temperatureExact = document.getElementById("temperatureExact");
+
+        const TEM = document.getElementById("TEM");
+        const CLO = document.getElementById("CLO");
+        const WIN = document.getElementById("WIN");
+        const PRE = document.getElementById("PRE");
+
+        const clouds = document.getElementById("clouds");
+
+        const wind = document.getElementById("wind");
+        const windEffect = document.getElementById("windEffect");
+        const windPower = document.getElementById("windPower");
+        const windImpact = document.getElementById("windImpact");
+        const windSpeed = document.getElementById("windSpeed");
+
+        const precipitation = document.getElementById("precipitation");
+        const precipitationWeather = document.getElementById("precipitationWeather");
+        const precipitationSight = document.getElementById("precipitationSight");
+        const precipitationEffect = document.getElementById("precipitationEffect");
+
         const wilderness = new DndWtdRng();
         const travel = wilderness.getTravel();
         const story = wilderness.getStory();
@@ -34,9 +60,35 @@ dndNext.wilderness.coreFunctionality = function () {
         if (!travel) {
             return false;
         }
+        travelTitle.innerHTML = `Travel Weather Description`;
         travelParagraph1.innerHTML = story.string1;
         travelParagraph2.innerHTML = story.string2;
         travelParagraph3.innerHTML = story.string3;
+        travelParagraph4.innerHTML = story.string4;
+
+        temperature.innerHTML = story.temperature;
+        temperatureDescription.innerHTML = story.temperatureDescription;
+        temperatureEffect.innerHTML = story.temperatureEffect;
+        temperatureExact.innerHTML = story.temperatureExact;
+
+        TEM.innerHTML = story.TEM;
+        CLO.innerHTML = story.CLO;
+        WIN.innerHTML = story.WIN;
+        PRE.innerHTML = story.PRE;
+
+        clouds.innerHTML = story.clouds;
+
+        wind.innerHTML = story.wind;
+        windEffect.innerHTML = story.windEffect;
+        windPower.innerHTML = story.windPower;
+        windImpact.innerHTML = story.windImpact;
+        windSpeed.innerHTML = story.windSpeed;
+
+
+        precipitation.innerHTML = story.precipitation;
+        precipitationWeather.innerHTML = story.precipitationWeather;
+        precipitationSight.innerHTML = story.precipitationSight;
+        precipitationEffect.innerHTML = story.precipitationEffect;
     });
     const copyButton = document.getElementById('copyButton');
     dndNext.wilderness.copyButton(copyButton);
