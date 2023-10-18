@@ -7,10 +7,13 @@
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>DnD RnG WtD</title>
+    <title>DnD RnG TwD</title>
     <link rel="stylesheet" href="css/style.css"/>
     <script src="dist/main.bundle.js" defer></script>
     <script src="dist/wilderness.bundle.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="192x192" href="favicon.ico">
+
 
 </head>
 <body class="min-h-screen bg-slate-50 dark:bg-zinc-800 dark:text-white">
@@ -106,9 +109,8 @@
             >
                 Generated Wilderness Travel:
             </h2>
-            <blockquote
-                    class="bg-teal-600 dark:bg-black pl-14 pr-8 py-12 rounded-3xl relative"
-            >
+
+
                 <button id="copyButton"
                         class="absolute top-2 mt-3 mr-3 right-2 bg-cyan-700 dark:bg-cyan-700 text-amber-600 px-2 py-1 rounded hover:bg-cyan-500 hover:text-white hover:text-lg active:text-sm active:bg-amber-500">
                     Copy
@@ -255,7 +257,6 @@
                         class="text-sm sm:text-1xl text-right mt-2 text-slate-500 dark:text-slate-400"
                 >
                 </div>
-            </blockquote>
             <figcaption
                     class="text-xl sm:text-2xl text-right mt-2 text-slate-500 dark:text-slate-400"
             >
@@ -277,7 +278,7 @@
             <h2
                     class="max-w-md text-4xl font-bold text-center sm:text-left text-slate-900 dark:text-white"
             >
-                How to: <span class="text-red-700 dark:text-red-700">create</span> a Wilderness Travel?
+                How to: <span class="text-red-700 dark:text-red-700">create</span> a Weather Travel Description?
 
             </h2>
 
@@ -288,12 +289,12 @@
                 <a href="#generator" class="hover:opacity-90 hover:pointer">
                     <img src="img/icon-small-beholder.png" alt="icon of a beholder"
                          class="inline-block align-middle mx-1"/></a>
-                to have it dream up a Wilderness Travel Description, it is written as text.
+                to have it dream up a Weather Travel Description, it is written as a statblock.
             </p>
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
-                Each time you click the beholder it will generate a new textual travel.</p>
+                Each time you click the beholder it will generate a new weather statblock as result.</p>
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
@@ -304,7 +305,8 @@
                 </button>
             </a>
                 button. After clicking it, you can paste the text anywhere you want, for example a note-taking app or
-                notepad.
+                notepad.  Be aware you do not copy the statblock, only the content. If you want the statblock, use a
+                snippingtool or screenshot.
             </p>
         </article>
 
@@ -318,45 +320,18 @@
             <p
                     class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
             >
-                After setting these you can click on the NPC Generator
-                <a href="#generator" class="hover:opacity-90 hover:pointer">
-                    <img src="img/icon-small-beholder.png" alt="icon of a beholder"
-                         class="inline-block align-middle mx-1"/></a>
-                to have it dream up a character with the chosen properties. Or leave them empty and the generator will
-                apply these things based on lore.
+               The weather is unpredictable, you cannot customize this prompt.
             </p>
-            <p
-                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
-            >
-                Set a firstname, lastname or nickname if you wish to see that back in most descriptions. Homebrew Race
-                will overwrite all existing races and generate a totally random outcome named after this value, however
-                you can either choose no race, one race or many races OR homebew a race-name. You cant have both.
-                If the Homebrew Race field holds a value it will be used, leave it empty if you want to choose out of
-                the list of existing ans supported races.
-            </p>
+
 
             <p
                     class="max-w-md p-3 text-1xl mt-4 italic text-center sm:text-left text-slate-700 dark:text-slate-400 rounded-lg border border-amber-600 dark:border-amber-600 bg-gray-100 dark:bg-black"
             >
-                Certain generated results don't include a nickname or firstname or both, it depends on the race that is
-                generated, if available information provided that a certain race does not use one of the above, then it
-                is omitted in the generated result.
+                If you wish more control, consult the DMG. p. 110. This generator rolls dice on that page DMG tables,
+                and for flair, produces detailed results with wind speeds, clouds, and others.
+
             </p>
-            <p
-                    class="max-w-md text-2xl mt-4 text-center sm:text-left text-slate-700 dark:text-slate-400"
-            >
-                Chose any or more race(s) in the list to narrow down generated results,
-                if left blank the result can be any race, if selected it will be the selected race and when multiple
-                are selected the generator will randomly chose one out of your selection. Your selection here limits
-                result possibilities of the generator.
-            </p>
-            <p
-                    class="max-w-md p-3 text-1xl mt-4 italic text-center sm:text-left text-slate-700 dark:text-slate-400 rounded-lg border border-amber-600 dark:border-amber-600 bg-gray-100 dark:bg-black"
-            >
-                This is useful for when you want to narrow down encounters if your setting focusses heavier on certain
-                races, for example a Human/Dwarf occupied city. Select both Human and Dwarf and
-                you will get randomly one of these two.
-            </p>
+
         </article>
     </section>
 </main>
