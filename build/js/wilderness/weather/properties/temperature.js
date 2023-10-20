@@ -18,7 +18,7 @@ export class Temperature {
 
 
         if (d20 >= 15 && d20 <= 17) {
-            this.temperature = D._4() * 10 + " degrees Fahrenheit colder than normal. ";
+            this.temperature = D._4() * 10 + " degrees Fahrenheit colder than normal";
             this.description = "it's between 32 and -8 Fahrenheit (0 to -22 degrees Celsius) or lower";
             this.effect = `[Constitution Saving Throw (DC ${D._20()})] {DEFAULT DC10} or [Gain one level of Exhaustion].
              (This does not apply if a creature has resistance or immunity to cold damage, wears cold weather gear, 
@@ -29,7 +29,7 @@ export class Temperature {
             this.exactTemperature = `°${fahrenheit} Fahrenheit (°${celsius} Celsius)`;
         }
         if (d20 >= 18) {
-            this.temperature = D._4() * 10 + " degrees Fahrenheit hotter than normal. ";
+            this.temperature = D._4() * 10 + " degrees Fahrenheit hotter than normal";
             this.description = "it's 86 Fahrenheit (30 degrees Celsius) or hotter";
             this.effect = `If creatures are exposed to the heat and have no access to drinkable water they must: succeed on 
             [Constitution Saving Throw (DC ${D._20()})] {DEFAULT DC5} each hour. 
@@ -61,16 +61,16 @@ export class Temperature {
     ];
 
     defaultEffect = [
-        'The weather is mild, with no immediate adverse effects on characters.',
-        'A typical day with no noticeable weather anomalies.',
-        'The breeze is gentle and the temperature is just right.',
-        'It feels like an average day, neither too hot nor too cold.',
-        'Nothing out of the ordinary today, weather-wise.',
-        'The climate is temperate and creatures feel at ease.',
-        'A calm day; perfect for outdoor activities and adventures.',
-        `The weather seems to be on everyone's side today.`,
-        `With such fair weather, it's a great day to be outside.`,
-        'Mother nature seems to be in a good mood today.'
+        'The weather is mild, with no immediate adverse effects on characters',
+        'A typical day with no noticeable weather anomalies',
+        'The breeze is gentle and the temperature is just right',
+        'It feels like an average day, neither too hot nor too cold',
+        'Nothing out of the ordinary today, weather-wise',
+        'The climate is temperate and creatures feel at ease',
+        'A calm day; perfect for outdoor activities and adventures',
+        `The weather seems to be on everyone's side today`,
+        `With such fair weather, it's a great day to be outside`,
+        'Mother nature seems to be in a good mood today'
     ];
 
     static _fahrenheitToCelsius(fahrenheit) { // °F = (°C × 9/5) + 32

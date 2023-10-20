@@ -1,6 +1,7 @@
 import {Weather} from "./weather/weather";
 import {rand} from "../tools/tools";
 import {D} from "../tools/d";
+import {Journey} from "./mapping/journey";
 export class DndWtdRng {
     constructor() {
         this.travel = this._dndWtdRng();
@@ -18,6 +19,7 @@ export class DndWtdRng {
     _dndWtdRng() {
         // Initialize the properties and classes
         this.weather = new Weather()._weatherDescription();
+        this.journey = new Journey(this.weather);
 
         // Construct object with properties of classes
         return {
