@@ -168,6 +168,7 @@ export class TerrainFeatures {
             `fountain`,
             `statue of a ${getRandomElement(personORDeity)}`,
             `great stone arch`,
+            `great stone wall`,
             `circle of standing stones`,
             `totem pole`,
             `temple`,
