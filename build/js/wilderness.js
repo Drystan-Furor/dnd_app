@@ -24,11 +24,16 @@ requireModule.keys().forEach(filename => {
 dndNext.wilderness.coreFunctionality = function () {
     const button = document.getElementById("generateTravel");
     button.addEventListener("click", function () {
+        const travelTitle = document.getElementById("travelTitle");
         const travelParagraph1 = document.getElementById("travel-paragraph-1");
         const travelParagraph2 = document.getElementById("travel-paragraph-2");
         const travelParagraph3 = document.getElementById("travel-paragraph-3");
         const travelParagraph4 = document.getElementById("travel-paragraph-4");
-        const travelTitle = document.getElementById("travelTitle");
+
+
+        const journeyParagraph1 = document.getElementById("journey-paragraph-1");
+        const journeyParagraph2 = document.getElementById("journey-paragraph-2");
+        const journeyParagraph3 = document.getElementById("journey-paragraph-3");
 
         const temperature = document.getElementById("temperature");
         const temperatureDescription = document.getElementById("temperatureDescription");
@@ -84,11 +89,16 @@ dndNext.wilderness.coreFunctionality = function () {
         windImpact.innerHTML = story.windImpact;
         windSpeed.innerHTML = story.windSpeed;
 
-
         precipitation.innerHTML = story.precipitation;
         precipitationWeather.innerHTML = story.precipitationWeather;
         precipitationSight.innerHTML = story.precipitationSight;
         precipitationEffect.innerHTML = story.precipitationEffect;
+
+        journeyParagraph1.innerHTML = story.journey1;
+        journeyParagraph2.innerHTML = story.journey2;
+        journeyParagraph3.innerHTML = story.journey3;
+
+
     });
     const copyButton = document.getElementById('copyButton');
     dndNext.wilderness.copyButton(copyButton);

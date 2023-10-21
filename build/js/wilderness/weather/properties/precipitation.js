@@ -39,12 +39,12 @@ export class Precipitation {
     }
 
     precipitationString = [
-        "At least it's dry for now",
-        "No rain in sight",
-        "Clear skies above",
+        "At least it's dry weather",
+        "There's no rain in sight",
+        "There are clear skies above",
         "Dry weather continues",
-        "No precipitation today",
-        "Rain-free conditions",
+        "There is no precipitation today",
+        "You have rain-free conditions",
     ];
 
     getD20() {

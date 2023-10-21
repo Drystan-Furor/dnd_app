@@ -24,7 +24,6 @@ export class Weather{
             precipitationSight: precipitation.getSight(),
             precipitationD20: precipitation.getD20(),
 
-
             wind: wind.getWind(),
             windEffect: wind.getWindEffect(),
             windPower: wind.getWindPower(),

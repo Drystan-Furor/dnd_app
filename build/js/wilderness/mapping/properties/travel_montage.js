@@ -1,6 +1,6 @@
 import {D} from "../../../tools/d";
-import {getRandomElement} from "../../../tools/tools";
-import {Terrain_features} from "./terrain_features";
+import {getRandomElement, shuffleArray} from "../../../tools/tools";
+import {TerrainFeatures} from "./terrainfeatures";
 
 export class Travel_montage {
     constructor(weather) {
@@ -9,28 +9,86 @@ export class Travel_montage {
     }
 
     _montage(d20, weather) {
-        let compass = getRandomElement(this.compassRose);
-        let walk = getRandomElement(this.proceed);
         let explore = getRandomElement(this.explore);
-        let environment1 = new Terrain_features._environment();
-        let environment2 = new Terrain_features._environment();
+        let environment1 = TerrainFeatures._environment();
+        let environment2 = TerrainFeatures._environment();
         while (environment1 === environment2) {
-            environment2 = new Terrain_features._environment();
+            environment2 = TerrainFeatures._environment();
         }
 
+        let weatherDetail = [
+            `${weather.wind}`,
+            `${weather.clouds}`,
+            `${weather.precipitation}`,
+            `${weather.temperature}`,
+        ];
 
-        let string = `${weather.wind} as you ${getRandomElement(this.proceed)} for (d4 + 1) ${(D._4 + 1)} miles 
-        in ${getRandomElement(this.compassRose)}ern direction across the rolling plains. 
-       ${explore} ${environment1} when you pass over ${Terrain_features._balcony()} that offers a 
-       breathtaking view over ${Terrain_features._breathtaking_sight()}.
-       ${weather.clouds} while you ${getRandomElement(this.proceed)} through ${environment2}.
-       You take a break ${Terrain_features._landmark()}. 
-       ${weather.temperature} ${this.continueTrip}.
-       While ${getRandomElement(this.navigating)} onward you cross a
+        // Shuffle the array randomly
+        const shuffleWeatherDetail = shuffleArray(weatherDetail);
+        // Select the first 4 elements from the shuffled array
+        const rngWeatherElements = shuffleWeatherDetail.slice(0, 4);
+        console.log(rngWeatherElements[2]);
 
-       `;
+        const randomText = [
+            `${rngWeatherElements[0]} as you ${getRandomElement(this.proceed)} for (1d4 + 1) ${D._4() + 1} miles 
+        in ${getRandomElement(this.compassRose)}ern direction. ${explore} through ${environment1} you pass over 
+        ${TerrainFeatures._balcony()} that offers ${getRandomElement(this.breathtakingViewVariations)} over 
+        ${TerrainFeatures._breathtaking_sight()} ${getRandomElement(this.vicinity)} ${TerrainFeatures._monument()}.`,
 
+            `${rngWeatherElements[1]} while you ${getRandomElement(this.proceed)} through ${environment2} for (1d4 + 1) 
+            ${D._4() + 1} hours. After ${getRandomElement(this.navigating)} onward you 
+            ${getRandomElement(this.comeAcrossVariations)} a ${TerrainFeatures._weird_locale()}  
+            ${getRandomElement(this.vicinity)} ${TerrainFeatures._monument()}.`,
+        ];
+
+        const montage_1 = getRandomElement(randomText);
+
+        const montage_2 = `${rngWeatherElements[2]} when taking a break ${TerrainFeatures._landmark()}, close to  
+        ${TerrainFeatures._monument()}.
+        ${rngWeatherElements[3]} ${getRandomElement(this.continueTrip)}. `;
+
+        let montage_3 = getRandomElement(randomText);
+        while (montage_1 === montage_3) {
+            montage_3 = getRandomElement(randomText);
+        }
+
+        this.montage = {
+            montage_1, montage_2, montage_3,
+        };
     }
+
+    vicinity = [
+        `close to`,
+        `in the neighbourhood of`,
+        `in the vicinity of`,
+        `a short distance of`,
+        `in the view of`,
+        `where sunlight hits`,
+    ];
+
+    breathtakingViewVariations = [
+        "a breathtaking view",
+        "a breathtaking vista",
+        "an awe-inspiring panorama",
+        "a magnificent scene",
+        "a stunning landscape",
+        "a picturesque sight",
+        "a breathtaking spectacle",
+        "an incredible outlook",
+        "a mesmerizing view",
+    ];
+
+    comeAcrossVariations = [
+        "come across",
+        "stumble upon",
+        "encounter",
+        "find",
+        "discover",
+        "chance upon",
+        "happen upon",
+        "run into",
+        "cross paths with",
+    ];
 
     navigating = [
         `navigating`,
@@ -40,37 +98,39 @@ export class Travel_montage {
         `advancing`,
         `walking`,
         `travelling`,
-    ];
+        `traversing`,
+        `you traverse`,
+        `trekking`,
+        `progressing`,
+        `crossing`,
+        `passing`,
+        `making your way`,
 
+    ];
 
     proceed = [
         `walk`,
         `travel`,
         `move`,
         `progress`,
+        `traverse`,
         `navigate`,
         `hike`,
         `advance`,
+        `venture`,
+        `explore`,
+        `proceed`,
         `make your way`,
+        `hike`,
     ];
 
+
     explore = [
-        'You traverse through',
-        'While traveling through',
-        'As you explore',
-        'You traverse',
-        'While trekking through',
-        'While making your way through',
-        'As you move through',
-        'As you venture through',
-        'While progressing through',
-        'While crossing through',
-        'While navigating through',
-        'As you hike through',
-        'While advancing through',
-        'As you proceed through',
-        'While passing through',
-        'As you travel through',
+        `While ${getRandomElement(this.navigating)}`,
+        `As you are ${getRandomElement(this.navigating)}`,
+        `You ${getRandomElement(this.proceed)}`,
+        `While you ${getRandomElement(this.proceed)}`,
+        `As you ${getRandomElement(this.proceed)}`,
     ];
 
     compassRose = [
@@ -103,6 +163,10 @@ export class Travel_montage {
         `while you journey ahead`,
         `as you travel onward`,
     ];
+
+    getMontage() {
+        return this.montage;
+    }
 
 
     /*

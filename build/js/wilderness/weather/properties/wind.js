@@ -78,13 +78,13 @@ export class Wind{
     winds = [
         `It's practically windstill`,
         `There's barely a breeze`,
-        `Hardly any wind to speak of`,
+        `There's hardly any wind to speak of`,
         `The wind is as calm as can be`,
-        `Not a breath of wind`,
-        `Almost no air movement`,
+        `There's not a breath of wind`,
+        `There's almost no air movement`,
         `The air is still`,
-        `You could hear a pin drop, there's so little wind`,
-        `A near-total absence of wind`,
+        `You could hear a pin drop, because there's so little wind`,
+        `There's a near-total absence of wind`,
     ];
 
     effects = [

@@ -538,6 +538,10 @@ video {
   visibility: visible;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .static {
   position: static;
 }
@@ -776,6 +780,10 @@ video {
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.shrink {
+  flex-shrink: 1;
 }
 
 .grow {

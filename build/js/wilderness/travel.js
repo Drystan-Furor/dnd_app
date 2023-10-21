@@ -2,6 +2,7 @@ import {Weather} from "./weather/weather";
 import {rand} from "../tools/tools";
 import {D} from "../tools/d";
 import {Journey} from "./mapping/journey";
+
 export class DndWtdRng {
     constructor() {
         this.travel = this._dndWtdRng();
@@ -19,7 +20,9 @@ export class DndWtdRng {
     _dndWtdRng() {
         // Initialize the properties and classes
         this.weather = new Weather()._weatherDescription();
-        this.journey = new Journey(this.weather);
+        console.log(this.weather) // returns object
+        this.journey = new Journey()._travelDescription(this.weather);
+
 
         // Construct object with properties of classes
         return {
@@ -46,6 +49,10 @@ export class DndWtdRng {
             windSpeed: this.weather.windSpeed,
 
             clouds: this.weather.clouds,
+
+            journey1: this.journey.journey.montage_1,
+            journey2: this.journey.journey.montage_2,
+            journey3: this.journey.journey.montage_3,
         };
     }
 
@@ -54,6 +61,11 @@ export class DndWtdRng {
         let string2 = `${travel.temperatureDescription} || ${travel.windImpact} || ${travel.precipitationEffect}`;
         let string3 = `${travel.temperatureEffect} || ${travel.windEffect} || ${travel.precipitationSight}`;
         let string4 = `${travel.temperature} || ${travel.wind} || ${travel.clouds} || ${travel.precipitation}`;
+
+        console.log(travel.journey)
+        let journey1 = `${travel.journey1}`;
+        let journey2 = `${travel.journey2}`;
+        let journey3 = `${travel.journey3}`;
 
         let temperature = `${travel.temperature}`;
         let temperatureDescription = `${travel.temperatureDescription}`;
@@ -101,6 +113,10 @@ export class DndWtdRng {
             precipitationSight,
             precipitationEffect,
             PRE,
+
+            journey1,
+            journey2,
+            journey3,
         };
     }
 }
