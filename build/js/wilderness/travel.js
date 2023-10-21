@@ -20,9 +20,7 @@ export class DndWtdRng {
     _dndWtdRng() {
         // Initialize the properties and classes
         this.weather = new Weather()._weatherDescription();
-        console.log(this.weather) // returns object
         this.journey = new Journey()._travelDescription(this.weather);
-
 
         // Construct object with properties of classes
         return {
@@ -62,7 +60,6 @@ export class DndWtdRng {
         let string3 = `${travel.temperatureEffect} || ${travel.windEffect} || ${travel.precipitationSight}`;
         let string4 = `${travel.temperature} || ${travel.wind} || ${travel.clouds} || ${travel.precipitation}`;
 
-        console.log(travel.journey)
         let journey1 = `${travel.journey1}`;
         let journey2 = `${travel.journey2}`;
         let journey3 = `${travel.journey3}`;

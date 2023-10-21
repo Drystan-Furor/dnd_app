@@ -100,32 +100,7 @@ dndNext.wilderness.coreFunctionality = function () {
 
 
     });
-    const copyButton = document.getElementById('copyButton');
-    dndNext.wilderness.copyButton(copyButton);
 
-}
-
-dndNext.wilderness.copyButton = function (copyButton) {
-    copyButton.addEventListener('click', function () {
-        dndNext.wilderness.copyToClipboard();
-    });
-}
-
-dndNext.wilderness.copyToClipboard = function () {
-    const blockquote = document.querySelector('blockquote');
-    if (!blockquote) return;
-    const paragraphs = blockquote.querySelectorAll('p');
-    let string = '';
-
-    paragraphs.forEach(paragraph => {
-        string += paragraph.textContent + '\n';
-    });
-
-    navigator.clipboard.writeText(string).then(function () {
-        console.log('copied to clipboard!');
-    }).catch(function (err) {
-        console.error('Unable to copy text', err);
-    });
 }
 
 document.addEventListener("DOMContentLoaded", function () {

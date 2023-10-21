@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 
 module.exports = {
-  mode: 'production', // Set to 'production' or 'none' as needed
+  mode: 'production', // Set to 'production' or 'none' as needed //development
   entry: {
     main: './build/js/main.js',
     dndnpcrng: './build/js/dndnpcrng.js',
