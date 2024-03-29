@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://dndnext.onrender.com/sitemaps/listofurls.txt
