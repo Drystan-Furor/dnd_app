@@ -1,6 +1,6 @@
 import {D} from "../../../tools/d";
 import {getRandomElement, shuffleArray} from "../../../tools/tools";
-import {TerrainFeatures} from "./terrainfeatures";
+import {TerrainFeatures} from "../properties";
 
 export class Travel_montage {
     constructor(weather) {

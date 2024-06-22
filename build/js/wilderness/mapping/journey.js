@@ -1,4 +1,4 @@
-import {Travel_montage} from "./properties";
+import {Travel_montage} from "./travel_montage/travel_montage";
 
 export class Journey {
 
