@@ -1,14 +1,14 @@
 import {getRandomElement} from "../../../tools/tools";
 
-export class Location {
+export class Dungeon_location {
 
     // d100 location
     static _location() {
         let environment = [
             `A building in a city`,
             `Catacombs or sewers beneath a city`,
-            Location._beneathLocation(),
-            Location._inLocation(),
+            Dungeon_location._beneathLocation(),
+            Dungeon_location._inLocation(),
             `On top of a mesa`,
             `In sea caves`,
             `In several connected mesas`,
@@ -16,7 +16,7 @@ export class Location {
             `On a promontory`,
             `On an island`,
             `Underwater`,
-            Location._exoticLocation(), // 96 - 100 = exotic:
+            Dungeon_location._exoticLocation(), // 96 - 100 = exotic:
         ];
         return getRandomElement(environment);
     }
@@ -30,10 +30,10 @@ export class Location {
             `Buried in an avalanche`,
             `Buried in an sandstorm`,
             `Buried in volcanic ash`,
-            Location._castleOrStructure() + " in a swamp",
-            Location._castleOrStructure() + " at the bottom of a sinkhole",
-            Location._inExoticLocation,
-            Location._onExoticLocation,
+            Dungeon_location._castleOrStructure() + " in a swamp",
+            Dungeon_location._castleOrStructure() + " at the bottom of a sinkhole",
+            Dungeon_location._inExoticLocation,
+            Dungeon_location._onExoticLocation,
             `Floating on the sea`,
             `On the back of a Gargantuan living creature`,
             `Sealed inside a magical dome of force`,

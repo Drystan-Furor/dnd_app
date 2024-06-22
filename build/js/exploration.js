@@ -1,7 +1,7 @@
 // overwatch
 'use strict';
 
-import {DndDnDRng} from "./exploration/dungeon";
+import {Dungeon_setting} from "./exploration/dungeon_setting";
 
 let dndNext = window;
 dndNext = {
@@ -22,14 +22,15 @@ requireModule.keys().forEach(filename => {
 });
 
 dndNext.exploration.coreFunctionality = function () {
-    const button = document.getElementById("generateTravel");
+    const button = document.getElementById("generateDungeon");
     button.addEventListener("click", function () {
-        // const travelTitle = document.getElementById("travelTitle");
-        // const travelParagraph1 = document.getElementById("travel-paragraph-1");
-        // const travelParagraph2 = document.getElementById("travel-paragraph-2");
-        // const travelParagraph3 = document.getElementById("travel-paragraph-3");
-        // const travelParagraph4 = document.getElementById("travel-paragraph-4");
-        //
+        const parameters = dndNext.parameters;
+        const dungeonTitle = document.getElementById("dungeonTitle");
+        const dungeonSubTitle = document.getElementById("dungeonSubTitle");
+        const dungeonParagraph1 = document.getElementById("dungeon-paragraph-1");
+        const dungeonParagraph2 = document.getElementById("dungeon-paragraph-2");
+        const dungeonParagraph3 = document.getElementById("dungeon-paragraph-3");
+        const dungeonParagraph4 = document.getElementById("dungeon-paragraph-4");
         //
         // const journeyParagraph1 = document.getElementById("journey-paragraph-1");
         // const journeyParagraph2 = document.getElementById("journey-paragraph-2");
@@ -38,7 +39,10 @@ dndNext.exploration.coreFunctionality = function () {
         // const temperature = document.getElementById("temperature");
         // const temperatureDescription = document.getElementById("temperatureDescription");
         // const temperatureEffect = document.getElementById("temperatureEffect");
-        // const temperatureExact = document.getElementById("temperatureExact");
+        const dungeonLocation = document.getElementById("dungeonLocation");
+        const dungeonCreator = document.getElementById("dungeonCreator");
+        const dungeonPurpose = document.getElementById("dungeonPurpose");
+        const dungeonHistory = document.getElementById("dungeonHistory");
         //
         // const TEM = document.getElementById("TEM");
         // const CLO = document.getElementById("CLO");
@@ -49,32 +53,43 @@ dndNext.exploration.coreFunctionality = function () {
         //
         // const wind = document.getElementById("wind");
         // const windEffect = document.getElementById("windEffect");
-        // const windPower = document.getElementById("windPower");
         // const windImpact = document.getElementById("windImpact");
-        // const windSpeed = document.getElementById("windSpeed");
         //
         // const precipitation = document.getElementById("precipitation");
-        // const precipitationWeather = document.getElementById("precipitationWeather");
         // const precipitationSight = document.getElementById("precipitationSight");
         // const precipitationEffect = document.getElementById("precipitationEffect");
         //
-        // const wilderness = new DndWtdRng();
-        // const travel = wilderness.getTravel();
-        // const story = wilderness.getStory();
-        //
-        // if (!travel) {
-        //     return false;
-        // }
-        // travelTitle.innerHTML = `Travel Weather Description`;
-        // travelParagraph1.innerHTML = story.string1;
-        // travelParagraph2.innerHTML = story.string2;
-        // travelParagraph3.innerHTML = story.string3;
-        // travelParagraph4.innerHTML = story.string4;
+        const dungeonSetting = new Dungeon_setting(parameters);
+        const dungeon = dungeonSetting.getDungeon();
+        console.log(dungeon);
+
+        // STATBLOCK
+        dungeonTitle.innerHTML = dungeon.dungeon_purpose;
+        dungeonSubTitle.innerHTML = dungeon.dungeon_history;
+        // PROPERTIES
+        dungeonLocation.innerHTML = dungeon.dungeon_location;
+        dungeonCreator.innerHTML = dungeon.dungeon_creator;
+        dungeonPurpose.innerHTML = dungeon.dungeon_purpose;
+        dungeonHistory.innerHTML = dungeon.dungeon_history;
+        // STATISTICS
+
+        // SUB Properties
+
+        // INFO
+
+        // SUMMARY
+
+
+
+        // unknown
+        dungeonParagraph1.innerHTML = dungeon.dungeon_location;
+        dungeonParagraph2.innerHTML = dungeon.dungeon_creator;
+        dungeonParagraph3.innerHTML = dungeon.dungeon_history;
+        dungeonParagraph4.innerHTML = dungeon.dungeon_purpose;
         //
         // temperature.innerHTML = story.temperature;
         // temperatureDescription.innerHTML = story.temperatureDescription;
         // temperatureEffect.innerHTML = story.temperatureEffect;
-        // temperatureExact.innerHTML = story.temperatureExact;
         //
         // TEM.innerHTML = story.TEM;
         // CLO.innerHTML = story.CLO;
@@ -85,12 +100,9 @@ dndNext.exploration.coreFunctionality = function () {
         //
         // wind.innerHTML = story.wind;
         // windEffect.innerHTML = story.windEffect;
-        // windPower.innerHTML = story.windPower;
         // windImpact.innerHTML = story.windImpact;
-        // windSpeed.innerHTML = story.windSpeed;
         //
         // precipitation.innerHTML = story.precipitation;
-        // precipitationWeather.innerHTML = story.precipitationWeather;
         // precipitationSight.innerHTML = story.precipitationSight;
         // precipitationEffect.innerHTML = story.precipitationEffect;
         //
@@ -104,5 +116,5 @@ dndNext.exploration.coreFunctionality = function () {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    dndNext.wilderness.coreFunctionality();
+    dndNext.exploration.coreFunctionality();
 });

@@ -1,46 +1,60 @@
 import {getRandomElement} from "../../../tools/tools";
+import {Alignment} from "../../../tools/alignment";
+import {NpcClass} from "../../../npc/properties/class";
 
 export class Dungeon_creator {
 
-    static _creator() {
+    static _creator(parameters) {
         let environment = [
-
             `Beholder`,
-
+            `Dwarves`,
+            `Elves`,
+            `Drow`,
+            `Giants`,
+            `Hobgoblins`,
+            `Kuo-toa`,
+            `Lich`,
+            `Mind Flayers`,
+            `Yuan-ti`,
+            `No creator (Natural cavern)`,
+            Dungeon_creator._cultsAndGroups(),
+            Dungeon_creator._alignmentSpecificHumans(parameters),
         ];
         return getRandomElement(environment);
     }
 
+    static _alignmentSpecificHumans(parameters) {
+        let specific = Alignment._getAlignment();
+        let npcClass = new NpcClass(parameters).generateClass();
+
+        return specific + " " + npcClass + " Humans"
+    }
 
 
-    //STRING
+
+
     static _cultOrGroup() {
         let cultOrGroup = [
-            `Cult`,
-            `Religious group`,
+            `cult`,
+            `religious group`,
         ];
         return getRandomElement(cultOrGroup);
     }
 
-    // ARRAY
-    // Cults and religious groups
     static _cultsAndGroups() {
-        let cultsAndGroups = [
-            `Demon-worshipping cult`,
-            `Devil-worshipping cult`,
-            `Elemental Air cult`,
-            `Religious group`,
+        let cultOrGroup = Dungeon_creator._cultOrGroup();
+        let worshippers = [
+            `Demon-worshipping ` + cultOrGroup,
+            `Devil-worshipping ` + cultOrGroup,
+            `Elemental Air ` + cultOrGroup,
+            `Elemental Earth ` + cultOrGroup,
+            `Elemental Fire ` + cultOrGroup,
+            `Elemental Water ` + cultOrGroup,
+            `Worshippers of an evil deity`,
+            `Worshippers of a good deity`,
+            `Worshippers of a neutral deity`,
         ];
-        return getRandomElement(cultsAndGroups);
+        return getRandomElement(worshippers);
     }
-
-    // NPC Alignment
-
-    // NPC Class
-
-    // Dungeon Purpose
-
-    // Dungeon History
-
 
 }
