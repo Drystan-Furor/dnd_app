@@ -2,3 +2,8 @@ export * from './dungeon_location';
 export * from './dungeon_creator';
 export * from './dungeon_purpose';
 export * from './dungeon_history';
+export * from './dungeon_air_quality';
+export * from './dungeon_walls';
+export * from './dungeon_lightsources';
+export * from './dungeon_doors';
+export * from './dungeon_statblock_summary';

@@ -68,7 +68,7 @@ export class Dungeon_location {
             `mountain pass`,
             `swamp`,
         ];
-        return "In a" + getRandomElement(location);
+        return "In a " + getRandomElement(location);
     }
 
     static _castleOrStructure() {

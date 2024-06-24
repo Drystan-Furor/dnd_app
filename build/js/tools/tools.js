@@ -27,3 +27,13 @@ export function shuffleArray(array) {
 
     return shuffledArray;
 }
+
+// Helper function to capitalize the first letter of a string
+export function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+ // Helper function to lowercase the first letter of a string
+export function lowercaseFirstLetter(string) {
+    return string.charAt(0).toLowerCase() + string.slice(1);
+}
