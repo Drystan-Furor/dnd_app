@@ -2,7 +2,6 @@
 'use strict';
 
 import {Dungeon_setting} from "./exploration/dungeon_setting";
-import {D} from "./tools/d";
 
 let dndNext = window;
 dndNext = {
@@ -98,11 +97,13 @@ dndNext.exploration.coreFunctionality = function () {
         // ---------------------------STATBLOCK ------------------------ //
 
 
-
-        // const journeyParagraph1 = document.getElementById("journey-paragraph-1");
-        // const journeyParagraph2 = document.getElementById("journey-paragraph-2");
-        // const journeyParagraph3 = document.getElementById("journey-paragraph-3");
+        // -------------------- EXPLORATION MONTAGE -------------------- //
+        const dungeonExplorationParagraph1 = document.getElementById("dungeon-exploration-paragraph-1");
+        const dungeonExplorationParagraph2 = document.getElementById("dungeon-exploration-paragraph-2");
+        const dungeonExplorationParagraph3 = document.getElementById("dungeon-exploration-paragraph-3");
         //
+        dungeonExplorationParagraph1.innerHTML = dungeon.dungeon_starting_area;
+        dungeonExplorationParagraph2.innerHTML = dungeon.dungeon_chamber_purpose;
         // const temperature = document.getElementById("temperature");
         // const temperatureDescription = document.getElementById("temperatureDescription");
 

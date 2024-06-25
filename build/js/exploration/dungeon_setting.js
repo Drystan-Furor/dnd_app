@@ -44,6 +44,12 @@ export class Dungeon_setting {
             dungeon_summary_secrets: this.properties.dungeon.summary_secrets,
             dungeon_summary_hazards: this.properties.dungeon.summary_hazards,
             dungeon_summary_mood: this.properties.dungeon.summary_mood,
+
+            // areas
+            dungeon_starting_area: this.properties.dungeon.dungeon_starting_area,
+
+            // chamber purpose
+            dungeon_chamber_purpose: this.properties.dungeon.dungeon_chamber_purpose,
         };
     }
 }

@@ -8,7 +8,6 @@ export class Dungeon_air_quality {
     }
 
     _setAirQuality(d100) {
-        console.log(d100);
         let string;
         if (d100 >= 1 && d100 <= 60) {
             string = "Clear and damp";

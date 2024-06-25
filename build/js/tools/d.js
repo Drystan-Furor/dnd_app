@@ -13,13 +13,15 @@ export class D {
     static _10() {
         return rand(1, 10);
     }
+    static _12() {
+        return rand(1, 12);
+    }
     static _20() {
         return rand(1, 20);
     }
     static _100() {
         return rand(1, 100);
     }
-
     static _Custom(sides) {
         return rand(1, sides);
     }
