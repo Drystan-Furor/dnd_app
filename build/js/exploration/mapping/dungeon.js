@@ -1,13 +1,35 @@
 import {Dungeon_montage} from "./dungeon_montage/dungeon_montage";
+import {
+    Death_Trap,
+    Lair,
+    Maze,
+    Mine,
+    Planar_Gate,
+    Shrine,
+    Stronghold,
+    Temple,
+    Tomb,
+    Treasure_Vault
+} from "./properties";
+import {Dungeon_layout} from "./dungeon_montage/dungeon_layout";
 
 export class Dungeon {
 
     _dungeonProperties(parameters) {
-        const montage = new Dungeon_montage(parameters);
+        const dungeon = new Dungeon_montage(parameters);
 
         return {
             // property : class.getThis(),
-            dungeon: montage.getMontage(),
+            dungeon: dungeon.getMontage(),
+        }
+    }
+
+    _dungeonExploration(instance) {
+        const dungeon_layout = new Dungeon_layout(instance);
+
+        return {
+            // property : class.getThis(),
+            exploration: dungeon_layout.getLayout(),
         }
     }
 
@@ -18,12 +40,26 @@ export class Dungeon {
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join('_');
 
-        console.log(className + " on instance");
-        // Check if the class exists
-        if (typeof className !== null) {
-            return  className;
+         const classes = Dungeon._allPurposes();
+         if (classes[className]) {
+             return new classes[className]();
         } else {
             throw new Error(`Class ${className} does not exist`);
         }
+    }
+
+    static _allPurposes() {
+        return  {
+            Lair,
+            Maze,
+            Mine,
+            Stronghold,
+            Temple,
+            Shrine,
+            Tomb,
+            Treasure_Vault,
+            Planar_Gate,
+            Death_Trap
+        };
     }
 }

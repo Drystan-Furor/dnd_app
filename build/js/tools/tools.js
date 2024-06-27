@@ -37,3 +37,11 @@ export function capitalizeFirstLetter(string) {
 export function lowercaseFirstLetter(string) {
     return string.charAt(0).toLowerCase() + string.slice(1);
 }
+
+// Helper function to format the purpose string
+export function purposeFormatter(className) {
+    return className
+        .split('_')
+        .map(word => word.toLowerCase())
+        .join(' ');
+}

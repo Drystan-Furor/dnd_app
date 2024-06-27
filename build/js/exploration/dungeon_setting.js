@@ -1,13 +1,21 @@
 import {Dungeon} from "./mapping/dungeon";
-import {rand} from "../tools/tools";
+import {purposeFormatter, rand} from "../tools/tools";
+import {Verbs} from "../npc/generators/verbs";
 
 export class Dungeon_setting {
     constructor(parameters) {
         this.dungeon = this._dndDungeonRng(parameters);
+        this.chamber_layout = this._dndDungeonLayout(this.properties.dungeon.dungeonInstance);
+        this.exploration = this._dndDungeonExploration(this.chamber_layout);
+
     }
 
     getDungeon() {
         return this.dungeon;
+    }
+
+    getExploration() {
+        return this.exploration;
     }
 
     _dndDungeonRng(parameters) {
@@ -44,12 +52,52 @@ export class Dungeon_setting {
             dungeon_summary_secrets: this.properties.dungeon.summary_secrets,
             dungeon_summary_hazards: this.properties.dungeon.summary_hazards,
             dungeon_summary_mood: this.properties.dungeon.summary_mood,
+            // instance
+            dungeonInstance: this.properties.dungeon.dungeonInstance,
 
+        };
+    }
+
+    _dndDungeonLayout(instance){
+        // Initialize the properties and classes
+        // pass the Instance to the layout builder, it has name and first room
+        console.log(instance.constructor.name)
+        this.instance_layout = new Dungeon()._dungeonExploration(instance);
+
+        // you enter trough exit_the_world
+        // you step into a starting_area
+        // you getObservation() this is a starting_chamber
+
+
+
+        // Construct object with properties of classes
+        return {
+            instance: instance.constructor.name,
+            layout_starting_chamber: this.instance_layout.exploration.starting_chamber,
+            layout_starting_area: this.instance_layout.exploration.starting_area,
+            exit_the_world: this.instance_layout.exploration.exit_the_world,
             // areas
-            dungeon_starting_area: this.properties.dungeon.dungeon_starting_area,
+            // dungeon_starting_area: thisDungeon.exploration.dungeon_starting_area,
 
             // chamber purpose
-            dungeon_chamber_purpose: this.properties.dungeon.dungeon_chamber_purpose,
-        };
+            // dungeon_chamber_purpose: dungeonProperties.dungeon_chamber_purpose,
+        }
+
+
+
+    }
+
+    _dndDungeonExploration(chamber_layout) {
+
+        let dungeonPurpose = purposeFormatter(chamber_layout.instance);
+
+        let exploration_1 = `As you pass trough a ${chamber_layout.exit_the_world} 
+         you enter a ${dungeonPurpose} and arrive in a room shaped like a ${chamber_layout.layout_starting_area}. 
+         You  ${Verbs.getObservation()} this is a ${chamber_layout.layout_starting_chamber}`;
+
+        return {
+            exploration_1,
+        }
+
     }
 }

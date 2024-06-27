@@ -5,16 +5,16 @@ export class Dungeon_areas {
 
     static _setStartingArea() {
         const startingAreas = [
-            "Square, 20 x 20 ft.; passage on each wall",
-            "Square, 20 x 20 ft.; door on two walls, passage in third wall",
-            "Square, 40 x 40 ft.; doors on three walls",
-            "Rectangle, 80 x 20 ft.; with row of pillars down the middle; two passages leading from each long wall, doors on each short wall",
-            "Rectangle, 20 x 40 ft.; passage on each wall",
-            "Circle, 40 ft. diameter; one passage at each cardinal direction",
-            "Circle, 40 ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)",
-            "Square, 20 x 20 ft.; door on two walls, passage on third wall, secret door on fourth wall",
-            "Passage, 10 ft. wide; T intersection",
-            "Passage, 10 ft. wide; four-way intersection"
+            "square, 20 x 20 ft.; passage on each wall",
+            "square, 20 x 20 ft.; door on two walls, passage in third wall",
+            "square, 40 x 40 ft.; doors on three walls",
+            "rectangle, 80 x 20 ft.; with row of pillars down the middle; two passages leading from each long wall, doors on each short wall",
+            "rectangle, 20 x 40 ft.; passage on each wall",
+            "circle, 40 ft. diameter; one passage at each cardinal direction",
+            "circle, 40 ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)",
+            "square, 20 x 20 ft.; door on two walls, passage on third wall, secret door on fourth wall",
+            "passage, 10 ft. wide; T intersection",
+            "passage, 10 ft. wide; four-way intersection"
         ];
 
         return getRandomElement(startingAreas);
@@ -119,9 +119,9 @@ export class Dungeon_areas {
 
     static _setDoorType() {
         const material = [
-            "Wooden", "Iron", "Stone",
-            "Portcullis", "Secret door",
-            "Portcullis, locked in place",
+            "wooden", "iron", "stone",
+            "portcullis", "secret door",
+            "portcullis, locked in place",
         ];
         let doorMaterial = getRandomElement(material)
 
@@ -130,48 +130,61 @@ export class Dungeon_areas {
         ];
         let doorType = getRandomElement(doorTypes)
 
-        return doorMaterial +", " + doorType + " door.";
+        return doorMaterial +" " + doorType + " door";
+    }
+
+    static _ft(){
+        const ft = [
+            `10`,
+            `15`,
+            `20`,
+            `25`,
+            `30`,
+            `35`,
+        ];
+        return getRandomElement(ft);
     }
 
     static _setBeyondDoor() {
         const beyondDoor = [
-            "Passage extending 10 ft., then T intersection extending 10 ft. to the right and left",
-            "Passage extending 10 ft., then T intersection extending 10 ft. to the right and left",
-            "Passage 20 ft. straight ahead", "Passage 20 ft. straight ahead", "Passage 20 ft. straight ahead",
-            "Passage 20 ft. straight ahead", "Passage 20 ft. straight ahead", "Passage 20 ft. straight ahead",
-            "Chamber (roll on the Chamber table)", "Chamber (roll on the Chamber table)", "Chamber (roll on the Chamber table)",
-            "Chamber (roll on the Chamber table)", "Chamber (roll on the Chamber table)", "Chamber (roll on the Chamber table)",
-            "Chamber (roll on the Chamber table)", "Chamber (roll on the Chamber table)", "Chamber (roll on the Chamber table)",
-            "Chamber (roll on the Chamber table)", "Stairs (roll on the Stairs table)", "False door with trap"
+            `Passage extending ${this._ft()}ft., then T intersection extending ${this._ft()}ft. to the right and left`,
+            `Passage extending ${this._ft()}ft., then T intersection extending ${this._ft()}ft. to the left and right`,
+            `Passage ${this._ft()}ft. straight ahead`, `Passage ${this._ft()}ft. straight ahead`,
+            `Passage ${this._ft()}ft. straight ahead`, `Passage ${this._ft()}ft. straight ahead`,
+            `Passage ${this._ft()}ft. straight ahead`, `Passage ${this._ft()}ft. straight ahead`,
+            Dungeon_areas._setChamberType(), Dungeon_areas._setChamberType(),Dungeon_areas._setChamberType(),
+            Dungeon_areas._setChamberType(), Dungeon_areas._setChamberType(),Dungeon_areas._setChamberType(),
+            Dungeon_areas._setChamberType(), Dungeon_areas._setChamberType(),Dungeon_areas._setChamberType(),
+            Dungeon_areas._setStairs(), Dungeon_areas._setStairs(), "False door with trap"
         ];
 
-        return beyondDoor[D._20() - 1];
+        return beyondDoor[D._20() ];
     }
 
     static _setChamberType() {
         const chambers = [
-            "Square, 20 x 20 ft.",
-            "Square, 20 x 30 ft.",
-            "Square, 40 x 40 ft.",
-            "Rectangle, 20 x 30 ft.",
-            "Rectangle, 30 x 50 ft.",
-            "Circle, 30 ft. diameter",
+            "square, 20 x 20 ft.",
+            "square, 30 x 30 ft.",
+            "square, 40 x 40 ft.",
+            "rectangle, 20 x 30 ft.",
+            "rectangle, 30 x 50 ft.",
+            "circle, 30 ft. diameter",
 
-            "Rectangle, 40 x 50 ft.", "Rectangle, 40 x 50 ft.",
-            "Rectangle, 40 x 60 ft.", "Rectangle, 50 x 80 ft.",
-            "Circle, 50 ft. diameter",
-            "Octagon, 40 x 40 ft.", "Octagon, 60 x 60 ft.",
-            "Trapezoid, roughly 40 x 60 ft."
+            "rectangle, 40 x 50 ft.", "rectangle, 40 x 50 ft.",
+            "rectangle, 40 x 60 ft.", "rectangle, 50 x 80 ft.",
+            "circle, 50 ft. diameter",
+            "octagon, 40 x 40 ft.", "octagon, 60 x 60 ft.",
+            "trapezoid, roughly 40 x 60 ft."
         ];
         let chamber = getRandomElement(chambers);
         const largeChambers = [
-            "Rectangle, 40 x 50 ft.",
-            "Rectangle, 40 x 60 ft.",
-            "Rectangle, 50 x 80 ft.",
-            "Circle, 50 ft. diameter",
-            "Octagon, 40 x 40 ft.",
-            "Octagon, 60 x 60 ft.",
-            "Trapezoid, roughly 40 x 60 ft."
+            "rectangle, 40 x 50 ft.",
+            "rectangle, 40 x 60 ft.",
+            "rectangle, 50 x 80 ft.",
+            "circle, 50 ft. diameter",
+            "octagon, 40 x 40 ft.",
+            "octagon, 60 x 60 ft.",
+            "trapezoid, roughly 40 x 60 ft."
         ];
         const isLargeChamber = largeChambers.includes(chamber);
 // // Example usage
@@ -193,7 +206,7 @@ export class Dungeon_areas {
             0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 6
         ];
 
-        return (isLargeChamber ? largeChamberExits : normalChamberExits)[D._20() - 1];
+        return (isLargeChamber ? largeChamberExits : normalChamberExits)[D._20()];
     }
 
     static _setExitLocation() {
@@ -211,7 +224,7 @@ export class Dungeon_areas {
 
         const exitTypes = [
             "Door (roll on the Door Type table)",
-            "Corridor, 10 ft. long",
+            `${this._ft()}ft. long corridor`,
         ];
 
         let exit = getRandomElement(exitTypes);

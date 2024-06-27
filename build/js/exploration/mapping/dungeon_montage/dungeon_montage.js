@@ -4,13 +4,10 @@ import {
     Dungeon_history,
     Dungeon_purpose,
     Dungeon_air_quality,
-    Dungeon_walls, Dungeon_lightsources, Dungeon_doors, Dungeon_statblock_summary
+    Dungeon_walls, Dungeon_lightsources, Dungeon_doors, Dungeon_statblock_summary,
 } from "../properties";
 import {D} from "../../../tools/d";
-import {Dungeon_areas} from "../properties/dungeon_areas";
 import {Dungeon} from "../dungeon";
-
-// imports of all purposes
 
 export class Dungeon_montage {
     constructor(parameters) {
@@ -49,13 +46,9 @@ export class Dungeon_montage {
         let summary_mood = Dungeon_statblock_summary._setMoodDescription();
         // -------- end stat block
 
-        let dungeon_starting_area = Dungeon_areas._setStartingArea();
-        // etc
-
-        // stocking a dungeon:
-        let dungeonPurposeString = Dungeon._createDungeonPurposeInstance(dungeon_purpose) // dungeon_purpose: "Death trap"
-        console.log(dungeonPurposeString + " on montage");
-        let dungeon_chamber_purpose = new dungeonPurposeString() // dungeon_purpose: "Death_Trap"
+        let dungeonPurposeInstance = Dungeon._createDungeonPurposeInstance(dungeon_purpose);
+        console.log(`Created instance of: `+ dungeonPurposeInstance.constructor.name);
+        let dungeonInstance = dungeonPurposeInstance;
 
 
         this.montage = {
@@ -66,16 +59,13 @@ export class Dungeon_montage {
             dungeon_wallType, dungeon_wallFeatures, dungeon_wallDescription,
             dungeon_lightSources, dungeon_doorsDescription,
             summary_vision, summary_locks, summary_secrets, summary_hazards, summary_mood,
-
-            // areas
-            dungeon_starting_area,
-            // stocking a dungeon:
-            // dungeon_chamber_purpose
+            dungeonInstance
         };
     }
-
 
     getMontage() {
         return this.montage;
     }
+
+
 }

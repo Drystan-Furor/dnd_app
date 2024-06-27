@@ -61,7 +61,9 @@ dndNext.exploration.coreFunctionality = function () {
         // GET
         const dungeonSetting = new Dungeon_setting(parameters);
         const dungeon = dungeonSetting.getDungeon();
-        console.log(dungeon);
+        const exploration = dungeonSetting.getExploration();
+        console.log("GET");
+
 
         // STATBLOCK
         dungeonTitle.innerHTML = dungeon.dungeon_purpose;
@@ -98,12 +100,14 @@ dndNext.exploration.coreFunctionality = function () {
 
 
         // -------------------- EXPLORATION MONTAGE -------------------- //
+        console.log(exploration);
         const dungeonExplorationParagraph1 = document.getElementById("dungeon-exploration-paragraph-1");
         const dungeonExplorationParagraph2 = document.getElementById("dungeon-exploration-paragraph-2");
         const dungeonExplorationParagraph3 = document.getElementById("dungeon-exploration-paragraph-3");
-        //
-        dungeonExplorationParagraph1.innerHTML = dungeon.dungeon_starting_area;
-        dungeonExplorationParagraph2.innerHTML = dungeon.dungeon_chamber_purpose;
+
+        dungeonExplorationParagraph1.innerHTML = exploration.exploration_1;
+        dungeonExplorationParagraph2.innerHTML = exploration.layout_starting_area;
+        dungeonExplorationParagraph3.innerHTML = exploration.exit_the_world;
         // const temperature = document.getElementById("temperature");
         // const temperatureDescription = document.getElementById("temperatureDescription");
 

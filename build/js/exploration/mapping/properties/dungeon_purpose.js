@@ -37,7 +37,4 @@ export class Dungeon_purpose {
         return typeDescriptions[purpose];
     }
 
-
-
-
 }
