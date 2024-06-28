@@ -76,6 +76,7 @@ export class Dungeon_setting {
             layout_starting_chamber: this.instance_layout.exploration.starting_chamber,
             layout_starting_area: this.instance_layout.exploration.starting_area,
             exit_the_world: this.instance_layout.exploration.exit_the_world,
+            chamber_state: this.instance_layout.exploration.chamber_state,
             // areas
             // dungeon_starting_area: thisDungeon.exploration.dungeon_starting_area,
 
@@ -93,7 +94,8 @@ export class Dungeon_setting {
 
         let exploration_1 = `As you pass trough a ${chamber_layout.exit_the_world} 
          you enter a ${dungeonPurpose} and arrive in a room shaped like a ${chamber_layout.layout_starting_area}. 
-         You  ${Verbs.getObservation()} this is a ${chamber_layout.layout_starting_chamber}`;
+         You  ${Verbs.getObservation()} this is a ${chamber_layout.layout_starting_chamber}. 
+         The chamber is ${chamber_layout.chamber_state}.`;
 
         return {
             exploration_1,

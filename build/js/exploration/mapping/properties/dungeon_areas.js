@@ -4,17 +4,44 @@ import {D} from "../../../tools/d";
 export class Dungeon_areas {
 
     static _setStartingArea() {
+        let features = [
+            `and a row of pillars down the middle`,
+            `and a well in middle of room`,
+            `and a well in middle of room (might lead down to lower level)`,
+        ];
+
+        let exitTypesInRoom = [
+            `a passage on each wall`,
+            `a door on two walls, and a passage in the third wall`,
+            `doors on three walls`,
+
+        ];
+
+        let square = [
+            `20 x 20`,
+            `30 x 30`,
+            `40 x 40`,
+        ];
+
+        let rectangleSideA = this._ft();
+        let rectangleSideB = this._ft();
+        if (rectangleSideA === rectangleSideB) {
+            let value = parseInt(rectangleSideA) * 2;
+            rectangleSideA = value.toString();
+        }
+
+
         const startingAreas = [
-            "square, 20 x 20 ft.; passage on each wall",
-            "square, 20 x 20 ft.; door on two walls, passage in third wall",
-            "square, 40 x 40 ft.; doors on three walls",
-            "rectangle, 80 x 20 ft.; with row of pillars down the middle; two passages leading from each long wall, doors on each short wall",
-            "rectangle, 20 x 40 ft.; passage on each wall",
-            "circle, 40 ft. diameter; one passage at each cardinal direction",
-            "circle, 40 ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)",
-            "square, 20 x 20 ft.; door on two walls, passage on third wall, secret door on fourth wall",
-            "passage, 10 ft. wide; T intersection",
-            "passage, 10 ft. wide; four-way intersection"
+            `${getRandomElement(square)} ft. square,  ${getRandomElement(exitTypesInRoom)}`,
+
+            `${rectangleSideA} x ${rectangleSideB} ft. rectangle, with a row of pillars down the middle; two passages leading from each long wall, doors on each short wall`,
+            `${rectangleSideA} x ${rectangleSideB} ft. rectangle, with ${getRandomElement(exitTypesInRoom)}`,
+
+            `40 ft. diameter circle, with one passage in each cardinal direction,  ${getRandomElement(features)}`,
+
+            "20 x 20 ft. square, with door on two walls, a passage on third wall, and a secret door on the fourth wall",
+            "10 ft. wide T shaped intersection as passage",
+            "10 ft. wide four-way intersection passage"
         ];
 
         return getRandomElement(startingAreas);
@@ -141,6 +168,7 @@ export class Dungeon_areas {
             `25`,
             `30`,
             `35`,
+            `40`,
         ];
         return getRandomElement(ft);
     }
