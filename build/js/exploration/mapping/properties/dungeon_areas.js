@@ -8,13 +8,13 @@ export class Dungeon_areas {
             `and a row of pillars down the middle`,
             `and a well in middle of room`,
             `and a well in middle of room (might lead down to lower level)`,
+            ``,
         ];
 
         let exitTypesInRoom = [
             `a passage on each wall`,
             `a door on two walls, and a passage in the third wall`,
             `doors on three walls`,
-
         ];
 
         let square = [
@@ -32,16 +32,16 @@ export class Dungeon_areas {
 
 
         const startingAreas = [
-            `${getRandomElement(square)} ft. square,  ${getRandomElement(exitTypesInRoom)}`,
+            `${getRandomElement(square)} ft. square that has ${getRandomElement(exitTypesInRoom)} ${getRandomElement(features)}`,
+            `${getRandomElement(square)} ft. square, with a door on two walls, a passage on the third wall, and a secret door on the fourth wall`,
 
-            `${rectangleSideA} x ${rectangleSideB} ft. rectangle, with a row of pillars down the middle; two passages leading from each long wall, doors on each short wall`,
+            `${rectangleSideA} x ${rectangleSideB} ft. rectangle, with a row of pillars down the middle; two passages leading from each long wall, and doors on each short wall`,
             `${rectangleSideA} x ${rectangleSideB} ft. rectangle, with ${getRandomElement(exitTypesInRoom)}`,
 
             `40 ft. diameter circle, with one passage in each cardinal direction,  ${getRandomElement(features)}`,
 
-            "20 x 20 ft. square, with door on two walls, a passage on third wall, and a secret door on the fourth wall",
-            "10 ft. wide T shaped intersection as passage",
-            "10 ft. wide four-way intersection passage"
+            `${this._ft()} ft. wide T shaped intersection as passage`,
+            `${this._ft()} ft. wide four-way intersection passage`,
         ];
 
         return getRandomElement(startingAreas);

@@ -29,7 +29,7 @@ export class CurrentChamberState {
             `used as a campsite`,
             `filled with a pool of water; chamber's original contents are water damaged`,
             `littered with wrecked furniture`,
-            `stripped bare. The room is empty`,
+            `stripped bare and empty`,
             `converted to a ${new GeneralDungeonChamber()._dungeonChamber()}`,
         ];
 

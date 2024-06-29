@@ -73,15 +73,15 @@ export class Dungeon_setting {
         // Construct object with properties of classes
         return {
             instance: instance.constructor.name,
+            // areas
             layout_starting_chamber: this.instance_layout.exploration.starting_chamber,
             layout_starting_area: this.instance_layout.exploration.starting_area,
             exit_the_world: this.instance_layout.exploration.exit_the_world,
-            chamber_state: this.instance_layout.exploration.chamber_state,
-            // areas
-            // dungeon_starting_area: thisDungeon.exploration.dungeon_starting_area,
 
-            // chamber purpose
-            // dungeon_chamber_purpose: dungeonProperties.dungeon_chamber_purpose,
+            // state and content
+            chamber_state: this.instance_layout.exploration.chamber_state,
+            chamber_contents: this.instance_layout.exploration.chamber_contents,
+
         }
 
 
@@ -97,8 +97,12 @@ export class Dungeon_setting {
          You  ${Verbs.getObservation()} this is a ${chamber_layout.layout_starting_chamber}. 
          The chamber is ${chamber_layout.chamber_state}.`;
 
+        let exploration_2 = `${chamber_layout.chamber_contents} `;
+
+        let exploration_3 = ` dungeon dressing `;
+
         return {
-            exploration_1,
+            exploration_1, exploration_2, exploration_3,
         }
 
     }

@@ -106,55 +106,10 @@ dndNext.exploration.coreFunctionality = function () {
         const dungeonExplorationParagraph3 = document.getElementById("dungeon-exploration-paragraph-3");
 
         dungeonExplorationParagraph1.innerHTML = exploration.exploration_1;
-        dungeonExplorationParagraph2.innerHTML = exploration.layout_starting_area;
-        dungeonExplorationParagraph3.innerHTML = exploration.exit_the_world;
-        // const temperature = document.getElementById("temperature");
-        // const temperatureDescription = document.getElementById("temperatureDescription");
+        dungeonExplorationParagraph2.innerHTML = exploration.exploration_2;
+        dungeonExplorationParagraph3.innerHTML = exploration.exploration_3;
 
-        //
 
-        //
-        // const clouds = document.getElementById("clouds");
-        //
-        // const wind = document.getElementById("wind");
-        // const windEffect = document.getElementById("windEffect");
-        // const windImpact = document.getElementById("windImpact");
-        //
-
-        // const precipitation = document.getElementById("precipitation");
-        // const precipitationSight = document.getElementById("precipitationSight");
-        // const precipitationEffect = document.getElementById("precipitationEffect");
-
-        //        const dungeonParagraph1 = document.getElementById("dungeon-paragraph-1");
-        //         const dungeonParagraph2 = document.getElementById("dungeon-paragraph-2");
-        //         const dungeonParagraph3 = document.getElementById("dungeon-paragraph-3");
-        //         const dungeonParagraph4 = document.getElementById("dungeon-paragraph-4");
-// -------------------------------------------------------------------------
-        // unknown
-        // dungeonParagraph1.innerHTML = dungeon.dungeon_location;
-        // dungeonParagraph2.innerHTML = dungeon.dungeon_creator;
-        // dungeonParagraph3.innerHTML = dungeon.dungeon_history;
-        // dungeonParagraph4.innerHTML = dungeon.dungeon_purpose;
-        //
-        // temperature.innerHTML = story.temperature;
-        // temperatureDescription.innerHTML = story.temperatureDescription;
-        //
-
-        //
-        // clouds.innerHTML = story.clouds;
-        //
-        // wind.innerHTML = story.wind;
-        // windEffect.innerHTML = story.windEffect;
-        // windImpact.innerHTML = story.windImpact;
-        //
-        // precipitation.innerHTML = story.precipitation;
-        // precipitationSight.innerHTML = story.precipitationSight;
-        // precipitationEffect.innerHTML = story.precipitationEffect;
-        //
-        // journeyParagraph1.innerHTML = story.journey1;
-        // journeyParagraph2.innerHTML = story.journey2;
-        // journeyParagraph3.innerHTML = story.journey3;
-        //
 
     });
 
