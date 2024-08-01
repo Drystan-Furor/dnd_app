@@ -6,8 +6,8 @@ export class Dungeon_areas {
     static _setStartingArea() {
         let features = [
             `and a row of pillars down the middle`,
-            `and a well in middle of room`,
-            `and a well in middle of room (might lead down to lower level)`,
+            `and a well in the middle of the room`,
+            `and a well in the middle of the room (might lead down to lower level)`,
             ``,
         ];
 

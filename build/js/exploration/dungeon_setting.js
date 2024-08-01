@@ -99,7 +99,7 @@ export class Dungeon_setting {
 
         let exploration_2 = `${chamber_layout.chamber_contents} `;
 
-        let exploration_3 = ` dungeon dressing `;
+        let exploration_3 = ` dungeon dressing, obstacles, traps, hazards and other content is work in progress (WIP - release T.B.D.)`;
 
         return {
             exploration_1, exploration_2, exploration_3,

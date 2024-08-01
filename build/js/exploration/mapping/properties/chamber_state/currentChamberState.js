@@ -27,7 +27,7 @@ export class CurrentChamberState {
             `full of holes, and the floor is partially collapsed`,
             `covered in ashes, contents mostly burned`,
             `used as a campsite`,
-            `filled with a pool of water; chamber's original contents are water damaged`,
+            `filled with a pool of water; the chamber's original contents are water damaged`,
             `littered with wrecked furniture`,
             `stripped bare and empty`,
             `converted to a ${new GeneralDungeonChamber()._dungeonChamber()}`,
