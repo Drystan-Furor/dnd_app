@@ -49,7 +49,7 @@ dndNext.dndRngNpc.coreFunctionality = function () {
             const new_npc = new DndNpcRng(parameters);
             const character = new_npc.getNewNpc();
             const biography = new_npc.getString();
-            dndNext.dndRngNpc.imageOfCharacter(character.dndRace);
+
             dndNext.dndRngNpc.commitToMemory(character, biography);
             const currentBiography = {
                 string1: characterParagraph1.innerHTML,
@@ -92,39 +92,6 @@ dndNext.dndRngNpc.copyToClipboard = function () {
     });
 }
 
-dndNext.dndRngNpc.imageOfCharacter = function (race) {
-    const images = ["img/icon_d20_blue.png", "img/icon_d20_red.png", "img/icon_d20_yellow.png", "img/beholder.gif"];
-    const imgElement = document.getElementById('dynamicImage');
-    if (!race) {
-        return false;
-    }
-    const raceLowerCase = convertRaceName(race);
-    imgElement.src = "img/characters/" + raceLowerCase.toLowerCase() + ".png";
-    document.getElementById('dynamicCaption').textContent = 'Image of a ' + race;
-    dndNext.dndRngNpc.imageExists(imgElement.src, function (exists) {
-        if (!exists) {
-            console.error("The image is missing, man, probably out bowling with The Dude. Stealth check!");
-            document.getElementById('dynamicCaption').textContent = 'It seems the image has stealthily evaded us, perhaps it rolled a natural 20 on its Stealth check!';
-            const randomIndex = Math.floor(Math.random() * images.length);
-            document.getElementById('dynamicImage').src = images[randomIndex];
-        }
-    });
-    imgElement.onerror = function () {
-        const randomIndex = Math.floor(Math.random() * images.length);
-        imgElement.src = images[randomIndex];
-    }
-}
-
-dndNext.dndRngNpc.imageExists = function (image_url, callback) {
-    const img = new Image();
-    img.onload = function () {
-        callback(true);
-    };
-    img.onerror = function () {
-        callback(false);
-    };
-    img.src = image_url;
-}
 
 dndNext.dndRngNpc.listOfOptions = function () {
     const optionsArray = Race.raceArray();

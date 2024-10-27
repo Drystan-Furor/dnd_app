@@ -8,8 +8,6 @@ module.exports = {
   entry: {
     main: './build/js/main.js',
     dndnpcrng: './build/js/dndnpcrng.js',
-    wilderness: './build/js/wilderness.js',
-    exploration: './build/js/exploration.js',
   },
   output: {
     filename: '[name].bundle.js',
